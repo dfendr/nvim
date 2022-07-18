@@ -83,6 +83,7 @@ vim.g.gruvbox_baby_highlights = {
     TSKeyword = {fg = "#F04934"},
     TSVariable = {fg = "#89A499"},
     TSBoolean = {fg = "#C98B9B"},
+    TSProperty = {fg = "#E8DCB5"},
 
 
 
