@@ -51,8 +51,8 @@ return packer.startup(function(use)
 
 
     -- Colorschemes/Colorizer
-    --use "ellisonleao/gruvbox.nvim"    -- gruvbox theme
-    use "luisiacc/gruvbox-baby"         -- gruvbox with Treesitter support
+    use "ellisonleao/gruvbox.nvim"    -- gruvbox theme
+    --use "luisiacc/gruvbox-baby"         -- gruvbox with Treesitter support
     use "norcalli/nvim-colorizer.lua" -- Adds color to Nvim
 
 
