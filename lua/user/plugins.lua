@@ -45,16 +45,30 @@ packer.init {
 ----------------------------
 return packer.startup(function(use)
   -- My plugins here
-    use "wbthomason/packer.nvim"      -- Have packer manage itself
-    use "nvim-lua/popup.nvim"         -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim"       -- Useful lua functions used ny lots of plugins
+    use "wbthomason/packer.nvim"        -- Have packer manage itself
+    use "nvim-lua/popup.nvim"           -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim"         -- Useful lua functions used ny lots of plugins
+    use 'kyazdani42/nvim-tree.lua'      -- Nvim Tree
+    use 'kyazdani42/nvim-web-devicons'  -- Nvim Tree Devicons
+    --use 'whynothugo/lsp_lines.nvim'     -- in line error messages
+    --use {'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' }}-- Startup Page
+    use 'glepnir/dashboard-nvim'        -- Startup Screen
+    use 'lukas-reineke/indent-blankline.nvim'
 
+    -- AutoPair
+    use "windwp/nvim-autopairs"       -- Bracket pairing
+
+
+    --Commenting
+    use "numToStr/Comment.nvim"
 
     -- Colorschemes/Colorizer
     use "ellisonleao/gruvbox.nvim"    -- gruvbox theme
     --use "luisiacc/gruvbox-baby"         -- gruvbox with Treesitter support
     use "norcalli/nvim-colorizer.lua" -- Adds color to Nvim
 
+    -- CodeRunner
+    use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -70,9 +84,14 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- LSP
+    -- GitSigns
+    use "lewis6991/gitsigns.nvim"
+
+    -- LSP / Mason
     use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    use { "williamboman/mason.nvim" }
+    use "williamboman/mason-lspconfig.nvim"
+
 
     --Lualine
     use {
@@ -80,9 +99,13 @@ return packer.startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
 
+    -- Null LS
+    use 'jose-elias-alvarez/null-ls.nvim' -- formatting
+
+
     -- Telescope
     use "nvim-telescope/telescope.nvim"     -- File/Path finder
-    use 'nvim-telescope/telescope-media-files.nvim' -- View media files 
+    use 'nvim-telescope/telescope-media-files.nvim' -- View media files
     use "BurntSushi/ripgrep" -- Helps with searching contents
 
     --Treesitter
@@ -93,6 +116,11 @@ return packer.startup(function(use)
     }
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+    -- Which Key 
+    use {"folke/which-key.nvim" }
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim
