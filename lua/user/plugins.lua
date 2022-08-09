@@ -51,24 +51,33 @@ return packer.startup(function(use)
     use 'kyazdani42/nvim-tree.lua'      -- Nvim Tree
     use 'kyazdani42/nvim-web-devicons'  -- Nvim Tree Devicons
     --use 'whynothugo/lsp_lines.nvim'     -- in line error messages
-    --use {'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' }}-- Startup Page
-    use 'glepnir/dashboard-nvim'        -- Startup Screen
+    use {'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' }}-- Startup Page
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'karb94/neoscroll.nvim'         -- Nice Scrolling
 
     -- AutoPair
     use "windwp/nvim-autopairs"       -- Bracket pairing
 
+    -- Bufferline
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
     --Commenting
     use "numToStr/Comment.nvim"
+    use "folke/todo-comments.nvim"      -- Keyword Highlighting
+
+
 
     -- Colorschemes/Colorizer
     use "ellisonleao/gruvbox.nvim"    -- gruvbox theme
     --use "luisiacc/gruvbox-baby"         -- gruvbox with Treesitter support
     use "norcalli/nvim-colorizer.lua" -- Adds color to Nvim
 
-    -- CodeRunner
-    use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+    -- Code Runner
+      use "is0n/jaq-nvim"
+      use {
+        "0x100101/lab.nvim",
+        run = "cd js && npm ci",
+      }
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -93,6 +102,7 @@ return packer.startup(function(use)
     use "williamboman/mason-lspconfig.nvim"
 
 
+
     --Lualine
     use {
         'nvim-lualine/lualine.nvim',
@@ -106,7 +116,11 @@ return packer.startup(function(use)
     -- Telescope
     use "nvim-telescope/telescope.nvim"     -- File/Path finder
     use 'nvim-telescope/telescope-media-files.nvim' -- View media files
+    use { "nvim-telescope/telescope-file-browser.nvim" }
     use "BurntSushi/ripgrep" -- Helps with searching contents
+
+    -- Terminal 
+    use {"akinsho/toggleterm.nvim", tag = "v2.*"}
 
     --Treesitter
     use
@@ -117,6 +131,12 @@ return packer.startup(function(use)
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
     use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+    -- Utility
+    use "lewis6991/impatient.nvim"      -- Speeds up Nvim w cache
+    use "rcarriga/nvim-notify"          -- Popup notifications
+    use "RRethy/vim-illuminate"         -- Highlight other uses of current word
+    use "filipdutescu/renamer.nvim"    -- VsCode like renaming
 
     -- Which Key 
     use {"folke/which-key.nvim" }
@@ -129,3 +149,8 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
+
+
+-- GRAVEYARD
+-- use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+-- use 'glepnir/dashboard-nvim'        -- Startup Screen

@@ -14,5 +14,5 @@ if not status_ok then
   return
 end
 
-impatient.setup {}
 
+impatient.enable_profile()

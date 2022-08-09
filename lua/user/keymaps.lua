@@ -46,6 +46,9 @@ keymap("n", "<S-h>", "^", opts)
 keymap("n", "<C-h>", "<C-o>", opts)
 keymap("n", "<C-l>", "<C-i>", opts)
 
+-- Tabs --
+keymap("n", "<m-t>", ":tabnew %<cr>", opts)
+
 --Alternate ways to save
 --keymap("n", "<C-s>", ":w <bar> :Format<CR>", opts)
 keymap("n", "<leader> s", ":w<CR>", opts)

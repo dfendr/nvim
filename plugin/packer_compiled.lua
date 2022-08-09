@@ -79,6 +79,16 @@ _G.packer_plugins = {
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -114,16 +124,6 @@ _G.packer_plugins = {
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["code_runner.nvim"] = {
-    loaded = true,
-    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
-    url = "https://github.com/CRAG666/code_runner.nvim"
-  },
-  ["dashboard-nvim"] = {
-    loaded = true,
-    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -139,10 +139,25 @@ _G.packer_plugins = {
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  ["impatient.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    url = "https://github.com/lewis6991/impatient.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["jaq-nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/jaq-nvim",
+    url = "https://github.com/is0n/jaq-nvim"
+  },
+  ["lab.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/lab.nvim",
+    url = "https://github.com/0x100101/lab.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -158,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neoscroll.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -183,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -229,10 +254,20 @@ _G.packer_plugins = {
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["renamer.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
+  },
   ripgrep = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
+  },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,
@@ -243,6 +278,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fen/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/fen/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
   },
   ["which-key.nvim"] = {
     loaded = true,
