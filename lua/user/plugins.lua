@@ -96,11 +96,18 @@ return packer.startup(function(use)
     -- GitSigns
     use "lewis6991/gitsigns.nvim"
 
-    -- LSP / Mason
-    use "neovim/nvim-lspconfig" -- enable LSP
-    use { "williamboman/mason.nvim" }
-    use "williamboman/mason-lspconfig.nvim"
+  -- LSP
 
+  use "VonHeikemen/lsp-zero.nvim" -- Autoconfigure LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "ray-x/lsp_signature.nvim"
+  use "SmiteshP/nvim-navic"
+  use "simrat39/symbols-outline.nvim"
+  --use "b0o/SchemaStore.nvim"
 
 
     --Lualine
@@ -108,9 +115,6 @@ return packer.startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
-
-    -- Null LS
-    use 'jose-elias-alvarez/null-ls.nvim' -- formatting
 
 
     -- Telescope

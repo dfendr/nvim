@@ -4,16 +4,6 @@ if not status_ok then
   return
 end
 
-local status_ok, _ = pcall(require, "lsp-zero")
-if not status_ok then
-  return
-end
-
-local lsp = require('lsp-zero')
-lsp.preset('lsp-compe')
-lsp.setup()
-
-
 M.server_capabilities = function()
   local active_clients = vim.lsp.get_active_clients()
   local active_client_map = {}
