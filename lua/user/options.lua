@@ -25,7 +25,7 @@ writebackup = false,                        -- if file is being edited elsewhere
 smartindent = true,                         -- Smart indenting (:help smartindent)
 cursorline = true,                          -- Highlight current line
 termguicolors = true,
-relativenumber = true,                      -- Show relative numbers (on in normal mode due to AutoCmd below)
+relativenumber = false,                      -- Show relative numbers (on in normal mode due to AutoCmd below)
 number = true,                              -- Show line numbers on side.
 numberwidth = 2,                            -- Sets sidenumber width to 2 instead of default 4
 signcolumn = "number",                      -- TESTING, might be cool to just have the LSP signs replace the numbers.
@@ -55,8 +55,8 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"        -- Wraps movement e.g. hold l to pas
 -- Relative number toggle, only in Normal mode
 vim.api.nvim_command([[
 augroup RelativeNumberToggle
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * :set relativenumber
+autocmd InsertLeave * :set norelativenumber
 augroup END
 ]])
 

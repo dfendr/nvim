@@ -8,7 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
       "git",
       "clone",
       "--depth",
-      "1",
       "https://github.com/wbthomason/packer.nvim",
       install_path,
     }
@@ -94,6 +93,11 @@ return packer.startup(function(use)
     --Commenting
     use "numToStr/Comment.nvim"
     use "folke/todo-comments.nvim"      -- Keyword Highlighting
+
+    -- Navigation
+    -- Editing Support
+    use "karb94/neoscroll.nvim"         -- Smooth scrolling
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim

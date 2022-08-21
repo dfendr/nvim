@@ -10,3 +10,7 @@ require "user.lualine"
 require "user.registers"
 require "user.todo-comments"
 require "user.comment"
+require "user.neoscroll"
+-- TODO: 1. Get LSP working, 2. Get null-ls formatting working
+-- TODO: 3. DON'T GET DISTRACTED BY ANYTHING UNTIL YOU COMPLETE 1 AND 2
+

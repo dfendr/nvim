@@ -1,5 +1,6 @@
 -- setup must be called before loading the colorscheme
 
+
 -- Default Palette
 dark0_hard = "#1d2021"
 dark0 = "#282828"
@@ -74,12 +75,13 @@ require("gruvbox").setup({
 
         --Python
         pythonAttribute = {fg = light0_soft},
-        pythonTSMethod = {fg = bright_blue, bold = true},
+        pythonTSMethod = {fg = bright_yellow, bold = true},
+        pythonTSMethodCall = {fg = bright_yellow, bold = true},
         pythonTSInclude = {fg = bright_red},
         pythonTSVariable = {fg = light0_soft},
         pythonTSVariableBuiltin = {fg = bright_blue},
         pythonTSField = {fg = light0_soft},
-        pythonTSFunction = {fg = bright_blue, bold = true},
+        pythonTSFunction = {fg = bright_yellow, bold = true},
 
         --Rust
         rustTSTypeBuiltin = {fg = bright_yellow},
@@ -122,6 +124,79 @@ require("gruvbox").setup({
         --NavicSeparator         = {default = true, bg = "#000000", fg = "#ffffff"}}})
   
 
+--TODO: Map out nvim-tree highlight groups:
+
+--7. HIGHLIGHT GROUPS                                     *nvim-tree-highlight*
+--
+--All the following highlight groups can be configured by hand. Aside from
+--`NvimTreeWindowPicker`, it is not advised to colorize the background of these
+--groups.
+--
+--Example (in your `init.vim`):
+-->
+--    highlight NvimTreeSymlink guifg=blue gui=bold,underline
+--<
+--You should have 'termguicolors' enabled, otherwise, colors will not be
+--applied.
+--
+--Default linked group follows name.
+--
+--NvimTreeSymlink
+--NvimTreeFolderName          (Directory)
+--NvimTreeRootFolder
+--NvimTreeFolderIcon
+--NvimTreeFileIcon
+--NvimTreeEmptyFolderName     (Directory)
+--NvimTreeOpenedFolderName    (Directory)
+--NvimTreeExecFile
+--NvimTreeOpenedFile
+--NvimTreeSpecialFile
+--NvimTreeImageFile
+--NvimTreeIndentMarker
+--
+--NvimTreeLspDiagnosticsError         (DiagnosticError)
+--NvimTreeLspDiagnosticsWarning       (DiagnosticWarn)
+--NvimTreeLspDiagnosticsInformation   (DiagnosticInfo)
+--NvimTreeLspDiagnosticsHint          (DiagnosticHint)
+--
+--NvimTreeGitDirty
+--NvimTreeGitStaged
+--NvimTreeGitMerge
+--NvimTreeGitRenamed
+--NvimTreeGitNew
+--NvimTreeGitDeleted
+--NvimTreeGitIgnored      (Comment)
+--
+--NvimTreeWindowPicker
+--
+--There are also links to normal bindings to style the tree itself.
+--
+--NvimTreeNormal
+--NvimTreeEndOfBuffer     (NonText)
+--NvimTreeCursorLine      (CursorLine)
+--NvimTreeVertSplit       (VertSplit)     [deprecated, use NvimTreeWinSeparator]
+--NvimTreeWinSeparator    (VertSplit)
+--NvimTreeCursorColumn    (CursorColumn)
+--
+--There are also links for file highlight with git properties, linked to their
+--Git equivalent:
+--
+--NvimTreeFileDirty       (NvimTreeGitDirty)
+--NvimTreeFileStaged      (NvimTreeGitStaged)
+--NvimTreeFileMerge       (NvimTreeGitMerge)
+--NvimTreeFileRenamed     (NvimTreeGitRenamed)
+--NvimTreeFileNew         (NvimTreeGitNew)
+--NvimTreeFileDeleted     (NvimTreeGitDeleted)
+--NvimTreeFileIgnored     (NvimTreeGitIgnored)
+--
+--There are 2 highlight groups for the live filter feature
+--
+--NvimTreeLiveFilterPrefix
+--NvimTreeLiveFilterValue
+--
+--Color of the bookmark icon
+--
+--NvimTreeBookmark
 
 local colorscheme = "gruvbox"
 
