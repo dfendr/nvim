@@ -144,6 +144,7 @@ nvim_tree.setup {
         { key = { "l", "<cr>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
+        { key = "b", cb = tree_cb "split" }, -- heuristic "Below"
         { key = "t", cb = tree_cb "tabnew" },
         { key = "gh", cb = tree_cb "toggle_file_info" },
       },

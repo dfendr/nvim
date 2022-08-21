@@ -6,9 +6,13 @@ local term_opts = { silent = true }
 local map = require("user.utils").map
 
 -- Remap space as leader key
-map("", "<Space>", "<Nop>", opts)
+--map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
+map("n", "<C-i>", "<C-i>", opts) -- ?? 
+
+
 
 --NORMAL--
 -- Increment/Decrement
@@ -30,6 +34,12 @@ map("n", "sh", ":split<CR><C-w>w")
 map("n", "sv", ":vsplit<CR><C-w>w") -- not sure if I like this
 map("n", "<C-\\>", ":vsplit<CR>") -- VSCode-like shortcut
 
+-- Explorer/Tree
+ map('n', '<Leader>e', ":lua require'nvim-tree'.toggle()<CR>", opts)
+
+-- Easy Source
+map("n", "<Leader><Leader>x", ":so $MYVIMRC<CR>", opts)
+
 -- Resize with arrows
 map("n", "<C-Up>", ":resize +2<CR>", opts)
 map("n", "<C-Down>", ":resize -2<CR>", opts)
@@ -45,7 +55,7 @@ map("n", "<C-h>", "<C-o>", opts)
 map("n", "<C-l>", "<C-i>", opts)
 
 
--- Visual --
+-- VISUAL --
 -- Stay in indent mode after indentation
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
@@ -55,7 +65,7 @@ map("v", "<A-j>", ":m .+1<CR>==", opts)
 map("v", "<A-k>", ":m .-2<CR>==", opts)
 map("v", "p", '"_dP', opts)
 
--- Visual Block --
+-- VISUAL BLOCK --
 -- Move text up and down (sick as hell)
 map("x", "J", ":move '>+1<CR>gv-gv", opts)
 map("x", "K", ":move '<-2<CR>gv-gv", opts)
@@ -63,8 +73,6 @@ map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 
--- Explorer/Tree
- map('n', '<Leader>e', ":lua require'nvim-tree'.toggle()<CR>", {noremap = true, silent = true})
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
@@ -73,3 +81,4 @@ map("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+

@@ -75,7 +75,6 @@ return packer.startup(function(use)
 
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
-    -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "tversteeg/registers.nvim"      -- preview registers with " 
@@ -91,7 +90,7 @@ return packer.startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring' 
 
     --Commenting
-    use "numToStr/Comment.nvim"
+    --use "numToStr/Comment.nvim"
     use "folke/todo-comments.nvim"      -- Keyword Highlighting
 
     -- Navigation
@@ -99,6 +98,8 @@ return packer.startup(function(use)
     use "karb94/neoscroll.nvim"         -- Smooth scrolling
 
 
+    -- Which-Key
+    use "folke/which-key.nvim"          -- Visual Keymap
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

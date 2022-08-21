@@ -198,6 +198,14 @@ require("gruvbox").setup({
 --
 --NvimTreeBookmark
 
+-- Highlight Group 	Defaults to 	Description
+-- WhichKey 	Function 	the key
+-- WhichKeyGroup 	Keyword 	a group
+-- WhichKeySeparator 	DiffAdded 	the separator between the key and its label
+-- WhichKeyDesc 	Identifier 	the label of the key
+-- WhichKeyFloat 	NormalFloat 	Normal in the popup window
+-- WhichKeyValue 	Comment 	used by plugins that provide values
+
 local colorscheme = "gruvbox"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
