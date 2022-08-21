@@ -5,6 +5,7 @@ end
 
 local icons = require "user.icons"
 
+-- TODO: Match colors to gruvbox
 local error_red = "#F44747"
 local warning_orange = "#ff8800"
 -- local info_yellow = "#FFCC66"
@@ -53,7 +54,7 @@ todo_comments.setup {
   --   hint = { "LspDiagnosticsDefaultHint", "#10B981" },
   --   default = { "Identifier", "#7C3AED" },
   -- },
-  search = {
+  search = { -- TODO: Map out TODO commands 
     command = "rg",
     args = {
       "--color=never",

@@ -89,21 +89,44 @@ require("gruvbox").setup({
        -- rustTSFunction = {fg = bright_yellow, style = "bold"},
 
         -- Lua
-        luaTSKeyword = {fg = bright_red},
+        luaTSKeyword = {fg = bright_red}
+  }})
+        --TODO Get highlights mapped for Navic
+        --NavicIconsFile =          {default = true, bg = "#000000", fg = "#ffffff"})
+        --NavicIconsModule =         {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsNamespace=     {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsPackage    =   {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsClass      =  {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsMethod       = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsProperty    = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsField        = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsConstructor  = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsEnum         = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsInterface    = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsFunction    = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsVariable     = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsConstant     = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsString       = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsNumber       = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsBoolean      = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsArray        = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsObject       = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsKey          = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsNull         = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsEnumMember   = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsStruct       = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsEvent        = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsOperator     = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicIconsTypeParameter= {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicText              = {default = true, bg = "#000000", fg = "#ffffff"},
+        --NavicSeparator         = {default = true, bg = "#000000", fg = "#ffffff"}}})
+  
 
-
-    }
-})
 
 local colorscheme = "gruvbox"
-
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
     vim.notify("colorscheme " .. colorscheme .. " not found!")
     return
 end
-
-
-
-

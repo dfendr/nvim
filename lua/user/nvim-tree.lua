@@ -73,8 +73,8 @@ nvim_tree.setup {
         default = "",
         symlink = "",
         folder = {
-          arrow_open = icons.ui.ArrowOpen,
-          arrow_closed = icons.ui.ArrowClosed,
+          arrow_open = icons.ui.arrowopen,
+          arrow_closed = icons.ui.arrowclosed,
           default = "",
           open = "",
           empty = "",
@@ -84,10 +84,10 @@ nvim_tree.setup {
         },
         git = {
           unstaged = "",
-          staged = "S",
+          staged = "s",
           unmerged = "",
           renamed = "➜",
-          untracked = "U",
+          untracked = "u",
           deleted = "",
           ignored = "◌",
         },
@@ -97,10 +97,10 @@ nvim_tree.setup {
   diagnostics = {
     enable = true,
     icons = {
-      hint = icons.diagnostics.Hint,
-      info = icons.diagnostics.Information,
-      warning = icons.diagnostics.Warning,
-      error = icons.diagnostics.Error,
+      hint = icons.diagnostics.hint,
+      info = icons.diagnostics.information,
+      warning = icons.diagnostics.warning,
+      error = icons.diagnostics.error,
     },
   },
   update_focused_file = {
@@ -127,13 +127,25 @@ nvim_tree.setup {
     hide_root_folder = false,
     side = "left",
     -- auto_resize = true,
+        float = {
+          enable = false , -- Not ready yet, causes errors on toggle (8/18/22)
+          open_win_config = {
+            relative = "editor",
+            border = "rounded",
+            width = 40,
+            height = 40,
+            row = 1,
+            col = 1,
+          },
+        },
     mappings = {
       custom_only = false,
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = { "l", "<cr>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
         { key = "t", cb = tree_cb "tabnew" },
+        { key = "gh", cb = tree_cb "toggle_file_info" },
       },
     },
     number = false,
