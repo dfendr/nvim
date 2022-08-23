@@ -9,13 +9,14 @@ if not status_ok_1 then
 end
 
 local servers = {
-  "sumneko_lua",
-  "tsserver",
-  "pyright",
-  "yamlls",
-  "bashls",
-  "clangd",
-  "rust_analyzer",
+    "sumneko_lua",
+    "tsserver",
+    "pyright",
+    "yamlls",
+    "bashls",
+    "clangd",
+    "omnisharp"
+    "rust_analyzer",
 }
 
 
