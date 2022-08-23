@@ -74,10 +74,13 @@ return packer.startup(function(use)
     use "lewis6991/gitsigns.nvim"
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
+    use "neovim/nvim-lspconfig" -- enable LSP
     use "tversteeg/registers.nvim"      -- preview registers with " 
+
+    use "RRethy/vim-illuminate" -- 
+    use "SmiteshP/nvim-navic"
 
      --Treesitter
     use
@@ -90,7 +93,7 @@ return packer.startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring' 
 
     --Commenting
-    --use "numToStr/Comment.nvim"
+    use "numToStr/Comment.nvim"
     use "folke/todo-comments.nvim"      -- Keyword Highlighting
 
     -- Navigation

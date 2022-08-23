@@ -26,13 +26,13 @@ local setup = {
   },
   -- add operators that will trigger motion and text object completion
   -- to enable all native operators, set the preset / operators plugin above
-  operators = { gc = "Comment" },
+ -- operators = { gc = "Comment" },
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
+     ["<space>"] = "SPC",
+     ["<cr>"] = "RET",
+     ["<tab>"] = "TAB",
   },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
@@ -70,6 +70,44 @@ local setup = {
   },
 }
 
+local mappings = {
+
+  a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
+  b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  v = { "<cmd>vsplit<cr>", "vsplit" },
+  h = { "<cmd>split<cr>", "split" },
+  w = { "<cmd>w<CR>", "Write" },
+  -- h = { "<cmd>nohlsearch<CR>", "No HL" },
+  q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+  ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
+  -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+
+
+
+      p = {
+        name = "Packer",
+        c = { "<cmd>PackerCompile<cr>", "Compile" },
+        i = { "<cmd>PackerInstall<cr>", "Install" },
+        s = { "<cmd>PackerSync<cr>", "Sync" },
+        S = { "<cmd>PackerStatus<cr>", "Status" },
+        u = { "<cmd>PackerUpdate<cr>", "Update" },
+      },
+  o = {
+    name = "Options",
+    c = { '<cmd>lua vim.g.cmp_active=false<cr>', "Completion off" },
+    C = { '<cmd>lua vim.g.cmp_active=true<cr>', "Completion on" },
+    w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+    r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+    l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
+    s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+    t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+
+  },
+
+}
+
 local opts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
@@ -100,7 +138,7 @@ local vopts = {
 
 
 which_key.setup(setup)
---which_key.register(mappings, opts)
+which_key.register(mappings, opts)
 --which_key.register(vmappings, vopts)
 --which_key.register(m_mappings, m_opts)
 

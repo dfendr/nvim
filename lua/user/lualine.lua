@@ -9,21 +9,21 @@ end
 
 --- Colors -----
 
-local lualine_scheme = gruvbox
+local lualine_scheme = "gruvbox"
 
 if lualine_scheme == "gruvbox" then
-   gray = "#928374"
-   dark_gray = "#3c3836"
-   red = "#cc241d"
-   blue = "#458588"
-   green = "#427b58"
-   cyan = "#8ec07c"
-   orange = "#fe8019"
-   indent = "#fe8019"
-   indent = "#CE9178"
-   yellow = "#d5c4a1"
-   yellow_orange = "#bdae93"
-   purple = "#b16286"
+   local gray = "#928374"
+   local dark_gray = "#3c3836"
+   local red = "#cc241d"
+   local blue = "#458588"
+   local green = "#427b58"
+   local cyan = "#8ec07c"
+   local orange = "#fe8019"
+   local indent = "#fe8019"
+   local indent = "#CE9178"
+   local yellow = "#d5c4a1"
+   local yellow_orange = "#bdae93"
+   local purple = "#b16286"
 end
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = dark_gray })
