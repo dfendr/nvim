@@ -51,6 +51,7 @@ return packer.startup(function(use)
     use 'kyazdani42/nvim-web-devicons'  -- Nvim Tree Devicons
 
 
+    -- CMP
     use "hrsh7th/nvim-cmp"              -- Autocompletion engine
     use "hrsh7th/cmp-nvim-lsp"          -- LSP cmp integration
     use "hrsh7th/cmp-buffer"            -- buffer completions
@@ -70,8 +71,6 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- GitSigns
-    use "lewis6991/gitsigns.nvim"
 
     -- LSP
     use "williamboman/mason.nvim"
@@ -82,7 +81,17 @@ return packer.startup(function(use)
     use "RRethy/vim-illuminate" -- 
     use "SmiteshP/nvim-navic"
 
-     --Treesitter
+    -- Telescope
+    use "nvim-telescope/telescope.nvim"     -- File/Path finder
+    use 'nvim-telescope/telescope-media-files.nvim' -- View media files
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use "BurntSushi/ripgrep" -- Helps with searching contents
+
+    -- Git
+    use "lewis6991/gitsigns.nvim"
+
+
+    --Treesitter
     use
     {
       "nvim-treesitter/nvim-treesitter",
@@ -90,7 +99,7 @@ return packer.startup(function(use)
     }
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
-    use 'JoosepAlviste/nvim-ts-context-commentstring' 
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     --Commenting
     use "numToStr/Comment.nvim"
@@ -99,6 +108,8 @@ return packer.startup(function(use)
     -- Navigation
     -- Editing Support
     use "karb94/neoscroll.nvim"         -- Smooth scrolling
+    use "windwp/nvim-autopairs"       -- Bracket pairing
+    use "filipdutescu/renamer.nvim"    -- VsCode like renaming
 
 
     -- Which-Key

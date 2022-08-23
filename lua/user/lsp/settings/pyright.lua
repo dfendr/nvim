@@ -1,5 +1,5 @@
 return {
-  cmd = { "py" },
+  --cmd = { "py" },
   settings = {
     python = {
       analysis = {

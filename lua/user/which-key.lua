@@ -15,9 +15,9 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true, -- adds help for motions
-      text_objects = true, -- help for text objects triggered after entering an operator
+      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = false, -- adds help for motions
+      text_objects = false, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
@@ -94,19 +94,105 @@ local mappings = {
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
       },
-  o = {
-    name = "Options",
-    c = { '<cmd>lua vim.g.cmp_active=false<cr>', "Completion off" },
-    C = { '<cmd>lua vim.g.cmp_active=true<cr>', "Completion on" },
-    w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
-    r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
-    l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-    s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
-    t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+      o = {
+        name = "Options",
+        c = { '<cmd>lua vim.g.cmp_active=false<cr>', "Completion off" },
+        C = { '<cmd>lua vim.g.cmp_active=true<cr>', "Completion on" },
+        w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
+        r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
+        l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
+        s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
+        t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+    },
+      f = {
+        name = "Find",
+        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+        f = { "<cmd>Telescope find_files<cr>", "Find files" },
+        t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+        s = { "<cmd>Telescope grep_string<cr>", "Find String" },
+        h = { "<cmd>Telescope help_tags<cr>", "Help" },
+        H = { "<cmd>Telescope highlights<cr>", "Highlights" },
+        i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
+        l = { "<cmd>Telescope resume<cr>", "Last Search" },
+        M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+        r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+        R = { "<cmd>Telescope registers<cr>", "Registers" },
+        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+        C = { "<cmd>Telescope commands<cr>", "Commands" },
+      },
 
+      r = {
+        name = "Replace",
+        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+        f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+      },
+
+      g = {
+        name = "Git",
+        g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+        l = { "<cmd>GitBlameToggle<cr>", "Blame" },
+        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+        u = {
+          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+          "Undo Stage Hunk",
+        },
+        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+        d = {
+          "<cmd>Gitsigns diffthis HEAD<cr>",
+          "Diff",
+        },
+      },
+
+      l = {
+    name = "LSP",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
+    d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
+    w = {
+      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+      "Workspace Diagnostics",
+    },
+    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+    F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
+    H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
+    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    j = {
+      "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>",
+      "Next Diagnostic",
+    },
+    k = {
+      "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
+      "Prev Diagnostic",
+    },
+    v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
+    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    S = {
+      "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+      "Workspace Symbols",
+    },
+    t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+    u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
   },
 
 }
+
+
 
 local opts = {
   mode = "n", -- NORMAL mode

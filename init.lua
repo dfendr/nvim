@@ -4,16 +4,20 @@ require "user.keymaps"
 require "user.plugins"
 require "user.lsp"
 require "user.colorscheme"
+require "user.telescope"
 require "user.nvim-tree"
 require "user.treesitter"
 require "user.cmp"
 require "user.lualine"
+require "user.gitsigns"
+--require "user.winbar" needs NAVIC highlight groups
 require "user.todo-comments"
 require "user.comment"
+require "user.autopairs"
 require "user.neoscroll"
+require "user.renamer"
 require "user.functions"
 require "user.which-key"
-require'lspconfig'.pyright.setup{}
--- TODO: 1. Get LSP working, 2. Get null-ls formatting working
--- TODO: 3. DON'T GET DISTRACTED BY ANYTHING UNTIL YOU COMPLETE 1 AND 2
+-- TODO: 1. Get null-ls formatting working
+-- TODO: 2. DON'T GET DISTRACTED BY ANYTHING UNTIL YOU COMPLETE 1
 
