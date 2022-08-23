@@ -71,13 +71,11 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-
     -- LSP
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "neovim/nvim-lspconfig" -- enable LSP
     use "tversteeg/registers.nvim"      -- preview registers with " 
-
     use "RRethy/vim-illuminate" -- 
     use "SmiteshP/nvim-navic"
 
@@ -90,7 +88,6 @@ return packer.startup(function(use)
     -- Git
     use "lewis6991/gitsigns.nvim"
 
-
     --Treesitter
     use
     {
@@ -102,7 +99,7 @@ return packer.startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     --Commenting
-    use "numToStr/Comment.nvim"
+    use "numToStr/Comment.nvim"         -- Comment anywhere anything
     use "folke/todo-comments.nvim"      -- Keyword Highlighting
 
     -- Navigation
@@ -110,6 +107,10 @@ return packer.startup(function(use)
     use "karb94/neoscroll.nvim"         -- Smooth scrolling
     use "windwp/nvim-autopairs"       -- Bracket pairing
     use "filipdutescu/renamer.nvim"    -- VsCode like renaming
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- Utility
+    use "lewis6991/impatient.nvim" -- Ye Ol Nvim Load Quickener
 
 
     -- Which-Key
