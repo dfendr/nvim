@@ -16,8 +16,11 @@ local servers = {
     "bashls",
     "clangd",
     "omnisharp",
-    "rust_analyzer",
+    --"rust_analyzer",
 }
+
+if vim.fn.has('macunix') == true then servers.insert("rust_analyzer")
+end
 
 
 local settings = {
