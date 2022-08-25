@@ -40,6 +40,7 @@ local faded_orange = "#af3a03"
 local gray = "#928374"
 
 
+
 require("gruvbox").setup({
   undercurl = true,
   underline = true,
@@ -214,3 +215,20 @@ if not status_ok then
     vim.notify("colorscheme " .. colorscheme .. " not found!")
     return
 end
+
+vim.cmd [[highlight! link SignColumn Normal]]
+vim.cmd [[highlight! link DiagnosticSignError GruvboxRed]]
+vim.cmd [[highlight! link DiagnosticSignWarn GruvboxYellow]]
+vim.cmd [[highlight! link DiagnosticSignInfo GruvboxBlue]]
+vim.cmd [[highlight! link DiagnosticSignHint GruvboxAqua]]
+
+
+vim.cmd [[highlight! link GitSignsDelete GruvboxRed]]
+vim.cmd [[highlight! link GitSignsDeleteNr GruvboxRed]]
+vim.cmd [[highlight! link GitSignsChange GruvboxAqua]]
+vim.cmd [[highlight! link GitSignsChangeNr GruvboxAqua]]
+
+vim.cmd [[highlight! link GitSignsAdd GruvboxGreen]]
+vim.cmd [[highlight! link GitSignsAddNr GruvboxGreen]]
+
+

@@ -126,7 +126,8 @@ nvim_tree.setup {
     height = 30,
     hide_root_folder = false,
     side = "left",
-    -- auto_resize = true,
+    adaptive_size = true,
+     --auto_resize = true,
         float = {
           enable = false , -- Not ready yet, causes errors on toggle (8/18/22)
           open_win_config = {

@@ -35,7 +35,7 @@ map("n", "te", ":tabedit<CR>")
 map("n", "<C-\\>", ":vsplit<CR>") -- VSCode-like shortcut
 
 -- Explorer/Tree
- map('n', '<Leader>e', ":lua require'nvim-tree'.toggle()<CR>", opts)
+map('n', '<Leader>e', ":lua require'nvim-tree'.toggle()<CR>", opts)
 
 -- Easy Source
 map("n", "<Leader><Leader>x", ":so $MYVIMRC<CR>", opts)
@@ -59,6 +59,10 @@ map("n", "<C-l>", "<C-i>", opts)
 -- Stay in indent mode after indentation
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
+
+-- Navigate Lines
+map("v", "<S-l>", "$", opts)
+map("v", "<S-h>", "^", opts)
 
 -- Move text up and down (doesn't work in terms that don't send alt correctly)
 map("v", "<A-j>", ":m .+1<CR>==", opts)

@@ -49,6 +49,7 @@ return packer.startup(function(use)
     use "nvim-lua/plenary.nvim"         -- Useful lua functions used ny lots of plugins
     use 'kyazdani42/nvim-tree.lua'      -- Nvim Tree
     use 'kyazdani42/nvim-web-devicons'  -- Nvim Tree Devicons
+    use 'goolord/alpha-nvim'            -- Startup Dashboard
 
 
     -- CMP
@@ -62,7 +63,9 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-emoji"             -- Emoji snippets for...some reason
 
     -- Colorsheme
+    use "folke/tokyonight.nvim"
     use "ellisonleao/gruvbox.nvim"
+    use "luisiacc/gruvbox-baby"
 
     -- Lualine
     use 'nvim-lualine/lualine.nvim'          -- Bottom status bar
@@ -75,9 +78,11 @@ return packer.startup(function(use)
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "neovim/nvim-lspconfig" -- enable LSP
+    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "tversteeg/registers.nvim"      -- preview registers with " 
     use "RRethy/vim-illuminate" -- 
     use "SmiteshP/nvim-navic"
+    use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"     -- File/Path finder
@@ -96,6 +101,8 @@ return packer.startup(function(use)
     }
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
+    use "nvim-treesitter/nvim-treesitter-context"
+
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     --Commenting
@@ -109,9 +116,14 @@ return packer.startup(function(use)
     use "filipdutescu/renamer.nvim"    -- VsCode like renaming
     use "lukas-reineke/indent-blankline.nvim"
 
+    -- Terminal
+    use "akinsho/toggleterm.nvim"
+
     -- Utility
     use "lewis6991/impatient.nvim" -- Ye Ol Nvim Load Quickener
 
+    --UI
+    use "rcarriga/nvim-notify"          -- Popup notifications
 
     -- Which-Key
     use "folke/which-key.nvim"          -- Visual Keymap

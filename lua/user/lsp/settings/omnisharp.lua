@@ -1,10 +1,8 @@
+local path = ""
 if vim.fn.has('macunix') then
-    local path = "~/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
+    path = "~/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
 else path = "C:\\Users\\dylfe\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp.dll"
 end
-
-print(path)
-
 
 return {
     cmd = { "dotnet", path },

@@ -15,7 +15,7 @@ local servers = {
     "yamlls",
     "bashls",
     "clangd",
-    "omnisharp"
+    "omnisharp",
     "rust_analyzer",
 }
 

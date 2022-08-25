@@ -2,7 +2,7 @@ local options = {
         -- :help options
 backup = false,                             -- creates a backup file
 clipboard = { "unnamedplus", "unnamed" },                  -- allows neovim to access the system clipboard
-cmdheight = 2,                              -- more space in the neovim command line for displaying messages
+cmdheight = 1,                              -- more space in the neovim command line for displaying messages
 completeopt = { "menuone", "noselect" },    -- mostly just for cmp
 conceallevel = 0,                           -- so that `` is visible in markdown files
 fileencoding = "utf-8",                 	-- the encoding written to a file
@@ -28,7 +28,7 @@ termguicolors = true,
 relativenumber = false,                      -- Show relative numbers (on in normal mode due to AutoCmd below)
 number = true,                              -- Show line numbers on side.
 numberwidth = 2,                            -- Sets sidenumber width to 2 instead of default 4
-signcolumn = "number",                      -- TESTING, might be cool to just have the LSP signs replace the numbers.
+signcolumn = "yes",                      -- TESTING, might be cool to just have the LSP signs replace the numbers.
 wrap = false,                               -- No wrap, lines are as long as they are, baby!
 scrolloff = 8,                              -- Minimal number of lines viewable above/below cursor on scroll.
 sidescrolloff = 8,                          -- Minimal number of lines viewable left/right cursor on sidescroll.

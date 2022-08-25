@@ -145,7 +145,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
-    vim.cmd "hi link illuminatedWord LspReferenceText"
+    vim.cmd "hi link illuminatedWord CursorLine"
   end,
 })
 
