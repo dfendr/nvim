@@ -1,6 +1,6 @@
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-	return
+    return
 end
 
 -- A lot of this stolen from chris@machine & devaslife
@@ -11,18 +11,18 @@ end
 local lualine_scheme = "gruvbox"
 
 if lualine_scheme == "gruvbox" then
-	local gray = "#928374"
-	local dark_gray = "#3c3836"
-	local red = "#cc241d"
-	local blue = "#458588"
-	local green = "#427b58"
-	local cyan = "#8ec07c"
-	local orange = "#fe8019"
-	local indent = "#fe8019"
-	local indent = "#CE9178"
-	local yellow = "#d5c4a1"
-	local yellow_orange = "#bdae93"
-	local purple = "#b16286"
+    local gray = "#928374"
+    local dark_gray = "#3c3836"
+    local red = "#cc241d"
+    local blue = "#458588"
+    local green = "#427b58"
+    local cyan = "#8ec07c"
+    local orange = "#fe8019"
+    local indent = "#fe8019"
+    local indent = "#CE9178"
+    local yellow = "#d5c4a1"
+    local yellow_orange = "#bdae93"
+    local purple = "#b16286"
 end
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = dark_gray })
@@ -42,156 +42,156 @@ vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = "NONE" })
 
 -- TODO Change these colors to match gruvbox
 local mode_color = {
-	n = blue,
-	i = orange,
-	v = "#b668cd",
-	[""] = "#b668cd",
-	V = "#b668cd",
-	-- c = '#B5CEA8',
-	-- c = '#D7BA7D',
-	c = "#46a6b2",
-	no = "#D16D9E",
-	s = green,
-	S = orange,
-	[""] = orange,
-	ic = red,
-	R = "#D16D9E",
-	Rv = red,
-	cv = blue,
-	ce = blue,
-	r = red,
-	rm = "#46a6b2",
-	["r?"] = "#46a6b2",
-	["!"] = "#46a6b2",
-	t = red,
+    n = blue,
+    i = orange,
+    v = "#b668cd",
+    [""] = "#b668cd",
+    V = "#b668cd",
+    -- c = '#B5CEA8',
+    -- c = '#D7BA7D',
+    c = "#46a6b2",
+    no = "#D16D9E",
+    s = green,
+    S = orange,
+    [""] = orange,
+    ic = red,
+    R = "#D16D9E",
+    Rv = red,
+    cv = blue,
+    ce = blue,
+    r = red,
+    rm = "#46a6b2",
+    ["r?"] = "#46a6b2",
+    ["!"] = "#46a6b2",
+    t = red,
 }
 
 -- Helper Functions
 local hide_in_width_60 = function() -- hide component when vim under width 80
-	return vim.fn.winwidth(0) > 60
+    return vim.fn.winwidth(0) > 60
 end
 
 local hide_in_width = function() -- hide component when vim under width 80
-	return vim.fn.winwidth(0) > 80
+    return vim.fn.winwidth(0) > 80
 end
 
 local hide_in_width_100 = function() -- hide component when vim under width 80
-	return vim.fn.winwidth(0) > 100
+    return vim.fn.winwidth(0) > 100
 end
 
 local hl_str = function(str, hl) -- Highlight string
-	return "%#" .. hl .. "#" .. str .. "%*"
+    return "%#" .. hl .. "#" .. str .. "%*"
 end
 
 -- check if value in table
 local function contains(t, value)
-	for _, v in pairs(t) do
-		if v == value then
-			return true
-		end
-	end
-	return false
+    for _, v in pairs(t) do
+        if v == value then
+            return true
+        end
+    end
+    return false
 end
 
 ---------------- Sections-----------------
 local left_pad = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
+    function()
+        return " "
+    end,
+    padding = 0,
+    color = function()
+        return { fg = gray }
+    end,
 }
 
 local right_pad = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = dark_gray }
-	end,
+    function()
+        return " "
+    end,
+    padding = 0,
+    color = function()
+        return { fg = dark_gray }
+    end,
 }
 
 local left_pad_alt = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
+    function()
+        return " "
+    end,
+    padding = 0,
+    color = function()
+        return { fg = gray }
+    end,
 }
 
 local right_pad_alt = {
-	function()
-		return " "
-	end,
-	padding = 0,
-	color = function()
-		return { fg = gray }
-	end,
+    function()
+        return " "
+    end,
+    padding = 0,
+    color = function()
+        return { fg = gray }
+    end,
 }
 
 -- Change mode string
 local mode = {
-	-- mode component
-	function()
-		-- return "▊"
-		return "  "
-		-- return "  "
-	end,
-	color = function()
-		-- auto change color according to neovims mode
-		return { fg = mode_color[vim.fn.mode()], bg = gray }
-	end,
-	padding = 0,
+    -- mode component
+    function()
+        -- return "▊"
+        return "  "
+        -- return "  "
+    end,
+    color = function()
+        -- auto change color according to neovims mode
+        return { fg = mode_color[vim.fn.mode()], bg = gray }
+    end,
+    padding = 0,
 }
 
 -- Diagnostics
 local diagnostics = {
-	"diagnostics",
-	sources = { "nvim_diagnostic" },
-	sections = { "error", "warn" },
-	symbols = { error = " ", warn = " " },
-	colored = true,
-	update_in_insert = false,
-	always_visible = true,
+    "diagnostics",
+    sources = { "nvim_diagnostic" },
+    sections = { "error", "warn" },
+    symbols = { error = " ", warn = " " },
+    colored = true,
+    update_in_insert = false,
+    always_visible = true,
 }
 
 -- Git diff signs
 local diff = {
-	"diff",
-	colored = true,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-	cond = hide_in_width,
+    "diff",
+    colored = true,
+    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    cond = hide_in_width,
 }
 
 local filetype = {
-	"filetype",
-	icons_enabled = true,
-	icon = nil,
+    "filetype",
+    icons_enabled = true,
+    icon = nil,
 }
 
 local branch = {
-	"branch",
-	icons_enabled = true,
-	icon = "",
+    "branch",
+    icons_enabled = true,
+    icon = "",
 }
 
 local location = {
-	"location",
-	padding = 0,
+    "location",
+    padding = 0,
 }
 
 local filename = {
-	file_status = true, -- display file status
-	path = 0, -- just filename
+    file_status = true, -- display file status
+    path = 0, -- just filename
 }
 
 local function window() -- Display window number
-	return vim.api.nvim_win_get_number(0)
+    return vim.api.nvim_win_get_number(0)
 end
 
 --local spaces = {
@@ -234,31 +234,39 @@ end
 local vimtheme = vim.api.nvim_command_output("colo")
 
 local theme = lualine.setup({
-	options = {
-		globalstatus = true,
-		icons_enabled = true,
-		theme = vimtheme,
-		--component_separators = { left = '', right = ''},
-		--section_separators = { left = '', right = ''},
-		section_separators = { left = "", right = "" },
-		component_separators = { left = "", right = "" },
-		disabled_filetype = { "alpha", "NvimTree" },
-		always_divide_middle = true,
-	},
-	sections = {
-		lualine_a = { mode },
-		lualine_b = { branch, diff },
-		lualine_c = { "filename" },
-		lualine_x = { diagnostics, "encoding", filetype },
-		lualine_y = { "progress" },
-		lualine_z = {},
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {},
-	},
+    options = {
+        globalstatus = true,
+        icons_enabled = true,
+        theme = vimtheme,
+        --component_separators = { left = '', right = ''},
+        --section_separators = { left = '', right = ''},
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+        disabled_filetype = { "alpha", "NvimTree" },
+        always_divide_middle = true,
+    },
+    sections = {
+        lualine_a = { mode },
+        lualine_b = { branch, diff },
+        lualine_c = { "filename" },
+        lualine_x = { diagnostics, "encoding", filetype },
+        lualine_y = { "progress" },
+        lualine_z = {},
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+    },
+    winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+    },
 })
