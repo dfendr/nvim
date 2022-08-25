@@ -8,7 +8,7 @@ local icons = require "user.icons"
 
 notify.setup {
   -- Animation style (see below for details)
-  stages = "fade_in_slide_out",
+  stages = "fade",
 
   -- Function called when a new window is opened, use for changing win settings/config
   on_open = nil,
@@ -29,6 +29,8 @@ notify.setup {
   -- Minimum width for notification windows
   minimum_width = 10,
 
+-- FPS
+    fps = 120,
   -- Icons for the different levels
   icons = {
     ERROR = icons.diagnostics.Error,

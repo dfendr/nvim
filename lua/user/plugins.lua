@@ -66,6 +66,7 @@ return packer.startup(function(use)
     use "folke/tokyonight.nvim"
     use "ellisonleao/gruvbox.nvim"
     use "luisiacc/gruvbox-baby"
+    use "RRethy/nvim-base16"
 
     -- Lualine
     use 'nvim-lualine/lualine.nvim'          -- Bottom status bar
@@ -114,7 +115,8 @@ return packer.startup(function(use)
     use "karb94/neoscroll.nvim"         -- Smooth scrolling
     use "windwp/nvim-autopairs"       -- Bracket pairing
     use "filipdutescu/renamer.nvim"    -- VsCode like renaming
-    use "lukas-reineke/indent-blankline.nvim"
+    use "lukas-reineke/indent-blankline.nvim" -- VSCode like whitespace
+    use "sunjon/Shade.nvim"             -- Shade unfocused buffers
 
     -- Terminal
     use "akinsho/toggleterm.nvim"

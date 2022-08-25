@@ -25,4 +25,5 @@ require "user.neoscroll"
 require "user.renamer"
 require "user.functions"
 require "user.which-key"
+require "user.shade"
 -- TODO: 1. Get CodeRunner set up working (toggle term?)
