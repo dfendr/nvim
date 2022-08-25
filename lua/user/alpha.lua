@@ -45,13 +45,17 @@ dashboard.section.buttons.val = {
   button("SPC p u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
   button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
+
 local function footer()
   -- NOTE: requires the fortune-mod package to work
-  local handle = io.popen("fortune")
-  local fortune = handle:read("*a")
-  handle:close()
-  return fortune
-  --return "dylfender@gmail.com"
+    if vim.fn.has('macunix') == 0 then
+        return "[postfen 2022]"
+    else
+      local handle = io.popen("fortune")
+      local fortune = handle:read("*a")
+      handle:close()
+        return fortune
+    end
 end
 
 dashboard.section.footer.val = footer()
