@@ -102,7 +102,7 @@ local mappings = {
         l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
         s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-        O = { '<cmd>e ~/.config/nvim/lua/user/options.lua<cr>', "Open Options" },
+        O = { "<cmd>e ~/.config/nvim/lua/user/options.lua<cr>", "Open Options" },
     },
     f = {
         name = "Find",
@@ -211,7 +211,12 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
         c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
+    },
 
+    z = {
+        name = "Zen",
+        z = { "<cmd>ZenMode<cr>", "Zen" },
+        t = { "<cmd>Twilight<cr>", "Twilight" },
     },
 }
 

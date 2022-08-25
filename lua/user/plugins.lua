@@ -130,6 +130,11 @@ return packer.startup(function(use)
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
 
+    --Zen Mode
+    use("folke/zen-mode.nvim")
+    use("folke/twilight.nvim")
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
