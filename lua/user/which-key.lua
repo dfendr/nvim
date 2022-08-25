@@ -73,8 +73,9 @@ local mappings = {
 
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    D = { "<cmd>Alpha<cr>", "Dashboard" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    n = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
+    N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
     v = { "<cmd>vsplit<cr>", "vsplit" },
     h = { "<cmd>split<cr>", "split" },
     w = { "<cmd>w<CR>", "Write" },
@@ -101,6 +102,7 @@ local mappings = {
         l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
         s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+        O = { '<cmd>e ~/.config/nvim/lua/user/options.lua<cr>', "Open Options" },
     },
     f = {
         name = "Find",
@@ -208,6 +210,8 @@ local mappings = {
         h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
+        c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
+
     },
 }
 
