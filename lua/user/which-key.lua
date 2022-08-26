@@ -190,6 +190,22 @@ local mappings = {
         u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
     },
 
+  S = {
+    -- name = "Session",
+    -- s = { "<cmd>SaveSession<cr>", "Save" },
+    -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+    -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
+    -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
+    name = "SnipRun",
+    c = { "<cmd>SnipClose<cr>", "Close" },
+    f = { "<cmd>%SnipRun<cr>", "Run File" },
+    i = { "<cmd>SnipInfo<cr>", "Info" },
+    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
+    r = { "<cmd>SnipReset<cr>", "Reset" },
+    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
+    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
+  },
+
     t = {
         name = "Terminal",
         ["1"] = { ":1ToggleTerm<cr>", "1" },
@@ -211,6 +227,7 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
         c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
+        g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups"}
     },
 
     z = {

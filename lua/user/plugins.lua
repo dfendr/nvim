@@ -83,6 +83,7 @@ return packer.startup(function(use)
     use("tversteeg/registers.nvim") -- preview registers with "
     use("RRethy/vim-illuminate") --
     use("SmiteshP/nvim-navic")
+    use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
     -- Telescope
@@ -115,6 +116,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
+
     --use("sunjon/Shade.nvim") -- Shade unfocused buffers
 
     -- Terminal
@@ -123,7 +125,7 @@ return packer.startup(function(use)
     -- Utility
     use("lewis6991/impatient.nvim") -- Ye Ol Nvim Load Quickener
     use("norcalli/nvim-colorizer.lua") -- See hex codes
-
+    use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
     --UI
     use("rcarriga/nvim-notify") -- Popup notifications
 
@@ -133,7 +135,6 @@ return packer.startup(function(use)
     --Zen Mode
     use("folke/zen-mode.nvim")
     use("folke/twilight.nvim")
-
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
