@@ -25,6 +25,7 @@ require("user.neoscroll")
 require("user.renamer")
 require("user.functions")
 require("user.jaq")
+--require("user.transparent")
 --require "user.sniprun"
 -- require "user.shade"
 require("user.colorizer")
