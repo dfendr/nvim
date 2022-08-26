@@ -95,6 +95,10 @@ return packer.startup(function(use)
     -- Git
     use("lewis6991/gitsigns.nvim")
 
+    -- DAP
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui")
+
     --Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
@@ -116,6 +120,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
+    use("nvim-pack/nvim-spectre")
 
     --use("sunjon/Shade.nvim") -- Shade unfocused buffers
 
@@ -125,7 +130,8 @@ return packer.startup(function(use)
     -- Utility
     use("lewis6991/impatient.nvim") -- Ye Ol Nvim Load Quickener
     use("norcalli/nvim-colorizer.lua") -- See hex codes
-    use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
+    --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
+    use("is0n/jaq-nvim")
     --UI
     use("rcarriga/nvim-notify") -- Popup notifications
 

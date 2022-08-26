@@ -50,12 +50,13 @@ local function footer()
     -- NOTE: requires the fortune-mod package to work
     if vim.fn.has("macunix") == false then
         return "[postfen 2022]"
-    else
-        local handle = io.popen("fortune")
-        local fortune = handle:read("*a")
-        handle:close()
-        return fortune
+    -- else
+    --     local handle = io.popen("fortune")
+    --     local fortune = handle:read("*a")
+    --     handle:close()
+    --     return fortune
     end
+    return "[postfen 2022]"
 end
 
 dashboard.section.footer.val = footer()

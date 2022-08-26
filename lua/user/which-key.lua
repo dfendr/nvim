@@ -122,7 +122,20 @@ local mappings = {
         C = { "<cmd>Telescope commands<cr>", "Commands" },
     },
 
-    r = {
+    d = {
+        name = "Debug",
+        b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+        c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+        i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+        o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+        O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+        r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+        l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+        u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+        x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+    },
+
+    R = {
         name = "Replace",
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
         w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
@@ -190,21 +203,22 @@ local mappings = {
         u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
     },
 
-  S = {
-    -- name = "Session",
-    -- s = { "<cmd>SaveSession<cr>", "Save" },
-    -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
-    -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
-    -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
-    name = "SnipRun",
-    c = { "<cmd>SnipClose<cr>", "Close" },
-    f = { "<cmd>%SnipRun<cr>", "Run File" },
-    i = { "<cmd>SnipInfo<cr>", "Info" },
-    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-    r = { "<cmd>SnipReset<cr>", "Reset" },
-    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-  },
+    r = {
+        -- name = "Session",
+        -- s = { "<cmd>SaveSession<cr>", "Save" },
+        -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+        -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
+        -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
+        name = "Quickrun",
+        r = { "<cmd>Jaq<cr>", "Run File" },
+        f = { "<cmd>Jaq float<cr>", "Run (Floating Window)" },
+        t = { "<cmd>Jaq terminal<cr>", "Run (Terminal)" },
+        q = { "<cmd>Jaq quickfix<cr>", "Run (Quickfix)" },
+        -- m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
+        -- r = { "<cmd>SnipReset<cr>", "Reset" },
+        -- t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
+        -- x = { "<cmd>SnipTerminate<cr>", "Terminate" },
+    },
 
     t = {
         name = "Terminal",
@@ -227,7 +241,7 @@ local mappings = {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
         c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
-        g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups"}
+        g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups" },
     },
 
     z = {
