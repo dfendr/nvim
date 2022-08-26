@@ -85,6 +85,7 @@ return packer.startup(function(use)
     use("SmiteshP/nvim-navic")
     use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
+    use("norcalli/nvim-colorizer.lua") -- See hex codes
 
     -- Telescope
     use("nvim-telescope/telescope.nvim") -- File/Path finder
@@ -107,7 +108,6 @@ return packer.startup(function(use)
     use("p00f/nvim-ts-rainbow")
     use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-context")
-
     use("JoosepAlviste/nvim-ts-context-commentstring")
 
     --Commenting
@@ -121,17 +121,15 @@ return packer.startup(function(use)
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
     use("nvim-pack/nvim-spectre")
-
-    --use("sunjon/Shade.nvim") -- Shade unfocused buffers
+    use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
 
     -- Terminal
     use("akinsho/toggleterm.nvim")
 
     -- Utility
     use("lewis6991/impatient.nvim") -- Ye Ol Nvim Load Quickener
-    use("norcalli/nvim-colorizer.lua") -- See hex codes
-    --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
-    use("is0n/jaq-nvim")
+    use("is0n/jaq-nvim") -- Code runner
+
     --UI
     use("rcarriga/nvim-notify") -- Popup notifications
 
@@ -142,9 +140,18 @@ return packer.startup(function(use)
     use("folke/zen-mode.nvim")
     use("folke/twilight.nvim")
 
+    -- Silly
+    use("andweeb/presence.nvim")
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end
 end)
+
+-- GRAVEYARD
+
+--use("xiyaowong/nvim-transparent")
+--use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
+--use("sunjon/Shade.nvim") -- Shade unfocused buffers
