@@ -17,7 +17,7 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
-    augroup packer_user_config
+    augrou packer_user_config
       autocmd!
       autocmd BufWritePost plugins.lua source <afile> | PackerSync
     augroup end
@@ -88,11 +88,13 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
+    use("glepnir/lspsaga.nvim")
 
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
     use("nvim-telescope/telescope-media-files.nvim") -- View media files
     use({ "nvim-telescope/telescope-file-browser.nvim" })
+    use("nvim-telescope/telescope-dap.nvim")
     use("BurntSushi/ripgrep") -- Helps with searching contents
     use("ahmedkhalf/project.nvim")
 
@@ -102,6 +104,11 @@ return packer.startup(function(use)
     -- DAP
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
+    use("theHamsta/nvim-dap-virtual-text")
+    use("mfussenegger/nvim-dap-python") -- python debug adapter
+    use("simrat39/rust-tools.nvim")     -- rust debug adapter 
+    use("mfussenegger/nvim-jdtls")      -- java debug adapter
+    use "jbyuki/one-small-step-for-vimkind" -- lua debug adapter
 
     --Treesitter
     use({
