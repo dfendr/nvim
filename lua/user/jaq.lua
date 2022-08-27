@@ -30,6 +30,7 @@ jaq_nvim.setup({
             cpp = "g++ % -o $fileBase && ./$fileBase",
             go = "go run %",
             sh = "sh %",
+            lua = "luajit $filePath"
         },
 
         -- Uses internal commands such as 'source' and 'luafile'
@@ -50,7 +51,7 @@ jaq_nvim.setup({
         wincmd = false,
 
         -- Auto-save files
-        autosave = false,
+        autosave = true,
     },
 
     -- UI settings
