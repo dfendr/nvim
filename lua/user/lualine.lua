@@ -42,9 +42,9 @@ vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = "NONE" })
 
 -- TODO Change these colors to match gruvbox
 local mode_color = {
-    n = blue,
-    i = orange,
-    v = "#b668cd",
+    n = gray,
+    i = blue,
+    v = orange,
     [""] = "#b668cd",
     V = "#b668cd",
     -- c = '#B5CEA8',
@@ -135,6 +135,7 @@ local right_pad_alt = {
 }
 
 -- Change mode string
+--[[ Mode Icons:           ]]
 local mode = {
     -- mode component
     function()
@@ -157,7 +158,7 @@ local diagnostics = {
     symbols = { error = " ", warn = " " },
     colored = true,
     update_in_insert = false,
-    always_visible = true,
+    always_visible = false,
 }
 
 -- Git diff signs
@@ -230,6 +231,21 @@ end
 --  -- cond = hide_in_width_100,
 --}
 
+local function os_icon()
+    local icons = {
+        unix = "", -- e712
+        dos = "", -- e70f
+        mac = "", -- e711
+    }
+    if vim.fn.has("mac") == 1 then
+        return icons.mac
+    elseif vim.fn.has("win32") == 1 then
+        return icons.dos
+    else
+        return icons.unix
+    end
+end
+
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
 
@@ -237,19 +253,27 @@ local theme = lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = vimtheme,
+        -- theme = "gruvbox",
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
-        disabled_filetype = { "alpha", "NvimTree" },
+
+        disabled_filetypes = {
+            statusline = {
+                { "alpha", "NvimTree" },
+            },
+            winbar = {
+            },
+        },
+        -- disabled_filetype = { "alpha", "NvimTree" },
         always_divide_middle = true,
     },
     sections = {
         lualine_a = { mode },
         lualine_b = { branch, diff },
-        lualine_c = { "filename" },
-        lualine_x = { diagnostics, "encoding", filetype },
+        lualine_c = { diagnostics, "filename" },
+        lualine_x = { "encoding", filetype },
         lualine_y = { "progress" },
         lualine_z = {},
     },
@@ -264,7 +288,7 @@ local theme = lualine.setup({
     winbar = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},

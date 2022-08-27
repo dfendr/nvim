@@ -16,7 +16,6 @@ require("user.lualine")
 require("user.gitsigns")
 require("user.toggleterm")
 require("user.illuminate")
---require "user.winbar" needs NAVIC highlight groups
 require("user.indentblankline")
 require("user.todo-comments")
 require("user.comment")
@@ -24,7 +23,11 @@ require("user.autopairs")
 require("user.neoscroll")
 require("user.renamer")
 require("user.functions")
+require("user.presence")
 require("user.jaq")
+require("user.symbols-outline")
+--require "user.winbar" needs NAVIC highlight groups
+require("user.project")
 --require("user.transparent")
 --require "user.sniprun"
 -- require "user.shade"

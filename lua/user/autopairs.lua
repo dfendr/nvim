@@ -20,8 +20,10 @@ npairs.setup {
     end_key = "$",
     keys = "qwertyuiopzxcvbnmasdfghjkl",
     check_comma = true,
-    highlight = "Search",
-    highlight_grey = "Comment",
+    -- highlight = "Search",
+    -- highlight_grey = "Comment",
+    highlight = "PmenuSel",
+    highlight_grey = "LineNr",
   },
 }
 

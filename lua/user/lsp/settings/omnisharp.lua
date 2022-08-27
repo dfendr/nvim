@@ -3,9 +3,11 @@ if vim.fn.has('macunix') then
     path = "~/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
 else path = "C:\\Users\\dylfe\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp.dll"
 end
+--  TODO: Create function for system detection
+path = "/Users/fen/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
 
 return {
-    cmd = { "dotnet", path },
+    cmd = { "dotnet", path},
 
     -- Enables support for reading code style, naming convention and analyzer
     -- settings from .editorconfig.
@@ -20,7 +22,7 @@ return {
     enable_ms_build_load_projects_on_demand = false,
 
     -- Enables support for roslyn analyzers, code fixes and rulesets.
-    enable_roslyn_analyzers = false,
+    enable_roslyn_analyzers = true,
 
     -- Specifies whether 'using' directives should be grouped and sorted during
     -- document formatting.

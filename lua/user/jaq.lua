@@ -24,8 +24,9 @@ jaq_nvim.setup({
             -- markdown = "glow %",
             python = "python3 %",
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
-            rust = "cargo run",
-            c = "cd $dir && gcc -Wall -Wextra -g -std=c99 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            rust= "cd $dir && cargo run",
+            --rust = "cargo run",
+            c = "cd $dir && gcc -Wall -Wextra -g -std=c99 $fileBase.c -o $fileBase && $dir $fileBase",
             cpp = "g++ % -o $fileBase && ./$fileBase",
             go = "go run %",
             sh = "sh %",
@@ -40,7 +41,7 @@ jaq_nvim.setup({
 
     behavior = {
         -- Default type
-        default = "quickfix",
+        default = "float",
 
         -- Start in insert mode
         startinsert = false,
