@@ -21,6 +21,29 @@ end
 -- local yellow_orange = "#D7BA7D"
 -- local purple = "#C586C0"
 
+local dark = "#202020"
+local foreground = "#ebdbb2"
+local background = "#282828"
+local background_dark = "#242424"
+local bg_light = "#32302f"
+local medium_gray = "#504945"
+local comment = "#665c54"
+local gray = "#DEDEDE"
+local soft_yellow = "#EEBD35"
+local soft_green = "#98971a"
+local bright_yellow = "#fabd2f"
+local orange = "#d65d0e"
+local red = "#fb4934"
+local error_red = "#cc241d"
+local magenta = "#b16286"
+local pink = "#D4879C"
+local light_blue = "#7fa2ac"
+local dark_gray = "#83a598"
+local blue_gray = "#458588"
+local forest_green = "#689d6a"
+local clean_green = "#8ec07c"
+local milk = "#E7D7AD"
+
 local lualine_scheme = "gruvbox"
 
 if lualine_scheme == "gruvbox" then
@@ -108,6 +131,29 @@ local function contains(t, value)
 end
 
 ---------------- Sections-----------------
+
+local lsp_info = {
+    -- Lsp server name .
+    function()
+        local msg = "No Active Lsp"
+        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+        local clients = vim.lsp.get_active_clients()
+        if next(clients) == nil then
+            return msg
+        end
+        for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                return client.name
+            end
+        end
+        return msg
+    end,
+    icon = " LSP:",
+    color = { fg = milk, gui = "bold" },
+    padding = 1,
+}
+
 local left_pad = {
     function()
         return " "
@@ -147,7 +193,6 @@ local right_pad_alt = {
         return { fg = gray }
     end,
 }
-
 
 -- Change icon based on time of day
 local daylight = require("user.functions").daylight()
@@ -271,14 +316,6 @@ local function os_icon()
     end
 end
 
-local function daylight()
-    if tonumber(os.date("%H")) < 17 then
-        return true
-    else
-        return false
-    end
-end
-
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
 
@@ -296,12 +333,12 @@ local theme = lualine.setup({
         },
         always_divide_middle = true,
     },
-    sections = {
+    sections = { -- Backup while I fuck with stuff
         lualine_a = { mode },
         lualine_b = { branch, diff },
-        lualine_c = { diagnostics, "filename" },
+        lualine_c = { "filename", diagnostics },
         lualine_x = { "encoding", filetype },
-        lualine_y = { "progress" },
+        lualine_y = { "location", "progress"  },
         lualine_z = {},
     },
     inactive_sections = {
