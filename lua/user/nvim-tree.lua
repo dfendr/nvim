@@ -129,7 +129,7 @@ nvim_tree.setup {
     adaptive_size = false,
      --auto_resize = true,
         float = {
-          enable = false , -- Not ready yet, causes errors on toggle (8/18/22)
+          enable = false, -- Not ready yet, causes errors on toggle (8/18/22)
           open_win_config = {
             relative = "editor",
             border = "rounded",

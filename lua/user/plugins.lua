@@ -86,12 +86,15 @@ return packer.startup(function(use)
     use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
     use("norcalli/nvim-colorizer.lua") -- See hex codes
+    use("simrat39/symbols-outline.nvim")
+    use("ray-x/lsp_signature.nvim")
 
     -- Telescope
-    use("nvim-telescope/telescope.nvim") -- File/Path finder
+    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
     use("nvim-telescope/telescope-media-files.nvim") -- View media files
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use("BurntSushi/ripgrep") -- Helps with searching contents
+    use("ahmedkhalf/project.nvim")
 
     -- Git
     use("lewis6991/gitsigns.nvim")

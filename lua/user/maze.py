@@ -1,21 +1,21 @@
-"""-----------------------------------------------------------------------------
+"""----------------------------------------------------------------------------
 Dylan Fender
 ID # 3100128
 CMPT-200-X04L(1)
-================================================================================
+===============================================================================
                      ███╗   ███╗ █████╗ ███████╗███████╗
                      ████╗ ████║██╔══██╗╚══███╔╝██╔════╝
-                     ██╔████╔██║███████║  ███╔╝ █████╗  
-                     ██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝  
+                     ██╔████╔██║███████║  ███╔╝ █████╗
+                     ██║╚██╔╝██║██╔══██║ ███╔╝  ██╔══╝
                      ██║ ╚═╝ ██║██║  ██║███████╗███████╗
                      ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝
-================================================================================
+===============================================================================
 
-maze.py is a practice program for backtracking recursive exploration. 
+maze.py is a practice program for backtracking recursive exploration.
 It is paired with a number of text-based maze files, passed into a Maze class
-that will solve them recursively. 
+that will solve them recursively.
 
------------------------------------------------------------------------------"""
+----------------------------------------------------------------------------"""
 
 # For VSCode ---Establishes parent folder for workspace.(so file import works)
 import os
@@ -26,16 +26,15 @@ class Maze:
     def __init__(self, maze_txt, seq):
         """
         Purpose:
-                    Takes in list of lines from maze text files, solves them
-                    recursively, and marks them as solvable or not.
+                Takes in list of lines from maze text files, solves them
+                recursively, and marks them as solvable or not.
         Parameters:
-                    maze_txt     - Maze text file. Used to
-                                   extract coordinates, and the maze characters
-                                   are converted to a maze list of lists,
-                                   used as a 2d grid.
-
-                    seq           - direction order for the solving algorithm,
-                                   represented by a 4 letter string, e.g. "NSWE"
+                maze_txt     - Maze text file. Used to
+                               extract coordinates, and the maze characters
+                               are converted to a maze list of lists,
+                               used as a 2d grid.
+                seq           - direction order for the solving algorithm,
+                               represented by a 4 letter string, e.g. "NSWE"
         Returns:
                     None
         """
@@ -110,9 +109,9 @@ class Maze:
                 self._clear_pos(nr, nc)
         return False
 
-    # =============================HELPER FUNCTIONS==================================
+    # =============================HELPER FUNCTIONS===========================
 
-    # ------------------------------SETUP-HELPERS------------------------------------
+    # ------------------------------SETUP-HELPERS-----------------------------
 
     def _digit_formatter(self, coords):
         """
@@ -213,21 +212,21 @@ class Maze:
     def _set_internal_coords(self):
         """
         Purpose:
-                    Used in __init__
-                    Extracts the size, start, and end coordinates given by the
-                    text file, then converts them to an internal size structure.
+                Used in __init__
+                Extracts the size, start, and end coordinates given by the
+                text file, then converts them to an internal size structure.
 
         Parameters:
-                    None Given.
-                    _i_size   - internal size coordinates, double raw size
-                    _i_start  - internal start coordinates, adjusted for python
-                    _i_dest   - internal destination coordinate, adjusted.
-                    _i_strt_r - internal starting row, used for marking start
-                    _i_strt_c - internal starting col, used for marking start
-                    ROWS      - Row constant, from internal size. Used for iter.
-                    COLS      - Col constant, from internal size. Used for iter.
+                None Given.
+                _i_size   - internal size coordinates, double raw size
+                _i_start  - internal start coordinates, adjusted for python
+                _i_dest   - internal destination coordinate, adjusted.
+                _i_strt_r - internal starting row, used for marking start
+                _i_strt_c - internal starting col, used for marking start
+                ROWS      - Row constant, from internal size. Used for iter.
+                COLS      - Col constant, from internal size. Used for iter.
         Returns:
-                    None
+                None
         """
         # Grab coords from the list of lines from the text file.
         _raw_coords = self._lines_to_lists(self._txt_lines)[
@@ -259,14 +258,14 @@ class Maze:
     def _txt_to_lines(self, maze_txt):
         """
         Purpose:
-                    Used in __init__
-                    Takes in a text file, parses each line, adding the line to
-                    a list that it then returns.
+                Used in __init__
+                Takes in a text file, parses each line, adding the line to
+                a list that it then returns.
         Parameters:
-                    maze_txt - a text file with 3 lines of coordinates, then
-                               any number of lines that represent a maze.
+                maze_txt - a text file with 3 lines of coordinates, then
+                           any number of lines that represent a maze.
         Returns:
-                    maze_list - a list of lines from the maze_txt file.
+                maze_list - a list of lines from the maze_txt file.
         """
         maze_list = []
         for line in maze_txt:
@@ -280,16 +279,16 @@ class Maze:
     def _can_move(self, r, c, direction):
         """
         Purpose:
-                    Checks the maze for available position in direction given.
+                Checks the maze for available position in direction given.
 
         Parameters:
-                    r         - current row
-                    c         - current column
-                    direction - direction to move to, represented by a tuple,
-                                e.g. (0, -1) -> one column to the left
+                r         - current row
+                c         - current column
+                direction - direction to move to, represented by a tuple,
+                            e.g. (0, -1) -> one column to the left
         Returns:
-                    True  if new position is open.
-                    False if new position is not open e.g. blocked by wall char.
+                True  if new position is open.
+                False if new position is not open e.g. blocked by wall char.
         """
         if r < self.ROWS and c < self.COLS:
             nr, nc = self._move(r, c, direction)
@@ -363,7 +362,7 @@ class Maze:
         self._maze[r][c] = sign
 
 
-# ===========================TOP LEVEL FUNCTIONS================================
+# ===========================TOP LEVEL FUNCTIONS===============================
 
 
 def main():
@@ -419,7 +418,7 @@ def test(seq):
         report_solvable(maze_obj)  # report msg if (not)solvable
 
 
-# ----------------------------Top Level Helpers---------------------------------
+# ----------------------------Top Level Helpers--------------------------------
 
 
 def file_opener(filename):
@@ -462,9 +461,12 @@ def report_solvable(maze_obj):
 
 
 # ==============================================================================
+def test_function():
+    print("Hello World!")
 
 
 if __name__ == "__main__":
+    print(os.path.split(sys.argv[0]))
     if sys.argv:
         filepath = sys.argv[0]
         folder, filename = os.path.split(filepath)
