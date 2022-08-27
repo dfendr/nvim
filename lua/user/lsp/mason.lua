@@ -16,11 +16,11 @@ local servers = {
     "bashls",
     "clangd",
     "omnisharp",
-    --"rust_analyzer",
+    "rust_analyzer",
 }
 
-if vim.fn.has('macunix') == true then servers.insert("rust_analyzer")
-end
+  -- Package installation folder
+  local install_root_dir = vim.fn.stdpath "data" .. "/mason"
 
 
 local settings = {
@@ -36,6 +36,10 @@ local settings = {
   max_concurrent_installers = 4,
 }
 
+  -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
+local extension_path = install_root_dir .. "/packages/codelldb/extension/"
+local codelldb_path = extension_path .. "adapter/codelldb"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
@@ -93,10 +97,18 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
+
   if server == "rust_analyzer" then
     local rust_opts = require "user.lsp.settings.rust"
-     opts = vim.tbl_deep_extend("force", rust_opts, opts)
-  end 
+    opts = vim.tbl_deep_extend("force", rust_opts, opts)
+    local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
+    if not rust_tools_status_ok then
+      return
+    end
+
+    rust_tools.setup(rust_opts)
+    goto continue
+  end
 
   if server == "jdtls" then
     goto continue
