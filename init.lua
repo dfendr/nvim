@@ -25,6 +25,7 @@ require("user.renamer")
 require("user.functions")
 require("user.presence")
 require("user.jaq")
+require("user.dap")
 require("user.symbols-outline")
 --require "user.winbar" needs NAVIC highlight groups
 require("user.project")
@@ -32,6 +33,7 @@ require("user.project")
 --require "user.sniprun"
 -- require "user.shade"
 require("user.colorizer")
+--require("user.lspsaga")
 require("user.which-key")
 -- TODO: 1. Get Debugger working (Python, Rust, C, Bash (MAYBE JAVA?))
 -- TODO:  2. Smooth out any bugs, get UI tightened. General tweaking. 
