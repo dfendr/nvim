@@ -117,4 +117,13 @@ function M.smart_quit()
   end
 end
 
+
+function M.daylight()
+    if tonumber(os.date("%H")) < 17 then
+        return true
+    else
+        return false
+    end
+end
+
 return M

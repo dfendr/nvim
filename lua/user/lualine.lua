@@ -8,6 +8,19 @@ end
 
 --- Colors -----
 
+-- local gray = "#32363e"
+-- local dark_gray = "#282C34"
+-- local dark_gray = "#282C34"
+-- local red = "#D16969"
+-- local blue = "#569CD6"
+-- local green = "#6A9955"
+-- local cyan = "#4EC9B0"
+-- local orange = "#CE9178"
+-- local indent = "#CE9178"
+-- local yellow = "#DCDCAA"
+-- local yellow_orange = "#D7BA7D"
+-- local purple = "#C586C0"
+
 local lualine_scheme = "gruvbox"
 
 if lualine_scheme == "gruvbox" then
@@ -41,10 +54,11 @@ vim.api.nvim_set_hl(0, "SLWarning", { fg = "#D7BA7D", bg = "NONE" })
 vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = "NONE" })
 
 -- TODO Change these colors to match gruvbox
+
 local mode_color = {
-    n = gray,
-    i = blue,
-    v = orange,
+    n = blue,
+    i = orange,
+    v = "#b668cd",
     [""] = "#b668cd",
     V = "#b668cd",
     -- c = '#B5CEA8',
@@ -134,19 +148,30 @@ local right_pad_alt = {
     end,
 }
 
+
+-- Change icon based on time of day
+local daylight = require("user.functions").daylight()
+local function day_icon()
+    if daylight then
+        return "  "
+    else
+        return "  "
+    end
+end
+
 -- Change mode string
---[[ Mode Icons:           ]]
+--[[ Mode Icons:   盛滛            ]]
 local mode = {
     -- mode component
     function()
         -- return "▊"
-        return "  "
+        return day_icon()
         -- return "  "
     end,
-    color = function()
-        -- auto change color according to neovims mode
-        return { fg = mode_color[vim.fn.mode()], bg = gray }
-    end,
+    -- color = function()
+    --     -- auto change color according to neovims mode
+    --     return { bg = mode_color[vim.fn.mode()], fg = gray }
+    -- end,
     padding = 0,
 }
 
@@ -246,6 +271,14 @@ local function os_icon()
     end
 end
 
+local function daylight()
+    if tonumber(os.date("%H")) < 17 then
+        return true
+    else
+        return false
+    end
+end
+
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
 
@@ -258,15 +291,9 @@ local theme = lualine.setup({
         --section_separators = { left = '', right = ''},
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
-
         disabled_filetypes = {
-            statusline = {
-                { "alpha", "NvimTree" },
-            },
-            winbar = {
-            },
+            { "alpha", "NvimTree", "dashboard" },
         },
-        -- disabled_filetype = { "alpha", "NvimTree" },
         always_divide_middle = true,
     },
     sections = {
