@@ -20,7 +20,7 @@ local servers = {
 }
 
   -- Package installation folder
-  local install_root_dir = vim.fn.stdpath "data" .. "/mason"
+  -- local install_root_dir = vim.fn.stdpath "data" .. "/mason"
 
 
 local settings = {
@@ -37,9 +37,9 @@ local settings = {
 }
 
   -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
-local extension_path = install_root_dir .. "/packages/codelldb/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+-- local extension_path = install_root_dir .. "/packages/codelldb/extension/"
+-- local codelldb_path = extension_path .. "adapter/codelldb"
+-- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
