@@ -1,3 +1,6 @@
+local codelldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb'
+local liblldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so'
+
 return {
   tools = {
     -- autoSetHints = false,
@@ -10,10 +13,15 @@ return {
       })
     end,
 
+    dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+            codelldb_path, liblldb_path)
+    },
+
     auto = false,
     inlay_hints = {
       -- Only show inlay hints for the current line
-      only_current_line = false,
+      only_current_line = true,
       auto = false,
 
       -- Event which triggers a refersh of the inlay hints.
@@ -70,14 +78,14 @@ return {
         $ chmod +x ~/.local/bin/rust-analyzer
     --]]
     -- cmd = { os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
-    cmd = { "rustup", "run", "nightly", os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
+    -- cmd = { "rustup", "run", "nightly", os.getenv "HOME" .. "~/.local/share/nvim/mason/packages/rust-analyzer/rust-analyzer" },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 
     settings = {
       ["rust-analyzer"] = {
         lens = {
-          enable = true,
+          enable = false, -- annoying "RUN | DEBUG" prompt, doesn't work atm
         },
         checkOnSave = {
           command = "clippy",

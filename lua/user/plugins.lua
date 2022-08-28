@@ -88,7 +88,7 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    use("glepnir/lspsaga.nvim")
+    --use("glepnir/lspsaga.nvim")
 
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
@@ -106,9 +106,9 @@ return packer.startup(function(use)
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
     use("mfussenegger/nvim-dap-python") -- python debug adapter
-    use("simrat39/rust-tools.nvim")     -- rust debug adapter 
-    use("mfussenegger/nvim-jdtls")      -- java debug adapter
-    use "jbyuki/one-small-step-for-vimkind" -- lua debug adapter
+    use("simrat39/rust-tools.nvim") -- rust debug adapter
+    use("mfussenegger/nvim-jdtls") -- java debug adapter
+    use("jbyuki/one-small-step-for-vimkind") -- lua debug adapter
 
     --Treesitter
     use({
