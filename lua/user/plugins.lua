@@ -39,7 +39,6 @@ packer.init({
     },
 })
 
-----------------------------
 -- Install your plugins here
 ----------------------------
 return packer.startup(function(use)
@@ -142,6 +141,7 @@ return packer.startup(function(use)
 
     --UI
     use("rcarriga/nvim-notify") -- Popup notifications
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
