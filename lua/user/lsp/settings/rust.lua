@@ -1,5 +1,5 @@
-local codelldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb'
-local liblldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so'
+-- local liblldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so'
+-- local codelldb_path = '~/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb'
 
 return {
   tools = {
