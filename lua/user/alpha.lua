@@ -39,6 +39,13 @@ local marginTopPercent = 0.3
 local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
 
 local icons = require("user.icons")
+local daylight = require("user.functions").daylight()
+if daylight then
+    header_hl_group = "String"
+    else
+    header_hl_group = "StorageClass" -- deep blue
+    -- header_hl_group = "Error" -- RED
+end
 
 local options = {
 
@@ -66,7 +73,7 @@ local options = {
         },
         opts = {
             position = "center",
-            hl = "String"
+            hl = header_hl_group,
         },
     },
 
