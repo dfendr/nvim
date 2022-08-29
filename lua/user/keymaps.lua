@@ -6,7 +6,7 @@ local term_opts = { silent = true }
 local map = require("user.utils").map
 
 -- Remap space as leader key
-map("", "<Space>", "<Nop>", opts)
+--map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
@@ -29,6 +29,10 @@ map("n", "<C-a>", "gg<S-V>G")
 -- Tabs --
 map("n", "<m-t>", ":tabnew %<cr>", opts)
 map("n", "te", ":tabedit<CR>")
+
+-- Easy Buffer Navigation
+map("n", "[b", ":bprevious<CR>")
+map("n", "]b", ":bnext<CR>")
 
 --map("n", "sh", ":split<CR><C-w>w") // not needed as these are taken care of by WhichKey
 --map("n", "sv", ":vsplit<CR><C-w>w") -- not sure if I like this
