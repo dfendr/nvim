@@ -1,6 +1,8 @@
 
 local M = {}
 
+local merge_tb = vim.tbl_deep_extend
+
 vim.cmd [[
   function Test()
     %SnipRun
@@ -13,6 +15,13 @@ vim.cmd [[
     call winrestview(b:caret)
   endfunction
 ]]
+
+
+ M.load_override = function(default_table, plugin_name)
+  local user_table = M.load_config().plugins.override[plugin_name] or {}
+  user_table = type(user_table) == "table" and user_table or user_table()
+  return merge_tb("force", default_table, user_table) or {}
+end
 
 function M.sniprun_enable()
   vim.cmd [[
