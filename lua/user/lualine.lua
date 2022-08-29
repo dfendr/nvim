@@ -198,14 +198,14 @@ local right_pad_alt = {
 local daylight = require("user.functions").daylight()
 local function day_icon()
     if daylight then
-        return "  "
+        return "  "
     else
-        return "  "
+        return "  "
     end
 end
 
 -- Change mode string
---[[ Mode Icons:   盛滛            ]]
+--[[ Mode Icons:    盛滛            ]]
 local mode = {
     -- mode component
     function()
@@ -318,6 +318,7 @@ end
 
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
+local navic = require("nvim-navic")
 
 local theme = lualine.setup({
     options = {
@@ -338,21 +339,21 @@ local theme = lualine.setup({
         lualine_b = { branch, diff },
         lualine_c = { "filename", diagnostics },
         lualine_x = { "encoding", filetype },
-        lualine_y = { "location", "progress"  },
-        lualine_z = {},
+        lualine_y = { "location", "progress" },
+        lualine_z = {{'os.date("%-H:%M")', color = {gui='NONE'}}}
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { "filename" },
-        lualine_x = {},
+        lualine_x = { "filetype" },
         lualine_y = {},
         lualine_z = {},
     },
     winbar = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {},
+        lualine_c = {{navic.get_location, cond = navic.is_available},},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
