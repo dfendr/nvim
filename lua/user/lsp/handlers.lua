@@ -116,6 +116,7 @@ local function lsp_keymaps(bufnr)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
+
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     --lsp_highlight_document(client)

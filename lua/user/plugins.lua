@@ -61,11 +61,11 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-emoji") -- Emoji snippets for...some reason
 
     -- Colorsheme
-    use("folke/tokyonight.nvim")
-    use("ellisonleao/gruvbox.nvim")
+    -- use("folke/tokyonight.nvim")
+    -- use("ellisonleao/gruvbox.nvim")
     use("luisiacc/gruvbox-baby")
-    use("RRethy/nvim-base16")
-    use("sainnhe/gruvbox-material")
+    -- use("RRethy/nvim-base16")
+    -- use("sainnhe/gruvbox-material")
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
@@ -129,8 +129,12 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
-    use("nvim-pack/nvim-spectre")
+      -- use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
+
+    -- Sessions
+    use("rmagatti/auto-session")
+    use("rmagatti/session-lens")
 
     -- Terminal
     use("akinsho/toggleterm.nvim")
@@ -140,8 +144,10 @@ return packer.startup(function(use)
     use("is0n/jaq-nvim") -- Code runner
 
     --UI
+    use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
-    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use "tiagovla/scope.nvim"
+    -- use("nanozuki/tabby.nvim")
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
@@ -152,7 +158,7 @@ return packer.startup(function(use)
 
     -- Silly
     use("andweeb/presence.nvim")
-
+    -- use("xiyaowong/nvim-transparent")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
@@ -162,6 +168,6 @@ end)
 
 -- GRAVEYARD
 
---use("xiyaowong/nvim-transparent")
 --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
 --use("sunjon/Shade.nvim") -- Shade unfocused buffers
+-- use("kdheepak/tabline.nvim")

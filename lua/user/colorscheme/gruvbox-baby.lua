@@ -67,13 +67,18 @@ vim.g.gruvbox_baby_highlights = {
     TSBoolean = { fg = pink },
     TSNumber = { fg = pink },
     TSFuncBuiltin = { fg = og_orange2 },
-    TSVariable = { fg = milk},
+    TSVariable = { fg = milk },
     NormalFloat = { bg = dark },
     FloatBorder = { bg = dark },
-    Search = { bg = comment},
-    MatchParen = { bg = comment},
-    TSStringEscape = {fg = pink},
+    Search = { bg = comment },
+    MatchParen = { bg = comment },
+    TSStringEscape = { fg = pink },
 
+    -- -- Tabby
+    -- Tabline = { bg = comment , fg = milk},
+    -- TablineSel = { bg = comment, fg =light_blue},
+    -- TablineFill = {bg= dark0_soft},
+    -- Normal = {},
 
     -- Python
 

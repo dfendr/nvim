@@ -16,7 +16,7 @@ bufferline.setup({
             style = "icon",
         },
         buffer_close_icon = "",
-        modified_icon = "●",
+        modified_icon = "*",
         close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
@@ -68,27 +68,18 @@ bufferline.setup({
             },
         },
 
-        highlights = {
-            fill = {
-                bg = {
-                    attribute = "fg",
-                    highlight = "Pmenu",
-                },
-            },
-        },
-
         color_icons = true, -- whether or not to add the filetype icon highlights
         show_buffer_icons = true, -- disable filetype icons for buffers
-        show_buffer_close_icons = false,
+        show_buffer_close_icons = true,
         show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
         show_close_icon = false,
         show_tab_indicators = true,
         --         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         --         -- can also be a table containing 2 custom separators
         --         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "thick", --[[ | "thin" | { 'any', 'any' }, ]]
+        separator_style = "thin", --[[ | "thin" | { 'any', 'any' }, ]]
         --         enforce_regular_tabs = false | true,
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         sort_by = "insert_at_end",
         --             -- add custom logic
         --             return buffer_a.modified > buffer_b.modified
@@ -98,9 +89,99 @@ bufferline.setup({
         -- }
         -- },
     },
+
+    highlights = {
+        fill = {
+            fg = { attribute = "fg", highlight = "#ff0000" },
+            bg = { attribute = "bg", highlight = "#FFFFFF" },
+        },
+        -- background = {
+        --     fg = { attribute = "fg", highlight = "TabLine" },
+        --     bg = { attribute = "bg", highlight = "TabLine" },
+        -- },
+        buffer_selected = {
+          fg = {attribute='fg',highlight='#ff0000'},
+        -- --   bg = {attribute='bg',highlight='#0000ff'},
+        -- --   gui = 'none'
+          },
+        buffer_visible = {
+            fg = { attribute = "fg", highlight = "Comment", italic = true },
+            -- bg = { attribute = "bg", highlight = "CursorColumn" },
+        },
+        --
+        -- close_button = {
+        --     fg = { attribute = "fg", highlight = "Comment" },
+        --     bg = { attribute = "bg", highlight = "TabLineSel" },
+        -- },
+        -- close_button_visible = {
+        --     fg = { attribute = "fg", highlight = "CursorLine" },
+        --     bg = { attribute = "bg", highlight = "TabLineSel" },
+        -- },
+        -- close_button_selected = {
+        --   fg = {attribute='fg',highlight='CursorColumnSel'},
+        --   bg ={attribute='bg',highlight='CursorColumnSel'}
+        --   },
+        --
+        tab_selected = {
+            fg = { attribute = "fg", highlight = "Normal" },
+            bg = { attribute = "bg", highlight = "Normal" },
+        },
+        -- tab = {
+        --     fg = { attribute = "fg", highlight = "CursorColumn" },
+        --     bg = { attribute = "bg", highlight = "CursorColumn" },
+        -- },
+        -- tab_close = {
+        --     -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
+        --     fg = { attribute = "fg", highlight = "CursorColumnSel" },
+        --     bg = { attribute = "bg", highlight = "Normal" },
+        -- },
+        --
+        -- duplicate_selected = {
+        --     fg = { attribute = "fg", highlight = "CursorLine", italic = true},
+        --     bg = { attribute = "bg", highlight = "CursorColumnSel" },
+        -- },
+        -- duplicate_visible = {
+        --     fg = { attribute = "fg", highlight = "CursorLine", italic = true },
+        --     bg = { attribute = "bg", highlight = "CursorColumn" },
+        -- },
+        -- duplicate = {
+        --     fg = { attribute = "fg", highlight = "CursorLine", italic = true },
+        --     bg = { attribute = "bg", highlight = "CursorColumn" },
+        -- },
+        --
+        modified = {
+            fg = { attribute = "fg", highlight = "Comment" },
+            -- bg = { attribute = "bg", highlight = "CursorColumn" },
+        },
+        modified_selected = {
+            fg = { attribute = "fg", highlight = "Normal" },
+            -- bg = { attribute = "bg", highlight = "Normal" },
+        },
+        modified_visible = {
+        --     fg = { attribute = "fg", highlight = "CursorLine" },
+            bg = { attribute = "bg", highlight = "Normal" },
+        },
+        --
+        separator = {
+            fg = { attribute = "bg", highlight = "Normal" },
+            bg = { attribute = "bg", highlight = "Normal" },
+        },
+        separator_selected = {
+            fg = { attribute = "bg", highlight = "#FFFFFF" },
+            bg = { attribute = "bg", highlight = "#FFFFFF" },
+        },
+        separator_visible = {
+          fg = {attribute='bg',highlight='#FFFFFF'},
+          bg = {attribute='bg',highlight='#FFFFFF'}
+          },
+        indicator_selected = {
+            fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+            bg = { attribute = "bg", highlight = "Normal" },
+        },
+    },
 })
 -- BufferLineIndicatorSelected = { fg = c.git.change },
 -- BufferLineFill = { bg = c.black },
 
-vim.cmd [[highlight! link BufferlineFill LineNr]]
---vim.cmd [[highlight! link BufferlineIndicatorSelected EndOfBuffer]]
+-- vim.cmd([[highlight! link BufferlineFill LineNr]])
+-- vim.cmd [[highlight! link BufferlineIndicatorSelected TermCursor]]
