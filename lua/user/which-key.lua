@@ -72,7 +72,6 @@ local setup = {
 local mappings = {
 
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     D = { "<cmd>Alpha<cr>", "Dashboard" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
@@ -106,7 +105,8 @@ local mappings = {
     },
     f = {
         name = "Find",
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
         c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>Telescope find_files<cr>", "Find files" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
