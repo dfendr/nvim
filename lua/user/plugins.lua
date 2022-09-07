@@ -106,7 +106,9 @@ return packer.startup(function(use)
     use("theHamsta/nvim-dap-virtual-text")
     use("mfussenegger/nvim-dap-python") -- python debug adapter
     use("simrat39/rust-tools.nvim") -- rust debug adapter
-    use("mfussenegger/nvim-jdtls") -- java debug adapter
+    use({
+        "mfussenegger/nvim-jdtls",--[[ , ft = { "java" } ]]
+    }) -- java debug adapter
     use("jbyuki/one-small-step-for-vimkind") -- lua debug adapter
 
     --Treesitter
@@ -129,7 +131,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
-      -- use("nvim-pack/nvim-spectre")
+    -- use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
 
     -- Sessions
@@ -146,7 +148,7 @@ return packer.startup(function(use)
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
-    use "tiagovla/scope.nvim"
+    use("tiagovla/scope.nvim")
     -- use("nanozuki/tabby.nvim")
 
     -- Which-Key
