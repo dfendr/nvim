@@ -350,13 +350,13 @@ local theme = lualine.setup({
         lualine_y = {},
         lualine_z = {},
     },
-    winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        -- lualine_c = {{navic.get_location, cond = navic.is_available},},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-    },
+    -- winbar = {
+    --     lualine_a = {},
+    --     lualine_b = {},
+    --     lualine_c = {},
+    --     -- lualine_c = {{navic.get_location, cond = navic.is_available},},
+    --     lualine_x = {},
+    --     lualine_y = {},
+    --     lualine_z = {},
+    -- },
 })

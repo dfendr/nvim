@@ -35,7 +35,7 @@ end
 
 -- dynamic header padding
 local fn = vim.fn
-local marginTopPercent = 0.3
+local marginTopPercent = 0.05
 local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
 
 local icons = require("user.icons")

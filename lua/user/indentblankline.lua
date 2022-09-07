@@ -14,4 +14,10 @@ indentblankline.setup {
     show_current_context = false,
     show_current_context_start = true,
     space_char_blankline = " ",
+    filetype_exclude = {
+        "txt",
+        "text",
+        "alpha",
+        "NvimTree",
+    }
 }

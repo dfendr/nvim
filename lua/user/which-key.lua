@@ -72,7 +72,6 @@ local setup = {
 local mappings = {
 
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     D = { "<cmd>Alpha<cr>", "Dashboard" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
@@ -83,7 +82,7 @@ local mappings = {
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
     -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-    c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
 
     p = {
         name = "Packer",
@@ -106,11 +105,20 @@ local mappings = {
     },
     f = {
         name = "Find",
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
         c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>Telescope find_files<cr>", "Find files" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-        s = { "<cmd>Telescope grep_string<cr>", "Find String" },
+        w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+        s = {
+        name = "Session",
+        s = { "<cmd>SaveSession<cr>", "Save" },
+        l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+        r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
+        d = { "<cmd>Autosession delete<cr>", "Delete Session" },
+        f = { "<cmd>SearchSession<cr>", "Find Session" },
+        },
         h = { "<cmd>Telescope help_tags<cr>", "Help" },
         H = { "<cmd>Telescope highlights<cr>", "Highlights" },
         i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
