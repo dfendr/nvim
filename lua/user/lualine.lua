@@ -318,13 +318,13 @@ end
 
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
-local navic = require("nvim-navic")
+-- local navic = require("nvim-navic")
 
 local theme = lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
-        -- theme = "gruvbox",
+        theme = vimtheme,
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
         section_separators = { left = "", right = "" },
