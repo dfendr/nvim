@@ -37,6 +37,7 @@ packer.init({
             return require("packer.util").float({ border = "rounded" })
         end,
     },
+    -- snapshot = "Sept7-2022"
 })
 
 -- Install your plugins here
@@ -62,8 +63,8 @@ return packer.startup(function(use)
 
     -- Colorsheme
     -- use("folke/tokyonight.nvim")
-    -- use("ellisonleao/gruvbox.nvim")
-    use("luisiacc/gruvbox-baby")
+    --use("ellisonleao/gruvbox.nvim")
+    use("luisiacc/gruvbox-baby" )
     -- use("RRethy/nvim-base16")
     -- use("sainnhe/gruvbox-material")
 
@@ -81,7 +82,7 @@ return packer.startup(function(use)
     use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
     use("tversteeg/registers.nvim") -- preview registers with "
     use("RRethy/vim-illuminate") --
-    use("SmiteshP/nvim-navic")
+    -- use("SmiteshP/nvim-navic")
     use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
     use("norcalli/nvim-colorizer.lua") -- See hex codes
@@ -159,7 +160,7 @@ return packer.startup(function(use)
     use("folke/twilight.nvim")
 
     -- Silly
-    use("andweeb/presence.nvim")
+    -- use("andweeb/presence.nvim")
     -- use("xiyaowong/nvim-transparent")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
