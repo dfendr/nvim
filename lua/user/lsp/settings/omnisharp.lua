@@ -1,13 +1,14 @@
 local path = ""
-if vim.fn.has('macunix') then
+if vim.fn.has("macunix") then
     path = "~/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
-else path = "C:\\Users\\dylfe\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp.dll"
+else
+    path = "C:\\Users\\dylfe\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp.dll"
 end
 --  TODO: Create function for system detection
 path = "/Users/fen/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
 
 return {
-    cmd = { "dotnet", path},
+    cmd = { "dotnet", path },
 
     -- Enables support for reading code style, naming convention and analyzer
     -- settings from .editorconfig.
