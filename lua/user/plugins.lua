@@ -37,7 +37,8 @@ packer.init({
             return require("packer.util").float({ border = "rounded" })
         end,
     },
-    -- snapshot = "Sept7-2022"
+    snapshot_path = fn.stdpath("config") .. "/snapshots",
+    snapshot = "Sept16-2022"
 })
 
 -- Install your plugins here
@@ -64,7 +65,7 @@ return packer.startup(function(use)
     -- Colorsheme
     -- use("folke/tokyonight.nvim")
     --use("ellisonleao/gruvbox.nvim")
-    use("luisiacc/gruvbox-baby" )
+    use("luisiacc/gruvbox-baby")
     -- use("RRethy/nvim-base16")
     -- use("sainnhe/gruvbox-material")
 
@@ -160,7 +161,7 @@ return packer.startup(function(use)
     use("folke/twilight.nvim")
 
     -- Silly
-    -- use("andweeb/presence.nvim")
+    use("andweeb/presence.nvim")
     -- use("xiyaowong/nvim-transparent")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
