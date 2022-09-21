@@ -38,7 +38,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Sept16-2022"
+    snapshot = "Sept16-2022",
 })
 
 -- Install your plugins here
@@ -80,7 +80,9 @@ return packer.startup(function(use)
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
     use("neovim/nvim-lspconfig") -- enable LSP
-    use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use({
+        "jose-elias-alvarez/null-ls.nvim",--[[ , commit="bf02782" ]]
+    }) -- for formatters and linters
     use("tversteeg/registers.nvim") -- preview registers with "
     use("RRethy/vim-illuminate") --
     -- use("SmiteshP/nvim-navic")
