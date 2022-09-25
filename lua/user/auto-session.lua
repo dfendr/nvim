@@ -28,7 +28,7 @@ local opts = {
   },
   auto_session_use_git_branch = nil,
   -- the configs below are lua only
-  bypass_session_save_file_types = { "alpha" },
+  bypass_session_save_file_types = { "alpha", "nvim-tree" },
 }
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
