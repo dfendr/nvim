@@ -137,6 +137,7 @@ return packer.startup(function(use)
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
     -- use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
+    use("Vonr/align.nvim") -- Auto aligning based on char
 
     -- Sessions
     use("rmagatti/auto-session")
