@@ -79,8 +79,8 @@ for _, server in pairs(servers) do
 
     if server == "clangd" then
         -- goto continue
-         -- local clangd = require "user.lsp.settings.clangd"
-         -- opts = vim.tbl_deep_extend("force", clangd, opts)
+         local clangd = require "user.lsp.settings.clangd"
+         opts = vim.tbl_deep_extend("force",clangd, opts)
     end
 
     if server == "tsserver" then
