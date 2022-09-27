@@ -73,26 +73,6 @@ M.setup = function()
     })
 end
 
--- Attaching handled by Illuminate now
--- local function lsp_highlight_document(client)
---   -- if client.server_capabilities.document_highlight then
---   local status_ok, illuminate = pcall(require, "illuminate")
---   if not status_ok then
---     return
---   end
---   illuminate.on_attach(client)
---   -- end
--- end
---
--- local function attach_navic(client, bufnr)
---     vim.g.navic_silence = true
---     local status_ok, navic = pcall(require, "nvim-navic")
---     if not status_ok then
---         return
---     end
---     navic.attach(client, bufnr)
--- end
-
 local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
@@ -110,18 +90,14 @@ local function lsp_keymaps(bufnr)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     --vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    --vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gH", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
-
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
-    --lsp_highlight_document(client)
-    -- attach_navic(client, bufnr)
-
     -- if client.name == "tsserver" then
     --     --require("lsp-inlayhints").on_attach(bufnr, client)
     -- end
@@ -129,7 +105,7 @@ M.on_attach = function(client, bufnr)
     if client.name == "jdt.ls" then
         vim.lsp.codelens.refresh()
         if JAVA_DAP_ACTIVE then
-            require("jdtls").setup_dap { hotcodereplace = "auto" }
+            require("jdtls").setup_dap({ hotcodereplace = "auto" })
             require("jdtls.dap").setup_dap_main_class_configs()
         end
     end

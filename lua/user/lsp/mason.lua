@@ -36,10 +36,6 @@ local settings = {
     max_concurrent_installers = 4,
 }
 
--- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
--- local extension_path = install_root_dir .. "/packages/codelldb/extension/"
--- local codelldb_path = extension_path .. "adapter/codelldb"
--- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
@@ -67,7 +63,7 @@ for _, server in pairs(servers) do
     end
 
     if server == "bash-language-server" then
-        local bash_opts = require("user.lsp.settings.bash-language-server")
+        local bash_opts = require("user.lsp.settings.bash")
         opts = vim.tbl_deep_extend("force", bash_opts, opts)
     end
 
