@@ -26,7 +26,7 @@ jaq_nvim.setup({
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
             rust= "cd $dir && cargo run",
             --rust = "cargo run",
-            c = "gcc -Wall -fsanitize=address -Wextra -g -std=c99 \"$fileBase.c\" -o \"$fileBase\" && \"$fileBase\"",
+            c = "gcc -Wall -fsanitize=address -Wextra -pedantic -g -std=c99 \"$fileBase.c\" -o \"$fileBase\" && ./\"$fileBase\"",
             cpp = "g++ % -o $fileBase && ./$fileBase",
             go = "go run %",
             sh = "sh %",
