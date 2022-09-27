@@ -235,9 +235,9 @@ class Maze:
         # Format coordinates, merge digits that are in same num, '2', '0' -> 20
         self._coords = self._digit_formatter(_raw_coords)
 
-        size = (self._coords[0][0], self._coords[0][1])  # Size  provided
+        size  = (self._coords[0][0], self._coords[0][1])  # Size  provided
         start = (self._coords[1][0], self._coords[1][1])  # Start provided
-        end = (self._coords[2][0], self._coords[2][1])  # End   provided
+        end   = (self._coords[2][0], self._coords[2][1])  # End   provided
         self._i_size = ((size[0] * 2), (size[1] * 2))
         self._i_start = (
             (self._i_size[0] - (start[0] * 2 - 1)),

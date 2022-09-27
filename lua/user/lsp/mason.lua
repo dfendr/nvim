@@ -17,6 +17,7 @@ local servers = {
     "clangd",
     "omnisharp",
     "rust_analyzer",
+    "jsonls",
 }
 
 -- Package installation folder
@@ -56,8 +57,8 @@ for _, server in pairs(servers) do
     server = vim.split(server, "@")[1]
 
     if server == "jsonls" then
-        local jsonls_opts = require("user.lsp.settings.jsonls")
-        opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+        -- local jsonls_opts = require("user.lsp.settings.jsonls")
+        -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
     end
 
     if server == "omnisharp" then
@@ -80,11 +81,11 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     end
 
-    -- if server == "clangd" then
+    if server == "clangd" then
         -- goto continue
          -- local clangd = require "user.lsp.settings.clangd"
          -- opts = vim.tbl_deep_extend("force", clangd, opts)
-    -- end
+    end
 
     if server == "tsserver" then
         local tsserver_opts = require("user.lsp.settings.tsserver")
