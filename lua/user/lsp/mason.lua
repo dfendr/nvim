@@ -9,15 +9,16 @@ if not status_ok_1 then
 end
 
 local servers = {
+    "clangd",
     "sumneko_lua",
     "tsserver",
     "pyright",
     "yamlls",
     "bashls",
-    "clangd",
     "omnisharp",
     "rust_analyzer",
     "jsonls",
+    "arduino-language-server",
 }
 
 -- Package installation folder
@@ -77,11 +78,11 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     end
 
-    if server == "clangd" then
+    -- if server == "clangd" then
         -- goto continue
-         local clangd = require "user.lsp.settings.clangd"
-         opts = vim.tbl_deep_extend("force",clangd, opts)
-    end
+         -- local clangd = require "user.lsp.settings.clangd"
+         -- opts = vim.tbl_deep_extend("force",clangd, opts)
+    -- end
 
     if server == "tsserver" then
         local tsserver_opts = require("user.lsp.settings.tsserver")

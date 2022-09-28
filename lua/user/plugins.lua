@@ -83,7 +83,7 @@ return packer.startup(function(use)
     use({
         "jose-elias-alvarez/null-ls.nvim",--[[ , commit="bf02782" ]]
     }) -- for formatters and linters
-    use("tversteeg/registers.nvim") -- preview registers with "
+    --use("tversteeg/registers.nvim") -- preview registers with "
     use("RRethy/vim-illuminate") --
     -- use("SmiteshP/nvim-navic")
     use("Maan2003/lsp_lines.nvim")
