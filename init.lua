@@ -36,6 +36,7 @@ require("user.jaq")
 require("user.dap")
 require("user.symbols-outline")
 require("user.project")
+require("user.headlines")
 require("user.colorizer")
 require("user.which-key")
 
@@ -46,7 +47,7 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Get Debugger working (Python, Rust, C, Bash (MAYBE JAVA?))
--- TODO: 2. Get Tabline/Winline working.
--- TODO: 3.  Check out how long it takes for neovim to start.
+-- TODO: 1. Get Session Manager
+-- TODO: 2. Get clangd-format working properly 
+-- TODO: 3. Get Debugger working (Python, Rust, C, Bash (MAYBE JAVA?))
 -- TODO: 4. I think that's it. I think we're done. Celebrate. Use neovim <3
