@@ -32,6 +32,7 @@ end
 
 -- Have packer use a popup window
 packer.init({
+    max_jobs = 50,
     display = {
         open_fn = function()
             return require("packer.util").float({ border = "rounded" })
@@ -138,10 +139,12 @@ return packer.startup(function(use)
     -- use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
     use("Vonr/align.nvim") -- Auto aligning based on char
+    use("superhawk610/ascii-blocks.nvim") --// :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
+    use("lukas-reineke/headlines.nvim") -- Markdown highlighting
 
     -- Sessions
-    use("rmagatti/auto-session")
-    use("rmagatti/session-lens")
+    -- use("rmagatti/auto-session")
+    -- use("rmagatti/session-lens")
 
     -- Terminal
     use("akinsho/toggleterm.nvim")
@@ -173,8 +176,9 @@ return packer.startup(function(use)
     end
 end)
 
--- GRAVEYARD
-
+--                        ┌───────────┐
+--                        │GRAVEYARD! │
+---                       └───────────┘
 --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
 --use("sunjon/Shade.nvim") -- Shade unfocused buffers
 -- use("kdheepak/tabline.nvim")
