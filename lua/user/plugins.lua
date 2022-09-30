@@ -136,11 +136,10 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
-    -- use("nvim-pack/nvim-spectre")
+    use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
     use("Vonr/align.nvim") -- Auto aligning based on char
     use("superhawk610/ascii-blocks.nvim") --// :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
-    use("lukas-reineke/headlines.nvim") -- Markdown highlighting
 
     -- Sessions
     -- use("rmagatti/auto-session")
@@ -168,6 +167,13 @@ return packer.startup(function(use)
 
     -- Silly
     use("andweeb/presence.nvim")
+    use({
+        "anuvyklack/windows.nvim",
+        requires = {
+            "anuvyklack/middleclass",
+            "anuvyklack/animation.nvim",
+        },
+    })
     -- use("xiyaowong/nvim-transparent")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

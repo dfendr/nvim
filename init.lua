@@ -36,8 +36,8 @@ require("user.jaq")
 require("user.dap")
 require("user.symbols-outline")
 require("user.project")
-require("user.headlines")
 require("user.colorizer")
+require("user.windows")
 require("user.which-key")
 
 ::continue::
