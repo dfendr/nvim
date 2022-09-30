@@ -86,8 +86,10 @@ local options = {
             --button("p", icons.git.Repo .. " Find project", ":lua require('telescope').extensions.projects.projects()<CR>"),
             button("SPC f r", icons.ui.History .. " Recent Files", ":Telescope oldfiles <CR>"),
             button("SPC f t", icons.type.String .. " Find Text", ":Telescope live_grep <CR>"),
-            -- dashboard.button("s", icons.ui.SignIn .. " Find Session", ":silent Autosession search <CR>"),
-            button("SPC s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
+            button("SPC f T", icons.ui.List.. " Find Todo", ":TodoTelescope <CR>"),
+            -- dashboard.button("s", icons.ui.SignIn .. " Find Session", ":silent Autession search <CR>"),
+            -- TODO: Get a session manager
+            -- button("SPC s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
             button("SPC c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
             button("SPC p u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
             button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
