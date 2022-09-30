@@ -68,6 +68,15 @@ local setup = {
         v = { "j", "k" },
     },
 }
+-- //TODO: Get Align mapped to whichkey
+-- local xmappings = {
+--
+--     a = { 
+--         name = "Align",
+--         c = {"<cmd>lua require(user.functions).align_by_char()<CR>", "Align by Char" },
+--     -- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+-- },
+-- }
 
 local mappings = {
 
@@ -78,6 +87,7 @@ local mappings = {
     v = { "<cmd>vsplit<cr>", "vsplit" },
     h = { "<cmd>split<cr>", "split" },
     w = { "<cmd>w<CR>", "Write" },
+    n = { "<cmd>enew<CR>", "New File" },
     -- h = { "<cmd>nohlsearch<CR>", "No HL" },
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
@@ -287,7 +297,16 @@ local vopts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 
+local xopts = {
+    mode = "x", -- VISUAL mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
---which_key.register(vmappings, vopts)
+-- which_key.register(xmappings, xopts)
 --which_key.register(m_mappings, m_opts)

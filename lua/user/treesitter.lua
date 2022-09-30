@@ -5,7 +5,7 @@ end
 
 --local configs = require("nvim-treesitter.configs")
 configs.setup {
-  ensure_installed = {'python', 'c', 'c_sharp', 'bash', 'rust', 'lua',  'javascript'},
+  ensure_installed = {'python', 'c', 'c_sharp', 'bash', 'rust', 'lua',  'javascript', 'markdown'},
   sync_install = false,
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {

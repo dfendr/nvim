@@ -14,10 +14,18 @@ null_ls.setup({
         formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
         formatting.black.with({ command = "black", extra_args = { "--line-length", "79" } }),
         formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-        -- formatting.stylua.with({ extra_args = { "--indent_type", "Spaces" } }),
-        -- formatting.stylua,
-        -- formatting.black,
-        -- formatting.yaf,
+        -- formatting.clang_format.with({
+        --     command = "clang_format",
+        -- }),
+
+        -- formatting.clang_format.with({
+        --     extra_args = { "--style", "{IndentWidth: 4 ,ColumnLimit: 120}" },
+        -- }),
+
+        -- formatting.clang_format.with({
+        --     extra_args = { "--style", "BasedOnStyle: Chromium, IndentWidth: 4, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}, ColumnLimit: 120" },
+        -- }),
+
         diagnostics.flake8,
     },
 })
