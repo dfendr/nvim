@@ -71,7 +71,7 @@ local setup = {
 -- //TODO: Get Align mapped to whichkey
 -- local xmappings = {
 --
---     a = { 
+--     a = {
 --         name = "Align",
 --         c = {"<cmd>lua require(user.functions).align_by_char()<CR>", "Align by Char" },
 --     -- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
@@ -81,17 +81,18 @@ local setup = {
 local mappings = {
 
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-    D = { "<cmd>Alpha<cr>", "Dashboard" },
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
-    v = { "<cmd>vsplit<cr>", "vsplit" },
+    D = { "<cmd>Alpha<cr>", "Dashboard" },
     h = { "<cmd>split<cr>", "split" },
-    w = { "<cmd>w<CR>", "Write" },
     n = { "<cmd>enew<CR>", "New File" },
+    N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
+    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    w = { "<cmd>w<CR>", "Write" },
     -- h = { "<cmd>nohlsearch<CR>", "No HL" },
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    v = { "<cmd>vsplit<cr>", "vsplit" },
 
     p = {
         name = "Packer",
@@ -121,12 +122,12 @@ local mappings = {
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
         s = {
-        name = "Session",
-        s = { "<cmd>SaveSession<cr>", "Save" },
-        l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
-        r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
-        d = { "<cmd>Autosession delete<cr>", "Delete Session" },
-        f = { "<cmd>SearchSession<cr>", "Find Session" },
+            name = "Session",
+            s = { "<cmd>SaveSession<cr>", "Save" },
+            l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+            r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
+            d = { "<cmd>Autosession delete<cr>", "Delete Session" },
+            f = { "<cmd>SearchSession<cr>", "Find Session" },
         },
         h = { "<cmd>Telescope help_tags<cr>", "Help" },
         H = { "<cmd>Telescope highlights<cr>", "Highlights" },
@@ -151,13 +152,6 @@ local mappings = {
         l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
         u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
         x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-    },
-
-    R = {
-        name = "Replace",
-        r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-        w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-        f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
     },
 
     g = {
@@ -210,7 +204,12 @@ local mappings = {
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+        r = {
+            name = "Replace",
+            r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+            w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+            f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+        },
         R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {

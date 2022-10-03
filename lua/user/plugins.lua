@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Sept16-2022",
+    snapshot = "0.8-ReleaseDay",
 })
 
 -- Install your plugins here
@@ -64,11 +64,7 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-emoji") -- Emoji snippets for...some reason
 
     -- Colorsheme
-    -- use("folke/tokyonight.nvim")
-    --use("ellisonleao/gruvbox.nvim")
     use("luisiacc/gruvbox-baby")
-    -- use("RRethy/nvim-base16")
-    -- use("sainnhe/gruvbox-material")
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
@@ -84,15 +80,12 @@ return packer.startup(function(use)
     use({
         "jose-elias-alvarez/null-ls.nvim",--[[ , commit="bf02782" ]]
     }) -- for formatters and linters
-    --use("tversteeg/registers.nvim") -- preview registers with "
     use("RRethy/vim-illuminate") --
-    -- use("SmiteshP/nvim-navic")
     use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    --use("glepnir/lspsaga.nvim")
 
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
@@ -139,11 +132,8 @@ return packer.startup(function(use)
     use("nvim-pack/nvim-spectre")
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
     use("Vonr/align.nvim") -- Auto aligning based on char
-    use("superhawk610/ascii-blocks.nvim") --// :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
-
-    -- Sessions
-    -- use("rmagatti/auto-session")
-    -- use("rmagatti/session-lens")
+    use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
+    use("lvimuser/lsp-inlayhints.nvim")
 
     -- Terminal
     use("akinsho/toggleterm.nvim")
@@ -174,7 +164,6 @@ return packer.startup(function(use)
             "anuvyklack/animation.nvim",
         },
     })
-    -- use("xiyaowong/nvim-transparent")
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
@@ -188,3 +177,16 @@ end)
 --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
 --use("sunjon/Shade.nvim") -- Shade unfocused buffers
 -- use("kdheepak/tabline.nvim")
+--use("glepnir/lspsaga.nvim")
+-- use("SmiteshP/nvim-navic")
+--use("tversteeg/registers.nvim") -- preview registers with "
+
+-- Sessions
+-- use("rmagatti/auto-session")
+-- use("rmagatti/session-lens")
+
+-- -Color Schemes
+-- use("folke/tokyonight.nvim")
+--use("ellisonleao/gruvbox.nvim")
+-- use("RRethy/nvim-base16")
+-- use("sainnhe/gruvbox-material")

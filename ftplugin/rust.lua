@@ -15,7 +15,7 @@ local opts = {
 local mappings = {
     L = {
         name = "Rust",
-        h = { "<cmd>RustToggleInlayHints<Cr>", "Toggle Hints" },
+        -- h = { "<cmd>RustToggleInlayHints<Cr>", "Toggle Hints" },
         r = { "<cmd>RustRunnables<Cr>", "Runnables" },
         -- r = { "<cmd>lua _CARGO_RUN()<cr>", "Cargo Run" },
         t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
@@ -32,8 +32,8 @@ local mappings = {
         },
         -- S = { "<cmd>RustSSR<Cr>", "SSR" },
         o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
-        -- h = { "<cmd>RustSetInlayHints<Cr>", "Enable Hints" },
-        -- H = { "<cmd>RustDisableInlayHints<Cr>", "Disable Hints" },
+        h = { "<cmd>RustSetInlayHints<Cr>", "Enable Hints" },
+        H = { "<cmd>RustDisableInlayHints<Cr>", "Disable Hints" },
         -- a = { "<cmd>RustHoverActions<Cr>", "Hover Actions" },
         -- a = { "<cmd>RustHoverRange<Cr>", "Hover Range" },
         -- j = { "<cmd>RustMoveItemDown<Cr>", "Move Item Down" },
@@ -53,3 +53,24 @@ vim.notify = function(msg, ...)
 end
 
 vim.api.nvim_set_keymap("n", "<m-d>", "<cmd>RustOpenExternalDocs<Cr>", { noremap = true, silent = true })
+
+    vim.api.nvim_set_keymap("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gD", "<cmd>Telescope lsp_declarations<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>",  { noremap = true, silent = true})
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+    vim.api.nvim_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<M-f>", "<cmd>Format<cr>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>",  { noremap = true, silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "i", "<M-c>", "<cmd>lua vim.lsp.buf.completion()<cr>",  { noremap = true, silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>",  { noremap = true, silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",  { noremap = true, silent = true})
+    --vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>",  { noremap = true, silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "gH", "<cmd>lua vim.diagnostic.open_float()<CR>",  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',  { noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',  { noremap = true, silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>",  { noremap = true, silent = true})
