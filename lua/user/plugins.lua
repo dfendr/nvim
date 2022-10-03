@@ -161,7 +161,13 @@ return packer.startup(function(use)
         "anuvyklack/windows.nvim",
         requires = {
             "anuvyklack/middleclass",
-            "anuvyklack/animation.nvim",
+            -- "anuvyklack/animation.nvim",
+        },
+    })
+    use({
+        "samodostal/image.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
         },
     })
     -- Automatically set up your configuration after cloning packer.nvim

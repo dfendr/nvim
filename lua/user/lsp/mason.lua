@@ -37,7 +37,6 @@ local settings = {
     max_concurrent_installers = 4,
 }
 
-
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
     return
@@ -80,8 +79,8 @@ for _, server in pairs(servers) do
 
     if server == "clangd" then
         -- goto continue
-         local clangd = require "user.lsp.settings.clangd"
-         opts = vim.tbl_deep_extend("force",clangd, opts)
+        local clangd = require("user.lsp.settings.clangd")
+        opts = vim.tbl_deep_extend("force", clangd, opts)
     end
 
     if server == "tsserver" then
@@ -95,12 +94,12 @@ for _, server in pairs(servers) do
     end
 
     if server == "rust_analyzer" then
-        local rust_opts = require "user.lsp.settings.rust"
+        local rust_opts = require("user.lsp.settings.rust")
         opts = vim.tbl_deep_extend("force", rust_opts, opts)
 
         local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
         if not rust_tools_status_ok then
-          return
+            return
         end
 
         rust_tools.setup(rust_opts)

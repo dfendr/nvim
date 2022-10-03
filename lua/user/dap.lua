@@ -124,7 +124,8 @@ dap.adapters.codelldb = {
     type = "server",
     port = "${port}",
     executable = {
-        command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.7.2/adapter/codelldb",
+        command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/adapter/codelldb",
+        -- command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/adapter/codelldb",
         args = { "--port", "${port}" },
     },
 }
@@ -157,15 +158,15 @@ dap.configurations.c = {
 dap.configurations.cpp = dap.configurations.c
 dap.configurations.cpp = dap.configurations.rust
 
--- dap.configurations.rust = {
---     {
---         type = 'codelldb',
---         request = 'launch',
---         program = function()
---             return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
---         end,
---         cwd = '${workspaceFolder}',
---         terminal = 'integrated',
---         sourceLanguages = { 'rust' }
---     }
--- }
+dap.configurations.rust = {
+    {
+        type = 'codelldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        terminal = 'integrated',
+        sourceLanguages = { 'rust' }
+    }
+}
