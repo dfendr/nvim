@@ -19,7 +19,6 @@ local servers = {
     "rust_analyzer",
     "jsonls",
     "marksman",
-    -- "arduino-language-server",
 }
 
 -- Package installation folder
