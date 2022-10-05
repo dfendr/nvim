@@ -26,6 +26,7 @@ null_ls.setup({
 
         diagnostics.flake8,
         diagnostics.shellcheck,
+        diagnostics.markdownlint,
         formatting.shfmt,
         completion.spell.with({
             filetypes = {"markdown", ".md"}
