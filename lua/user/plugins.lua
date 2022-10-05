@@ -114,10 +114,10 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     })
-    use("p00f/nvim-ts-rainbow")
-    use("nvim-treesitter/playground")
-    use("nvim-treesitter/nvim-treesitter-context")
-    use("JoosepAlviste/nvim-ts-context-commentstring")
+   use("p00f/nvim-ts-rainbow")
+   use("nvim-treesitter/playground")
+   use("nvim-treesitter/nvim-treesitter-context")
+   use("JoosepAlviste/nvim-ts-context-commentstring")
 
     --Commenting
     use("numToStr/Comment.nvim") -- Comment anywhere anything
@@ -134,6 +134,14 @@ return packer.startup(function(use)
     use("Vonr/align.nvim") -- Auto aligning based on char
     use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("lvimuser/lsp-inlayhints.nvim")
+
+    -- Markdown Editing Support
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+    })
 
     -- Terminal
     use("akinsho/toggleterm.nvim")
