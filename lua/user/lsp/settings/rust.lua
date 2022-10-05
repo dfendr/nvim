@@ -1,8 +1,10 @@
 -- Rust Tools Settings
 -- automatically set inlay hints (type hints)
-local extension_path = vim.env.HOME .. "/.config/nvim/debug/vadimcn.vscode-lldb-1.8.1/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+
+-- Dynamically updated by Mason.nvim now
+local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
+local codelldb_path = extension_path .. "codelldb"
+local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
 
 local opts = {
     tools = { -- rust-tools options
