@@ -1,6 +1,9 @@
-local extension_path = vim.env.HOME .. "/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/"
+
+-- automatically set inlay hints (type hints)
+local extension_path = vim.env.HOME .. "~/.config/nvim/debug/vadimcn.vscode-lldb-1.8.1/"
 local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+
 local opts = {
     tools = { -- rust-tools options
 
@@ -9,15 +12,14 @@ local opts = {
         executor = require("rust-tools/executors").toggleterm,
 
         -- callback to execute once rust-analyzer is done initializing the workspace
-        -- The callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
+        -- the callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
         on_initialized = nil,
 
-        -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
+        -- automatically call rustreloadworkspace when writing to a cargo.toml file.
         reload_workspace_from_cargo_toml = true,
 
-        -- These apply to the default RustSetInlayHints command
+        -- these apply to the default rustsetinlayhints command
         inlay_hints = {
-            -- automatically set inlay hints (type hints)
             -- default: true
             auto = true,
 
@@ -166,4 +168,6 @@ local opts = {
     },
 }
 
-require("rust-tools").setup(opts)
+return opts
+
+-- require("rust-tools").setup(opts)
