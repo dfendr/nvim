@@ -3,6 +3,11 @@ if not status_ok then
     return
 end
 
+local status_ok, rusttools = pcall(require, "rust-tools")
+if not status_ok then
+    return
+end
+
 local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
@@ -42,6 +47,7 @@ local mappings = {
 }
 
 which_key.register(mappings, opts)
+
 
 local notify_filter = vim.notify
 vim.notify = function(msg, ...)

@@ -79,12 +79,8 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close({})
 end
 
-local extension_path = vim.env.HOME .. "/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 
 require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
-dap.adapters.codelldb = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
 
 -- dap.adapters.codelldb = {
 --     type = "server",
@@ -124,7 +120,7 @@ dap.adapters.codelldb = {
     type = "server",
     port = "${port}",
     executable = {
-        command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/adapter/codelldb",
+        command = "/Users/fen/.config/nvim/debug/vadimcn.vscode-lldb-1.8.1/adapter/codelldb",
         -- command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/adapter/codelldb",
         args = { "--port", "${port}" },
     },
@@ -156,17 +152,17 @@ dap.configurations.c = {
 }
 
 dap.configurations.cpp = dap.configurations.c
-dap.configurations.cpp = dap.configurations.rust
+-- dap.configurations.cpp = dap.configurations.rust
 
-dap.configurations.rust = {
-    {
-        type = 'codelldb',
-        request = 'launch',
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        terminal = 'integrated',
-        sourceLanguages = { 'rust' }
-    }
-}
+-- dap.configurations.rust = {
+--     {
+--         type = 'codelldb',
+--         request = 'launch',
+--         program = function()
+--             return vim.fn.input('Path to executable: ', vim.fn.getcwd()..'/', 'file')
+--         end,
+--         cwd = '${workspaceFolder}',
+--         terminal = 'integrated',
+--         sourceLanguages = { 'rust' }
+--     }
+-- }
