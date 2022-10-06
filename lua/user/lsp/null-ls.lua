@@ -19,7 +19,7 @@ null_ls.setup({
             command = "clang-format",
             extra_args = {
                 "--style",
-                "BasedOnStyle: Chromium, IndentWidth: 4, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}, ColumnLimit: 80",
+                "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}}",
             },
         }),
         diagnostics.flake8,
