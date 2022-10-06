@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Oct3-2022",
+    snapshot = "Oct5-2022",
 })
 
 -- Install your plugins here
@@ -86,6 +86,7 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
+    use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions.
 
     -- Telescope
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
@@ -114,10 +115,10 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     })
-   use("p00f/nvim-ts-rainbow")
-   use("nvim-treesitter/playground")
-   use("nvim-treesitter/nvim-treesitter-context")
-   use("JoosepAlviste/nvim-ts-context-commentstring")
+    use("p00f/nvim-ts-rainbow")
+    use("nvim-treesitter/playground")
+    use("nvim-treesitter/nvim-treesitter-context")
+    use("JoosepAlviste/nvim-ts-context-commentstring")
 
     --Commenting
     use("numToStr/Comment.nvim") -- Comment anywhere anything
@@ -129,7 +130,7 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
-    use("nvim-pack/nvim-spectre")
+    use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
     use("Vonr/align.nvim") -- Auto aligning based on char
     use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
@@ -153,8 +154,14 @@ return packer.startup(function(use)
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
-    use("tiagovla/scope.nvim")
-    -- use("nanozuki/tabby.nvim")
+    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs
+    use({ -- Auto Window resizer
+        "anuvyklack/windows.nvim",
+        requires = {
+            "anuvyklack/middleclass",
+            -- "anuvyklack/animation.nvim",
+        },
+    })
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
@@ -164,15 +171,8 @@ return packer.startup(function(use)
     use("folke/twilight.nvim")
 
     -- Silly
-    use("andweeb/presence.nvim")
-    use({
-        "anuvyklack/windows.nvim",
-        requires = {
-            "anuvyklack/middleclass",
-            -- "anuvyklack/animation.nvim",
-        },
-    })
-    use({
+    use("andweeb/presence.nvim") -- Discord presence :^)
+    use({ -- ASCII Image generator
         "samodostal/image.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
@@ -204,3 +204,4 @@ end)
 --use("ellisonleao/gruvbox.nvim")
 -- use("RRethy/nvim-base16")
 -- use("sainnhe/gruvbox-material")
+-- use("icedman/nvim-textmate")
