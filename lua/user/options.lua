@@ -44,6 +44,12 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+-- Whitespace chars
+ vim.opt.listchars= "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
+--vim.opt.listchars:append "eol:↴"
+--vim.opt.listchars:append "eol:﬌"
+
+
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
 
@@ -70,3 +76,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- These two stop vim from adding comment strings when
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- pressing enter on comment strings in Insert mode.
+
+-- Removing trailing whitesspace on save.
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
