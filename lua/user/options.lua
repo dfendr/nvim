@@ -64,15 +64,6 @@ autocmd InsertLeave * :set norelativenumber
 augroup END
 ]])
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    group = vim.api.nvim_create_augroup("IndentBlanklineBigFile", {}),
-    pattern = "*",
-    callback = function()
-        if vim.api.nvim_buf_line_count(0) > 1000 then
-            require("indent_blankline.commands").disable()
-        end
-    end,
-})
 
 vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- These two stop vim from adding comment strings when
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- pressing enter on comment strings in Insert mode.
