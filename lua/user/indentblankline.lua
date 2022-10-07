@@ -4,6 +4,16 @@ vim.opt.list = true
 --vim.opt.listchars:append "eol:﬌"
 -- vim.opt.listchars:append tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:○
 
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("IndentBlanklineBigFile", {}),
+    pattern = "*",
+    callback = function()
+        if vim.api.nvim_buf_line_count(0) > 1000 then
+            require("indent_blankline.commands").disable()
+        end
+    end,
+})
+
 
 local status_ok, indentblankline = pcall(require, "indent_blankline")
 if not status_ok then
@@ -16,8 +26,8 @@ indentblankline.setup {
     show_current_context_start = true,
     space_char_blankline = " ",
     filetype_exclude = {
-        "txt",
-        "text",
+        "help",
+        "Trouble",
         "alpha",
         "NvimTree",
     }
