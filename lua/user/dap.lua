@@ -116,11 +116,15 @@ require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin
 --         stopOnEntry = true,
 --     },
 -- }
+
+-- local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
+-- local codelldb_path = extension_path .. "codelldb"
+-- local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
 dap.adapters.codelldb = {
     type = "server",
     port = "${port}",
     executable = {
-        command = "/Users/fen/.config/nvim/debug/vadimcn.vscode-lldb-1.8.1/adapter/codelldb",
+        command = "codelldb",
         -- command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/adapter/codelldb",
         args = { "--port", "${port}" },
     },
