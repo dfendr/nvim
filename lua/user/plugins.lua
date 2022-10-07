@@ -155,15 +155,14 @@ return packer.startup(function(use)
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
     use("j-hui/fidget.nvim") -- LSP startup notifications
-    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs
-    use({ -- Auto Window resizer
-        "anuvyklack/windows.nvim",
-        requires = {
-            "anuvyklack/middleclass",
-            -- "anuvyklack/animation.nvim",
-        },
-    })
-    use("David-Kunz/markid") --- Better syntax highlighting for following flow
+    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
+    -- use({ -- Auto Window resizer
+    --     "anuvyklack/windows.nvim",
+    --     requires = {
+    --         "anuvyklack/middleclass",
+    --         -- "anuvyklack/animation.nvim",
+    --     },
+    -- })
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
