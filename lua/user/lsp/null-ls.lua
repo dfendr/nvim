@@ -15,7 +15,6 @@ null_ls.setup({
         formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
         formatting.black.with({ command = "black", extra_args = { "--line-length", "79" } }),
         formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-
         formatting.clang_format.with({
             command = "clang-format",
             extra_args = {
@@ -23,14 +22,12 @@ null_ls.setup({
                 "BasedOnStyle: Chromium, IndentWidth: 4, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}, ColumnLimit: 80",
             },
         }),
-
         diagnostics.flake8,
         diagnostics.shellcheck,
         diagnostics.markdownlint,
         formatting.shfmt,
         completion.spell.with({
-            filetypes = {"markdown", ".md"}
+            filetypes = { "markdown", ".md" },
         }),
-
     },
 })
