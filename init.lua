@@ -49,4 +49,6 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Get Session Manager
+-- TODO: 1. Create Large File autocommand that disables events n treesitter.
+-- TODO: 2. Get Session Manager
+
