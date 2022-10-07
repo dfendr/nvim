@@ -49,6 +49,7 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Create Large File autocommand that disables events n treesitter.
--- TODO: 2. Get Session Manager
+-- TODO: 1. Switch to NeoTree from nvim-tree
+-- TODO: 2. Create Large File autocommand that disables events n treesitter.
+-- TODO: 3. Get Session Manager
 
