@@ -24,6 +24,7 @@ require("user.treesitter")
 require("user.ts-context")
 require("user.cmp")
 require("user.lualine")
+require("user.fidget")
 require("user.gitsigns")
 require("user.toggleterm")
 require("user.illuminate")
@@ -49,6 +50,3 @@ return
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
 -- TODO: 1. Get Session Manager
--- TODO: 2. Get clangd-format working properly 
--- TODO: 3. Get Debugger working (Python, Rust, C, Bash (MAYBE JAVA?))
--- TODO: 4. I think that's it. I think we're done. Celebrate. Use neovim <3
