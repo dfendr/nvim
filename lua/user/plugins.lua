@@ -163,6 +163,7 @@ return packer.startup(function(use)
             -- "anuvyklack/animation.nvim",
         },
     })
+    use("David-Kunz/markid") --- Better syntax highlighting for following flow
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
