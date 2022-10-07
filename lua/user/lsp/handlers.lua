@@ -10,7 +10,7 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 M.setup = function()
-     local icons = require("user.icons")
+    local icons = require("user.icons")
     local signs = {
 
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
@@ -109,6 +109,10 @@ M.on_attach = function(client, bufnr)
             require("jdtls").setup_dap({ hotcodereplace = "auto" })
             require("jdtls.dap").setup_dap_main_class_configs()
         end
+    end
+    if client.name == "clangd" then -- disable formatting, handled by null-ls
+        -- client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
     end
 end
 
