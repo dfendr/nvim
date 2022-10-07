@@ -154,6 +154,7 @@ return packer.startup(function(use)
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
+    use("j-hui/fidget.nvim") -- LSP startup notifications
     use("tiagovla/scope.nvim") -- Keeps buffer  within tabs
     use({ -- Auto Window resizer
         "anuvyklack/windows.nvim",
