@@ -9,7 +9,7 @@
 --     end,
 -- })
 
--- translate to lua
+-- TODO:  translate to lua
 
 -- " disable syntax highlighting in big files
 -- function DisableSyntaxTreesitter()
