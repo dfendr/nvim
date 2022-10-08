@@ -48,10 +48,6 @@ if daylight then
 end
 
 local options = {
-    -- ┌───┐
-    -- │   │
-    -- └───┘
-
     header = {
         type = "text",
         val = {
