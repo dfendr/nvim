@@ -204,8 +204,9 @@ local function day_icon()
     end
 end
 
+
 -- Change mode string
---[[ Mode Icons:    盛滛            ]]
+--[[ Mode Icons:     盛滛            ]]
 local mode = {
     -- mode component
     function()
