@@ -54,14 +54,14 @@ return packer.startup(function(use)
     use("goolord/alpha-nvim") -- Startup Dashboard
 
     -- CMP
-    use("hrsh7th/nvim-cmp") -- Autocompletion engine
-    use("hrsh7th/cmp-nvim-lsp") -- LSP cmp integration
-    use("hrsh7th/cmp-buffer") -- buffer completions
-    use("hrsh7th/cmp-path") -- path completions
-    use("hrsh7th/cmp-nvim-lua") -- LSP Lua cmp integration
+    use("hrsh7th/nvim-cmp")         -- Autocompletion engine
+    use("hrsh7th/cmp-nvim-lsp")     -- LSP cmp integration
+    use("hrsh7th/cmp-buffer")       -- buffer completions
+    use("hrsh7th/cmp-path")         -- path completions
+    use("hrsh7th/cmp-nvim-lua")     -- LSP Lua cmp integration
     use("saadparwaiz1/cmp_luasnip") -- snippet completions
-    use("hrsh7th/cmp-cmdline") -- cmdline completions
-    use("hrsh7th/cmp-emoji") -- Emoji snippets for...some reason
+    use("hrsh7th/cmp-cmdline")      -- cmdline completions
+    use("hrsh7th/cmp-emoji")        -- Emoji snippets for...some reason
 
     -- Colorsheme
     use("luisiacc/gruvbox-baby")
@@ -89,11 +89,11 @@ return packer.startup(function(use)
     use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions.
 
     -- Telescope
+    use("nvim-telescope/telescope-media-files.nvim")           -- View media files
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
-    use("nvim-telescope/telescope-media-files.nvim") -- View media files
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use("nvim-telescope/telescope-dap.nvim")
-    use("BurntSushi/ripgrep") -- Helps with searching contents
+    use("BurntSushi/ripgrep")                                  -- Helps with searching contents
     use("ahmedkhalf/project.nvim")
 
     -- Git
@@ -103,11 +103,12 @@ return packer.startup(function(use)
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
-    use("mfussenegger/nvim-dap-python") -- python debug adapter
-    use("simrat39/rust-tools.nvim") -- rust debug adapter
+    use("mfussenegger/nvim-dap-python")      -- python debug adapter
+    use("simrat39/rust-tools.nvim")          -- rust debug adapter
     use({
-        "mfussenegger/nvim-jdtls",--[[ , ft = { "java" } ]]
-    }) -- java debug adapter
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    })                                       -- java debug adapter
     use("jbyuki/one-small-step-for-vimkind") -- lua debug adapter
 
     --Treesitter
@@ -126,14 +127,14 @@ return packer.startup(function(use)
 
     -- Navigation
     -- Editing Support
-    use("karb94/neoscroll.nvim") -- Smooth scrolling
-    use("windwp/nvim-autopairs") -- Bracket pairing
-    use("filipdutescu/renamer.nvim") -- VsCode like renaming
+    use("karb94/neoscroll.nvim")               -- Smooth scrolling
+    use("windwp/nvim-autopairs")               -- Bracket pairing
+    use("filipdutescu/renamer.nvim")           -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
-    use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
-    use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
-    use("Vonr/align.nvim") -- Auto aligning based on char
-    use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
+    use("nvim-pack/nvim-spectre")              -- Project level replacements/renaming
+    use("nmac427/guess-indent.nvim")           -- automatically set indentation based on buffer
+    use("Vonr/align.nvim")                     -- Auto aligning based on char
+    use("superhawk610/ascii-blocks.nvim")      -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("lvimuser/lsp-inlayhints.nvim")
 
     -- Markdown Editing Support
@@ -154,8 +155,8 @@ return packer.startup(function(use)
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
-    use("j-hui/fidget.nvim") -- LSP startup notifications
-    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
+    use("j-hui/fidget.nvim")    -- LSP startup notifications NOTE: Marked for deletion
+    use("tiagovla/scope.nvim")  -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
     -- use({ -- Auto Window resizer
     --     "anuvyklack/windows.nvim",
     --     requires = {
@@ -173,12 +174,6 @@ return packer.startup(function(use)
 
     -- Silly
     use("andweeb/presence.nvim") -- Discord presence :^)
-    use({ -- ASCII Image generator
-        "samodostal/image.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
-    })
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
