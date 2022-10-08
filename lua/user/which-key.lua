@@ -80,10 +80,10 @@ local setup = {
 
 local mappings = {
 
+    [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
     c = { "<cmd>bdelete!<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    D = { "<cmd>Alpha<cr>", "Dashboard" },
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
@@ -93,6 +93,31 @@ local mappings = {
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
     ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
     v = { "<cmd>vsplit<cr>", "vsplit" },
+    b = {
+        name = "Buffers",
+        j = { "<cmd>BufferLinePick<cr>", "Jump" },
+        f = { "<cmd>Telescope buffers<cr>", "Find" },
+        b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+        n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+        -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+        e = {
+            "<cmd>BufferLinePickClose<cr>",
+            "Pick which buffer to close",
+        },
+        h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+        l = {
+            "<cmd>BufferLineCloseRight<cr>",
+            "Close all to the right",
+        },
+        D = {
+            "<cmd>BufferLineSortByDirectory<cr>",
+            "Sort by directory",
+        },
+        L = {
+            "<cmd>BufferLineSortByExtension<cr>",
+            "Sort by language",
+        },
+    },
 
     p = {
         name = "Packer",
