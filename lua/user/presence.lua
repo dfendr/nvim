@@ -7,8 +7,9 @@ end
 presence:setup({
     -- General options
     auto_update = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
-    neovim_image_text = "fenvim ;)", -- Text displayed when hovered over the Neovim image
-    main_image = "neovim", -- Main image display (either "neovim" or "file")
+    neovim_image_text = "🍄Fenvim", -- Text displayed when hovered over the Neovim image
+    -- main_image = "neovim", -- Main image display (either "neovim" or "file")
+    main_image = "file", -- Main image display (either "neovim" or "file")
     client_id = "***REMOVED***", -- Use your own Discord application client id (not recommended)
     log_level = nil, -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
     debounce_timeout = 10, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
