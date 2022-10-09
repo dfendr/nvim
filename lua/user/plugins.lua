@@ -86,7 +86,7 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    -- use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
+    use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
 
     -- Telescope
     use("nvim-telescope/telescope-media-files.nvim")           -- View media files
@@ -157,13 +157,13 @@ return packer.startup(function(use)
     use("rcarriga/nvim-notify") -- Popup notifications
     use("j-hui/fidget.nvim")    -- LSP startup notifications NOTE: Marked for deletion
     use("tiagovla/scope.nvim")  -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
-    -- use({ -- Auto Window resizer
-    --     "anuvyklack/windows.nvim",
-    --     requires = {
-    --         "anuvyklack/middleclass",
-    --         -- "anuvyklack/animation.nvim",
-    --     },
-    -- })
+    use({ -- Auto Window resizer
+        "anuvyklack/windows.nvim",
+        requires = {
+            "anuvyklack/middleclass",
+            -- "anuvyklack/animation.nvim",
+        },
+    })
 
     -- Which-Key
     use("folke/which-key.nvim") -- Visual Keymap
