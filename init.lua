@@ -3,6 +3,7 @@ require("user.options")
 require("user.keymaps")
 require("user.utils")
 require("user.comment")
+require("user.minimodules")
 require("user.neoscroll")
 require("user.presence")
 if vim.g.vscode then
@@ -10,6 +11,7 @@ if vim.g.vscode then
 end
 require("user.autocommands")
 require("user.autopairs")
+require("user.auto-session")
 require("user.todo-comments")
 require("user.plugins")
 require("user.colorscheme")
@@ -31,10 +33,8 @@ require("user.illuminate")
 require("user.indentblankline")
 require("user.jaq")
 require("user.renamer")
-require("user.align")
 require("user.image")
 require("user.functions")
--- require("user.tabby")
 require("user.dap")
 require("user.symbols-outline")
 require("user.project")
@@ -47,13 +47,14 @@ end
 
 ::continue::
 return
+-- require("user.align")
+-- require("user.tabby")
 -- require("user.tabline")
 -- require("user.transparent")
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Look into migrating over to Mini.nvim, using less plugins.
--- TODO: 2. Get C#/Java working
--- TODO: 3. Create Large File autocommand that disables events n treesitter.
--- TODO: 4. Get Session Manager
--- TODO: 5. Organize Lua files (?)
+-- TODO: 1. Get Session Manager
+-- TODO: 2. Create Large File autocommand that disables events n treesitter.
+-- TODO: 3. Organize Lua files (?)
+-- TODO: 4. Get C#/Java working
