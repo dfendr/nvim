@@ -40,8 +40,6 @@ comment.setup({
         basic = true,
         ---Extra mapping; `gco`, `gcO`, `gcA`
         extra = true,
-        ---Extended mapping; `g>` `g<` `g>[count]{motion}` `g<[count]{motion}`
-        extended = false,
     },
     ---Function to call before (un)comment
     pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
