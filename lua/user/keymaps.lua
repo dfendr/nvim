@@ -12,21 +12,19 @@ vim.g.maplocalleader = " "
 map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
 map("n", "<C-i>", "<C-i>", opts) -- ??
 
-
-
 --NORMAL--
 -- Increment/Decrement
-map("n", "+", "<C-a>", opts)
-map("n", "-", "<C-x>", opts)
+-- map("n", "+", "<C-a>", opts)
+-- map("n", "-", "<C-x>", opts)
 
 -- Do not yank with x
 map("n", "x", '"_x', opts)
 
--- Clear highlighting after searching. NOTE: Not stoked on this one.
-map("n", "<leader><leader>", "<cmd>nohl<CR>", opts)
+-- Clear highlighting after searching.
+map("n", "_", "<cmd>nohl<CR>", opts)
 
 -- Select all
-map("n", "<C-a>", "gg<S-V>G")
+-- map("n", "<C-a>", "gg<S-V>G")
 
 -- New Tab/Easy Splits
 -- Tabs --
@@ -43,7 +41,7 @@ map("n", "<C-w> c", ":bdelete!<CR>", opts)
 map("n", "<C-\\>", ":vsplit<CR>", opts) -- VSCode-like shortcut
 
 -- Explorer/Tree
-map('n', '<Leader>e', ":lua require'nvim-tree'.toggle()<CR>", opts)
+map("n", "<Leader>e", ":lua require'nvim-tree'.toggle()<CR>", opts)
 
 -- Easy Source
 map("n", "<Leader><Leader>x", ":so $MYVIMRC<CR>", opts)
@@ -61,7 +59,6 @@ map("n", "<S-h>", "^", opts)
 -- Navigate to Prev/Next Location (Back/Forward)
 map("n", "<C-h>", "<C-o>", opts)
 map("n", "<C-l>", "<C-i>", opts)
-
 
 -- VISUAL --
 -- Stay in indent mode after indentation
@@ -84,8 +81,6 @@ map("x", "K", ":move '<-2<CR>gv-gv", opts)
 map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
-
-
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
 -- not sure if noremap = false is needed
@@ -93,4 +88,3 @@ map("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
