@@ -79,8 +79,18 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close({})
 end
 
-
 require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+dap.configurations.lua = {
+    {
+        type = "nlua",
+        request = "attach",
+        name = "Attach to running Neovim instance",
+    },
+}
+
+dap.adapters.nlua = function(callback, config)
+    callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+end
 
 -- dap.adapters.codelldb = {
 --     type = "server",
