@@ -9,7 +9,7 @@ vim.cmd([[
   endfunction
 
   function TestI()
-    let b:caret = winsaveview()    
+    let b:caret = winsaveview()
     %SnipRun
     call winrestview(b:caret)
   endfunction
@@ -125,7 +125,7 @@ function M.smart_quit()
 end
 
 function M.daylight()
-    if tonumber(os.date("%H")) < 17 then
+    if tonumber(os.date("%H")) < 17 and 9 < tonumber(os.date("%H")) then
         return true
     else
         return false
