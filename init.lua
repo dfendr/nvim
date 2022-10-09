@@ -52,7 +52,8 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 2. Create Large File autocommand that disables events n treesitter.
--- TODO: 2. Get Neovide options setup.
--- TODO: 2. Organize Lua files (?)
--- TODO: 3. Get Session Manager
+-- TODO: 1. Look into migrating over to Mini.nvim, using less plugins.
+-- TODO: 2. Get C#/Java working
+-- TODO: 3. Create Large File autocommand that disables events n treesitter.
+-- TODO: 4. Get Session Manager
+-- TODO: 5. Organize Lua files (?)
