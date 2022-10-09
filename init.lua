@@ -21,12 +21,12 @@ require("user.notify")
 require("user.lsp")
 require("user.telescope")
 require("user.treesitter")
+require("user.toggleterm")
 require("user.ts-context")
 require("user.cmp")
 require("user.lualine")
 require("user.fidget")
 require("user.gitsigns")
-require("user.toggleterm")
 require("user.illuminate")
 require("user.indentblankline")
 require("user.jaq")
@@ -49,7 +49,8 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Switch to NeoTree from nvim-tree
+-- TODO: 1. Fix Up Lualine
+-- TODO: 2. Switch to NeoTree from nvim-tree
 -- TODO: 2. Create Large File autocommand that disables events n treesitter.
 -- TODO: 3. Get Session Manager
 
