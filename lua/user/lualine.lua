@@ -1,5 +1,5 @@
 local status_ok, lualine = pcall(require, "lualine")
-local notification       = require("notify.service.notification")
+local notification = require("notify.service.notification")
 if not status_ok then
     return
 end
@@ -31,6 +31,8 @@ local colors = {
     green = "#689d6a",
     light_green = "#8ec07c",
     white = "#E7D7AD",
+    white2= "#d5c4a1",
+    white3= "#bdae93",
 }
 
 if lualine_scheme == "gruvbox" then
@@ -93,6 +95,7 @@ local mode_color = {
     ["r?"] = "",
     ["!"] = "",
     t = "",
+    text = colors.medium_gray,
 }
 
 local daylight = require("user.functions").daylight() -- check time
@@ -101,9 +104,11 @@ local daylight = require("user.functions").daylight() -- check time
 function n_time_colors()
     if daylight then
         mode_color.n = colors.dark_green
+        mode_color.text = colors.white
         return colors.dark_green
     else
         mode_color.n = colors.blue_gray
+        mode_color.text = colors.white2 --TODO: Am I happy with this?
         return colors.blue_gray
     end
 end
@@ -133,41 +138,42 @@ end
 local gruvbox_baby_custom = {
     normal = {
         a = { fg = colors.bg, bg = n_time_colors() },
-        b = { fg = mode_color.n },
-        c = { fg = mode_color.n },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
+        -- z= { fg = mode_color.text },
     },
 
     insert = {
         a = { fg = colors.bg, bg = mode_color.i },
-        b = { fg = mode_color.i },
-        c = { fg = mode_color.i },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
     visual = {
         a = { fg = colors.bg, bg = mode_color.v },
-        b = { fg = mode_color.v },
-        c = { fg = mode_color.v },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
 
     visual_block = {
         a = { fg = colors.bg, bg = mode_color.i },
-        b = { fg = mode_color.v },
-        c = { fg = mode_color.v },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
     replace = {
         a = { fg = colors.bg, bg = mode_color.r },
-        b = { fg = mode_color.r },
-        c = { fg = mode_color.r },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
 
     inactive = {
         a = { fg = colors.white, bg = colors.black },
-        b = { fg = colors.white, bg = colors.black },
-        c = { fg = colors.black, bg = colors.black },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
     command = {
         a = { fg = colors.bg, bg = mode_color.c },
-        b = { fg = mode_color.c },
-        c = { fg = mode_color.c },
+        b = { fg = mode_color.text },
+        c = { fg = mode_color.text },
     },
 }
 
@@ -310,10 +316,10 @@ local filetype = {
     icon = nil,
     always_visible = false,
     cond = hide_in_width(80),
-    color = function()
-        -- auto change color according to neovims mode
-        return { fg = mode_color[vim.fn.mode()] }
-    end,
+    -- color = function()
+    --     -- auto change color according to neovims mode
+    --     return { fg = mode_color[vim.fn.mode()] }
+    -- end,
 }
 
 -------------------------------------------------------------------------------
@@ -345,13 +351,12 @@ local location = {
 }
 
 local function open_explorer()
-
     if vim.fn.has("mac") == 1 then
         return vim.cmd("TermExec cmd='open %:h'")
     elseif vim.fn.has("win32") == 1 then
-        return vim.cmd("TermExec cmd='start .'")
+        return vim.cmd("TermExec cmd='start %:h'")
     else
-        return vim.cmd("TermExec cmd='nautilus .'")
+        return vim.cmd("TermExec cmd='nautilus %:h'")
     end
 end
 
