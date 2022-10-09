@@ -1,4 +1,5 @@
 local status_ok, lualine = pcall(require, "lualine")
+local notification       = require("notify.service.notification")
 if not status_ok then
     return
 end
@@ -7,113 +8,184 @@ end
 -- TODO work on this guy some more. Can do some cool stuff
 
 --- Colors -----
+local lualine_scheme = "gruvbox_baby_custom"
 
--- local gray = "#32363e"
--- local dark_gray = "#282C34"
--- local dark_gray = "#282C34"
--- local red = "#D16969"
--- local blue = "#569CD6"
--- local green = "#6A9955"
--- local cyan = "#4EC9B0"
--- local orange = "#CE9178"
--- local indent = "#CE9178"
--- local yellow = "#DCDCAA"
--- local yellow_orange = "#D7BA7D"
--- local purple = "#C586C0"
-
-local dark = "#202020"
-local foreground = "#ebdbb2"
-local background = "#282828"
-local background_dark = "#242424"
-local bg_light = "#32302f"
-local medium_gray = "#504945"
-local comment = "#665c54"
-local gray = "#DEDEDE"
-local soft_yellow = "#EEBD35"
-local soft_green = "#98971a"
-local bright_yellow = "#fabd2f"
-local orange = "#d65d0e"
-local red = "#fb4934"
-local error_red = "#cc241d"
-local magenta = "#b16286"
-local pink = "#D4879C"
-local light_blue = "#7fa2ac"
-local dark_gray = "#83a598"
-local blue_gray = "#458588"
-local forest_green = "#689d6a"
-local clean_green = "#8ec07c"
-local milk = "#E7D7AD"
-
-local lualine_scheme = "gruvbox"
-
-if lualine_scheme == "gruvbox" then
-    local gray = "#928374"
-    local dark_gray = "#3c3836"
-    local red = "#cc241d"
-    local blue = "#458588"
-    local green = "#427b58"
-    local cyan = "#8ec07c"
-    local orange = "#fe8019"
-    local indent = "#fe8019"
-    local indent = "#CE9178"
-    local yellow = "#d5c4a1"
-    local yellow_orange = "#bdae93"
-    local purple = "#b16286"
-end
-
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = dark_gray })
-vim.api.nvim_set_hl(0, "SLTermIcon", { fg = purple, bg = gray })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = dark_gray, bold = false })
-vim.api.nvim_set_hl(0, "SLProgress", { fg = purple, bg = gray })
-vim.api.nvim_set_hl(0, "SLLocation", { fg = blue, bg = gray })
-vim.api.nvim_set_hl(0, "SLFT", { fg = cyan, bg = gray })
-vim.api.nvim_set_hl(0, "SLIndent", { fg = indent, bg = gray })
-vim.api.nvim_set_hl(0, "SLLSP", { fg = "#6b727f", bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLSep", { fg = gray, bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLFG", { fg = "#abb2bf", bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = "NONE", italic = true })
-vim.api.nvim_set_hl(0, "SLError", { fg = "#bf616a", bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLWarning", { fg = "#D7BA7D", bg = "NONE" })
-vim.api.nvim_set_hl(0, "SLCopilot", { fg = "#6CC644", bg = "NONE" })
-
--- TODO Change these colors to match gruvbox
-
-local mode_color = {
-    n = blue,
-    i = orange,
-    v = "#b668cd",
-    [""] = "#b668cd",
-    V = "#b668cd",
-    -- c = '#B5CEA8',
-    -- c = '#D7BA7D',
-    c = "#46a6b2",
-    no = "#D16D9E",
-    s = green,
-    S = orange,
-    [""] = orange,
-    ic = red,
-    R = "#D16D9E",
-    Rv = red,
-    cv = blue,
-    ce = blue,
-    r = red,
-    rm = "#46a6b2",
-    ["r?"] = "#46a6b2",
-    ["!"] = "#46a6b2",
-    t = red,
+local colors = {
+    dark = "#202020",
+    foreground = "#ebdbb2",
+    bg = "#282828",
+    bg_dark = "#242424",
+    bg_light = "#32302f",
+    medium_gray = "#504945",
+    comment = "#665c54",
+    gray = "#DEDEDE",
+    yellow = "#EEBD35",
+    dark_green = "#98971a",
+    orange = "#d65d0e",
+    red = "#cc241d",
+    magenta = "#b16286",
+    pink = "#D4879C",
+    light_blue = "#7fa2ac",
+    dark_gray = "#83a598",
+    blue_gray = "#458588",
+    green = "#689d6a",
+    light_green = "#8ec07c",
+    white = "#E7D7AD",
 }
 
--- Helper Functions
-local hide_in_width_60 = function() -- hide component when vim under width 80
-    return vim.fn.winwidth(0) > 60
+if lualine_scheme == "gruvbox" then
+    colors.gray = "#928374"
+    colors.dark_gray = "#3c3836"
+    colors.red = "#cc241d"
+    colors.blue = "#458588"
+    colors.green = "#427b58"
+    colors.cyan = "#8ec07c"
+    colors.orange = "#fe8019"
+    colors.indent = "#fe8019"
+    colors.indent = "#CE9178"
+    colors.yellow = "#d5c4a1"
+    colors.yellow_orange = "#bdae93"
+    colors.purple = "#b16286"
 end
 
-local hide_in_width = function() -- hide component when vim under width 80
-    return vim.fn.winwidth(0) > 80
+if lualine_scheme == "gruvbox_baby_custom" then
+    colors.dark = "#202020"
+    colors.foreground = "#ebdbb2"
+    colors.bg = "#282828"
+    colors.bg_dark = "#242424"
+    colors.bg_light = "#32302f"
+    colors.medium_gray = "#504945"
+    colors.comment = "#665c54"
+    colors.gray = "#DEDEDE"
+    colors.yellow = "#EEBD35"
+    colors.dark_green = "#98971a"
+    colors.orange = "#d65d0e"
+    colors.red = "#cc241d"
+    colors.magenta = "#b16286"
+    colors.pink = "#D4879C"
+    colors.light_blue = "#7fa2ac"
+    colors.dark_gray = "#83a598"
+    colors.blue_gray = "#458588"
+    colors.green = "#689d6a"
+    colors.light_green = "#8ec07c"
+    colors.white = "#E7D7AD"
 end
 
-local hide_in_width_100 = function() -- hide component when vim under width 80
-    return vim.fn.winwidth(0) > 100
+-- Table that's used in functions to dynamically sets component colors based on mode
+local mode_color = {
+    n = colors.dark_green,
+    i = colors.yellow,
+    v = colors.orange,
+    [""] = colors.orange,
+    V = colors.orange,
+    c = colors.medium_gray,
+    no = "",
+    s = colors.pink,
+    S = colors.pink,
+    [""] = colors.pink,
+    ic = "",
+    R = colors.red,
+    Rv = "",
+    cv = "",
+    ce = "",
+    r = colors.red,
+    rm = "",
+    ["r?"] = "",
+    ["!"] = "",
+    t = "",
+}
+
+local daylight = require("user.functions").daylight() -- check time
+
+-- change colors based on time (only normal mode atm)
+function n_time_colors()
+    if daylight then
+        mode_color.n = colors.dark_green
+        return colors.dark_green
+    else
+        mode_color.n = colors.blue_gray
+        return colors.blue_gray
+    end
+end
+
+-- Change the colors over
+n_time_colors()
+
+--[[ Mode Icons:     盛滛            ]]
+local function day_icon_max()
+    if daylight then
+        return "  "
+    else
+        return "  "
+    end
+end
+
+local function day_icon()
+    if daylight then
+        return ""
+    else
+        return ""
+    end
+end
+
+--
+
+local gruvbox_baby_custom = {
+    normal = {
+        a = { fg = colors.bg, bg = n_time_colors() },
+        b = { fg = mode_color.n },
+        c = { fg = mode_color.n },
+    },
+
+    insert = {
+        a = { fg = colors.bg, bg = mode_color.i },
+        b = { fg = mode_color.i },
+        c = { fg = mode_color.i },
+    },
+    visual = {
+        a = { fg = colors.bg, bg = mode_color.v },
+        b = { fg = mode_color.v },
+        c = { fg = mode_color.v },
+    },
+
+    visual_block = {
+        a = { fg = colors.bg, bg = mode_color.i },
+        b = { fg = mode_color.v },
+        c = { fg = mode_color.v },
+    },
+    replace = {
+        a = { fg = colors.bg, bg = mode_color.r },
+        b = { fg = mode_color.r },
+        c = { fg = mode_color.r },
+    },
+
+    inactive = {
+        a = { fg = colors.white, bg = colors.black },
+        b = { fg = colors.white, bg = colors.black },
+        c = { fg = colors.black, bg = colors.black },
+    },
+    command = {
+        a = { fg = colors.bg, bg = mode_color.c },
+        b = { fg = mode_color.c },
+        c = { fg = mode_color.c },
+    },
+}
+
+local function diff_source()
+    local gitsigns = vim.b.gitsigns_status_dict
+    if gitsigns then
+        return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed,
+        }
+    end
+end
+
+local function hide_in_width(width)
+    return function()
+        return vim.fn.winwidth(0) > width
+    end
 end
 
 local hl_str = function(str, hl) -- Highlight string
@@ -131,6 +203,26 @@ local function contains(t, value)
 end
 
 ---------------- Sections-----------------
+-- Change mode string
+--[[ Mode Icons:     盛滛            ]]
+local mode = {
+    day_icon_max,
+    -- color = function()
+    --     -- auto change color according to neovims mode
+    --     return { fg = mode_color[vim.fn.mode()] }
+    -- end,
+    color = function()
+        -- auto change color according to neovims mode
+        return { bg = mode_color[vim.fn.mode()] }
+    end,
+    padding = 0,
+    on_click = function()
+        vim.cmd("Alpha")
+    end,
+}
+
+-------------------------------------------------------------------------------
+-------------------------------LSP---------------------------------------------
 
 local lsp_info = {
     -- Lsp server name .
@@ -150,75 +242,8 @@ local lsp_info = {
         return msg
     end,
     icon = " LSP:",
-    color = { fg = milk, gui = "bold" },
+    color = { fg = colors.white, gui = "bold" },
     padding = 1,
-}
-
-local left_pad = {
-    function()
-        return " "
-    end,
-    padding = 0,
-    color = function()
-        return { fg = gray }
-    end,
-}
-
-local right_pad = {
-    function()
-        return " "
-    end,
-    padding = 0,
-    color = function()
-        return { fg = dark_gray }
-    end,
-}
-
-local left_pad_alt = {
-    function()
-        return " "
-    end,
-    padding = 0,
-    color = function()
-        return { fg = gray }
-    end,
-}
-
-local right_pad_alt = {
-    function()
-        return " "
-    end,
-    padding = 0,
-    color = function()
-        return { fg = gray }
-    end,
-}
-
--- Change icon based on time of day
-local daylight = require("user.functions").daylight()
-local function day_icon()
-    if daylight then
-        return "  "
-    else
-        return "  "
-    end
-end
-
-
--- Change mode string
---[[ Mode Icons:     盛滛            ]]
-local mode = {
-    -- mode component
-    function()
-        -- return "▊"
-        return day_icon()
-        -- return "  "
-    end,
-    -- color = function()
-    --     -- auto change color according to neovims mode
-    --     return { bg = mode_color[vim.fn.mode()], fg = gray }
-    -- end,
-    padding = 0,
 }
 
 -- Diagnostics
@@ -230,77 +255,133 @@ local diagnostics = {
     colored = true,
     update_in_insert = false,
     always_visible = false,
+    on_click = function()
+        vim.cmd("TroubleToggle")
+    end,
 }
 
--- Git diff signs
+--------------------------------------------------------------------
+------------------------------- Git --------------------------------
 local diff = {
     "diff",
     colored = true,
     symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-    cond = hide_in_width,
+    always_visible = false,
+    cond = hide_in_width(80),
+    source = diff_source(),
+    on_click = function()
+        vim.cmd("Gitsigns diffthis HEAD")
+    end,
+}
+local branch = {
+    "branch",
+    icons_enabled = true,
+    icon = "",
+    fmt = function(str)
+        if str == "" or str == nil then
+            return "!=vcs"
+        end
+        return str
+    end,
+    on_click = function()
+        vim.cmd("lua _GITUI_TOGGLE()")
+    end,
+}
+
+------------------------------------------------------------------------------
+---------------------------File Format/Type-----------------------------------
+local fileformat = {
+    "fileformat",
+    icons_enabled = true,
+    symbols = {
+        unix = "", -- usually LF, blank if so
+        dos = "CRLF",
+        mac = "CR",
+    },
+    color = function()
+        -- auto change color according to neovims mode
+        return { fg = mode_color[vim.fn.mode()] }
+    end,
 }
 
 local filetype = {
     "filetype",
     icons_enabled = true,
     icon = nil,
+    always_visible = false,
+    cond = hide_in_width(80),
+    color = function()
+        -- auto change color according to neovims mode
+        return { fg = mode_color[vim.fn.mode()] }
+    end,
 }
 
-local branch = {
-    "branch",
-    icons_enabled = true,
-    icon = "",
-}
+-------------------------------------------------------------------------------
+-----------------------------FILE Components-----------------------------------
+local encoding_str = function()
+    local ret, _ = (vim.bo.fenc or vim.go.enc):gsub("^utf%-8$", "")
+    return ret
+end
 
+local encoding = {
+    encoding_str,
+    padding = 0,
+    always_visible = false,
+    cond = hide_in_width(80),
+    color = function()
+        -- auto change color according to neovims mode
+        return { bg = mode_color[vim.fn.mode()] }
+    end,
+}
 local location = {
     "location",
-    padding = 0,
+    -- separator = {right = "" },
+    padding = 1,
+    always_visible = false,
+    cond = hide_in_width(80),
+    fmt = function(str)
+        return " " .. str
+    end,
 }
+
+local function open_explorer()
+
+    if vim.fn.has("mac") == 1 then
+        return vim.cmd("TermExec cmd='open %:h'")
+    elseif vim.fn.has("win32") == 1 then
+        return vim.cmd("TermExec cmd='start .'")
+    else
+        return vim.cmd("TermExec cmd='nautilus .'")
+    end
+end
 
 local filename = {
-    file_status = true, -- display file status
-    path = 0, -- just filename
+    "filename",
+    always_visible = false,
+    cond = hide_in_width(80),
+    -- fmt = function(str)
+    --     return "  "..str
+    -- end,
+    on_click = function()
+        open_explorer()
+        vim.cmd("q")
+    end,
 }
 
+-------------------------------------------------------------------------------
+-----------------------------Clock-----------------------------------------
+
+local function clock()
+    local date_str = os.date("%-H:%M")
+    local day_icon_str = day_icon()
+    return date_str .. " " .. day_icon_str
+end
+
+-------------------------------------------------------------------------------
+-----------------------------MISC-----------------------------------------
 local function window() -- Display window number
     return vim.api.nvim_win_get_number(0)
 end
-
---local spaces = {
---  function()
---    local buf_ft = vim.bo.filetype
---
---    local ui_filetypes = {
---      "help",
---      "packer",
---      "neogitstatus",
---      "NvimTree",
---      "Trouble",
---      "lir",
---      "Outline",
---      "spectre_panel",
---      "DressingSelect",
---      "",
---    }
---    local space = ""
---
---    if contains(ui_filetypes, buf_ft) then
---      space = " "
---    end
---
---    local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
---
---    if shiftwidth == nil then
---      return ""
---    end
---
---    -- TODO: update codicons and use their indent
---    return hl_str(" ", "SLSep") .. hl_str(" " .. shiftwidth .. space, "SLIndent") .. hl_str("", "SLSep")
---  end,
---  padding = 0,
---  -- separator = "%#SLSeparator#" .. " │" .. "%*",
---  -- cond = hide_in_width_100,
---}
 
 local function os_icon()
     local icons = {
@@ -316,16 +397,16 @@ local function os_icon()
         return icons.unix
     end
 end
-
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
--- local navic = require("nvim-navic")
+-------------------------------------------------------------------------------
 
 local theme = lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = vimtheme,
+        theme = gruvbox_baby_custom,
+        -- theme = gruvbox,
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
         section_separators = { left = "", right = "" },
@@ -335,14 +416,15 @@ local theme = lualine.setup({
         },
         always_divide_middle = true,
     },
-    sections = { -- Backup while I fuck with stuff
+    sections = {
         lualine_a = { mode },
         lualine_b = { branch, diff },
-        lualine_c = { "filename", diagnostics },
-        lualine_x = { "encoding", filetype },
-        lualine_y = { "location", "progress" },
-        lualine_z = {{'os.date("%-H:%M")', color = {gui='NONE'}}}
+        lualine_c = { diagnostics },
+        lualine_x = { filename, filetype, encoding, fileformat },
+        lualine_y = { location, { "progress" } },
+        lualine_z = { { clock } },
     },
+
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
@@ -351,13 +433,4 @@ local theme = lualine.setup({
         lualine_y = {},
         lualine_z = {},
     },
-    -- winbar = {
-    --     lualine_a = {},
-    --     lualine_b = {},
-    --     lualine_c = {},
-    --     -- lualine_c = {{navic.get_location, cond = navic.is_available},},
-    --     lualine_x = {},
-    --     lualine_y = {},
-    --     lualine_z = {},
-    -- },
 })
