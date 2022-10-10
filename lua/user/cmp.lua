@@ -139,7 +139,7 @@ cmp.setup({
     },
 
     sources = {
-        { name = "buffer" },
+        { name = "buffer", keyword_length = 5 },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "luasnip" },
@@ -151,16 +151,16 @@ cmp.setup({
         select = false,
     },
     experimental = {
-        ghost_text = false,
-        native_menu = false,
+        ghost_text = true,
+        -- native_menu = true,
     },
     window = {
         documentation = cmp.config.window.bordered(),
     },
+    -- view = { entries = "native" },
 })
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
 -- })
