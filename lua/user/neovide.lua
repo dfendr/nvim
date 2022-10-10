@@ -10,6 +10,7 @@ let g:neovide_confirm_quit = v:true
 let g:neovide_cursor_antialiasing = v:true
 let g:neovide_cursor_unfocused_outline_width = 0.125
 
+
 set guifont=FiraMono\ Nerd\ Font:h13
 ]])
 
