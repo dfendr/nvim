@@ -5,9 +5,18 @@ if not status_ok then
 end
 
 -- A lot of this stolen from chris@machine & devaslife
--- TODO work on this guy some more. Can do some cool stuff
+-- TODO: work on this guy some more. Can do some cool stuff
+
+
+local vimtheme = vim.api.nvim_command_output("colo")
+if vimtheme == "gruvbox-baby" then
+    lualine_scheme = "gruvbox_baby_custom"
+else
+    lualine_scheme = "auto"
+end
 
 --- Colors -----
+
 local lualine_scheme = "gruvbox_baby_custom"
 
 local colors = {
@@ -31,8 +40,8 @@ local colors = {
     green = "#689d6a",
     light_green = "#8ec07c",
     white = "#E7D7AD",
-    white2= "#d5c4a1",
-    white3= "#bdae93",
+    white2 = "#d5c4a1",
+    white3 = "#bdae93",
 }
 
 if lualine_scheme == "gruvbox" then
@@ -410,7 +419,7 @@ local theme = lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = gruvbox_baby_custom,
+        theme = lualine_scheme,
         -- theme = gruvbox,
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
