@@ -7,14 +7,6 @@ end
 -- A lot of this stolen from chris@machine & devaslife
 -- TODO: work on this guy some more. Can do some cool stuff
 
-
-local vimtheme = vim.api.nvim_command_output("colo")
-if vimtheme == "gruvbox-baby" then
-    lualine_scheme = "gruvbox_baby_custom"
-else
-    lualine_scheme = "auto"
-end
-
 --- Colors -----
 
 local lualine_scheme = "gruvbox_baby_custom"
@@ -413,13 +405,18 @@ local function os_icon()
 end
 -- Get current theme
 local vimtheme = vim.api.nvim_command_output("colo")
+local lualine_theme = auto
+if vimtheme == "gruvbox-baby" then
+    lualine_theme = gruvbox_baby_custom
+end
+
 -------------------------------------------------------------------------------
 
-local theme = lualine.setup({
+lualine.setup({
     options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = lualine_scheme,
+        theme = lualine_theme,
         -- theme = gruvbox,
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
