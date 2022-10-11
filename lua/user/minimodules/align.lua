@@ -41,11 +41,11 @@ align.setup({
 
     -- Default steps performing alignment (if `nil`, default is used)
     steps = {
+        merge = nil,
         pre_split = {},
         split = nil,
         pre_justify = {},
         justify = nil,
         pre_merge = {},
-        merge = nil,
     },
 })
