@@ -275,6 +275,7 @@ local mappings = {
         u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
         b = { "<cmd>lua _BTOP_TOGGLE()<cr>", "Btop" },
         p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+        s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify-TUI" },
         f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
         --h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
         t = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
