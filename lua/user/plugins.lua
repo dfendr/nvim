@@ -68,7 +68,7 @@ return packer.startup(function(use)
 
     -- Colorsheme
     use("luisiacc/gruvbox-baby")
-    use( "EdenEast/nightfox.nvim" ) -- Packer
+    use("EdenEast/nightfox.nvim") -- Packer
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
@@ -90,7 +90,7 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
+    -- use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
 
     -- Telescope
     use("nvim-telescope/telescope-media-files.nvim") -- View media files
