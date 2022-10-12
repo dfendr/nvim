@@ -10,7 +10,7 @@ end
 
 -- dapui.setup()
 dapui.setup({
-    icons = { expanded = "▾", collapsed = "▸" },
+    icons = { expanded = "", collapsed = "", circular = "" },
     mappings = {
         -- Use a table to apply multiple mappings
         expand = { "<CR>", "<2-LeftMouse>" },

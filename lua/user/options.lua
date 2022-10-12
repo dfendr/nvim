@@ -52,6 +52,7 @@ end
 
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
+vim.cmd("set formatoptions+=r") -- Insert the comment leader when you press Enter in Insert Mode
 
 -- Format Option Settings, r -
 --vim.cmd "set fo-=r "
