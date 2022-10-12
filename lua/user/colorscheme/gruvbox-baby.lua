@@ -71,8 +71,9 @@ vim.g.gruvbox_baby_highlights = {
     NormalFloat = { bg = dark },
     FloatBorder = { bg = dark },
     Search = { bg = comment },
-    MatchParen = { bg = comment },
+    MatchParen = { bg = comment }, -- highlight for matching parenthesis
     TSStringEscape = { fg = pink },
+    VertSplit = {fg = medium_gray} -- Window Splits
 
     -- -- Tabby
     -- Tabline = { bg = comment , fg = milk},
