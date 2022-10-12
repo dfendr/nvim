@@ -1,8 +1,11 @@
 local status_ok, lualine = pcall(require, "lualine")
 local notification = require("notify.service.notification")
+
 if not status_ok then
     return
 end
+
+--[[  lessonl nellons ]]
 
 -- A lot of this stolen from chris@machine & devaslife
 -- TODO: work on this guy some more. Can do some cool stuff
@@ -118,11 +121,13 @@ end
 n_time_colors()
 
 --[[ Mode Icons:     盛滛            ]]
+-- "  "
+-- "  "
 local function day_icon_max()
     if daylight then
-        return "  "
+        return "  "
     else
-        return "  "
+        return "  "
     end
 end
 
@@ -404,6 +409,7 @@ local function os_icon()
     end
 end
 -- Get current theme
+-- TODO: Fix the auto-custom theme change.
 local vimtheme = vim.api.nvim_command_output("colo")
 local lualine_theme = auto
 if vimtheme == "gruvbox-baby" then
