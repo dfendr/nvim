@@ -54,7 +54,9 @@ return
 --require "user.sniprun"
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
--- TODO: 1. Get color plugin to add shadows to Lualine buttons
--- TODO: 2. Create Large File autocommand that disables events n treesitter.
--- TODO: 3. Organize Lua files (?)
--- TODO: 4. Get C#/Java working
+
+-- TODO: 1. Add Treesitter/LSP indicator for Lualine
+-- TODO: 2. Get color plugin to add shadows to Lualine buttons
+-- TODO: 3. Create Large File autocommand that disables events n treesitter.
+-- TODO: 4. Organize Lua files (?)
+-- TODO: 5. Get C#/Java working
