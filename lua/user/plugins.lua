@@ -68,6 +68,7 @@ return packer.startup(function(use)
 
     -- Colorsheme
     use("luisiacc/gruvbox-baby")
+    use( "EdenEast/nightfox.nvim" ) -- Packer
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
