@@ -146,6 +146,7 @@ function M.Dec2Hex(nValue) -- http://www.indigorose.com/forums/threads/10192-Con
 end
 
 function M.fade_RGB(colour1, colour2, percentage)
+    --- source https://stackoverflow.com/questions/35189592/lua-color-fading-function
     local r1, g1, b1 = string.match(colour1, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
     local r2, g2, b2 = string.match(colour2, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
     local r3 = tonumber(r1, 16) * (100 - percentage) / 100.0 + tonumber(r2, 16) * percentage / 100.0
