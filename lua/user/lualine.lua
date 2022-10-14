@@ -10,33 +10,30 @@ end
 -- A lot of this stolen from chris@machine & devaslife
 -- TODO: work on this guy some more. Can do some cool stuff
 
---- Colors -----
-
 local lualine_scheme = "gruvbox_baby_custom"
-
 local colors = {
     dark = "#202020",
-    foreground = "#ebdbb2",
+    foreground = "#EBDBB2",
     bg = "#282828",
     bg_dark = "#242424",
-    bg_light = "#32302f",
+    bg_light = "#32302F",
     medium_gray = "#504945",
-    comment = "#665c54",
+    comment = "#665C54",
     gray = "#DEDEDE",
     yellow = "#EEBD35",
-    dark_green = "#98971a",
-    orange = "#d65d0e",
-    red = "#cc241d",
-    magenta = "#b16286",
+    dark_green = "#98971A",
+    orange = "#D65D0E",
+    red = "#CC241D",
+    magenta = "#B16286",
     pink = "#D4879C",
-    light_blue = "#7fa2ac",
-    dark_gray = "#83a598",
+    light_blue = "#7FA2AC",
+    dark_gray = "#83A598",
     blue_gray = "#458588",
-    green = "#689d6a",
-    light_green = "#8ec07c",
+    green = "#689D6A",
+    light_green = "#8EC07C",
     white = "#E7D7AD",
-    white2 = "#d5c4a1",
-    white3 = "#bdae93",
+    white2 = "#D5C4A1",
+    white3 = "#BDAE93",
 }
 
 if lualine_scheme == "gruvbox" then
@@ -46,11 +43,11 @@ if lualine_scheme == "gruvbox" then
     colors.blue = "#458588"
     colors.green = "#427b58"
     colors.cyan = "#8ec07c"
-    colors.orange = "#fe8019"
+    colors.orange = "#FE8019"
     colors.indent = "#fe8019"
     colors.indent = "#CE9178"
     colors.yellow = "#d5c4a1"
-    colors.yellow_orange = "#bdae93"
+    colors.yellow_orange = "#BDAE93"
     colors.purple = "#b16286"
 end
 
@@ -64,7 +61,7 @@ if lualine_scheme == "gruvbox_baby_custom" then
     colors.comment = "#665C54"
     colors.gray = "#DEDEDE"
     colors.yellow = "#EEBD35"
-    colors.dark_green = "#98971a"
+    colors.dark_green = "#98971A"
     colors.orange = "#D65D0E"
     colors.red = "#CC241D"
     colors.magenta = "#B16286"
@@ -102,9 +99,8 @@ local mode_color = {
     text = colors.medium_gray,
 }
 
-local daylight = require("user.functions").daylight() -- check time
 local funcs = require("user.functions")
-print(funcs.fade_RGB("#FFFFFF", colors.bg_dark, 50)) -- TODO: finish the fade function
+local daylight = funcs.daylight() -- check time
 
 -- change colors based on time (only normal mode atm)
 local function n_time_colors()
@@ -118,8 +114,6 @@ local function n_time_colors()
         return colors.blue_gray
     end
 end
-
---print(fade_RGB("#FFFFFF", ))
 
 -- Change the colors over
 n_time_colors()
@@ -143,37 +137,45 @@ local function day_icon()
     end
 end
 
-
-
 --
+local darker_green = (funcs.fade_RGB(colors.blue_gray, colors.bg_dark, 90)) -- TODO: finish the fade function
 
+local background = colors.bg_dark
+local n_color = n_time_colors()
+-- Maybe use these differently than just aliases?
+local i_color = mode_color.i
+local v_color = mode_color.v
+local r_color = mode_color.r
+local c_color = mode_color.r
 local gruvbox_baby_custom = {
     normal = {
-        a = { fg = colors.bg, bg = n_time_colors() },
-        b = { fg = mode_color.text },
-        c = { fg = mode_color.text },
+        a = { fg = colors.bg, bg = n_color },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(n_color, background, 90) },
+        c = {
+            fg = mode_color.text, --[[ bg = funcs.fade_RGB(n_color, background, 95) ]]
+        },
         -- z= { fg = mode_color.text },
     },
 
     insert = {
         a = { fg = colors.bg, bg = mode_color.i },
-        b = { fg = mode_color.text },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(i_color, background, 90) },
         c = { fg = mode_color.text },
     },
     visual = {
         a = { fg = colors.bg, bg = mode_color.v },
-        b = { fg = mode_color.text },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(v_color, background, 90) },
         c = { fg = mode_color.text },
     },
 
     visual_block = {
-        a = { fg = colors.bg, bg = mode_color.i },
-        b = { fg = mode_color.text },
+        a = { fg = colors.bg, bg = mode_color.v },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(v_color, background, 90) },
         c = { fg = mode_color.text },
     },
     replace = {
         a = { fg = colors.bg, bg = mode_color.r },
-        b = { fg = mode_color.text },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(r_color, background, 90) },
         c = { fg = mode_color.text },
     },
 
@@ -184,7 +186,7 @@ local gruvbox_baby_custom = {
     },
     command = {
         a = { fg = colors.bg, bg = mode_color.c },
-        b = { fg = mode_color.text },
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(c_color, background, 90) },
         c = { fg = mode_color.text },
     },
 }
@@ -429,7 +431,6 @@ lualine.setup({
         globalstatus = true,
         icons_enabled = true,
         theme = lualine_theme,
-        -- theme = gruvbox,
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
         section_separators = { left = "", right = "" },

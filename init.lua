@@ -5,10 +5,10 @@ require("user.utils")
 require("user.comment")
 require("user.minimodules")
 require("user.neoscroll")
-require("user.presence")
 if vim.g.vscode then
     goto continue
 end
+require("user.presence")
 require("user.autocommands")
 require("user.autopairs")
 require("user.auto-session")
@@ -56,7 +56,6 @@ return
 --require "user.winbar" needs NAVIC highlight groups
 
 -- TODO: 1. Add Treesitter/LSP indicator for Lualine
--- TODO: 2. Get color plugin to add shadows to Lualine buttons
 -- TODO: 3. Create Large File autocommand that disables events n treesitter.
 -- TODO: 4. Organize Lua files (?)
 -- TODO: 5. Get C#/Java working
