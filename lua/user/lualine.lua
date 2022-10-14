@@ -56,24 +56,24 @@ end
 
 if lualine_scheme == "gruvbox_baby_custom" then
     colors.dark = "#202020"
-    colors.foreground = "#ebdbb2"
+    colors.foreground = "#EBDBB2"
     colors.bg = "#282828"
     colors.bg_dark = "#242424"
-    colors.bg_light = "#32302f"
+    colors.bg_light = "#32302F"
     colors.medium_gray = "#504945"
-    colors.comment = "#665c54"
+    colors.comment = "#665C54"
     colors.gray = "#DEDEDE"
     colors.yellow = "#EEBD35"
     colors.dark_green = "#98971a"
-    colors.orange = "#d65d0e"
-    colors.red = "#cc241d"
-    colors.magenta = "#b16286"
+    colors.orange = "#D65D0E"
+    colors.red = "#CC241D"
+    colors.magenta = "#B16286"
     colors.pink = "#D4879C"
-    colors.light_blue = "#7fa2ac"
-    colors.dark_gray = "#83a598"
+    colors.light_blue = "#7fA2AC"
+    colors.dark_gray = "#83A598"
     colors.blue_gray = "#458588"
-    colors.green = "#689d6a"
-    colors.light_green = "#8ec07c"
+    colors.green = "#689D6A"
+    colors.light_green = "#8EC07C"
     colors.white = "#E7D7AD"
 end
 
@@ -103,19 +103,23 @@ local mode_color = {
 }
 
 local daylight = require("user.functions").daylight() -- check time
+local funcs = require("user.functions")
+print(funcs.fade_RGB("#FFFFFF", colors.bg_dark, 50)) -- TODO: finish the fade function
 
 -- change colors based on time (only normal mode atm)
-function n_time_colors()
+local function n_time_colors()
     if daylight then
         mode_color.n = colors.dark_green
         mode_color.text = colors.white
         return colors.dark_green
     else
         mode_color.n = colors.blue_gray
-        mode_color.text = colors.white2 --TODO: Am I happy with this?
+        mode_color.text = colors.white2
         return colors.blue_gray
     end
 end
+
+--print(fade_RGB("#FFFFFF", ))
 
 -- Change the colors over
 n_time_colors()
@@ -138,6 +142,8 @@ local function day_icon()
         return ""
     end
 end
+
+
 
 --
 
