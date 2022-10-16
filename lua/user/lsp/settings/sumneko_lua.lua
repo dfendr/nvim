@@ -1,6 +1,6 @@
 local status_ok, lua_dev = pcall(require, "lua-dev")
 if not status_ok then
-    print("lua-dev unavailable")
+    -- print("lua-dev unavailable")
     goto continue
 end
 

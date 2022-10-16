@@ -158,6 +158,7 @@ local mappings = {
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+        v = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     },
     S = {
         name = "Session",

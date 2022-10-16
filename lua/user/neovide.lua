@@ -11,7 +11,7 @@ let g:neovide_cursor_antialiasing = v:true
 let g:neovide_cursor_unfocused_outline_width = 0.125
 
 
-set guifont=FiraMono\ Nerd\ Font:h13 ]])
+set guifont=FiraMono\ Nerd\ Font:h12 ]])
 if vim.fn.has("mac") == 1 then
     vim.cmd("  let g:neovide_input_use_logo          = v:true")
     vim.cmd("  let g:neovide_input_macos_alt_is_meta = v:true")
