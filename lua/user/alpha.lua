@@ -65,13 +65,13 @@ local function dynamic_header() --TODO: Tweak this and fix the height/width cond
     local uis = vim.api.nvim_list_uis()[1]
     local height = uis.height
     local width = uis.width
-    val = { --Default
+    local val = { --Default
         [[   ____       _   ___     ]],
         [[  / __/__ ___| | / (_)_ _ ]],
         [[ / _// -_) _ \ |/ / /  ' \]],
         [[/_/  \__/_//_/___/_/_/_/_/]],
     }
-    if width > 86 and height > 40 then
+    if width > 88 and height > 40 then
         val = {
             [[┌────────────────────────────────────────────────────────────────────────────────────────┐]],
             [[│           ____                                                                         │]],
@@ -132,7 +132,7 @@ local function dynamic_header() --TODO: Tweak this and fix the height/width cond
             [[│⠄⠄⠄⠄⠄⠄⠄⠄⠄(/ ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄│]],
             [[└───────────────────────────────────────────────┘]],
         }
-    elseif width < 100 and width > 60 and height < 50 then
+    elseif width < 100 and width >= 60 and height <= 60 and height >= 44 then
         val = {
             [[┌──────────────────────────────────────────────────────────────┐]],
             [[│⠀⠀⠀⠀⠀⠀⠀⢀⣷⣼⣿⣿⣿⣿⣿⣿⣿⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿│]],
@@ -162,8 +162,6 @@ local function dynamic_header() --TODO: Tweak this and fix the height/width cond
     return val
 end
 
--- dynamic_header()
-print(dynamic_header)
 
 local options = {
     header = {

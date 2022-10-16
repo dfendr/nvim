@@ -146,7 +146,7 @@ local n_color = n_time_colors()
 local i_color = mode_color.i
 local v_color = mode_color.v
 local r_color = mode_color.r
-local c_color = mode_color.r
+local c_color = mode_color.c
 local gruvbox_baby_custom = {
     normal = {
         a = { fg = colors.bg, bg = n_color },
@@ -314,14 +314,15 @@ local fileformat = {
     "fileformat",
     icons_enabled = true,
     symbols = {
+        unix = " LF", -- usually LF, blank if so
         unix = "", -- usually LF, blank if so
-        dos = "CRLF",
-        mac = "CR",
+        dos = " CRLF",
+        mac = " CR",
     },
-    color = function()
-        -- auto change color according to neovims mode
-        return { fg = mode_color[vim.fn.mode()] }
-    end,
+    -- color = function()
+    --     -- auto change color according to neovims mode
+    --     return { fg = mode_color[vim.fn.mode()] }
+    -- end,
 }
 
 local filetype = {
@@ -361,6 +362,7 @@ local location = {
     cond = hide_in_width(80),
     fmt = function(str)
         return " " .. str
+        -- return str
     end,
 }
 
@@ -382,12 +384,12 @@ local filename = {
     --     return "  "..str
     -- end,
     on_click = function()
-        open_explorer()
+        funcs.open_explorer()
         vim.cmd("q")
     end,
 }
 
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------
 -----------------------------Clock-----------------------------------------
 
 local function clock()
@@ -396,6 +398,51 @@ local function clock()
     return date_str .. " " .. day_icon_str
 end
 
+local clock_comp = {
+    clock,
+    color = function()
+        -- auto change color according to neovims mode
+        return { bg = mode_color[vim.fn.mode()] }
+    end,
+}
+
+---------------------------------------------------------------------------
+-----------------------------Spaces----------------------------------------
+local spaces = {
+    function()
+        local buf_ft = vim.bo.filetype
+
+        local ui_filetypes = {
+            "help",
+            "packer",
+            "neogitstatus",
+            "NvimTree",
+            "Trouble",
+            "lir",
+            "Outline",
+            "spectre_panel",
+            "DressingSelect",
+            "",
+        }
+        local space = ""
+
+        if contains(ui_filetypes, buf_ft) then
+            space = " "
+        end
+
+        local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+
+        if shiftwidth == nil then
+            return ""
+        end
+
+        -- TODO: update codicons and use their indent
+        return " " .. shiftwidth .. space.." "
+    end,
+    padding = 0,
+    -- separator = "%#SLSeparator#" .. " │" .. "%*",
+    -- cond = hide_in_width_100,
+}
 -------------------------------------------------------------------------------
 -----------------------------MISC-----------------------------------------
 local function window() -- Display window number
@@ -444,8 +491,12 @@ lualine.setup({
         lualine_a = { mode },
         lualine_b = { branch, diff },
         lualine_c = { diagnostics },
-        lualine_x = { filename, filetype, encoding, fileformat },
-        lualine_y = { location, { "progress" } },
+        lualine_x = {
+            filename, --[[ filetype, ]]
+            encoding,
+            fileformat,
+        },
+        lualine_y = {location, { "progress" } },
         lualine_z = { { clock } },
     },
 
