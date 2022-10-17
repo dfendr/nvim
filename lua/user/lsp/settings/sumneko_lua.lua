@@ -1,10 +1,10 @@
-local status_ok, lua_dev = pcall(require, "lua-dev")
+local status_ok, neodev = pcall(require, "neodev")
 if not status_ok then
     -- print("lua-dev unavailable")
     goto continue
 end
 
-lua_dev.setup({
+neodev.setup({
     -- add any options here, or leave empty to use the default settings
 
     library = {
