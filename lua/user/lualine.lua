@@ -384,7 +384,7 @@ local filename = {
     --     return "  "..str
     -- end,
     on_click = function()
-        funcs.open_explorer()
+        open_explorer()
         vim.cmd("q")
     end,
 }
@@ -408,6 +408,7 @@ local clock_comp = {
 
 ---------------------------------------------------------------------------
 -----------------------------Spaces----------------------------------------
+-- TODO: Do I even want to finish and use this?
 local spaces = {
     function()
         local buf_ft = vim.bo.filetype
@@ -437,7 +438,7 @@ local spaces = {
         end
 
         -- TODO: update codicons and use their indent
-        return " " .. shiftwidth .. space.." "
+        return " " .. shiftwidth .. space .. " "
     end,
     padding = 0,
     -- separator = "%#SLSeparator#" .. " │" .. "%*",
@@ -463,6 +464,23 @@ local function os_icon()
         return icons.unix
     end
 end
+-------------------------------------------------------------------------------
+-----------------------------Treesitter Icon------------------------------
+--TODO:Finish this function and apply to statusbar
+-- local treesitter = {
+--     function()
+--         return ""
+--     end,
+--     color = function()
+--         local buf = vim.api.nvim_get_current_buf()
+--         local ts = vim.treesitter.highlighter.active[buf]
+--         return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
+--     end,
+--     cond = conditions.hide_in_width,
+-- }
+-------------------------------------------------------------------------------
+------------------------------Auto Theme application---------------------------
+
 -- Get current theme
 -- TODO: Fix the auto-custom theme change.
 local vimtheme = vim.api.nvim_command_output("colo")
@@ -471,7 +489,6 @@ if vimtheme == "gruvbox-baby" then
     lualine_theme = gruvbox_baby_custom
 end
 
--------------------------------------------------------------------------------
 
 lualine.setup({
     options = {
@@ -496,7 +513,7 @@ lualine.setup({
             encoding,
             fileformat,
         },
-        lualine_y = {location, { "progress" } },
+        lualine_y = { location, { "progress" } },
         lualine_z = { { clock } },
     },
 
