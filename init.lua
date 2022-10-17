@@ -56,6 +56,7 @@ return
 --require "user.winbar" needs NAVIC highlight groups
 
 -- TODO: 1. Add Treesitter/LSP indicator for Lualine
+-- TODO: 2. Spaces indicator (only if tabs or spaces!=4)
 -- TODO: 3. Create Large File autocommand that disables events n treesitter.
 -- TODO: 4. Organize Lua files (?)
 -- TODO: 5. Get C#/Java working
