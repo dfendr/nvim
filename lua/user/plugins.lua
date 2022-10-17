@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Oct9-2022",
+    snapshot = "Oct16-2022",
 })
 
 -- Install your plugins here
@@ -90,7 +90,7 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    use("folke/lua-dev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
+    use("folke/neodev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
 
     -- Telescope
     use("nvim-telescope/telescope-media-files.nvim") -- View media files
@@ -146,6 +146,7 @@ return packer.startup(function(use)
             vim.fn["mkdp#util#install"]()
         end,
     })
+    use("gaoDean/autolist.nvim")
 
     -- Sessions
     use("rmagatti/auto-session")
@@ -180,6 +181,7 @@ return packer.startup(function(use)
 
     -- Silly
     use("andweeb/presence.nvim") -- Discord presence :^)
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

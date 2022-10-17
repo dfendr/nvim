@@ -29,7 +29,7 @@ jaq_nvim.setup({
             c = "gcc -Wall -fsanitize=address -Wextra -pedantic -g -std=c99 \"$fileBase.c\" -o \"$fileBase\" && ./\"$fileBase\"",
             cpp = "g++ % -o $fileBase && ./$fileBase",
             go = "go run %",
-            sh = "sh %",
+            sh = "bash %",
             lua = "luajit $filePath"
         },
 

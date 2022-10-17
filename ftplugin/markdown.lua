@@ -20,9 +20,9 @@ local mappings = {
     },
 }
 
-vim.cmd[[set formatoptions+=r]]
-vim.cmd[[set comments-=fb:-]]
-vim.cmd[[set comments+=:-]]
+-- vim.cmd[[set formatoptions+=r]]
+-- vim.cmd[[set comments-=fb:-]]
+-- vim.cmd[[set comments+=:-]]
 
 
 which_key.register(mappings, opts)
