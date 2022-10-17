@@ -11,6 +11,14 @@ local options = {
     mouse = "a", -- enable mouse in all modes
     pumheight = 10, -- max number of autocompletion options that will show
     showmode = false, -- No need to show --INSERT--, cursor will let me know.
+    listchars = {
+        tab = "▷ ",
+        trail = "·",
+        extends = "◣",
+        precedes = "◢",
+        nbsp = "⋅",
+        space = "⋅",
+    },
     --showtabline = 2,                            -- Always show tabs (top menu bar I think?)
     expandtab = true, -- Insert spaces instead of tabs
     tabstop = 4, -- 4 spaces instead of a tab
@@ -45,10 +53,9 @@ for k, v in pairs(options) do
 end
 
 -- Whitespace chars
- vim.opt.listchars= "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
+vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
 --vim.opt.listchars:append "eol:↴"
 --vim.opt.listchars:append "eol:﬌"
-
 
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
@@ -65,12 +72,11 @@ autocmd InsertLeave * :set norelativenumber
 augroup END
 ]])
 
-
 vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- These two stop vim from adding comment strings when
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- pressing enter on comment strings in Insert mode.
 
 -- Removing trailing whitesspace on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
 })
