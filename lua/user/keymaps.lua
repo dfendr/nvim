@@ -57,8 +57,8 @@ map("n", "<S-l>", "$", opts)
 map("n", "<S-h>", "^", opts)
 
 -- Navigate to Prev/Next Location (Back/Forward)
-map("n", "<C-h>", "<C-o>", opts)
-map("n", "<C-l>", "<C-i>", opts)
+-- map("n", "<C-h>", "<C-o>", opts)
+-- map("n", "<C-l>", "<C-i>", opts)
 
 -- VISUAL --
 -- Stay in indent mode after indentation
