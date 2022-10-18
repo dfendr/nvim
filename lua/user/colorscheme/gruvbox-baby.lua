@@ -136,6 +136,7 @@ vim.g.gruvbox_baby_highlights = {
 
 -- Enable telescope theme
 vim.g.gruvbox_baby_telescope_theme = false
+vim.g.gruvbox_baby_transparent_mode = false
 
 -- take off keyword italics
 vim.g.gruvbox_baby_keyword_style = "NONE"
