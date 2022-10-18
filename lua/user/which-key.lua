@@ -82,7 +82,8 @@ local mappings = {
 
     [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
+    c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
