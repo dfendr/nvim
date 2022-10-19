@@ -85,6 +85,8 @@ local mappings = {
     C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
     c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    E = { v = {"<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)"},},
+
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
@@ -147,7 +149,7 @@ local mappings = {
         B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope commands<cr>", "Commands" },
         C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>lua require(\"telescope.builtin\").find_files({hidden = true})<cr>", "Find files" },
+        f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
         h = { "<cmd>Telescope help_tags<cr>", "Help" },
         H = { "<cmd>Telescope highlights<cr>", "Highlights" },
         i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
@@ -159,7 +161,7 @@ local mappings = {
         T = { "<cmd>TodoTelescope<cr>", "Find TODOs" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-        w= { "<cmd>Telescope grep_string<cr>", "Find Word" },
+        w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
         v = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     },
     s = {

@@ -136,7 +136,8 @@ return packer.startup(function(use)
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
     use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
-    use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
+    -- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
+    use("jbyuki/venn.nvim") -- Draw boxes easier
     use("lvimuser/lsp-inlayhints.nvim")
 
     -- Markdown Editing Support
