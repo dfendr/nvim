@@ -85,8 +85,6 @@ local mappings = {
     C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
     c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    E = { v = {"<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)"},},
-
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
@@ -141,6 +139,7 @@ local mappings = {
         S = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
         O = { "<cmd>e ~/.config/nvim/lua/user/options.lua<cr>", "Open Options" },
+        v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
     },
     f = {
         name = "Find",
