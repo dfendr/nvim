@@ -5,6 +5,7 @@ end
 
 local actions = require("telescope.actions")
 telescope.load_extension("media_files")
+telescope.load_extension("fzf")
 local icons = require("user.icons")
 
 telescope.setup({
@@ -158,14 +159,15 @@ telescope.setup({
         },
         grep_string = {
             theme = "dropdown",
+            grep_open_files = true,
         },
         find_files = {
             theme = "dropdown",
-            previewer = false,
+            enable_preview = false,
         },
         buffers = {
             theme = "dropdown",
-            previewer = false,
+            enable_preview = false,
             initial_mode = "insert",
         },
         planets = {
@@ -201,6 +203,13 @@ telescope.setup({
         -- builtin picker
     },
     extensions = {
+        fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+        },
         media_files = {
             -- filetypes whitelist
             -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}

@@ -1,5 +1,5 @@
 local status_ok, lualine = pcall(require, "lualine")
-local notification = require("notify.service.notification")
+-- local notification = require("notify.service.notification")
 
 if not status_ok then
     return
