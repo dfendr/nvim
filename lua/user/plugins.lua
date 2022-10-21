@@ -68,7 +68,7 @@ return packer.startup(function(use)
 
     -- Colorsheme
     use("luisiacc/gruvbox-baby")
-    use("EdenEast/nightfox.nvim") -- Packer
+    use("EdenEast/nightfox.nvim")
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
@@ -90,12 +90,16 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua") -- See hex codes
     use("simrat39/symbols-outline.nvim")
     use("ray-x/lsp_signature.nvim")
-    use("folke/neodev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
+    -- use("folke/neodev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
 
     -- Telescope
     use("nvim-telescope/telescope-media-files.nvim") -- View media files
     use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- File/Path finder
     use({ "nvim-telescope/telescope-file-browser.nvim" })
+    use({
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+    })
     use("nvim-telescope/telescope-dap.nvim")
     use("BurntSushi/ripgrep") -- Helps with searching contents
     use("ahmedkhalf/project.nvim")
@@ -162,7 +166,7 @@ return packer.startup(function(use)
 
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
-    use("rcarriga/nvim-notify") -- Popup notifications
+    -- use("rcarriga/nvim-notify") -- Popup notifications
     use("j-hui/fidget.nvim") -- LSP startup notifications NOTE: Marked for deletion
     use("tiagovla/scope.nvim") -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
     use({ -- Auto Window resizer

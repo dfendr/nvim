@@ -12,12 +12,13 @@ local options = {
     pumheight = 10, -- max number of autocompletion options that will show
     showmode = false, -- No need to show --INSERT--, cursor will let me know.
     listchars = {
-        tab = "▷ ",
+        tab = "»~",
         trail = "·",
         extends = "◣",
         precedes = "◢",
-        nbsp = "⋅",
-        space = "⋅",
+        -- nbsp = "⋅",
+        -- space = "⋅",
+        lead= "⋅",
     },
     --showtabline = 2,                            -- Always show tabs (top menu bar I think?)
     expandtab = true, -- Insert spaces instead of tabs
@@ -53,7 +54,7 @@ for k, v in pairs(options) do
 end
 
 -- Whitespace chars
-vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
+-- vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
 --vim.opt.listchars:append "eol:↴"
 --vim.opt.listchars:append "eol:﬌"
 
