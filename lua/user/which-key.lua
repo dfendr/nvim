@@ -1,4 +1,5 @@
 local status_ok, which_key = pcall(require, "which-key")
+
 if not status_ok then
     return
 end
@@ -88,7 +89,7 @@ local mappings = {
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
-    R = { "<cmd>lua require(\"renamer\").rename({empty = true})<cr>", "Rename" },
+    R = { '<cmd>lua require("renamer").rename({empty = true})<cr>', "Rename" },
     w = { "<cmd>w<CR>", "Write" },
     -- h = { "<cmd>nohlsearch<CR>", "No HL" },
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
@@ -158,7 +159,7 @@ local mappings = {
 
         R = { ":cd ~/Repos<CR> :Telescope find_files <CR>", "Search Repo Files" },
         s = { "<cmd>SearchSession<cr>", "Find Session" },
-        S = { ":cd ~/.config/nvim/<CR> :Telescope live_grep <CR>", "Search Settings" },
+        S = { "<cmd>execute 'cd ' . fnamemodify(expand('$MYVIMRC'), ':p:h')<CR> :Telescope live_grep <CR>", "Search Settings" },
         T = { "<cmd>TodoTelescope<cr>", "Find TODOs" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },

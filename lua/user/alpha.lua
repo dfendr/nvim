@@ -289,7 +289,8 @@ local options = {
             button("SPC f T", icons.ui.List .. " Todo List", ":TodoTelescope<CR>"),
             -- button("SPC f t", icons.type.String .. " Find Text", ":Telescope live_grep <CR>"),
 
-            button("SPC c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
+            button("SPC c", icons.ui.Gear .. " Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
+            -- button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
             button("SPC p u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
             button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
             -- button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
@@ -297,7 +298,6 @@ local options = {
             -- button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
             -- button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
             -- button("SPC t h", "  Themes  ", ":Telescope themes<CR>"),
-            -- button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
         },
         opts = {
             spacing = 1,
