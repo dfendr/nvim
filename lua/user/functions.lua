@@ -155,4 +155,18 @@ function M.fade_RGB(colour1, colour2, percentage)
     return "#" .. M.Dec2Hex(r3) .. M.Dec2Hex(g3) .. M.Dec2Hex(b3)
 end
 
+function M.wrap_in_quotes(string)
+    return '"' .. string .. '"'
+end
+
+function M.open_explorer()
+    if vim.fn.has("mac") == 1 then
+        return vim.cmd("TermExec cmd='open .' dir=\"%:p:h\"")
+    elseif vim.fn.has("win32") == 1 then
+        return vim.cmd("TermExec cmd='start .' dir=\"%:p:h\"")
+    else
+        return vim.cmd("TermExec cmd='nautilus .' dir=\"%:p:h\"")
+    end
+end
+
 return M
