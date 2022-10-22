@@ -73,11 +73,11 @@ map("v", "<S-h>", "^", opts)
 map("v", "<A-j>", ":m .+1<CR>==", opts)
 map("v", "<A-k>", ":m .-2<CR>==", opts)
 map("v", "p", '"_dP', opts)
+map("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- VISUAL BLOCK --
 -- Move text up and down (sick as hell)
 map("x", "J", ":move '>+1<CR>gv-gv", opts)
-map("x", "K", ":move '<-2<CR>gv-gv", opts)
 map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
