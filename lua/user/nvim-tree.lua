@@ -103,6 +103,9 @@ nvim_tree.setup {
       error = icons.diagnostics.error,
     },
   },
+    remove_keymaps = {
+        "<C-k>"
+    },
   update_focused_file = {
     enable = true,
     update_cwd = true,

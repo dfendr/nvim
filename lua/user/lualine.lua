@@ -231,10 +231,10 @@ local mode = {
     --     -- auto change color according to neovims mode
     --     return { fg = mode_color[vim.fn.mode()] }
     -- end,
-    color = function()
-        -- auto change color according to neovims mode
-        return { bg = mode_color[vim.fn.mode()] }
-    end,
+    -- color = function()
+    --     -- auto change color according to neovims mode
+    --     return { bg = mode_color[vim.fn.mode()] }
+    -- end,
     padding = 0,
     on_click = function()
         vim.cmd("Alpha")
