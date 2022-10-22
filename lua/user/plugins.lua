@@ -166,7 +166,7 @@ return packer.startup(function(use)
 
     --UI
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
-    -- use("rcarriga/nvim-notify") -- Popup notifications
+    use("rcarriga/nvim-notify") -- Popup notifications
     use("j-hui/fidget.nvim") -- LSP startup notifications NOTE: Marked for deletion
     use("tiagovla/scope.nvim") -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
     use({ -- Auto Window resizer
