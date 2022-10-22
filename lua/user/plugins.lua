@@ -134,12 +134,12 @@ return packer.startup(function(use)
 
     -- Navigation
     -- Editing Support
-    use("karb94/neoscroll.nvim") -- Smooth scrolling
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
     use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
+    use ("nat-418/boole.nvim") -- ctrl-a and ctrl-x extension (toggles bools, on/off, letters)
     -- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("jbyuki/venn.nvim") -- Draw boxes easier
     use("lvimuser/lsp-inlayhints.nvim")
@@ -151,20 +151,21 @@ return packer.startup(function(use)
             vim.fn["mkdp#util#install"]()
         end,
     })
-    use("gaoDean/autolist.nvim")
+    use("gaoDean/autolist.nvim") -- auto indent and increment list elements
 
     -- Sessions
     use("rmagatti/auto-session")
     use("rmagatti/session-lens")
 
     -- Terminal
-    use("akinsho/toggleterm.nvim")
+    use("akinsho/toggleterm.nvim") -- toggles terminal like vscode (but better)
 
     -- Utility
     use("lewis6991/impatient.nvim") -- Ye Ol Nvim Load Quickener
     use("is0n/jaq-nvim") -- Code runner
 
     --UI
+    use("karb94/neoscroll.nvim") -- Smooth scrolling
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
     use("j-hui/fidget.nvim") -- LSP startup notifications NOTE: Marked for deletion
