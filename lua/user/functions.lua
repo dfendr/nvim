@@ -163,7 +163,8 @@ function M.open_explorer()
     if vim.fn.has("mac") == 1 then
         return vim.cmd("TermExec cmd='open .' dir=\"%:p:h\"")
     elseif vim.fn.has("win32") == 1 then
-        return vim.cmd("TermExec cmd='start .' dir=\"%:p:h\"")
+        return vim.cmd("cd %:p:h |TermExec cmd='start %:p:h'")
+        -- return vim.cmd("TermExec cmd='start .' dir=\"%:p:h\"")
     else
         return vim.cmd("TermExec cmd='nautilus .' dir=\"%:p:h\"")
     end
