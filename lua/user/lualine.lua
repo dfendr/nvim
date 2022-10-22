@@ -368,11 +368,12 @@ local location = {
 
 local function open_explorer()
     if vim.fn.has("mac") == 1 then
-        return vim.cmd("TermExec cmd='open %:h'")
+
+        return vim.cmd("cd %:p:h | TermExec cmd='open %:p:h'")
     elseif vim.fn.has("win32") == 1 then
-        return vim.cmd("TermExec cmd='start %:h'")
+        return vim.cmd("cd %:p:h |TermExec cmd='start %:p:h'")
     else
-        return vim.cmd("TermExec cmd='nautilus %:h'")
+        return vim.cmd("cd %:p:h | TermExec cmd='nautilus %:p:h'")
     end
 end
 
@@ -488,7 +489,6 @@ local lualine_theme = auto
 if vimtheme == "gruvbox-baby" then
     lualine_theme = gruvbox_baby_custom
 end
-
 
 lualine.setup({
     options = {
