@@ -366,17 +366,6 @@ local location = {
     end,
 }
 
-local function open_explorer()
-    if vim.fn.has("mac") == 1 then
-
-        return vim.cmd("cd %:p:h | TermExec cmd='open %:p:h'")
-    elseif vim.fn.has("win32") == 1 then
-        return vim.cmd("cd %:p:h |TermExec cmd='start %:p:h'")
-    else
-        return vim.cmd("cd %:p:h | TermExec cmd='nautilus %:p:h'")
-    end
-end
-
 local filename = {
     "filename",
     always_visible = false,
@@ -385,7 +374,7 @@ local filename = {
     --     return "  "..str
     -- end,
     on_click = function()
-        open_explorer()
+        funcs.open_explorer()
         vim.cmd("q")
     end,
 }

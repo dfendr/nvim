@@ -283,14 +283,12 @@ local options = {
 
             button("SPC n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
             button("SPC f r", icons.ui.History .. " Recent Files", ":Telescope oldfiles <CR>"),
+            button("SPC f f", icons.documents.Files .. " Search Current Directory", ":Telescope find_files <CR>"),
             button("SPC f R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
-            button("SPC f f", icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
             button("SPC f s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
             button("SPC f T", icons.ui.List .. " Todo List", ":TodoTelescope<CR>"),
             -- button("SPC f t", icons.type.String .. " Find Text", ":Telescope live_grep <CR>"),
-
             button("SPC c", icons.ui.Gear .. " Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
-            -- button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
             button("SPC p u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
             button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
             -- button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
