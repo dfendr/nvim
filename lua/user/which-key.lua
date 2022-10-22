@@ -4,6 +4,7 @@ if not status_ok then
     return
 end
 
+-- local funcs = require("user.functions")
 local setup = {
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -139,7 +140,8 @@ local mappings = {
         s = { "<cmd>source %<cr>", "Source Current Buffer" },
         S = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-        O = { "<cmd>e ~/.config/nvim/lua/user/options.lua<cr>", "Open Options" },
+        o = { '<cmd>lua require("user.functions").open_explorer()<cr>exit<cr>', "Cursorline" },
+        O = { "<cmd>e $MYVIMRC | :cd %:p:h <CR>", "Open Options" },
         v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
     },
     f = {
@@ -159,7 +161,10 @@ local mappings = {
 
         R = { ":cd ~/Repos<CR> :Telescope find_files <CR>", "Search Repo Files" },
         s = { "<cmd>SearchSession<cr>", "Find Session" },
-        S = { "<cmd>execute 'cd ' . fnamemodify(expand('$MYVIMRC'), ':p:h')<CR> :Telescope live_grep <CR>", "Search Settings" },
+        S = {
+            "<cmd>execute 'cd ' . fnamemodify(expand('$MYVIMRC'), ':p:h')<CR> :Telescope live_grep <CR>",
+            "Search Settings",
+        },
         T = { "<cmd>TodoTelescope<cr>", "Find TODOs" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
