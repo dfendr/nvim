@@ -140,7 +140,7 @@ local mappings = {
         s = { "<cmd>source %<cr>", "Source Current Buffer" },
         S = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
-        o = { '<cmd>lua require("user.functions").open_explorer()<cr>exit<cr>', "Cursorline" },
+        o = { '<cmd>lua require("user.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
         O = { "<cmd>e $MYVIMRC | :cd %:p:h <CR>", "Open Options" },
         v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
     },
