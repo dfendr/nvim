@@ -19,6 +19,8 @@ local servers = {
     "rust_analyzer",
     "jsonls",
     "marksman",
+    "perlnavigator",
+    "awk_ls",
 }
 
 -- Package installation folder

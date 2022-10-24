@@ -65,6 +65,7 @@ vim.g.gruvbox_baby_highlights = {
 
     -- General
     TSBoolean = { fg = pink },
+    TSFunction = { fg = bright_yellow},
     TSNumber = { fg = pink },
     TSFuncBuiltin = { fg = og_orange2 },
     TSVariable = { fg = milk },
