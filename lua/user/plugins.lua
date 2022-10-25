@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Oct18-2022",
+    snapshot = "Oct24-2022-unstable",
 })
 
 -- Install your plugins here
@@ -68,6 +68,7 @@ return packer.startup(function(use)
 
     -- Colorsheme
     use("luisiacc/gruvbox-baby")
+    -- use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
 
     -- Lualine
@@ -78,18 +79,18 @@ return packer.startup(function(use)
     use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
     -- LSP
-    use("williamboman/mason.nvim")
-    use("williamboman/mason-lspconfig.nvim")
+    use("williamboman/mason.nvim") -- LSP/Linter/DAP Downloader
+    use("williamboman/mason-lspconfig.nvim") -- Layer between Mason/LSPconfig
     use("neovim/nvim-lspconfig") -- enable LSP
     use({
         "jose-elias-alvarez/null-ls.nvim",--[[ , commit="bf02782" ]]
     }) -- for formatters and linters
-    use("RRethy/vim-illuminate") --
+    use("RRethy/vim-illuminate") -- illuminate words under cursor
     use("Maan2003/lsp_lines.nvim")
     use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
     use("norcalli/nvim-colorizer.lua") -- See hex codes
-    use("simrat39/symbols-outline.nvim")
-    use("ray-x/lsp_signature.nvim")
+    use("simrat39/symbols-outline.nvim") -- Symbol outline like vscode
+    use("ray-x/lsp_signature.nvim") -- popup to help fill functions.
     -- use("folke/neodev.nvim") -- Neovim Dev LSP -- API lookups n suggestions. -- TAKES FOREVER
 
     -- Telescope
@@ -139,7 +140,7 @@ return packer.startup(function(use)
     use("lukas-reineke/indent-blankline.nvim") -- VSCode like whitespace
     use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
-    use ("nat-418/boole.nvim") -- ctrl-a and ctrl-x extension (toggles bools, on/off, letters)
+    use("nat-418/boole.nvim") -- ctrl-a and ctrl-x extension (toggles bools, on/off, letters)
     -- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("jbyuki/venn.nvim") -- Draw boxes easier
     use("lvimuser/lsp-inlayhints.nvim")
