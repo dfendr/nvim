@@ -16,7 +16,7 @@ let g:terminal_ansi_colors = [
   \'#bcbcbc', '#d70000', '#d70087', '#8700af',
   \'#d75f00', '#d75f00', '#005faf', '#005f87' ]
 "Font
-set guifont=FiraCode\ Nerd\ Font\ Mono:h11 ]])
+set guifont=FiraCode\ Nerd\ Font\ Mono:h15 ]])
 if vim.fn.has("mac") == 1 then
     vim.cmd("  let g:neovide_input_use_logo          = v:true")
     vim.cmd("  let g:neovide_input_macos_alt_is_meta = v:true")

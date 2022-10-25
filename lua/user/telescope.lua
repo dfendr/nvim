@@ -193,6 +193,9 @@ telescope.setup({
             theme = "dropdown",
             initial_mode = "normal",
         },
+        man_pages = {
+            man_cmd = { "apropos", " " },
+        },
 
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
