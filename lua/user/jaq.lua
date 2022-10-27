@@ -31,7 +31,8 @@ jaq_nvim.setup({
             go = "go run %",
             -- sh = "cd \"$dir\" && bash %",
             sh = "bash %",
-            lua = "luajit $filePath"
+            lua = "luajit $filePath",
+            awk = "awk -f $filePath"
         },
 
         -- Uses internal commands such as 'source' and 'luafile'

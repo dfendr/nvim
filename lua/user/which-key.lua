@@ -1,5 +1,4 @@
 local status_ok, which_key = pcall(require, "which-key")
-
 if not status_ok then
     return
 end
@@ -71,14 +70,15 @@ local setup = {
     },
 }
 -- //TODO: Get Align mapped to whichkey
--- local xmappings = {
---
---     a = {
---         name = "Align",
---         c = {"<cmd>lua require(user.functions).align_by_char()<CR>", "Align by Char" },
---     -- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
--- },
--- }
+local xmappings = {
+    s = { "<cmd> lua require('silicon').visualise(false,true)<cr>", "Screenshot V-Selection" },
+    S = { "<cmd> lua require('silicon').visualise(true,true)<cr>", "Screenshot Entire Buffer" },
+    -- a = {
+    --     name = "Align",
+    --     c = {"<cmd>lua require(user.functions).align_by_char()<CR>", "Align by Char" },
+    -- -- q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+    -- },
+}
 
 local mappings = {
 
@@ -107,6 +107,8 @@ local mappings = {
             "<cmd>BufferLinePickClose<cr>",
             "Pick which buffer to close",
         },
+        s = { "<cmd> lua require('silicon').visualise(false,true)", "Screenshot V-Selection" },
+        S = { "<cmd> lua require('silicon').visualise(true,true)", "Screenshot Entire Buffer" },
         h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
         l = {
             "<cmd>BufferLineCloseRight<cr>",
@@ -184,6 +186,7 @@ local mappings = {
         name = "Debug",
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
         c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+
         i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
         o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
         O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
@@ -328,7 +331,7 @@ local m_opts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 
-local vopts = {
+local v_opts = {
     mode = "v", -- VISUAL mode
     prefix = "<leader>",
     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -348,5 +351,5 @@ local xopts = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
--- which_key.register(xmappings, xopts)
+which_key.register(xmappings, xopts)
 --which_key.register(m_mappings, m_opts)
