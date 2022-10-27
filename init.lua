@@ -43,6 +43,7 @@ require("user.colorizer")
 require("user.windows")
 require("user.autolist")
 require("user.venn")
+require("user.silicon")
 require("user.which-key")
 if vim.g.neovide then
     require("user.neovide")

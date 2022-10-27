@@ -44,6 +44,13 @@ if not lspconfig_status_ok then
     return
 end
 
+
+mason.setup(settings)
+mason_lspconfig.setup({
+    ensure_installed = servers,
+    automatic_installation = true,
+})
+
 local opts = {}
 
 for _, server in pairs(servers) do
@@ -110,12 +117,15 @@ for _, server in pairs(servers) do
         goto continue
     end
 
+    if server == "perlnavigator" then
+        local perl_opts = require("user.lsp.settings.perl")
+        -- vim.notify("MASON INIT")
+        -- require("lspconfig").perlnavigator.setup({})
+        -- goto continue
+        opts = vim.tbl_deep_extend("force", perl_opts, opts)
+    end
+
+    -- require'lspconfig'.perlnavigator.setup{}
     lspconfig[server].setup(opts)
     ::continue::
 end
-
-mason.setup(settings)
-mason_lspconfig.setup({
-    ensure_installed = servers,
-    automatic_installation = true,
-})

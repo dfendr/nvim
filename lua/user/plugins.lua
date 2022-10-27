@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Oct24-2022-unstable",
+    -- snapshot = "Oct26-2022",
 })
 
 -- Install your plugins here
@@ -188,6 +188,10 @@ return packer.startup(function(use)
 
     -- Silly
     use("andweeb/presence.nvim") -- Discord presence :^)
+    use({
+        "narutoxy/silicon.lua",
+        requires = { "nvim-lua/plenary.nvim" },
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
