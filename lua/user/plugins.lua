@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    -- snapshot = "Oct26-2022",
+    snapshot = "Oct26-2022",
 })
 
 -- Install your plugins here
@@ -99,7 +99,7 @@ return packer.startup(function(use)
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
-        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     })
     use("nvim-telescope/telescope-dap.nvim")
     use("BurntSushi/ripgrep") -- Helps with searching contents

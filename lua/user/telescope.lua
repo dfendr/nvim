@@ -194,7 +194,8 @@ telescope.setup({
             initial_mode = "normal",
         },
         man_pages = {
-            man_cmd = { "apropos", " " },
+            -- initial_mode = "normal",
+            man_cmd = { "apropos", "." }, -- Does this work on Linux also?
         },
 
         -- Default configuration for builtin pickers goes here:
