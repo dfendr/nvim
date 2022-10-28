@@ -33,5 +33,5 @@ surround.setup({
   -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
   -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
   -- see `:h MiniSurround.config`.
-  search_method = 'cover',
+  search_method = 'cover_or_next',
 })
