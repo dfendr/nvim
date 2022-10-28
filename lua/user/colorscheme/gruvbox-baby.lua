@@ -75,6 +75,7 @@ vim.g.gruvbox_baby_highlights = {
     MatchParen = { bg = comment }, -- highlight for matching parenthesis
     TSStringEscape = { fg = pink },
     VertSplit = { fg = medium_gray }, -- Window Splits
+    Special = { style = "NONE" },
 
     -- -- Tabby
     -- Tabline = { bg = comment , fg = milk},
@@ -140,10 +141,11 @@ vim.g.gruvbox_baby_telescope_theme = false
 vim.g.gruvbox_baby_transparent_mode = false
 
 --::
+
 -- take off keyword italics
 vim.g.gruvbox_baby_keyword_style = "NONE"
 vim.g.gruvbox_baby_comment_style = "NONE"
-vim.g.gruvbox_baby_function_style = "bold"
+vim.g.gruvbox_baby_function_style = "NONE"
 vim.g.gruvbox_baby_use_original_palette = true
 
 local colorscheme = "gruvbox-baby"
