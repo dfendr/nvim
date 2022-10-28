@@ -24,15 +24,16 @@ jaq_nvim.setup({
             -- markdown = "glow %",
             python = "python3 %",
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
-            rust= "cd $dir && cargo run",
+            rust = "cd $dir && cargo run",
             --rust = "cargo run",
-            c = "gcc -Wall -fsanitize=address -Wextra -pedantic -g -std=c99 \"$fileBase.c\" -o \"$fileBase\" && ./\"$fileBase\"",
+            c = 'gcc -Wall -fsanitize=address -Wextra -pedantic -g -std=c99 "$fileBase.c" -o "$fileBase" && ./"$fileBase"',
             cpp = "g++ % -o $fileBase && ./$fileBase",
             go = "go run %",
             -- sh = "cd \"$dir\" && bash %",
             sh = "bash %",
             lua = "luajit $filePath",
-            awk = "awk -f $filePath"
+            awk = "awk -f $filePath",
+            perl = "perl $filePath",
         },
 
         -- Uses internal commands such as 'source' and 'luafile'

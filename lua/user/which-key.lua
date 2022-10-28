@@ -71,8 +71,15 @@ local setup = {
 }
 -- //TODO: Get Align mapped to whichkey
 local xmappings = {
-    s = { "<cmd> lua require('silicon').visualise(false,true)<cr>", "Screenshot V-Selection" },
-    S = { "<cmd> lua require('silicon').visualise(true,true)<cr>", "Screenshot Entire Buffer" },
+    S = {
+        "<cmd> lua require('silicon').visualise_api({show_buf = true, to_clip = true})<cr>",
+        "Screenshot Buffer,",
+    },
+    s = {
+        "<cmd> lua require('silicon').visualise_api({show_buf = false, to_clip = true})<cr>",
+        "Screenshot V-Selection",
+    },
+    -- S = { "<cmd> lua require('silicon').visualise(true,true)<cr>", "Screenshot Entire Buffer" },
     -- a = {
     --     name = "Align",
     --     c = {"<cmd>lua require(user.functions).align_by_char()<CR>", "Align by Char" },
