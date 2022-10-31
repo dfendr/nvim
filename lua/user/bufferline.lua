@@ -100,10 +100,10 @@ bufferline.setup({
         --     bg = { attribute = "bg", highlight = "TabLine" },
         -- },
         buffer_selected = {
-          fg = {attribute='fg',highlight='#ff0000'},
-        -- --   bg = {attribute='bg',highlight='#0000ff'},
-        -- --   gui = 'none'
-          },
+            fg = { attribute = "fg", highlight = "#ff0000" },
+            -- --   bg = {attribute='bg',highlight='#0000ff'},
+            -- --   gui = 'none'
+        },
         buffer_visible = {
             fg = { attribute = "fg", highlight = "Comment", italic = true },
             -- bg = { attribute = "bg", highlight = "CursorColumn" },
@@ -158,7 +158,7 @@ bufferline.setup({
             -- bg = { attribute = "bg", highlight = "Normal" },
         },
         modified_visible = {
-        --     fg = { attribute = "fg", highlight = "CursorLine" },
+            --     fg = { attribute = "fg", highlight = "CursorLine" },
             bg = { attribute = "bg", highlight = "Normal" },
         },
         --
@@ -171,9 +171,9 @@ bufferline.setup({
             bg = { attribute = "bg", highlight = "#FFFFFF" },
         },
         separator_visible = {
-          fg = {attribute='bg',highlight='#FFFFFF'},
-          bg = {attribute='bg',highlight='#FFFFFF'}
-          },
+            fg = { attribute = "bg", highlight = "#FFFFFF" },
+            bg = { attribute = "bg", highlight = "#FFFFFF" },
+        },
         indicator_selected = {
             fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
             bg = { attribute = "bg", highlight = "Normal" },

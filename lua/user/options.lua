@@ -1,5 +1,6 @@
 local options = {
     -- :help options
+    autochdir = false, -- automatically change nvim path to current buffer
     backup = false, -- creates a backup file
     clipboard = { "unnamedplus", "unnamed" }, -- allows neovim to access the system clipboard
     cmdheight = 1, -- more space in the neovim command line for displaying messages
@@ -18,7 +19,7 @@ local options = {
         precedes = "◢",
         -- nbsp = "⋅",
         -- space = "⋅",
-        lead= "⋅",
+        lead = "⋅",
     },
     --showtabline = 2,                            -- Always show tabs (top menu bar I think?)
     expandtab = true, -- Insert spaces instead of tabs
