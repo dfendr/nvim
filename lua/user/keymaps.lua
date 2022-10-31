@@ -34,6 +34,7 @@ map("n", "te", ":tabedit<CR>", opts)
 -- Easy Buffer Navigation
 map("n", "[b", ":bprevious<CR>", opts)
 map("n", "]b", ":bnext<CR>", opts)
+map("n", "gb", ":bnext<CR>", opts)
 
 --map("n", "sh", ":split<CR><C-w>w") // not needed as these are taken care of by WhichKey
 --map("n", "sv", ":vsplit<CR><C-w>w") -- not sure if I like this
