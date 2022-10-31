@@ -114,8 +114,7 @@ local mappings = {
             "<cmd>BufferLinePickClose<cr>",
             "Pick which buffer to close",
         },
-        s = { "<cmd> lua require('silicon').visualise(false,true)", "Screenshot V-Selection" },
-        S = { "<cmd> lua require('silicon').visualise(true,true)", "Screenshot Entire Buffer" },
+        s = { "<cmd> lua require('scratch').scratch()<cr>", "Create Scratch Buffer" },
         h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
         l = {
             "<cmd>BufferLineCloseRight<cr>",
