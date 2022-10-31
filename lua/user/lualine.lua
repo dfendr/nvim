@@ -272,6 +272,7 @@ local diagnostics = {
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
     symbols = { error = " ", warn = " " },
+    cond = hide_in_width(60),
     colored = true,
     update_in_insert = false,
     always_visible = false,
@@ -303,6 +304,7 @@ local branch = {
         end
         return str
     end,
+    cond = hide_in_width(60),
     on_click = function()
         vim.cmd("lua _GITUI_TOGGLE()")
     end,
@@ -359,12 +361,27 @@ local location = {
     -- separator = {right = "" },
     padding = 1,
     always_visible = false,
-    cond = hide_in_width(80),
+    cond = hide_in_width(40),
     fmt = function(str)
         return " " .. str
         -- return str
     end,
 }
+
+local progress = {
+    "progress",
+    -- separator = {right = "" },
+    padding = 1,
+    always_visible = false,
+    cond = hide_in_width(60),
+
+    fmt = function(str)
+        -- return " " .. str
+        return str
+    end,
+}
+
+
 
 local filename = {
     "filename",
@@ -502,7 +519,7 @@ lualine.setup({
             encoding,
             fileformat,
         },
-        lualine_y = { location, { "progress" } },
+        lualine_y = { location, progress },
         lualine_z = { { clock } },
     },
 

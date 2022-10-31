@@ -283,7 +283,7 @@ local options = {
 
             button("SPC n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
             button("SPC f r", icons.ui.History .. " Recent Files", ":Telescope oldfiles <CR>"),
-            button("SPC f f", icons.documents.Files .. " Search Current Directory", ":Telescope find_files <CR>"),
+            button("SPC f f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
             button("SPC f R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
             button("SPC f s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
             button("SPC f T", icons.ui.List .. " Todo List", ":TodoTelescope<CR>"),
