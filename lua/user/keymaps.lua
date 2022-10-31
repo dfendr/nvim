@@ -53,8 +53,8 @@ map("n", "<M-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate Lines
-map("n", "<S-l>", "$", opts)
-map("n", "<S-h>", "^", opts)
+map("n", "<C-l>", "$", opts)
+map("n", "<C-h>", "^", opts)
 
 -- Navigate to Prev/Next Location (Back/Forward)
 -- map("n", "<C-h>", "<C-o>", opts)
@@ -66,8 +66,8 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Navigate Lines
-map("v", "<S-l>", "$", opts)
-map("v", "<S-h>", "^", opts)
+map("v", "<C-l>", "$", opts)
+map("v", "<C-h>", "^", opts)
 
 -- Move text up and down (doesn't work in terms that don't send alt correctly)
 map("v", "<A-j>", ":m .+1<CR>==", opts)
