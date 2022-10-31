@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    -- snapshot = "Oct27-2022",
+    snapshot = "Oct29-2022",
 })
 
 -- Install your plugins here
@@ -67,7 +67,7 @@ return packer.startup(function(use)
     use("echasnovski/mini.nvim")
 
     -- Colorsheme
-    use("postfen/gruvbox-baby")
+    use("luisiacc/gruvbox-baby")
     -- use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
 
@@ -192,6 +192,9 @@ return packer.startup(function(use)
         "narutoxy/silicon.lua",
         requires = { "nvim-lua/plenary.nvim" },
     })
+    use("LintaoAmons/scratch.nvim") -- Easy scratchpad
+
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
