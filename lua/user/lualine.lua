@@ -273,7 +273,7 @@ local diagnostics = {
     sections = { "error", "warn" },
     symbols = { error = " ", warn = " " },
     cond = hide_in_width(60),
-    colored = true,
+    colored = false,
     update_in_insert = false,
     always_visible = false,
     on_click = function()
