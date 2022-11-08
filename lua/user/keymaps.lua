@@ -21,7 +21,7 @@ map("n", "<C-i>", "<C-i>", opts) -- ??
 map("n", "x", '"_x', opts)
 
 -- Clear highlighting after searching.
-map("n", "_", "<cmd>nohl<CR>", opts)
+-- map("n", "_", "<cmd>nohl<CR>", opts)
 
 -- Select all
 -- map("n", "<C-a>", "gg<S-V>G")

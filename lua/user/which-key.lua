@@ -90,6 +90,7 @@ local xmappings = {
 local mappings = {
 
     [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
+    [" "] = { "<cmd>nohl<cr>", "Clear Highlighting" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
     C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
     c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
@@ -97,7 +98,7 @@ local mappings = {
     h = { "<cmd>split<cr>", "split" },
     n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
-    R = { '<cmd>lua require("renamer").rename({empty = true})<cr>', "Rename" },
+    R = { '<cmd>lua vim.lsp.buf.rename()<cr>', "Rename" },
     w = { "<cmd>w<CR>", "Write" },
     -- h = { "<cmd>nohlsearch<CR>", "No HL" },
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
@@ -255,6 +256,7 @@ local mappings = {
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = {
             name = "Replace",
+            R = {'<cmd>lua require("renamer").rename({empty = true})<cr>', "Rename"},
             r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
             w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
             f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },

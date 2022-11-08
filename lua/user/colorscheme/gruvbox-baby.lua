@@ -65,7 +65,7 @@ vim.g.gruvbox_baby_highlights = {
 
     -- General
     TSBoolean = { fg = pink },
-    TSFunction = { fg = bright_yellow },
+    TSFunction = { fg = bright_yellow, style = "bold" },
     TSNumber = { fg = pink },
     TSFuncBuiltin = { fg = og_orange2 },
     TSVariable = { fg = milk },
@@ -76,6 +76,7 @@ vim.g.gruvbox_baby_highlights = {
     TSStringEscape = { fg = pink },
     VertSplit = { fg = medium_gray }, -- Window Splits
     Special = { style = "NONE" },
+    -- NormalNC -- my key to "Shade" sort of function
 
     -- -- Tabby
     -- Tabline = { bg = comment , fg = milk},
@@ -145,7 +146,7 @@ vim.g.gruvbox_baby_transparent_mode = false
 -- take off keyword italics
 vim.g.gruvbox_baby_keyword_style = "NONE"
 -- vim.g.gruvbox_baby_comment_style = "NONE"
-vim.g.gruvbox_baby_function_style = "NONE"
+-- vim.g.gruvbox_baby_function_style = "NONE"
 vim.g.gruvbox_baby_use_original_palette = true
 
 local colorscheme = "gruvbox-baby"
