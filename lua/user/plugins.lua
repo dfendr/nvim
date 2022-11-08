@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Oct29-2022",
+    snapshot = "Nov9-2022",
 })
 
 -- Install your plugins here
@@ -70,6 +70,7 @@ return packer.startup(function(use)
     use("luisiacc/gruvbox-baby")
     -- use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
+    use ("Shatur/neovim-ayu") -- rust book Ayu theme
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
@@ -99,7 +100,7 @@ return packer.startup(function(use)
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     })
     use("nvim-telescope/telescope-dap.nvim")
     use("BurntSushi/ripgrep") -- Helps with searching contents
@@ -144,6 +145,7 @@ return packer.startup(function(use)
     -- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("jbyuki/venn.nvim") -- Draw boxes easier
     use("lvimuser/lsp-inlayhints.nvim")
+    use("kylechui/nvim-surround")
 
     -- Markdown Editing Support
     use({
@@ -193,8 +195,6 @@ return packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     })
     use("LintaoAmons/scratch.nvim") -- Easy scratchpad
-
-
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
