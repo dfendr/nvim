@@ -17,19 +17,17 @@ local opts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 
--- local hints = false
-
--- local function toggle_hints()
---     hints = not hints
+local hints = false
+local function toggle_hints()
+    hints = not hints
+    if hints then
+        rusttools.inlay_hints.enable()
+    else
+        rusttools.inlay_hints.disable()
+    end
+end
 --
---     if hints then
---         rusttools.inlay_hints.enable()
---     else
---         rusttools.inlay_hints.disable()
---     end
--- end
---
--- vim.keymap.set("n", "<leader>Lh", toggle_hints)
+vim.keymap.set("n", "<leader>Lh", toggle_hints)
 -- vim.api.nvim_buf_add_user_command("RustToggleInlayHints", function()
 --     toggle_hints()
 -- end)
