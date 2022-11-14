@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+--TODO: Take a look at the highlight groups. This config is a mess.
+
 bufferline.setup({
     options = {
         --         mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -15,7 +17,8 @@ bufferline.setup({
             icon = "▎", -- this should be omitted if indicator style is not 'icon'
             style = "icon",
         },
-        buffer_close_icon = "",
+        buffer_close_icon = "x",
+        -- buffer_close_icon = "",
         modified_icon = "*",
         close_icon = "",
         left_trunc_marker = "",
@@ -79,7 +82,7 @@ bufferline.setup({
         --         -- [focused and unfocused]. eg: { '|', '|' }
         separator_style = "thin", --[[ | "thin" | { 'any', 'any' }, ]]
         --         enforce_regular_tabs = false | true,
-        always_show_bufferline = true,
+        always_show_bufferline = true, -- only show when two tabs up
         sort_by = "insert_at_end",
         --             -- add custom logic
         --             return buffer_a.modified > buffer_b.modified
@@ -105,7 +108,7 @@ bufferline.setup({
             -- --   gui = 'none'
         },
         buffer_visible = {
-            fg = { attribute = "fg", highlight = "Comment", italic = true },
+            fg = { attribute = "fg", highlight = "Comment", italic = false }, -- doesn't seem to work
             -- bg = { attribute = "bg", highlight = "CursorColumn" },
         },
         --
