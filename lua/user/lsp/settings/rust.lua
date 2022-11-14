@@ -1,6 +1,7 @@
 -- Rust Tools Settings
 -- automatically set inlay hints (type hints)
 
+local path = "~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb"
 -- Dynamically updated by Mason.nvim now
 local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
 local codelldb_path = extension_path .. "codelldb"
@@ -26,7 +27,7 @@ local opts = {
             auto = true,
 
             -- Only show inlay hints for the current line
-            only_current_line = false,
+            only_current_line = true,
 
             -- whether to show parameter hints with the inlay hints or not
             -- default: true
