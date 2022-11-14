@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Nov9-2022",
+    snapshot = "Nov13-2022",
 })
 
 -- Install your plugins here
@@ -67,7 +67,8 @@ return packer.startup(function(use)
     use("echasnovski/mini.nvim")
 
     -- Colorsheme
-    use("luisiacc/gruvbox-baby")
+    -- use("luisiacc/gruvbox-baby")
+    use("postfen/gruvbox-baby")
     -- use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
     use ("Shatur/neovim-ayu") -- rust book Ayu theme
