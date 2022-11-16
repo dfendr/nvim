@@ -4,7 +4,8 @@ vim.cmd("let loaded_matchparen = 1")
 
 --TODO: Turn this into an autocmd that turns on when entering txt,
 --and turns off when leaving
-vim.cmd("set eventignore=all -buffer")
+
+-- vim.cmd("set eventignore=all")
 
 -- vim.cmd([[
 -- :autocmd WinEnter <buffer> set eventignore=all
