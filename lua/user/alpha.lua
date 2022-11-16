@@ -43,7 +43,7 @@ local daylight = require("user.functions").daylight()
 if daylight then
     header_hl_group = "String"
 else
-    header_hl_group = "StorageClass" -- deep blue
+    header_hl_group = "TSLabel" -- deep blue
     -- header_hl_group = "Error" -- RED
 end
 
