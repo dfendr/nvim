@@ -78,6 +78,11 @@ vim.g.gruvbox_baby_highlights = {
     Special = { style = "NONE" },
     -- NormalNC -- my key to "Shade" sort of function
 
+    -- -- Tabby
+    -- Tabline = { bg = comment , fg = milk},
+    -- TablineSel = { bg = comment, fg =light_blue},
+    -- TablineFill = {bg= dark0_soft},
+    -- Normal = {},
 
     -- Python
 

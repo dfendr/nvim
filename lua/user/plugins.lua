@@ -39,11 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-<<<<<<< HEAD
     snapshot = "Nov16-2022",
-=======
-    snapshot = "Nov15-2022",
->>>>>>> 32da529add958e5de9b79433448c5559514c54c7
 })
 
 -- Install your plugins here
