@@ -1,4 +1,4 @@
--- Rust Tools Settings
+-- Rust Tools Settingsrust
 -- automatically set inlay hints (type hints)
 
 local path = "~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb"
@@ -166,7 +166,7 @@ local opts = {
         ["rust-analyzer"] = {
             -- enable clippy on save
             checkOnSave = {
-                command = "clippy",
+                command = "clippy --pedantic",
             },
         },
     }, -- rust-analyer options
