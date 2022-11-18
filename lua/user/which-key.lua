@@ -96,7 +96,6 @@ local mappings = {
     c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     h = { "<cmd>split<cr>", "split" },
-    n = { "<cmd>enew<CR>", "New File" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
     R = { '<cmd>lua vim.lsp.buf.rename()<cr>', "Rename" },
     w = { "<cmd>w<CR>", "Write" },
@@ -115,7 +114,6 @@ local mappings = {
             "<cmd>BufferLinePickClose<cr>",
             "Pick which buffer to close",
         },
-        s = { "<cmd> lua require('scratch').scratch()<cr>", "Create Scratch Buffer" },
         h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
         l = {
             "<cmd>BufferLineCloseRight<cr>",
@@ -130,6 +128,10 @@ local mappings = {
             "Sort by language",
         },
     },
+
+    n = { name = "New...",
+        n = {"<cmd>enew<CR>", "New File" },
+        s = { "<cmd> lua require('scratch').scratch()<cr>", "Create Scratch Buffer" },},
 
     p = {
         name = "Packer",

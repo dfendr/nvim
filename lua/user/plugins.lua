@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Nov16-2022",
+    snapshot = "Nov18-2022",
 })
 
 -- Install your plugins here
@@ -64,14 +64,15 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-emoji") -- Emoji snippets for...some reason
 
     -- MINI
-    use("echasnovski/mini.nvim")
+
+    use({ "echasnovski/mini.align", branch = "stable" })
 
     -- Colorsheme
     -- use("luisiacc/gruvbox-baby")
     use("postfen/gruvbox-baby")
     -- use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
-    use ("Shatur/neovim-ayu") -- rust book Ayu theme
+    use("Shatur/neovim-ayu") -- rust book Ayu theme
 
     -- Lualine
     use("nvim-lualine/lualine.nvim") -- Bottom status bar
