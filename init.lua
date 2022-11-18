@@ -4,7 +4,7 @@ require("user.keymaps")
 require("user.utils")
 require("user.comment")
 require("user.nvim-surround")
-require("user.minimodules")
+require("user.align")
 require("user.neoscroll")
 if vim.g.vscode then
     goto continue
