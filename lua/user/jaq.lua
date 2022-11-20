@@ -8,8 +8,12 @@ end
 -- # / $altFile • Alternate File
 -- $dir • Current Working Directory
 -- $filePath • Path to Current File
--- $fileBase • Basename of File (no extension)
+-- $fileBase • Basename of File (no extension) (with path?)
 -- $moduleName • Python Module Name
+
+
+-- cmd = cmd:gsub("$baseName", vim.fn.expand("%:t:r"))
+-- $baseName • Basename of File (no extension)
 
 jaq_nvim.setup({
     -- Commands used with 'Jaq'
@@ -22,7 +26,7 @@ jaq_nvim.setup({
             typescript = "deno run %",
             javascript = "node %",
             -- markdown = "glow %",
-            python = "python3 %",
+            python = 'cd $dir && python3 $filePath',
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
             rust = "cd $dir && cargo run",
             --rust = "cargo run",
@@ -33,7 +37,7 @@ jaq_nvim.setup({
             sh = "bash %",
             lua = "luajit $filePath",
             awk = "awk -f $filePath",
-            perl = "perl $filePath",
+            perl = "cd $dir && perl $filePath",
         },
 
         -- Uses internal commands such as 'source' and 'luafile'
