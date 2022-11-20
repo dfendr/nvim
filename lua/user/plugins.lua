@@ -173,8 +173,8 @@ return packer.startup(function(use)
     use("karb94/neoscroll.nvim") -- Smooth scrolling
     use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
     use("rcarriga/nvim-notify") -- Popup notifications
-    use("j-hui/fidget.nvim") -- LSP startup notifications NOTE: Marked for deletion
-    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs -- disabled until I can disable for specific filetypes.
+    use("j-hui/fidget.nvim") -- LSP startup notifications
+    use("tiagovla/scope.nvim") -- Keeps buffer  within tabs
     use({ -- Auto Window resizer
         "anuvyklack/windows.nvim",
         requires = {
