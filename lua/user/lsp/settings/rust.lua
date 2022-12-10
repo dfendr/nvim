@@ -10,7 +10,8 @@ local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
 local opts = {
     tools = { -- rust-tools options
         -- callback to execute once rust-analyzer is done initializing the workspace
-        -- the callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
+        runnables = { use_telescope = true },
+
         on_initialized = function()
             vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
                 pattern = { "*.rs" },
@@ -88,7 +89,7 @@ local opts = {
 
             -- whether the hover action window gets automatically focused
             -- default: false
-            auto_focus = false,
+            auto_focus = true,
         },
 
         -- settings for showing the crate graph based on graphviz and the dot
