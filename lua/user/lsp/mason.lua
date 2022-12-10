@@ -110,6 +110,7 @@ for _, server in pairs(servers) do
             return
         end
         rust_tools.setup(rust_opts)
+
         goto continue
     end
 

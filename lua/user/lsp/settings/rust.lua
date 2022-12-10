@@ -9,14 +9,20 @@ local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
 
 local opts = {
     tools = { -- rust-tools options
+        -- callback to execute once rust-analyzer is done initializing the workspace
+        -- the callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
+        on_initialized = function()
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+                pattern = { "*.rs" },
+                callback = function()
+                    vim.lsp.codelens.refresh()
+                end,
+            })
+        end,
 
         -- how to execute terminal commands
         -- options right now: termopen / quickfix
         executor = require("rust-tools/executors").toggleterm,
-
-        -- callback to execute once rust-analyzer is done initializing the workspace
-        -- the callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
-        on_initialized = nil,
 
         -- automatically call rustreloadworkspace when writing to a cargo.toml file.
         reload_workspace_from_cargo_toml = true,
@@ -28,6 +34,13 @@ local opts = {
 
             -- Only show inlay hints for the current line
             only_current_line = true,
+
+            -- Event which triggers a refersh of the inlay hints.
+            -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
+            -- not that this may cause higher CPU usage.
+            -- This option is only respected when only_current_line and
+            -- autoSetHints both are true.
+            only_current_line_autocmd = "CursorHold",
 
             -- whether to show parameter hints with the inlay hints or not
             -- default: true
@@ -162,11 +175,24 @@ local opts = {
     server = {
         -- standalone file support
         -- setting it to false may improve startup time
+        -- cmd = { "rustup", "run", "nightly", os.getenv("HOME") .. "/.local/bin/rust-analyzer" },
+        on_attach = require("user.lsp.handlers").on_attach,
+        capabilities = require("user.lsp.handlers").capabilities,
         standalone = true,
-        ["rust-analyzer"] = {
-            -- enable clippy on save
-            checkOnSave = {
-                command = "clippy",
+        settings = {
+            ["rust-analyzer"] = {
+                lens = { enable = true },
+                cargo = {
+                    allFeatures = true,
+                },
+                completion = {
+                    postfix = {
+                        enable = false,
+                    },
+                },
+                checkOnSave = {
+                    command = "clippy",
+                },
             },
         },
     }, -- rust-analyer options
