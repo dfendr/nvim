@@ -20,7 +20,7 @@ notify.setup {
   render = "default",
 
   -- Default timeout for notifications
-  timeout = 175,
+  timeout = 50,
 
   -- For stages that change opacity this is treated as the highlight behind the window
   -- Set this to either a highlight group or an RGB hex value e.g. "#000000"
@@ -44,7 +44,7 @@ notify.setup {
 vim.notify = notify
 
 local notify_filter = vim.notify
-vim.notify = function(msg, ...)
+notify = function(msg, ...)
   if msg:match "character_offset must be called" then
     return
   end

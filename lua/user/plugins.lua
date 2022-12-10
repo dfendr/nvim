@@ -39,7 +39,7 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    snapshot = "Nov18-2022",
+    -- snapshot = "Dec5-2022",
 })
 
 -- Install your plugins here
@@ -63,14 +63,10 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-cmdline") -- cmdline completions
     use("hrsh7th/cmp-emoji") -- Emoji snippets for...some reason
 
-    -- MINI
-
-    use({ "echasnovski/mini.align", branch = "stable" })
-
     -- Colorsheme
     -- use("luisiacc/gruvbox-baby")
     use("postfen/gruvbox-baby")
-    -- use("sainnhe/gruvbox-material")
+    use("sainnhe/gruvbox-material")
     use("EdenEast/nightfox.nvim")
     use("Shatur/neovim-ayu") -- rust book Ayu theme
 
@@ -111,6 +107,7 @@ return packer.startup(function(use)
     -- Git
     use("lewis6991/gitsigns.nvim")
 
+
     -- DAP
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
@@ -136,7 +133,6 @@ return packer.startup(function(use)
     use("folke/todo-comments.nvim") -- Keyword Highlighting
     use("numToStr/Comment.nvim") -- Comment anywhere anything
 
-    -- Navigation
     -- Editing Support
     use("windwp/nvim-autopairs") -- Bracket pairing
     use("filipdutescu/renamer.nvim") -- VsCode like renaming
@@ -144,10 +140,10 @@ return packer.startup(function(use)
     use("nvim-pack/nvim-spectre") -- Project level replacements/renaming
     use("nmac427/guess-indent.nvim") -- automatically set indentation based on buffer
     use("nat-418/boole.nvim") -- ctrl-a and ctrl-x extension (toggles bools, on/off, letters)
-    -- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
     use("jbyuki/venn.nvim") -- Draw boxes easier
     use("lvimuser/lsp-inlayhints.nvim")
     use("kylechui/nvim-surround")
+    use({ "echasnovski/mini.align", branch = "stable" })
 
     -- Markdown Editing Support
     use({
@@ -208,6 +204,7 @@ end)
 --                        ┌───────────┐
 --                        │GRAVEYARD! │
 ---                       └───────────┘
+-- use("superhawk610/ascii-blocks.nvim") -- :AsciiBlockify - turns +- blocks into nicely formatted ascii blocks
 --use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- coderunner
 --use("sunjon/Shade.nvim") -- Shade unfocused buffers
 -- use("kdheepak/tabline.nvim")
