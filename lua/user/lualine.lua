@@ -76,8 +76,8 @@ end
 
 -- Table that's used in functions to dynamically sets component colors based on mode
 local mode_color = {
-    n = colors.dark_green,
-    i = colors.yellow,
+    n = colors.comment,
+    i = colors.dark_green,
     v = colors.orange,
     [""] = colors.orange,
     V = colors.orange,
@@ -96,7 +96,8 @@ local mode_color = {
     ["r?"] = "",
     ["!"] = "",
     t = "",
-    text = colors.medium_gray,
+    -- text = colors.comment,
+        text = colors.white
 }
 
 local funcs = require("user.functions")
@@ -105,18 +106,20 @@ local daylight = funcs.daylight() -- check time
 -- change colors based on time (only normal mode atm)
 local function n_time_colors()
     if daylight then
-        mode_color.n = colors.dark_green
+        mode_color.n = colors.comment
+        -- mode_color.n = colors.dark_green
         mode_color.text = colors.white
-        return colors.dark_green
+        return
     else
-        mode_color.n = colors.blue_gray
+        mode_color.n = colors.comment
+        -- mode_color.n = colors.blue_gray
         mode_color.text = colors.white2
-        return colors.blue_gray
+        return colors.comment
     end
 end
 
 -- Change the colors over
-n_time_colors()
+-- n_time_colors()
 
 --[[ Mode Icons:     盛滛            ]]
 -- "  "
@@ -141,7 +144,6 @@ end
 local darker_green = (funcs.fade_RGB(colors.blue_gray, colors.bg_dark, 90)) -- TODO: finish the fade function
 
 local background = colors.bg_dark
-local n_color = n_time_colors()
 -- Maybe use these differently than just aliases?
 local i_color = mode_color.i
 local v_color = mode_color.v
@@ -149,8 +151,8 @@ local r_color = mode_color.r
 local c_color = mode_color.c
 local gruvbox_baby_custom = {
     normal = {
-        a = { fg = colors.bg, bg = n_color },
-        b = { fg = mode_color.text, bg = funcs.fade_RGB(n_color, background, 90) },
+        a = { fg = colors.bg, bg = mode_color.n},
+        b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.n, background, 90) },
         c = {
             fg = mode_color.text, --[[ bg = funcs.fade_RGB(n_color, background, 95) ]]
         },
@@ -286,7 +288,7 @@ local diagnostics = {
 local diff = {
     "diff",
     colored = true,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    -- symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
     always_visible = false,
     cond = hide_in_width(80),
     source = diff_source(),
