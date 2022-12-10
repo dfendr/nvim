@@ -97,7 +97,7 @@ local mappings = {
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     h = { "<cmd>split<cr>", "split" },
     N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
-    R = { '<cmd>lua vim.lsp.buf.rename()<cr>', "Rename" },
+    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     w = { "<cmd>w<CR>", "Write" },
     -- h = { "<cmd>nohlsearch<CR>", "No HL" },
     q = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
@@ -129,9 +129,11 @@ local mappings = {
         },
     },
 
-    n = { name = "New...",
-        n = {"<cmd>enew<CR>", "New File" },
-        s = { "<cmd> lua require('scratch').scratch()<cr>", "Create Scratch Buffer" },},
+    n = {
+        name = "New...",
+        n = { "<cmd>enew<CR>", "New File" },
+        s = { "<cmd> lua require('scratch').scratch()<cr>", "Create Scratch Buffer" },
+    },
 
     p = {
         name = "Packer",
@@ -149,6 +151,12 @@ local mappings = {
         r = { '<cmd>lua require("user.functions").toggle_option("relativenumber")<cr>', "Relative" },
         l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
         s = { "<cmd>source %<cr>", "Source Current Buffer" },
+        m = {
+            name = "Misc/Silly",
+            f = { "<cmd> CellularAutomaton make_it_rain<CR>", "Fall" },
+            l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
+            s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
+        },
         S = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
         t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
         o = { '<cmd>lua require("user.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
@@ -258,7 +266,7 @@ local mappings = {
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = {
             name = "Replace",
-            R = {'<cmd>lua require("renamer").rename({empty = true})<cr>', "Rename"},
+            R = { '<cmd>lua require("renamer").rename({empty = true})<cr>', "Rename" },
             r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
             w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
             f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
