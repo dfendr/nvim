@@ -1,7 +1,7 @@
 -- Rust Tools Settings
 -- automatically set inlay hints (type hints)
 
-local path = "~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb"
+-- local path = "~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb"
 -- Dynamically updated by Mason.nvim now
 local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
 local codelldb_path = extension_path .. "codelldb"
@@ -192,7 +192,11 @@ local opts = {
                     },
                 },
                 checkOnSave = {
+                    -- overrideCommand = "cargo", "clippy", "--message-format=json" ,
                     command = "clippy",
+                    -- "--",
+                    -- "-W",
+                    -- "clippy::pedantic",
                 },
             },
         },
