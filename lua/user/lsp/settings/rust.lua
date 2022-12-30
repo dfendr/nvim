@@ -47,6 +47,8 @@ local opts = {
             -- default: true
             show_parameter_hints = true,
 
+            locationLinks = false,
+
             -- prefix for parameter hints
             -- default: "<-"
             parameter_hints_prefix = "<- ",
@@ -182,6 +184,7 @@ local opts = {
         standalone = true,
         settings = {
             ["rust-analyzer"] = {
+                inlayHints = { locationLinks = false },
                 lens = { enable = true },
                 cargo = {
                     allFeatures = true,
@@ -194,9 +197,17 @@ local opts = {
                 checkOnSave = {
                     -- overrideCommand = "cargo", "clippy", "--message-format=json" ,
                     command = "clippy",
-                    -- "--",
-                    -- "-W",
-                    -- "clippy::pedantic",
+                    extraArgs = {
+                        "--",
+                        "-W",
+                        "clippy::all",
+                        -- "-W",
+                        -- "clippy::pedantic",
+                        "-W",
+                        "clippy::unwrap_used",
+                        -- "-A",
+                        -- "clippy::must_use",
+                    },
                 },
             },
         },

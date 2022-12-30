@@ -39,7 +39,6 @@ packer.init({
         end,
     },
     snapshot_path = fn.stdpath("config") .. "/snapshots",
-    -- snapshot = "Dec5-2022",
 })
 
 -- Install your plugins here
@@ -50,6 +49,16 @@ return packer.startup(function(use)
     use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
     use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
     use("kyazdani42/nvim-tree.lua") -- Nvim Tree
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+    })
+
     use("kyazdani42/nvim-web-devicons") -- Nvim Tree Devicons
     use("goolord/alpha-nvim") -- Startup Dashboard
 
@@ -107,13 +116,12 @@ return packer.startup(function(use)
     -- Git
     use("lewis6991/gitsigns.nvim")
 
-
     -- DAP
+    use("simrat39/rust-tools.nvim") -- rust debug adapter
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
     use("theHamsta/nvim-dap-virtual-text")
     use("mfussenegger/nvim-dap-python") -- python debug adapter
-    use("simrat39/rust-tools.nvim") -- rust debug adapter
     use({
         "mfussenegger/nvim-jdtls",
         ft = { "java" },
@@ -145,7 +153,7 @@ return packer.startup(function(use)
     use("kylechui/nvim-surround")
     use({ "echasnovski/mini.align", branch = "stable" })
 
-    -- Markdown Editing Support
+    -- Editing Support
     use({
         "iamcco/markdown-preview.nvim",
         run = function()
@@ -153,6 +161,15 @@ return packer.startup(function(use)
         end,
     })
     use("gaoDean/autolist.nvim") -- auto indent and increment list elements
+    use({
+        "danymat/neogen",
+        config = function()
+            require("neogen").setup({})
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+        -- Uncomment next line if you want to follow only stable versions
+        tag = "*"
+    })
 
     -- Sessions
     use("rmagatti/auto-session")

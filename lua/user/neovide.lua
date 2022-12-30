@@ -60,7 +60,7 @@ vim.cmd([[
 let g:neovide_remember_window_size = v:false
 let g:neovide_profiler = v:false
 let g:neovide_refresh_rate = 120
-let g:neovide_refresh_rate_idle = 5
+let g:neovide_refresh_rate_idle = 10
 let g:neovide_confirm_quit = v:true
 
 
@@ -69,7 +69,10 @@ let g:neovide_cursor_antialiasing = v:true
 let g:neovide_cursor_unfocused_outline_width = 0.125
 ]])
 -- Font
-vim.opt.guifont = { "Fira Code", ":h13:Retina" }
+vim.opt.guifont = { "FiraCode Nerd Font", ":h13" }
+-- vim.opt.guifont = {"Hack:h14:i:#e-subpixelantialias:#h-none"}
+
+
 if vim.fn.has("mac") == 1 then
     vim.cmd("  let g:neovide_input_use_logo          = v:true")
     vim.cmd("  let g:neovide_input_macos_alt_is_meta = v:true")
