@@ -97,7 +97,7 @@ local mode_color = {
     ["!"] = "",
     t = "",
     -- text = colors.comment,
-        text = colors.white
+    text = colors.white,
 }
 
 local funcs = require("user.functions")
@@ -151,7 +151,7 @@ local r_color = mode_color.r
 local c_color = mode_color.c
 local gruvbox_baby_custom = {
     normal = {
-        a = { fg = colors.bg, bg = mode_color.n},
+        a = { fg = colors.bg, bg = mode_color.n },
         b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.n, background, 90) },
         c = {
             fg = mode_color.text, --[[ bg = funcs.fade_RGB(n_color, background, 95) ]]
@@ -318,10 +318,10 @@ local fileformat = {
     "fileformat",
     icons_enabled = true,
     symbols = {
-        unix = " LF", -- usually LF, blank if so
+        -- unix = "LF " , -- usually LF, blank if so
         unix = "", -- usually LF, blank if so
-        dos = " CRLF",
-        mac = " CR",
+        dos = "CRLF ",
+        mac = "CR ",
     },
     -- color = function()
     --     -- auto change color according to neovims mode
@@ -365,8 +365,8 @@ local location = {
     always_visible = false,
     cond = hide_in_width(40),
     fmt = function(str)
-        return " " .. str
-        -- return str
+        -- return " " .. str
+        return str
     end,
 }
 
@@ -383,8 +383,6 @@ local progress = {
     end,
 }
 
-
-
 local filename = {
     "filename",
     always_visible = false,
@@ -393,8 +391,8 @@ local filename = {
     --     return "  "..str
     -- end,
     on_click = function()
-        funcs.open_explorer()
-        vim.cmd("q")
+        -- funcs.open_explorer()
+        -- vim.cmd("q")
     end,
 }
 
@@ -442,7 +440,7 @@ local spaces = {
 
         local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
 
-        if shiftwidth == nil then
+        if shiftwidth == nil or shiftwidth == 4 then
             return ""
         end
 
@@ -521,7 +519,7 @@ lualine.setup({
             encoding,
             fileformat,
         },
-        lualine_y = { location, progress },
+        lualine_y = { spaces, location, progress },
         lualine_z = { { clock } },
     },
 

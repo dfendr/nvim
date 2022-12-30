@@ -19,6 +19,7 @@ require("user.colorscheme")
 require("user.bufferline")
 require("user.scope")
 require("user.nvim-tree")
+-- require("user.neo-tree") //TODO: Configure and switch to neo-tree
 require("user.alpha")
 require("user.notify")
 require("user.lsp")
@@ -62,8 +63,9 @@ return
 -- require "user.shade"
 --require "user.winbar" needs NAVIC highlight groups
 
--- TODO: 1. Add Treesitter/LSP indicator for Lualine
--- TODO: 2. Spaces indicator (only if tabs or spaces!=4)
--- TODO: 3. Create Large File autocommand that disables events n treesitter.
--- TODO: 4. Organize Lua files (?)
--- TODO: 5. Get C#/Java working
+-- TODO: 1. Swap to Lazy.nvim from Packer.nvim
+-- TODO: 2. Add Treesitter/LSP indicator for Lualine
+-- TODO: 3. Spaces indicator (only if tabs or spaces!=4)
+-- TODO: 4. Create Large File autocommand that disables events n treesitter.
+-- TODO: 5. Organize Lua files (?)
+-- TODO: 6. Get C#/Java working
