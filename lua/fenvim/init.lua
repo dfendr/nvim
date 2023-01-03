@@ -14,9 +14,4 @@ return {
         config = true,
         cmd = { "Zenmode", "Twilight" },
     },
-    {
-        "LintaoAmons/scratch.nvim",
-        cmd = "Scratch",
-        config = true,
-    },
 }

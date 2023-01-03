@@ -74,7 +74,24 @@ return {
     },
     {
         "folke/todo-comments.nvim",
-        event = "BufReadPre",
+        event = "BufReadPost",
+        cmd = { "TodoTrouble", "TodoTelescope" },
+        keys = {
+            {
+                "]t",
+                function()
+                    require("todo-comments").jump_next()
+                end,
+                desc = "Next todo comment",
+            },
+            {
+                "[t",
+                function()
+                    require("todo-comments").jump_prev()
+                end,
+                desc = "Previous todo comment",
+            },
+        },
         config = function()
             require("fenvim.editor.todo-comments").config()
         end,
@@ -110,5 +127,9 @@ return {
         build = function()
             vim.fn["mkdp#util#install"]()
         end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        config = true,
     },
 }

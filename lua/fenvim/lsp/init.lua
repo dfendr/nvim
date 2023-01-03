@@ -1,5 +1,9 @@
 return {
     {
+        "b0o/schemastore.nvim",
+        "jose-elias-alvarez/typescript.nvim"
+    },
+    {
         "neovim/nvim-lspconfig",
         event = "BufReadPre",
         dependencies = {
@@ -38,7 +42,6 @@ return {
             },
         },
     },
-    --{require("fenvim.lsp.handlers").config(),},
     -- {
     --     "j-hui/fidget.nvim",
     --     event = "BufReadPre",
@@ -49,7 +52,7 @@ return {
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufNew" },
         config = function()
             require("fenvim.lsp.mason").config()
         end,
@@ -57,6 +60,7 @@ return {
 
     {
         "jose-elias-alvarez/null-ls.nvim",
+        dependencies = "jose-elias-alvarez/typescript.nvim",
         event = "BufReadPre",
         config = function()
             require("fenvim.lsp.null-ls").config()
