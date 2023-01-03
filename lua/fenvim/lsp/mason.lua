@@ -1,5 +1,4 @@
-local M = {
-}
+local M = {}
 M.tools = {
     "prettierd",
     "stylua",
@@ -14,7 +13,7 @@ M.tools = {
     "flake8",
     "codelldb",
     "clang-format",
-    "markdownlint"
+    "markdownlint",
 }
 
 function M.check()
@@ -39,6 +38,7 @@ function M.config()
     end
 
     local servers = {
+        "tsserver",
         "clangd",
         "sumneko_lua",
         "tsserver",
@@ -51,6 +51,7 @@ function M.config()
         "marksman",
         "perlnavigator",
         "awk_ls",
+        "tailwindcss",
     }
 
     -- Package installation folder
@@ -90,8 +91,8 @@ function M.config()
 
         server = vim.split(server, "@", {})[1]
         if server == "jsonls" then
-            -- local jsonls_opts = require("user.lsp.settings.jsonls")
-            -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+            local jsonls_opts = require("fenvim.lsp.settings.jsonls")
+            opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
         end
 
         if server == "omnisharp" then
@@ -102,6 +103,11 @@ function M.config()
         if server == "bash-language-server" then
             local bash_opts = require("fenvim.lsp.settings.bash")
             opts = vim.tbl_deep_extend("force", bash_opts, opts)
+        end
+
+        if server == "tailwindcss" then
+            -- local tailwindcss_opts = require("fenvim.lsp.settings.tailwindcss")
+            -- opts = vim.tbl_deep_extend("force", tailwindcss_opts, opts)
         end
 
         if server == "yamlls" then
@@ -121,8 +127,10 @@ function M.config()
         end
 
         if server == "tsserver" then
+            -- typescript setup by typescript.nvim
             local tsserver_opts = require("fenvim.lsp.settings.tsserver")
-            opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+            require("typescript").setup({ server = opts, tsserver_opts })
+            goto continue
         end
 
         if server == "pyright" then
@@ -148,9 +156,6 @@ function M.config()
 
         if server == "perlnavigator" then
             local perl_opts = require("fenvim.lsp.settings.perl")
-            -- vim.notify("MASON INIT")
-            -- require("lspconfig").perlnavigator.setup({})
-            -- goto continue
             opts = vim.tbl_deep_extend("force", perl_opts, opts)
         end
 

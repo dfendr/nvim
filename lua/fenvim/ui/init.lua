@@ -1,3 +1,8 @@
+local noice_toggle = true
+if vim.g.neovide then
+    noice_toggle = false
+end
+
 return {
     -- "MunifTanjim/nui.nvim",
     {
@@ -10,15 +15,11 @@ return {
         -- bufferline
         "akinsho/nvim-bufferline.lua",
         event = "BufAdd",
+        -- Keeps buffers and tabs scoped/separate
+        dependencies = { "tiagovla/scope.nvim", config = true },
         config = function()
             require("fenvim.ui.bufferline").config()
         end,
-    },
-    {
-        -- Keeps buffers and tabs scoped/separate
-        "tiagovla/scope.nvim",
-        event = "WinNew",
-        config = true,
     },
 
     {
@@ -48,7 +49,7 @@ return {
         -- noicer ui
         "folke/noice.nvim",
         event = "VeryLazy",
-        enabled = true,
+        enabled = noice_toggle,
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
@@ -69,5 +70,9 @@ return {
         config = function()
             require("fenvim.ui.scrollbar").config()
         end,
+    },
+    {
+        "shortcuts/no-neck-pain.nvim",
+        version = "*",
     },
 }

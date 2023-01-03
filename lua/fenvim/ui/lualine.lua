@@ -7,12 +7,10 @@ function M.config()
         return
     end
 
-    --[[  lessonl nellons ]]
-
     -- A lot of this stolen from chris@machine & devaslife
     -- TODO: work on this guy some more. Can do some cool stuff
 
-    local lualine_scheme = "gruvbox_baby_custom"
+    local lualine_scheme = vim.api.nvim_command_output("colo")
     local colors = {
         dark = "#202020",
         foreground = "#EBDBB2",
@@ -53,7 +51,7 @@ function M.config()
         colors.purple = "#b16286"
     end
 
-    if lualine_scheme == "gruvbox_baby_custom" then
+    if lualine_scheme == "gruvbox-baby" then
         colors.dark = "#202020"
         colors.foreground = "#EBDBB2"
         colors.bg = "#282828"

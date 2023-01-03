@@ -17,6 +17,7 @@ function M.config()
             "TelescopePrompt",
             "noice",
             "notify",
+            "NvimTree"
         },
         marks = {
           Search = { color = colors.orange },

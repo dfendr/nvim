@@ -124,37 +124,6 @@ function M.smart_quit()
     end
 end
 
-function M.daylight()
-    if tonumber(os.date("%H")) < 17 and 9 <= tonumber(os.date("%H")) then
-        return true
-    else
-        return false
-    end
-end
-
-function M.Dec2Hex(nValue) -- http://www.indigorose.com/forums/threads/10192-Convert-Hexadecimal-to-Decimal
-    if type(nValue) == "string" then
-        nValue = tonumber(nValue)
-    end
-    local nHexVal = string.format("%X", nValue) -- %X returns uppercase hex, %x gives lowercase letters
-    local sHexVal = nHexVal .. ""
-    if nValue < 16 then
-        return "0" .. tostring(sHexVal)
-    else
-        return sHexVal
-    end
-end
-
-function M.fade_RGB(colour1, colour2, percentage)
-    --- source https://stackoverflow.com/questions/35189592/lua-color-fading-function
-    local r1, g1, b1 = string.match(colour1, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
-    local r2, g2, b2 = string.match(colour2, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
-    local r3 = tonumber(r1, 16) * (100 - percentage) / 100.0 + tonumber(r2, 16) * percentage / 100.0
-    local g3 = tonumber(g1, 16) * (100 - percentage) / 100.0 + tonumber(g2, 16) * percentage / 100.0
-    local b3 = tonumber(b1, 16) * (100 - percentage) / 100.0 + tonumber(b2, 16) * percentage / 100.0
-    return "#" .. M.Dec2Hex(r3) .. M.Dec2Hex(g3) .. M.Dec2Hex(b3)
-end
-
 function M.wrap_in_quotes(string)
     return '"' .. string .. '"'
 end
@@ -237,6 +206,75 @@ function M.lsp_rename()
             )
         )
     end)
+end
+
+function M.adjust_color(color, amount)
+    color = vim.trim(color)
+    color = color:gsub("#", "")
+    local first = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(1, 2), 16) + amount)))):sub(-2)
+    local second = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(3, 4), 16) + amount)))):sub(-2)
+    local third = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(5, -1), 16) + amount)))):sub(-2)
+    return "#" .. first .. second .. third
+end
+
+--- Picks a random element of a table
+---@param table table
+---@return any Random-element
+-- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
+function M.random_element(table)
+    math.randomseed(os.clock())
+    local index = math.random() * #table
+    return table[math.floor(index) + 1]
+end
+
+--- Darkens a color by a certain value
+---@param color string
+---@param amount number
+---@return string color
+-- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
+function M.darken_color(color, amount)
+    return M.adjust_color(color, -amount)
+end
+
+--- Lightens a color by a certain value
+---@param color string
+---@param amount number
+---@return string color
+-- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
+function M.lighten_color(color, amount)
+    return M.adjust_color(color, amount)
+end
+
+function M.daylight()
+    if tonumber(os.date("%H")) < 17 and 9 <= tonumber(os.date("%H")) then
+        return true
+    else
+        return false
+    end
+end
+
+-- http://www.indigorose.com/forums/threads/10192-Convert-Hexadecimal-to-Decimal
+function M.Dec2Hex(nValue)
+    if type(nValue) == "string" then
+        nValue = tonumber(nValue)
+    end
+    local nHexVal = string.format("%X", nValue) -- %X returns uppercase hex, %x gives lowercase letters
+    local sHexVal = nHexVal .. ""
+    if nValue < 16 then
+        return "0" .. tostring(sHexVal)
+    else
+        return sHexVal
+    end
+end
+
+--- source https://stackoverflow.com/questions/35189592/lua-color-fading-function
+function M.fade_RGB(colour1, colour2, percentage)
+    local r1, g1, b1 = string.match(colour1, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
+    local r2, g2, b2 = string.match(colour2, "#([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])([0-9A-F][0-9A-F])")
+    local r3 = tonumber(r1, 16) * (100 - percentage) / 100.0 + tonumber(r2, 16) * percentage / 100.0
+    local g3 = tonumber(g1, 16) * (100 - percentage) / 100.0 + tonumber(g2, 16) * percentage / 100.0
+    local b3 = tonumber(b1, 16) * (100 - percentage) / 100.0 + tonumber(b2, 16) * percentage / 100.0
+    return "#" .. M.Dec2Hex(r3) .. M.Dec2Hex(g3) .. M.Dec2Hex(b3)
 end
 
 return M

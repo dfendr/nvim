@@ -6,6 +6,10 @@ local M = {
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
+        {
+            "windwp/nvim-ts-autotag",
+            config = true,
+        },
     },
     lazy = true,
     event = "BufReadPost",
@@ -18,7 +22,20 @@ function M.config()
 
     --local configs = require("nvim-treesitter.configs")
     configs.setup({
-        ensure_installed = { "python", "c", "c_sharp", "bash", "rust", "lua", "javascript", "markdown", "typescript" },
+        ensure_installed = {
+            "python",
+            "c",
+            "c_sharp",
+            "bash",
+            "rust",
+            "lua",
+            "javascript",
+            "markdown",
+            "typescript",
+            "tsx",
+            "css",
+            "html",
+        },
         sync_install = false,
         ignore_install = { "" }, -- List of parsers to ignore installing
         highlight = {

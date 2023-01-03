@@ -42,7 +42,7 @@ function M.config()
         extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
         zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 
-        padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+        padding = " ", -- character to pad on left and right of signature can be ' ', or '|'  etc
 
         transparency = nil, -- disabled by default, allow floating win transparent value 1~100
         shadow_blend = 36, -- if you using shadow as border use this set the opacity

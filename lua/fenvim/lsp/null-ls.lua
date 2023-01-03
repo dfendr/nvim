@@ -28,6 +28,7 @@ function M.config()
             diagnostics.markdownlint,
             formatting.shfmt,
             completion.spell.with({ filetypes = { "markdown", ".md" } }),
+            require("typescript.extensions.null-ls.code-actions"),
         },
     })
 end
