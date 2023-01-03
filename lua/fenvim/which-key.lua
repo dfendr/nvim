@@ -19,7 +19,7 @@ function M.config()
             presets = {
                 operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
                 motions = false, -- adds help for motions
-                text_objects = false, -- help for text objects triggered after entering an operator
+                text_objects = true, -- help for text objects triggered after entering an operator
                 windows = true, -- default bindings on <c-w>
                 nav = true, -- misc bindings to work with windows
                 z = true, -- bindings for folds, spelling and others prefixed with z
@@ -61,6 +61,7 @@ function M.config()
         ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
         hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
         show_help = false, -- show help message on the command line when the popup is visible
+        show_keys = false,
         triggers = "auto", -- automatically setup triggers
         -- triggers = {"<leader>"} -- or specify a list manually
         triggers_blacklist = {
@@ -71,7 +72,6 @@ function M.config()
             v = { "j", "k" },
         },
     }
-    -- //TODO: Get Align mapped to whichkey
     local xmappings = {
         S = {
             "<cmd> lua require('silicon').visualise_api({show_buf = true, to_clip = true})<cr>",
@@ -102,6 +102,8 @@ function M.config()
         },
         h = { "<cmd>split<cr>", "split" },
         N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
+
+        P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         w = { "<cmd>w<CR>", "Write" },
         -- h = { "<cmd>nohlsearch<CR>", "No HL" },
@@ -150,6 +152,7 @@ function M.config()
         },
         o = {
             name = "Options",
+            b = { '<cmd>lua require("utils.functions").toggle_tabline()<cr>', "Toggle Bufferline" },
             c = { "<cmd>lua vim.g.cmp_active=false<cr>", "Completion off" },
             C = { "<cmd>lua vim.g.cmp_active=true<cr>", "Completion on" },
             w = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
@@ -157,16 +160,18 @@ function M.config()
             l = { '<cmd>lua require("utils.functions").toggle_option("cursorline")<cr>', "Cursorline" },
             s = { "<cmd>source %<cr>", "Source Current Buffer" },
             m = {
-                name = "Misc/Silly",
-                f = { "<cmd> CellularAutomaton make_it_rain<CR>", "Fall" },
-                l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
-                s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
+                name = "Misc/Goofs",
+                -- f = { "<cmd> CellularAutomaton make_it_rain<CR>", "Fall" },
+                -- l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
+                -- s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
             },
             S = { '<cmd>lua require("utils.functions").toggle_option("spell")<cr>', "Spell" },
-            t = { '<cmd>lua require("utils.functions").toggle_tabline()<cr>', "Tabline" },
             o = { '<cmd>lua require("utils.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
             O = { "<cmd>e $MYVIMRC | :cd %:p:h <CR>", "Open Options" },
             v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
+            z = { "<cmd>ZenMode<cr>", "Zen" },
+            t = { "<cmd>Twilight<cr>", "Twilight" },
+            n = {"<cmd>NoNeckPain<cr>", "NoNeckPain--Center"}
         },
         f = {
             name = "Find",
@@ -332,8 +337,6 @@ function M.config()
 
         z = {
             name = "Zen",
-            z = { "<cmd>ZenMode<cr>", "Zen" },
-            t = { "<cmd>Twilight<cr>", "Twilight" },
         },
     }
 

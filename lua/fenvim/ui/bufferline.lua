@@ -1,4 +1,5 @@
-local M = {}
+local M = {
+}
 function M.config()
     local status_ok, bufferline = pcall(require, "bufferline")
     if not status_ok then

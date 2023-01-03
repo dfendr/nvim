@@ -17,5 +17,5 @@ require("lazy").setup("fenvim", {
 })
 
 if vim.g.neovide then
-    require("user.neovide")
+    require("fenvim.ui.neovide")
 end

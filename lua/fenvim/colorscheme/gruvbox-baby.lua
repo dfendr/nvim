@@ -67,6 +67,7 @@ function M.config()
 
         -- General
         TSBoolean = { fg = pink },
+        Boolean = { fg = pink },
         TSFunction = { fg = bright_yellow, style = "bold" },
         TSNumber = { fg = pink },
         TSFuncBuiltin = { fg = og_orange2 },
@@ -79,7 +80,7 @@ function M.config()
         VertSplit = { fg = medium_gray }, -- Window Splits
         Special = { style = "NONE" },
         -- NormalNC -- my key to "Shade" sort of function
-
+        jsonKeyword = { fg = light_blue},
     }
 
     -- Enable telescope theme
