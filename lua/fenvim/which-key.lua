@@ -156,6 +156,7 @@ function M.config()
             c = { "<cmd>lua vim.g.cmp_active=false<cr>", "Completion off" },
             C = { "<cmd>lua vim.g.cmp_active=true<cr>", "Completion on" },
             w = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
+            W = {"<cmd>WindowsToggleAutowidth<cr>", "Toggle Window Autowidth"},
             r = { '<cmd>lua require("utils.functions").toggle_option("relativenumber")<cr>', "Relative" },
             l = { '<cmd>lua require("utils.functions").toggle_option("cursorline")<cr>', "Cursorline" },
             s = { "<cmd>source %<cr>", "Source Current Buffer" },
@@ -212,7 +213,7 @@ function M.config()
         d = {
             name = "Debug",
             b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-            c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+            c = { "<cmd>DapContinue<cr>", "Continue" },
 
             i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
             o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },

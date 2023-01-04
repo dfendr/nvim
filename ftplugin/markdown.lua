@@ -15,14 +15,13 @@ local opts = {
 local mappings = {
     L = {
         name = "Markdown",
-        -- h = { "<cmd>RustToggleInlayHints<Cr>", "Toggle Hints" },
         p = { "<cmd>MarkdownPreviewToggle<Cr>", "Markdown Preview On/Off" },
+        P = { "<cmd>PasteImg<Cr>", "Paste Image" },
     },
 }
 
 -- vim.cmd[[set formatoptions+=r]]
 -- vim.cmd[[set comments-=fb:-]]
 -- vim.cmd[[set comments+=:-]]
-
 
 which_key.register(mappings, opts)

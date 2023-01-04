@@ -1,7 +1,8 @@
 return {
     {
-        "b0o/schemastore.nvim",
-        "jose-elias-alvarez/typescript.nvim"
+        { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
+        { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
+        { "mfussenegger/nvim-jdtls", ft = { "java" } },
     },
     {
         "neovim/nvim-lspconfig",

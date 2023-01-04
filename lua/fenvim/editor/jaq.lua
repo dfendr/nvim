@@ -26,6 +26,7 @@ function M.config()
             external = {
                 typescript = "deno run %",
                 javascript = "node %",
+                -- java = 'cd $dir && javac "$filePath" && java $fileBase',
                 -- markdown = "glow %",
                 python = "cd $dir && python3 $filePath",
                 -- rust = "rustc % && ./$fileBase && rm $fileBase",

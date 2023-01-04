@@ -2,6 +2,7 @@ local M = {}
 
 local merge_tb = vim.tbl_deep_extend
 
+
 vim.cmd([[
   function Test()
     %SnipRun

@@ -5,6 +5,7 @@ local M = {
     dependencies = {
         -- "windwp/nvim-autopairs",
         "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
@@ -91,12 +92,11 @@ function M.config()
     -- }
     -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-    local cmp = require("cmp")
     local luasnip = require("luasnip")
     cmp.setup({
-        -- completion = {
-        --     completeopt = "menu,menuone,noinsert",
-        -- },
+        completion = {
+            completeopt = "menu,menuone,noinsert",
+        },
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body) -- For `luasnip` users.

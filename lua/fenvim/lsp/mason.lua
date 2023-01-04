@@ -14,6 +14,8 @@ M.tools = {
     "codelldb",
     "clang-format",
     "markdownlint",
+    "flake8",
+    "debugpy",
 }
 
 function M.check()
@@ -52,19 +54,12 @@ function M.config()
         "perlnavigator",
         "awk_ls",
         "tailwindcss",
+        "jdtls"
     }
-
-    -- Package installation folder
-    -- local install_root_dir = vim.fn.stdpath "data" .. "/mason"
 
     local settings = {
         ui = {
             border = "rounded",
-            icons = {
-                -- package_installed = "◍",
-                -- package_pending = "◍",
-                -- package_uninstalled = "◍",
-            },
         },
         log_level = vim.log.levels.INFO,
         max_concurrent_installers = 4,
@@ -121,13 +116,11 @@ function M.config()
         end
 
         if server == "clangd" then
-            -- goto continue
             local clangd = require("fenvim.lsp.settings.clangd")
             opts = vim.tbl_deep_extend("force", clangd, opts)
         end
 
         if server == "tsserver" then
-            -- typescript setup by typescript.nvim
             local tsserver_opts = require("fenvim.lsp.settings.tsserver")
             require("typescript").setup({ server = opts, tsserver_opts })
             goto continue
@@ -140,18 +133,14 @@ function M.config()
 
         if server == "rust_analyzer" then
             local rust_opts = require("fenvim.lsp.settings.rust")
-            -- opts = vim.tbl_deep_extend("force", rust_opts, opts)
             local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
-            if not rust_tools_status_ok then
-                return
-            end
             rust_tools.setup(rust_opts)
 
             goto continue
         end
 
         if server == "jdtls" then
-            goto continue
+            -- goto continue
         end
 
         if server == "perlnavigator" then
