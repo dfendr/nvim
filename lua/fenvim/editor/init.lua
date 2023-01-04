@@ -54,7 +54,7 @@ return {
     },
     {
         "is0n/jaq-nvim",
-        event = "BufReadPost",
+        event = "VeryLazy",
         config = function()
             require("fenvim.editor.jaq").config()
         end,
@@ -120,7 +120,8 @@ return {
         -- config = function()
         --     require("fenvim.editor.venn").config()
         -- end,
-        -- cmd = "Toggle_venn",
+        -- cmd = "lua require(fenvim.editor.venn).Toggle_venn()",
+        -- event = "Buf"
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -131,5 +132,6 @@ return {
     {
         "windwp/nvim-ts-autotag",
         config = true,
+        ft = { "typescript", "html", "tsx", "vue", "svelte", "php", "rescript" },
     },
 }

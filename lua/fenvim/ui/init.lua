@@ -1,4 +1,4 @@
-local noice_toggle = true
+local noice_toggle = false
 if vim.g.neovide then
     noice_toggle = false
 end
@@ -38,12 +38,12 @@ return {
         end,
     },
 
-    -- {
-    --     "j-hui/fidget.nvim",
-    --     event = "BufReadPre",
-    --     config = true,
-    --     enabled = false,
-    -- },
+    {
+        "j-hui/fidget.nvim",
+        event = "BufReadPre",
+        config = true,
+        enabled = true,
+    },
 
     {
         -- noicer ui

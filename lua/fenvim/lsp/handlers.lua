@@ -11,17 +11,22 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
     local icons = require("fenvim.ui.icons")
-    local signs = {
-
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-    }
-
-    for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
+    -- local signs = {
+    --
+    --     { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+    --     { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+    --     { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+    --     { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+    -- }
+    -- Just highlight the number with the proper color instead of a sign
+    vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticError" })
+    vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticWarn" })
+    vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticHint" })
+    vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "", numhl = "DiagnosticInfo" })
+    --
+    -- for _, sign in ipairs(signs) do
+    --     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    -- end
 
     local config = {
         -- disable virtual text
@@ -40,9 +45,7 @@ M.setup = function()
         -- },
 
         -- show signs
-        signs = {
-            active = signs,
-        },
+        signs = { active = false },
         update_in_insert = false,
         underline = true,
         severity_sort = true,
@@ -60,17 +63,17 @@ M.setup = function()
 
     vim.diagnostic.config(config)
 
-    -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    --     border = "rounded",
-    --     -- width = 60,
-    --     -- height = 30,
-    -- })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+        -- width = 60,
+        -- height = 30,
+    })
     --
-    -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    --     border = "rounded",
-    --     -- width = 60,
-    --     -- height = 30,
-    -- })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+        -- width = 60,
+        -- height = 30,
+    })
 end
 
 local function lsp_keymaps(bufnr)
