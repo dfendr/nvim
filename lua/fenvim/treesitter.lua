@@ -6,10 +6,6 @@ local M = {
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
-        {
-            "windwp/nvim-ts-autotag",
-            config = true,
-        },
     },
     lazy = true,
     event = "BufReadPost",
