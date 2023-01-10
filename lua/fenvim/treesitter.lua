@@ -36,8 +36,8 @@ function M.config()
         ignore_install = { "" }, -- List of parsers to ignore installing
         highlight = {
             enable = true, -- false will disable the whole extension
-            disable = { "text", "txt" }, -- list of language that will be disabled
-            additional_vim_regex_highlighting = true,
+            disable = { "text", "txt", "csv" }, -- list of language that will be disabled
+            additional_vim_regex_highlighting = false,
         },
         rainbow = {
             enable = true,
