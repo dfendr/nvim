@@ -53,7 +53,8 @@ function M.config()
         "marksman",
         "perlnavigator",
         "awk_ls",
-        "tailwindcss",
+        -- "tailwindcss",
+        "r_language_server",
         "jdtls"
     }
 

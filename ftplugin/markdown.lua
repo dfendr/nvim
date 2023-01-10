@@ -11,6 +11,9 @@ local opts = {
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
 }
+vim.cmd("setlocal shiftwidth=2")
+vim.cmd("setlocal tabstop=2")
+vim.cmd("setlocal scrolloff=10")
 
 local mappings = {
     L = {

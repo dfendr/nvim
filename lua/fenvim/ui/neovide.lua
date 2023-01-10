@@ -77,7 +77,7 @@ if vim.fn.has("mac") == 1 then
     vim.cmd("  let g:neovide_input_use_logo          = v:true")
     vim.cmd("  let g:neovide_input_macos_alt_is_meta = v:true")
     vim.cmd([[ let g:neovide_transparency            = 0.98
-               let g:transparency                    = 0.95
+               let g:transparency                    = 0.98
                let g:neovide_floating_blur_amount_x  = 1.0
                let g:neovide_floating_blur_amount_y  = 1.0
                let g:neovide_cursor_vfx_mode = "pixiedust"
