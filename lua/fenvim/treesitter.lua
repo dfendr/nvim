@@ -2,7 +2,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
-        "p00f/nvim-ts-rainbow",
+        "mrjones2014/nvim-ts-rainbow",
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
