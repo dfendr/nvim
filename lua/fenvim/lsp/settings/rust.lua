@@ -10,20 +10,13 @@ local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
 local opts = {
     tools = { -- rust-tools options
         -- callback to execute once rust-analyzer is done initializing the workspace
-        runnables = { use_telescope = true },
-
-        on_initialized = function()
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-                pattern = { "*.rs" },
-                callback = function()
-                    vim.lsp.codelens.refresh()
-                end,
-            })
-        end,
+        -- runnables = { use_telescope = true },
 
         -- how to execute terminal commands
+        --
         -- options right now: termopen / quickfix
         executor = require("rust-tools/executors").toggleterm,
+        single_file_support = true,
 
         -- automatically call rustreloadworkspace when writing to a cargo.toml file.
         reload_workspace_from_cargo_toml = true,
@@ -198,7 +191,6 @@ local opts = {
                     },
                 },
                 checkOnSave = {
-                    -- overrideCommand = "cargo", "clippy", "--message-format=json" ,
                     command = "clippy",
                     extraArgs = {
                         "--",
