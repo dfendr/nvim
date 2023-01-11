@@ -1,3 +1,4 @@
+
 return {
     {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
@@ -10,23 +11,6 @@ return {
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "simrat39/rust-tools.nvim",
-            { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-            {
-                "folke/neodev.nvim",
-                config = {
-                    debug = true,
-                    experimental = { pathStrict = true },
-                    library = { runtime = "~/projects/neovim/runtime/" },
-                },
-            },
-
-            debug = true,
-            experimental = {
-                pathStrict = true,
-            },
-            library = {
-                runtime = "~/projects/neovim/runtime/",
-            },
         },
 
         config = function()
@@ -43,11 +27,6 @@ return {
             },
         },
     },
-    -- {
-    --     "j-hui/fidget.nvim",
-    --     event = "BufReadPre",
-    --     config = true,
-    -- },
     {
         "williamboman/mason.nvim",
         dependencies = {
