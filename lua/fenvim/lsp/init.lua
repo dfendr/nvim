@@ -1,4 +1,3 @@
-
 return {
     {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
@@ -41,7 +40,7 @@ return {
     {
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = "jose-elias-alvarez/typescript.nvim",
-        event = "BufReadPre",
+        event = "BufReadPost",
         config = function()
             require("fenvim.lsp.null-ls").config()
         end,

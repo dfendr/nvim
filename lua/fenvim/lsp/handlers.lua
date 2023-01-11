@@ -30,6 +30,8 @@ M.setup = function()
 
     local config = {
         -- disable virtual text
+        on_attach_callback = nil,
+        on_init_callback = nil,
         virtual_lines = false, --[[ { only_current_line = false }, ]]
         virtual_text = false,
         -- virtual_text = {
@@ -112,6 +114,7 @@ end
 
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
+    require("fenvim.lsp.utils").setup_codelens_refresh()
 
     if client.name == "jdt.ls" then
         vim.lsp.codelens.refresh()
@@ -155,6 +158,6 @@ function M.remove_augroup(name)
     end
 end
 
-vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]])
+-- vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]])
 
 return M
