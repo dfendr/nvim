@@ -1,6 +1,5 @@
 local M = {
     "ahmedkhalf/project.nvim",
-    event = "BufReadPost",
 }
 
 function M.config()
@@ -13,7 +12,7 @@ function M.config()
         --- This is on by default since it's currently the expected behavior.
         active = true,
 
-        on_config_done = nil,
+        -- on_config_done = nil,
 
         ---@usage set to true to disable setting the current-woriking directory
         --- Manual mode doesn't automatically change your root directory, so you have
