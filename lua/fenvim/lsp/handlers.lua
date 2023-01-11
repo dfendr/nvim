@@ -65,14 +65,14 @@ M.setup = function()
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
-        width = 60,
-        height = 30,
+        -- width = 60,
+        -- height = 30,
     })
     --
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = "rounded",
-        width = 60,
-        height = 30,
+        -- width = 60,
+        -- height = 30,
     })
 end
 
@@ -108,14 +108,10 @@ local function lsp_keymaps(bufnr)
         '<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR, border = "rounded" })<CR>',
         opts
     )
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
-    -- if client.name == "tsserver" then
-    --     --require("lsp-inlayhints").on_attach(bufnr, client)
-    -- end
 
     if client.name == "jdt.ls" then
         vim.lsp.codelens.refresh()

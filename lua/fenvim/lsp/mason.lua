@@ -1,4 +1,5 @@
 local M = {}
+
 M.tools = {
     "prettierd",
     "stylua",
@@ -53,9 +54,8 @@ function M.config()
         "marksman",
         "perlnavigator",
         "awk_ls",
-        -- "tailwindcss",
         "r_language_server",
-        "jdtls"
+        "jdtls",
     }
 
     local settings = {
@@ -136,7 +136,6 @@ function M.config()
             local rust_opts = require("fenvim.lsp.settings.rust")
             local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
             rust_tools.setup(rust_opts)
-
             goto continue
         end
 
