@@ -13,8 +13,17 @@ local opts = {
         -- runnables = { use_telescope = true },
 
         -- how to execute terminal commands
-        --
-        -- options right now: termopen / quickfix
+
+        on_initialized = function(_)
+            -- require("fenvim.lsp.lsp-signature").config()
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+                pattern = { "*.rs" },
+                callback = function()
+                    vim.lsp.codelens.refresh()
+                end,
+            })
+        end,
+
         executor = require("rust-tools/executors").toggleterm,
         single_file_support = true,
 
@@ -172,11 +181,15 @@ local opts = {
     server = {
         -- standalone file support
         -- setting it to false may improve startup time
-        -- cmd = { "rustup", "run", "nightly", os.getenv("HOME") .. "/.local/bin/rust-analyzer" },
+
+        -- Should go under capabilities
+        -- signatureHelpProvider = {
+        --     triggerCharacters = { "(", ",", "<" },
+        -- },
 
         on_attach = require("fenvim.lsp.handlers").on_attach,
         capabilities = require("fenvim.lsp.handlers").capabilities,
-        standalone = true,
+        standalone = false,
         settings = {
             ["rust-analyzer"] = {
                 trace = { server = "verbose" },

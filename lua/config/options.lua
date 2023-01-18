@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local options = {
     -- :help options
+    autoread = true, -- automatically update files if updated elsewhere.
     autochdir = false, -- automatically change nvim path to current buffer
     backup = false, -- creates a backup file
     clipboard = { "unnamedplus", "unnamed" }, -- allows neovim to access the system clipboard
@@ -36,7 +37,8 @@ local options = {
     writebackup = false, -- if file is being edited elsewhere, don't allow editing
     smartindent = true, -- Smart indenting (:help smartindent)
     cursorline = true, -- Highlight current line
-    termguicolors = true,
+    cursorcolumn = false, -- Highlight current col
+    termguicolors = false, -- Theme sets terminal colors.
     relativenumber = true, -- Show relative numbers (on in normal mode due to AutoCmd below)
     number = true, -- Show line numbers on side.
     numberwidth = 2, -- Sets sidenumber width to 2 instead of default 4

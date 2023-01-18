@@ -63,40 +63,14 @@ function M.config()
 
     vim.o.termguicolors = false
     vim.g.gruvbox_baby_background_color = "dark"
-    vim.g.gruvbox_baby_highlights = {
-
-        -- General
-        TSBoolean = { fg = pink },
-        Boolean = { fg = pink },
-        TSFunction = { fg = bright_yellow, style = "bold" },
-        TSNumber = { fg = pink },
-        TSFuncBuiltin = { fg = og_orange2 },
-        TSVariable = { fg = milk },
-        NormalFloat = { bg = dark },
-        FloatBorder = { bg = dark },
-        Search = { bg = comment },
-        MatchParen = { bg = comment }, -- highlight for matching parenthesis
-        TSStringEscape = { fg = pink },
-        VertSplit = { fg = medium_gray }, -- Window Splits
-        Special = { style = "NONE" },
-        -- NormalNC -- my key to "Shade" sort of function
-        jsonKeyword = { fg = light_blue},
-    }
 
     -- Enable telescope theme
     vim.g.gruvbox_baby_telescope_theme = false
     vim.g.gruvbox_baby_transparent_mode = false
 
-    --::
-
-    -- take off keyword italics
     vim.g.gruvbox_baby_keyword_style = "NONE"
-    -- vim.g.gruvbox_baby_comment_style = "NONE"
-    -- vim.g.gruvbox_baby_function_style = "NONE"
     vim.g.gruvbox_baby_use_original_palette = true
-
     local colorscheme = "gruvbox-baby"
-
     local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
     if not status_ok then
         vim.notify("colorscheme " .. colorscheme .. " not found!")

@@ -18,6 +18,8 @@ if has('nvim')
     let g:terminal_color_0  = "#323434"
     let g:terminal_color_7  = "#e4e2d8"
     let g:terminal_color_8  = "#4f4a36"
+    " let g:terminal_color_8  = "#776a5c"
+
     let g:terminal_color_15 = "#f4f3ef"
   else " &background == 'dark'
     let g:terminal_color_0  = "#1e2d38"
