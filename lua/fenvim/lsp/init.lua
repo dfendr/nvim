@@ -3,6 +3,8 @@ return {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
         { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
         { "mfussenegger/nvim-jdtls", ft = { "java" } },
+        { "ray-x/lsp_signature.nvim" },
+        { "folke/neodev.nvim", config = true },
     },
     {
         "neovim/nvim-lspconfig",
@@ -20,7 +22,7 @@ return {
     {
         "Maan2003/lsp_lines.nvim",
         event = "BufReadPre",
-        config = {
+        opts = {
             text = {
                 done = "✔",
             },
@@ -43,13 +45,6 @@ return {
         event = "BufReadPost",
         config = function()
             require("fenvim.lsp.null-ls").config()
-        end,
-    },
-    {
-        "ray-x/lsp_signature.nvim",
-        event = "BufReadPost",
-        config = function()
-            require("fenvim.lsp.lsp-signature").config()
         end,
     },
 }

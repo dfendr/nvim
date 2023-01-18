@@ -129,7 +129,6 @@ function M.setup_codelens_refresh(client, bufnr)
         buffer = bufnr,
         event = cl_events,
     })
-
     if ok and #cl_autocmds > 0 then
         return
     end

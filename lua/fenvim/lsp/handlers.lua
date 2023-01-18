@@ -7,7 +7,33 @@ if not status_cmp_ok then
     return
 end
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+
+function setup_codelens_refresh(client, bufnr)
+    local status_ok, codelens_supported = pcall(function()
+        return client.supports_method("textDocument/codeLens")
+    end)
+    if not status_ok or not codelens_supported then
+        return
+    end
+    local group = "lsp_code_lens_refresh"
+    local cl_events = { "BufEnter", "InsertLeave" }
+    local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
+        group = group,
+        buffer = bufnr,
+        event = cl_events,
+    })
+    if ok and #cl_autocmds > 0 then
+        return
+    end
+    vim.api.nvim_create_augroup(group, { clear = false })
+    vim.api.nvim_create_autocmd(cl_events, {
+        group = group,
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+    })
+end
 
 M.setup = function()
     local icons = require("fenvim.ui.icons")
@@ -18,7 +44,7 @@ M.setup = function()
     --     { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
     --     { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
     -- }
-    -- Just highlight the number with the proper color instead of a sign
+    -- Just highlight the number with the color instead of a sign
     vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticError" })
     vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticWarn" })
     vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticHint" })
@@ -31,7 +57,13 @@ M.setup = function()
     local config = {
         -- disable virtual text
         on_attach_callback = nil,
-        on_init_callback = nil,
+
+        on_init_callback = function(_)
+            require("fenvim.lsp.lsp-signature").config()
+            -- require("fenvim.lsp.utils").setup_codelens_refresh()
+            setup_codelens_refresh(_)
+        end,
+
         virtual_lines = false, --[[ { only_current_line = false }, ]]
         virtual_text = false,
         -- virtual_text = {
@@ -91,7 +123,8 @@ local function lsp_keymaps(bufnr)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     --vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
@@ -113,8 +146,8 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
     lsp_keymaps(bufnr)
-    require("fenvim.lsp.utils").setup_codelens_refresh()
 
     if client.name == "jdt.ls" then
         vim.lsp.codelens.refresh()
@@ -158,6 +191,6 @@ function M.remove_augroup(name)
     end
 end
 
--- vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]])
+vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]])
 
 return M

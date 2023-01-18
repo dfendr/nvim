@@ -4,6 +4,7 @@ local M = {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
         -- "windwp/nvim-autopairs",
+        -- "hrsh7th/cmp-nvim-lsp-signature-help",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
@@ -165,11 +166,12 @@ function M.config()
         },
 
         sources = {
+            -- { name = "nvim_lsp_signature_help" },
+            { name = "nvim_lsp" },
             { name = "buffer" },
-            { name = "nvim_lsp"},
-            { name = "luasnip"},
-            { name = "path"},
-            { name = "emoji"},
+            { name = "luasnip" },
+            { name = "path" },
+            { name = "emoji" },
             -- { name = "nvim_lua" },
         },
         confirm_opts = {

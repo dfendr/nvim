@@ -71,8 +71,4 @@ return {
             require("fenvim.ui.scrollbar").config()
         end,
     },
-    {
-        "shortcuts/no-neck-pain.nvim",
-        version = "*",
-    },
 }
