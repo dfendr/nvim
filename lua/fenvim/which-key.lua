@@ -172,7 +172,6 @@ function M.config()
             v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
             z = { "<cmd>ZenMode<cr>", "Zen" },
             t = { "<cmd>Twilight<cr>", "Twilight" },
-            n = {"<cmd>NoNeckPain<cr>", "NoNeckPain--Center"}
         },
         f = {
             name = "Find",
@@ -329,7 +328,7 @@ function M.config()
 
         T = {
             name = "Treesitter",
-            h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+            h = { "<cmd>Inspect<cr>", "Inspect Highlight Groups" },
             p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
             r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
             c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },

@@ -20,7 +20,7 @@ return {
         -- True/False toggler
         "nat-418/boole.nvim",
         event = "BufReadPost",
-        config = {
+        opts = {
             mappings = {
                 increment = "<C-a>",
                 decrement = "<C-x>",

@@ -7,7 +7,6 @@ function M.config()
         return
     end
 
-    -- A lot of this stolen from chris@machine & devaslife
     -- TODO: work on this guy some more. Can do some cool stuff
 
     local lualine_scheme = vim.api.nvim_command_output("colo")
@@ -39,7 +38,7 @@ function M.config()
     if lualine_scheme == "gruvbox" then
         colors.gray = "#928374"
         colors.dark_gray = "#3c3836"
-        colors.red = "#cc241d"
+        colors.red = "#CC241D"
         colors.blue = "#458588"
         colors.green = "#427b58"
         colors.cyan = "#8ec07c"
@@ -81,7 +80,7 @@ function M.config()
         v = colors.orange,
         [""] = colors.orange,
         V = colors.orange,
-        c = colors.medium_gray,
+        c = colors.pink,
         no = "",
         s = colors.pink,
         S = colors.pink,
@@ -94,9 +93,8 @@ function M.config()
         r = colors.red,
         rm = "",
         ["r?"] = "",
-        ["!"] = "",
+        ["!"] = colors.light_blue,
         t = "",
-        -- text = colors.comment,
         text = colors.white,
     }
 
@@ -121,7 +119,7 @@ function M.config()
     -- Change the colors over
     -- n_time_colors()
 
-    --[[ Mode Icons:     盛滛            ]]
+    --[[ Mode Icons:     盛滛      ]]
     -- "  "
     -- "  "
     local function day_icon_max()
@@ -145,9 +143,6 @@ function M.config()
 
     local background = colors.bg_dark
     -- Maybe use these differently than just aliases?
-    local i_color = mode_color.i
-    local v_color = mode_color.v
-    local r_color = mode_color.r
     local c_color = mode_color.c
     local gruvbox_baby_custom = {
         normal = {
@@ -161,23 +156,23 @@ function M.config()
 
         insert = {
             a = { fg = colors.bg, bg = mode_color.i },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(i_color, background, 90) },
+            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.i, background, 90) },
             c = { fg = mode_color.text },
         },
         visual = {
             a = { fg = colors.bg, bg = mode_color.v },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(v_color, background, 90) },
+            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.v, background, 90) },
             c = { fg = mode_color.text },
         },
 
         visual_block = {
             a = { fg = colors.bg, bg = mode_color.v },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(v_color, background, 90) },
+            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.v, background, 90) },
             c = { fg = mode_color.text },
         },
         replace = {
             a = { fg = colors.bg, bg = mode_color.r },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(r_color, background, 90) },
+            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.r, background, 90) },
             c = { fg = mode_color.text },
         },
 
@@ -188,7 +183,7 @@ function M.config()
         },
         command = {
             a = { fg = colors.bg, bg = mode_color.c },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(c_color, background, 90) },
+            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.c, background, 90) },
             c = { fg = mode_color.text },
         },
     }

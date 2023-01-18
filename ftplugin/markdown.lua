@@ -22,9 +22,19 @@ local mappings = {
         P = { "<cmd>PasteImg<Cr>", "Paste Image" },
     },
 }
+which_key.register(mappings, opts)
+local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
+
+-- Shorten function name
+-- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
+local map = require("utils").map
+
+-- Remap space as leader key
+--map("", "<Space>", "<Nop>", opts)
+map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts) -- ??
 
 -- vim.cmd[[set formatoptions+=r]]
 -- vim.cmd[[set comments-=fb:-]]
 -- vim.cmd[[set comments+=:-]]
 
-which_key.register(mappings, opts)
