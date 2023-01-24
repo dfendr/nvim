@@ -194,11 +194,11 @@ function M.config()
             val = {
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-                button("r", icons.ui.History .. " Recent Files", ":Telescope oldfiles <CR>"),
+                button("r", icons.ui.History .. " Recent Files", "<cmd>Telescope oldfiles<cr>"),
+                button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                 button("r", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                 button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
-                button("t", icons.ui.List .. " Todo List", ":TodoTelescope<CR>"),
                 -- button("SPC f t", icons.type.String .. " Find Text", ":Telescope live_grep <CR>"),
                 button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
                 button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),

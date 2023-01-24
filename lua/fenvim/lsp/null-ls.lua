@@ -26,6 +26,7 @@ function M.config()
             diagnostics.flake8,
             diagnostics.shellcheck,
             diagnostics.markdownlint,
+            formatting.markdownlint,
             formatting.shfmt,
             completion.spell.with({ filetypes = { "markdown", ".md" } }),
             require("typescript.extensions.null-ls.code-actions"),
