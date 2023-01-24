@@ -98,6 +98,12 @@ return {
     },
     {
         "gaoDean/autolist.nvim",
+        ft = {
+            "markdown",
+            "text",
+            "tex",
+            "plaintex",
+        },
         event = "BufReadPre",
         config = function()
             require("fenvim.editor.autolist").config()

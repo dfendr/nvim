@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>Lh", toggle_hints)
 local mappings = {
     L = {
         name = "Rust",
+        L = {"<cmd>LspStop><cr><cmd>LspStart<cr>", "Start LSP in new workspace"},
         r = { "<cmd>RustRunnables<Cr>", "Runnables" },
         t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
         m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
