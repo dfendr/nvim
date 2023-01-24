@@ -78,6 +78,7 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Files = "",
             Folder = "",
             OpenFolder = "",
+
         },
         git = {
             Add = "",
@@ -139,6 +140,8 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Package = "",
             CircuitBoard = "",
             Repo = "",
+            Word = "",
+
         },
     }
 else

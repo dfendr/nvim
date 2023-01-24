@@ -1,4 +1,4 @@
-local noice_toggle = false
+local noice_toggle = true
 if vim.g.neovide then
     noice_toggle = false
 end
