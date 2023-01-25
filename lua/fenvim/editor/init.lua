@@ -140,4 +140,9 @@ return {
         config = true,
         ft = { "typescript", "html", "tsx", "vue", "svelte", "php", "rescript" },
     },
+    {
+        -- Hex editor
+        "RaafatTurki/hex.nvim",
+        config = true,
+    },
 }
