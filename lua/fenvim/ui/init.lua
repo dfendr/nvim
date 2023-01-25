@@ -1,8 +1,3 @@
-local noice_toggle = true
-if vim.g.neovide then
-    noice_toggle = false
-end
-
 return {
     -- "MunifTanjim/nui.nvim",
     {
@@ -49,7 +44,6 @@ return {
         -- noicer ui
         "folke/noice.nvim",
         event = "VeryLazy",
-        enabled = noice_toggle,
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
