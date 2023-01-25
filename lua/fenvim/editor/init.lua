@@ -144,5 +144,6 @@ return {
         -- Hex editor
         "RaafatTurki/hex.nvim",
         config = true,
+        enabled = vim.loop.os_uname().sysname == 'Darwin',
     },
 }
