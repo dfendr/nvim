@@ -32,25 +32,6 @@ function M.config()
         capabilities = require("fenvim.lsp.handlers").capabilities,
     }
 
-    local servers = {
-        "tsserver",
-        "clangd",
-        "sumneko_lua",
-        "tsserver",
-        "pyright",
-        "yamlls",
-        "bashls",
-        "omnisharp",
-        "rust_analyzer",
-        "jsonls",
-        "marksman",
-        "perlnavigator",
-        "awk_ls",
-        "r_language_server",
-        "jdtls",
-        "html",
-    }
-
     require("mason").setup({
         ui = {
             border = "rounded",
@@ -60,12 +41,28 @@ function M.config()
     })
 
     require("mason-lspconfig").setup({
-        ensure_installed = servers,
+        ensure_installed = {
+            "awk_ls",
+            "bashls",
+            "clangd",
+            "html",
+            "jdtls",
+            "jsonls",
+            "marksman",
+            "omnisharp",
+            "perlnavigator",
+            "pyright",
+            "rust_analyzer",
+            "sumneko_lua",
+            "tsserver",
+            "tsserver",
+            "r_language_server",
+            "yamlls",
+        },
         automatic_installation = true,
     })
 
     require("mason-lspconfig").setup_handlers({
-
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
