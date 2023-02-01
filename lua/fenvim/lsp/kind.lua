@@ -14,7 +14,6 @@ M.icons = {
   Interface = "ﰮ ",
   Keyword = " ",
   Method = "ƒ ",
-
   Property = " ",
   Snippet = "﬌ ",
   Struct = " ",

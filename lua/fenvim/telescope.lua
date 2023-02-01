@@ -12,6 +12,7 @@ local M = {
         "nvim-telescope/telescope-file-browser.nvim",
         "nvim-telescope/telescope-dap.nvim",
         "BurntSushi/ripgrep",
+        "tsakirist/telescope-lazy.nvim",
     },
 }
 
@@ -24,6 +25,7 @@ function M.config()
     local actions = require("telescope.actions")
     telescope.load_extension("media_files")
     telescope.load_extension("fzf")
+    telescope.load_extension("lazy")
     local icons = require("fenvim.ui.icons")
 
     telescope.setup({

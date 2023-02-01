@@ -2,15 +2,12 @@ local M = {}
 
 local settings = require("config.settings")
 
-
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local utils = require("fenvim.lsp.utils")
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
-
-
 
 M.setup = function()
     if settings.lsp.show_diagnostic_signs then
@@ -37,9 +34,10 @@ M.setup = function()
     local config = {
         -- disable virtual text
         on_attach_callback = nil,
-        on_init_callback = function(_)
-            require("fenvim.lsp.lsp-signature").config()
-        end,
+        on_init_callback = nil,
+        -- on_init_callback = function(_)
+        --     require("fenvim.lsp.lsp-signature").config()
+        -- end,
         virtual_lines = false,
         virtual_text = false,
         update_in_insert = false,
@@ -105,6 +103,7 @@ end
 
 M.on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
+    require("fenvim.lsp.lsp-signature").config()
     lsp_keymaps(bufnr)
 
     if client.name == "jdt.ls" then
