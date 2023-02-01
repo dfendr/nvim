@@ -85,7 +85,7 @@ function M.config()
             --         -- [focused and unfocused]. eg: { '|', '|' }
             separator_style = "thin", --[[ | "thin" | { 'any', 'any' }, ]]
             --         enforce_regular_tabs = false | true,
-            always_show_bufferline = true, -- only show when two tabs up
+            always_show_bufferline = false, -- only show when two tabs up
             sort_by = "insert_at_end",
             --             -- add custom logic
             --             return buffer_a.modified > buffer_b.modified

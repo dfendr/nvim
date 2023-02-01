@@ -25,6 +25,8 @@ map("n", "x", '"_x', opts)
 
 -- Select all
 -- map("n", "<C-a>", "gg<S-V>G")
+map("n", "yA", ":0,$y<cr>")
+
 
 -- New Tab/Easy Splits
 -- Tabs --

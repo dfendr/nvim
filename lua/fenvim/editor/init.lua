@@ -1,3 +1,8 @@
+local using_neovide = false
+if vim.g.neovide then
+    using_neovide = true
+end
+
 return {
     {
         -- Auto bracket pairs
@@ -104,7 +109,8 @@ return {
             "tex",
             "plaintex",
         },
-        event = "BufReadPre",
+        event = "BufReadPost",
+        enabled = false,
         config = function()
             require("fenvim.editor.autolist").config()
         end,
@@ -145,6 +151,7 @@ return {
         "RaafatTurki/hex.nvim",
         config = true,
         event = "VeryLazy",
-        enabled = vim.loop.os_uname().sysname == 'Darwin',
+        -- enabled = vim.loop.os_uname().sysname == 'Darwin' and not using_neovide,
+        enabled = false,
     },
 }
