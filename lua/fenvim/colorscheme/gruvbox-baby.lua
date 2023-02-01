@@ -67,7 +67,7 @@ function M.config()
     -- Enable telescope theme
     vim.g.gruvbox_baby_telescope_theme = false
     vim.g.gruvbox_baby_transparent_mode = false
-
+    -- vim.g.gruvbox_baby_comment_style = { style = nil}
     vim.g.gruvbox_baby_keyword_style = "NONE"
     vim.g.gruvbox_baby_use_original_palette = true
     local colorscheme = "gruvbox-baby"

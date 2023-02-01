@@ -20,6 +20,15 @@ function M.config()
         sign_priority = 8, -- sign priority
         -- keywords recognized as todo comments
         keywords = {
+            -- ["*"] = {
+            --     color = note_green,
+            -- },
+            -- ["!"] = {
+            --     color = error_red,
+            -- },
+            -- ["?"] = {
+            --     color = hint_blue,
+            -- },
             FIX = {
                 icon = icons.ui.Bug, -- icon used for the sign, and in search results
                 color = error_red, -- can be a hex color, or a named color (see below)
