@@ -11,7 +11,7 @@ function M.config()
 
     scratch.setup({
         scratch_file_dir = vim.env.HOME .. "/scratch.nvim", -- Where the scratch files will be saved
-        filetypes = { "md", "py", "c", "lua", "js", "ts", "json" }, -- filetypes to select from
+        filetypes = { "md", "py", "json", "lua", "js", "ts", "c" }, -- filetypes to select from
     })
 end
 

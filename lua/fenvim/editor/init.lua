@@ -58,8 +58,18 @@ return {
         end,
     },
     {
+        "CRAG666/code_runner.nvim",
+        event = "VeryLazy",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            require("fenvim.editor.coderunner").config()
+        end,
+    },
+
+    {
         "is0n/jaq-nvim",
         event = "VeryLazy",
+        enabled = false,
         config = function()
             require("fenvim.editor.jaq").config()
         end,

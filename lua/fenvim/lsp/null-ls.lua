@@ -13,7 +13,7 @@ function M.config()
     null_ls.setup({
         debug = false,
         sources = {
-            formatting.prettier.with({ extra_args = {} }),
+            formatting.prettier.with({ extra_args = {"--tab-width", "4"} }),
             formatting.black.with({ command = "black", extra_args = { "--line-length", "79" } }),
             formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
             formatting.clang_format.with({
