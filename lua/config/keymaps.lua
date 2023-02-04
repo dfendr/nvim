@@ -24,8 +24,7 @@ map("n", "x", '"_x', opts)
 -- map("n", "_", "<cmd>nohl<CR>", opts)
 
 -- Select all
--- map("n", "<C-a>", "gg<S-V>G")
-map("n", "yA", ":0,$y<cr>")
+map("n", "yA", ":0,$y<cr>", opts)
 
 
 -- New Tab/Easy Splits

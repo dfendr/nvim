@@ -30,6 +30,7 @@ function M.config()
                 cpp = "g++ % -o $fileBase && ./$fileBase",
                 go = "go run %",
                 javascript = "node %",
+                jl = "cd $dir && julia %",
                 lua = "luajit $filePath",
                 -- java = 'cd $dir && javac "$filePath" && java $fileBase',
                 -- markdown = "glow %",

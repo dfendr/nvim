@@ -1,6 +1,6 @@
 local M = {
     "nvim-tree/nvim-tree.lua",
-    -- cmd = "NvimTreeToggle",
+    event = "VeryLazy",
     dependencies = {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
@@ -31,12 +31,6 @@ function M.config()
         -- },
         -- disable_netrw = true,
         -- hijack_netrw = true,
-        -- open_on_setup = false,
-        ignore_ft_on_setup = {
-            "startify",
-            "dashboard",
-            "alpha",
-        },
         filters = {
             custom = { ".git" },
             exclude = { ".gitignore" },
@@ -143,7 +137,7 @@ function M.config()
             adaptive_size = false,
             --auto_resize = true,
             float = {
-                enable = false, -- Not ready yet, causes errors on toggle (8/18/22)
+                enable = false,
                 open_win_config = {
                     relative = "editor",
                     border = "rounded",
