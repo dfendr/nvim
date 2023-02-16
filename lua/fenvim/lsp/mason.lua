@@ -51,7 +51,7 @@ function M.config()
             "omnisharp",
             "pyright",
             "rust_analyzer",
-            "sumneko_lua",
+            "lua_ls",
             "tsserver",
             "yamlls",
         },
@@ -71,10 +71,10 @@ function M.config()
             require("rust-tools").setup(rust_opts)
         end,
 
-        ["tsserver"] = function()
-            local tsserver_opts = require("fenvim.lsp.settings.tsserver")
-            require("typescript").setup({ server = opts, tsserver_opts })
-        end,
+        -- ["tsserver"] = function()
+        --     local tsserver_opts = require("fenvim.lsp.settings.tsserver")
+        --     require("typescript").setup({ server = opts, tsserver_opts })
+        -- end,
 
         ["clangd"] = function()
             local clangd_opts = require("fenvim.lsp.settings.clangd")
@@ -93,10 +93,10 @@ function M.config()
             local omnisharp_opts_ext = vim.tbl_deep_extend("force", omnisharp_opts, opts)
             require("lspconfig").omnisharp.setup(omnisharp_opts_ext)
         end,
-        ["sumneko_lua"] = function()
-            local sumneko_lua_opts = require("fenvim.lsp.settings.sumneko_lua")
-            local sumneko_lua_opts_ext = vim.tbl_deep_extend("force", sumneko_lua_opts, opts)
-            require("lspconfig").sumneko_lua.setup(sumneko_lua_opts_ext)
+        ["lua_ls"] = function()
+            local lua_lsp_opts = require("fenvim.lsp.settings.lua_ls")
+            local lua_lsp_opts_ext = vim.tbl_deep_extend("force", lua_lsp_opts, opts)
+            require("lspconfig").lua_ls.setup(lua_lsp_opts_ext)
         end,
 
         ["bashls"] = function()
