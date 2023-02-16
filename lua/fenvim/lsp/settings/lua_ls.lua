@@ -25,6 +25,7 @@ neodev.setup({
 ::continue::
 return {
     settings = {
+        cmd = "lua-language-server",
         Lua = {
             type = {
                 -- weakUnionCheck = true,
