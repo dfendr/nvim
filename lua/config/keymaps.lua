@@ -76,7 +76,7 @@ map("v", "<C-h>", "^", opts)
 -- Move text up and down (doesn't work in terms that don't send alt correctly)
 map("v", "<A-j>", ":m .+1<CR>==", opts)
 map("v", "<A-k>", ":m .-2<CR>==", opts)
-map("v", "p", '"_dP', opts)
+map("x", "p", '"_dP', opts)
 map("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- VISUAL BLOCK --
