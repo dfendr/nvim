@@ -94,15 +94,9 @@ function M.config()
             require("lspconfig").omnisharp.setup(omnisharp_opts_ext)
         end,
         ["lua_ls"] = function()
-<<<<<<< HEAD
             local lua_ls_opts = require("fenvim.lsp.settings.lua_ls")
             local lua_ls_opts_ext = vim.tbl_deep_extend("force", lua_ls_opts, opts)
             require("lspconfig").lua_ls.setup(lua_ls_opts_ext)
-=======
-            local lua_lsp_opts = require("fenvim.lsp.settings.lua_ls")
-            local lua_lsp_opts_ext = vim.tbl_deep_extend("force", lua_lsp_opts, opts)
-            require("lspconfig").lua_ls.setup(lua_lsp_opts_ext)
->>>>>>> b5fb8d39c9640fe2cae0b35e6e35b7f19951287d
         end,
 
         ["bashls"] = function()

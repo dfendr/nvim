@@ -9,10 +9,4 @@ return {
             -- require("fenvim.colorscheme.gruvbox").config()
         end,
     },
-
-    -- bufferline
 }
-
--- require("user.colorscheme.ayu")
--- require("user.colorscheme.gruvbox-material")
--- require("user.colorscheme.nightfox")
