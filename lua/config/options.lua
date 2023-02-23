@@ -28,18 +28,8 @@ local options = {
     mouse = "a", -- enable mouse in all modes
     number = true, -- Show line numbers on side.
     numberwidth = 2, -- Sets sidenumber width to 2 instead of default 4
-<<<<<<< HEAD
-    signcolumn = "yes", -- TESTING, might be cool to just have the LSP signs replace the numbers.
-    wrap = false, -- No wrap, lines are as long as they are, baby!
-    scrolloff = 5, -- Minimal number of lines viewable above/below cursor on scroll.
-    sidescrolloff = 2, -- Minimal number of lines viewable left/right cursor on sidescroll.
-    --guifont = "monospace:h17", -- Font used in neovim GUI app.
-    colorcolumn = "80", -- Column @ 80 for cleanliness reminder.
-    ttyfast = true, -- Quicken that terminal, baby! Faster sending of characters (I think)
-=======
     pumheight = 10, -- max number of autocompletion options that will show
     relativenumber = true, -- Show relative numbers (on in normal mode due to AutoCmd below)
->>>>>>> b5fb8d39c9640fe2cae0b35e6e35b7f19951287d
     ruler = true, -- Measures line/col
     scrolloff = 0, -- Minimal number of lines viewable above/below cursor on scroll.
     showmode = false, -- No need to show --INSERT--, cursor will let me know.
@@ -79,13 +69,13 @@ vim.cmd("set formatoptions+=r") -- Insert the comment leader when you press Ente
 -- Format Option Settings, r -
 --vim.cmd "set fo-=r "
 
--- -- Relative number toggle, only in Normal mode
--- vim.api.nvim_command([[
--- augroup RelativeNumberToggle
--- autocmd InsertEnter * :set relativenumber
--- autocmd InsertLeave * :set norelativenumber
--- augroup END
--- ]])
+-- Relative number toggle, only in Normal mode
+vim.api.nvim_command([[
+augroup RelativeNumberToggle
+autocmd InsertEnter * :set relativenumber
+autocmd InsertLeave * :set norelativenumber
+augroup END
+]])
 
 vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- These two stop vim from adding comment strings when
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- pressing enter on comment strings in Insert mode.
