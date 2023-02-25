@@ -26,39 +26,6 @@ function M.config()
     local clean_green = "#8ec07c"
     local milk = "#E7D7AD"
 
-    -- OG Gruvbox
-    local og_orange2 = "#FE8019"
-    --  gruvbox = [
-    -- (40, 40, 40),     # black
-    -- (146, 131, 116),  # gray1
-    -- (204, 36, 29),    # red1,
-    -- (251, 73, 52),    # red2,
-    -- (152, 151, 26),   # green1
-    -- (184, 187, 38),   # green2
-    -- (215, 153, 33),   # yellow1
-    -- (250, 189, 47),   # yellow2
-    -- (69, 133, 136),   # blue1
-    -- (131, 165, 152),  # blue2
-    -- (177, 98, 134),   # purple1
-    -- (104, 157, 106),  # purple2
-    -- (142, 192, 124),  # aqua1
-    -- (168, 153, 132),  # aqua2
-    -- (235, 219, 178),  # gray2
-    -- (214, 93, 14),    # orange1
-    -- (254, 128, 25),   # orange2
-
-    -- Dark theme changes colors to
-    -- ["dark"] = {
-    --       dark = "#161616",
-    --       background = "#202020",
-    --       background_dark = "#161616",
-    --     },
-    --]]
-    -- Each highlight group must follow the structure:
-    -- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
-    -- See also :h highlight-guifg
-    -- Example:
-
     local colors = require("gruvbox-baby.colors").config()
 
     vim.o.termguicolors = false
