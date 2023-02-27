@@ -19,6 +19,7 @@ function M.config()
             r = "cd $dir && Rscript $file",
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
             rust = "cd $dir && cargo run",
+            haskell = "cabal run",
             --rust = "cargo run",
             sh = "cd $dir && bash $file",
             -- sh = "bash %",
