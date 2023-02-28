@@ -2,7 +2,6 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
-        -- "mrjones2014/nvim-ts-rainbow",
         "HiPhish/nvim-ts-rainbow2",
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-context",
@@ -42,9 +41,18 @@ function M.config()
         },
         rainbow = {
             enable = true,
+            hlgroups = {
+                "TSRainbowMagenta",
+                "TSRainbowGray",
+                "TSRainbowCyan",
+                "TSRainbowGreen",
+                "TSRainbowYellow",
+                "TSRainbowOrange",
+                "TSRainbowPink",
+            },
             -- disable = { "jsx", "cpp" }, -- list of languages you want to disable plugin for
             extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-            max_file_lines = nil, -- Do not enable for files with more than n lines, int
+            max_file_lines = 1000, -- Do not enable for files with more than n lines, int
             -- colors = {"#518387", "#a86885", "#548287", "#6E9054", "#CD9E39", "#C87924" }, -- table of hex strings
             -- term colors = {}, -- table of colour name strings
         },
