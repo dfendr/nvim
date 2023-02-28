@@ -5,7 +5,10 @@ local M = {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
     enabled = true,
+    commit = "9c97e6449b0b0269bd44e1fd4857184dfa57bb4c"
 }
+
+-- TODO: Migrate to on_attach
 
 function M.config()
     local status_ok, nvim_tree = pcall(require, "nvim-tree")

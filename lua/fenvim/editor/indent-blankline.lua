@@ -3,6 +3,8 @@ local M = {}
 function M.config()
     vim.opt.list = true
     -- vim.opt.listchars:append "space:⋅"
+    vim.opt.listchars:append "trail:⋅"
+    vim.opt.listchars:append "space: "
     --vim.opt.listchars:append "eol:↴"
     --vim.opt.listchars:append "eol:﬌"
     -- vim.opt.listchars:append tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:○
@@ -25,7 +27,7 @@ function M.config()
         -- for example, context is off by default, use this to turn it on
         show_current_context = false,
         show_current_context_start = false,
-        -- space_char_blankline = " ",
+        space_char_blankline = "⋅",
         filetype_exclude = {
             "help",
             "Trouble",
