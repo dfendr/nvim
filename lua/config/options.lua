@@ -51,7 +51,6 @@ local options = {
     writebackup = false, -- if file is being edited elsewhere, don't allow editing
 }
 
-
 -- Now enable the options
 for k, v in pairs(options) do
     vim.opt[k] = v
@@ -74,6 +73,14 @@ vim.api.nvim_command([[
 augroup RelativeNumberToggle
 autocmd InsertEnter * :set relativenumber
 autocmd InsertLeave * :set norelativenumber
+augroup END
+]])
+
+-- highlight yanked text for 200ms using the "IncSearch" highlight group
+vim.cmd([[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})
 augroup END
 ]])
 

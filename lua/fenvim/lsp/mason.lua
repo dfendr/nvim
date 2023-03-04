@@ -71,10 +71,10 @@ function M.config()
             require("rust-tools").setup(rust_opts)
         end,
 
-        -- ["tsserver"] = function()
-        --     local tsserver_opts = require("fenvim.lsp.settings.tsserver")
-        --     require("typescript").setup({ server = opts, tsserver_opts })
-        -- end,
+        ["tsserver"] = function()
+            local tsserver_opts = require("fenvim.lsp.settings.tsserver")
+            require("typescript").setup({ server = opts, tsserver_opts })
+        end,
 
         ["clangd"] = function()
             local clangd_opts = require("fenvim.lsp.settings.clangd")
