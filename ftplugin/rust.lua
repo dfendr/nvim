@@ -32,6 +32,9 @@ vim.keymap.set("n", "<leader>Lh", toggle_hints)
 --     toggle_hints()
 -- end)
 
+-- NOTE: Temporarily disabling CMP to learn rust better.
+-- require('cmp').setup.buffer { enabled = false }
+
 local mappings = {
     L = {
         name = "Rust",
