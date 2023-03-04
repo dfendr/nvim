@@ -142,7 +142,6 @@ function M.config()
         port = "${port}",
         executable = {
             command = "codelldb",
-            -- command = "/Users/fen/.vscode/extensions/vadimcn.vscode-lldb-1.7.4/adapter/codelldb",
             args = { "--port", "${port}" },
         },
     }

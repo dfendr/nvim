@@ -194,7 +194,7 @@ function M.config()
             val = {
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-                button("r", icons.ui.History .. " Recent Files", "<cmd>Telescope oldfiles<cr>"),
+                -- button("r", icons.ui.History .. " Recent Files", "<cmd>Telescope oldfiles<cr>"),
                 button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                 button("r", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),

@@ -2,7 +2,7 @@ local M = {
     "narutoxy/silicon.lua",
     dependencies = { "nvim-lua/plenary.nvim" },
     build = "cargo install silicon",
-    cmd = "Silicon",
+    cmd = "Silicon"
 }
 
 function M.config()
@@ -16,7 +16,7 @@ function M.config()
     end
 
     silicon.setup({
-        theme = "auto",
+        theme = "gruvbox_baby-dark",
         output = string.format(
             "SILICON_%s-%s-%s_%s-%s.png",
             os.date("%Y"),
@@ -25,7 +25,7 @@ function M.config()
             os.date("%H"),
             os.date("%M")
         ), -- auto generate file name based on time (absolute or relative to cwd)
-        bgColor = "#7c868f",
+        bgColor = vim.g.terminal_color_5,
         bgImage = "", -- path to image, must be png
         roundCorner = true,
         windowControls = true,
