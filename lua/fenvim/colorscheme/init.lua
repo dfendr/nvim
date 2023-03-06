@@ -6,7 +6,6 @@ return {
         priority = 1000,
         config = function()
             require("fenvim.colorscheme.gruvbox-baby").config()
-            -- require("fenvim.colorscheme.gruvbox").config()
         end,
     },
 }

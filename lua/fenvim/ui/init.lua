@@ -34,6 +34,7 @@ return {
     },
 
     {
+        -- Cute UI widget for LSP loading
         "j-hui/fidget.nvim",
         event = "BufReadPre",
         config = true,
@@ -60,6 +61,7 @@ return {
         config = true,
     },
     {
+        -- Scrollbar on the side, helpful for diagnostics
         "petertriho/nvim-scrollbar",
         event = "BufReadPost",
         config = function()

@@ -30,11 +30,6 @@ function M.config()
 
     telescope.setup({
         defaults = {
-            -- borderchars = {
-            -- prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-            -- results = { " " },
-            -- preview = { " " },
-            -- },
 
             prompt_prefix = icons.ui.Telescope .. " ",
             selection_caret = " ",

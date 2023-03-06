@@ -19,9 +19,7 @@ function M.config()
         auto_save_enabled = true,
         auto_restore_enabled = false,
         auto_session_suppress_dirs = {
-            -- vim.fn.glob(vim.fn.stdpath "config" .. "/*"),
             os.getenv("HOME"),
-            -- os.getenv "HOME" .. "/Machfiles",
         },
         auto_session_use_git_branch = nil,
         -- the configs below are lua only

@@ -116,9 +116,6 @@ function M.config()
         end
     end
 
-    -- Change the colors over
-    -- n_time_colors()
-
     --[[ Mode Icons:     盛滛      ]]
     -- "  "
     -- "  "
