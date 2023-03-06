@@ -1,7 +1,5 @@
 local M = {} -- Example config in Lua
 
---vim.g.gruvbox_baby_function_style = "NONE"
---vim.g.gruvbox_baby_keyword_style = "italic"
 function M.config()
     local dark = "#202020"
     local foreground = "#ebdbb2"

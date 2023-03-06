@@ -38,6 +38,7 @@ return {
         },
     },
     {
+        -- dots in indents for easy space counting
         "lukas-reineke/indent-blankline.nvim",
         event = "BufReadPost",
         config = function()
@@ -45,14 +46,13 @@ return {
         end,
     },
     {
+        -- Automatically change tabstop to match doc
         "nmac427/guess-indent.nvim",
         event = "BufReadPre",
         config = true,
     },
     {
         "akinsho/toggleterm.nvim",
-        -- cmd = { "ToggleTerm", "_GITUI_TOGGLE" },
-        -- event = "BufReadPre",
         config = function()
             require("fenvim.editor.toggleterm").config()
         end,
@@ -138,14 +138,6 @@ return {
         event = "BufReadPost",
     },
     {
-        "jbyuki/venn.nvim", --TODO: Finish setting up Venn
-        -- config = function()
-        --     require("fenvim.editor.venn").config()
-        -- end,
-        -- cmd = "lua require(fenvim.editor.venn).Toggle_venn()",
-        -- event = "Buf"
-    },
-    {
         "iamcco/markdown-preview.nvim",
         build = function()
             vim.fn["mkdp#util#install"]()
@@ -161,7 +153,6 @@ return {
         "RaafatTurki/hex.nvim",
         config = true,
         event = "VeryLazy",
-        -- enabled = vim.loop.os_uname().sysname == 'Darwin' and not using_neovide,
         enabled = false,
     },
 }

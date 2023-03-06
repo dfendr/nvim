@@ -194,20 +194,13 @@ function M.config()
             val = {
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-                -- button("r", icons.ui.History .. " Recent Files", "<cmd>Telescope oldfiles<cr>"),
                 button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                 button("r", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                 button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
-                -- button("SPC f t", icons.type.String .. " Find Text", ":Telescope live_grep <CR>"),
                 button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
                 button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
                 button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
-                -- button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
-                -- button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
-                -- button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
-                -- button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
-                -- button("SPC t h", "  Themes  ", ":Telescope themes<CR>"),
             },
             opts = {
                 spacing = 1,
@@ -222,8 +215,6 @@ function M.config()
         headerPaddingTop = { type = "padding", val = headerPadding },
         headerPaddingBottom = { type = "padding", val = 2 },
     }
-
-    --options = require("user.functions").load_override(options, "goolord/alpha-nvim")
 
     require("alpha").setup({
         layout = {

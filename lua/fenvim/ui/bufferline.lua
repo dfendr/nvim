@@ -1,5 +1,4 @@
-local M = {
-}
+local M = {}
 function M.config()
     local status_ok, bufferline = pcall(require, "bufferline")
     if not status_ok then
@@ -101,10 +100,6 @@ function M.config()
                 fg = { attribute = "fg", highlight = "#ff0000" },
                 bg = { attribute = "bg", highlight = "#FFFFFF" },
             },
-            -- background = {
-            --     fg = { attribute = "fg", highlight = "TabLine" },
-            --     bg = { attribute = "bg", highlight = "TabLine" },
-            -- },
             buffer_selected = {
                 fg = { attribute = "fg", highlight = "#ff0000" },
                 -- --   bg = {attribute='bg',highlight='#0000ff'},
@@ -114,47 +109,10 @@ function M.config()
                 fg = { attribute = "fg", highlight = "Comment", italic = false }, -- doesn't seem to work
                 -- bg = { attribute = "bg", highlight = "CursorColumn" },
             },
-            --
-            -- close_button = {
-            --     fg = { attribute = "fg", highlight = "Comment" },
-            --     bg = { attribute = "bg", highlight = "TabLineSel" },
-            -- },
-            -- close_button_visible = {
-            --     fg = { attribute = "fg", highlight = "CursorLine" },
-            --     bg = { attribute = "bg", highlight = "TabLineSel" },
-            -- },
-            -- close_button_selected = {
-            --   fg = {attribute='fg',highlight='CursorColumnSel'},
-            --   bg ={attribute='bg',highlight='CursorColumnSel'}
-            --   },
-            --
             tab_selected = {
                 fg = { attribute = "fg", highlight = "Normal" },
                 bg = { attribute = "bg", highlight = "Normal" },
             },
-            -- tab = {
-            --     fg = { attribute = "fg", highlight = "CursorColumn" },
-            --     bg = { attribute = "bg", highlight = "CursorColumn" },
-            -- },
-            -- tab_close = {
-            --     -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
-            --     fg = { attribute = "fg", highlight = "CursorColumnSel" },
-            --     bg = { attribute = "bg", highlight = "Normal" },
-            -- },
-            --
-            -- duplicate_selected = {
-            --     fg = { attribute = "fg", highlight = "CursorLine", italic = true},
-            --     bg = { attribute = "bg", highlight = "CursorColumnSel" },
-            -- },
-            -- duplicate_visible = {
-            --     fg = { attribute = "fg", highlight = "CursorLine", italic = true },
-            --     bg = { attribute = "bg", highlight = "CursorColumn" },
-            -- },
-            -- duplicate = {
-            --     fg = { attribute = "fg", highlight = "CursorLine", italic = true },
-            --     bg = { attribute = "bg", highlight = "CursorColumn" },
-            -- },
-            --
             modified = {
                 fg = { attribute = "fg", highlight = "Comment" },
                 -- bg = { attribute = "bg", highlight = "CursorColumn" },
@@ -186,10 +144,5 @@ function M.config()
             },
         },
     })
-    -- BufferLineIndicatorSelected = { fg = c.git.change },
-    -- BufferLineFill = { bg = c.black },
-
-    -- vim.cmd([[highlight! link BufferlineFill LineNr]])
-    -- vim.cmd [[highlight! link BufferlineIndicatorSelected TermCursor]]
 end
 return M

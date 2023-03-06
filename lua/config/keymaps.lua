@@ -6,26 +6,18 @@ local term_opts = { silent = true }
 local map = require("utils").map
 
 -- Remap space as leader key
---map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
 map("n", "<C-i>", "<C-i>", opts) -- ??
 
 --NORMAL--
--- Increment/Decrement
--- map("n", "+", "<C-a>", opts)
--- map("n", "-", "<C-x>", opts)
 
 -- Do not yank with x
 map("n", "x", '"_x', opts)
 
--- Clear highlighting after searching.
--- map("n", "_", "<cmd>nohl<CR>", opts)
-
 -- Select all
 map("n", "yA", ":0,$y<cr>", opts)
-
 
 -- New Tab/Easy Splits
 -- Tabs --
@@ -39,8 +31,6 @@ map("n", "[t", ":tabprevious<CR>", opts)
 map("n", "]t", ":tabnext<CR>", opts)
 -- map("n", "gb", ":bnext<CR>", opts)
 
---map("n", "sh", ":split<CR><C-w>w") // not needed as these are taken care of by WhichKey
---map("n", "sv", ":vsplit<CR><C-w>w") -- not sure if I like this
 map("n", "<C-w> c", ":bdelete!<CR>", opts)
 map("n", "<C-\\>", ":vsplit<CR>", opts) -- VSCode-like shortcut
 
@@ -59,10 +49,6 @@ map("n", "<M-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate Lines
 map("n", "<C-l>", "$", opts)
 map("n", "<C-h>", "^", opts)
-
--- Navigate to Prev/Next Location (Back/Forward)
--- map("n", "<C-h>", "<C-o>", opts)
--- map("n", "<C-l>", "<C-i>", opts)
 
 -- VISUAL --
 -- Stay in indent mode after indentation
@@ -87,7 +73,6 @@ map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
--- not sure if noremap = false is needed
 map("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)

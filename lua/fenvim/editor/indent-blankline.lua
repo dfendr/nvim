@@ -2,7 +2,6 @@ local M = {}
 
 function M.config()
     vim.opt.list = true
-    -- vim.opt.listchars:append "space:⋅"
     vim.opt.listchars:append "trail:⋅"
     vim.opt.listchars:append "space: "
     --vim.opt.listchars:append "eol:↴"
