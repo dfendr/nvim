@@ -39,8 +39,8 @@
 
 ### Screenshots 📸
 
-![mini-dashboard](https://i.imgur.com/Fqd0OJP.png)
 ![dashboard](https://i.imgur.com/45FhVEN.png)
+![mini-dashboard](https://i.imgur.com/Fqd0OJP.png)
 ![explorer-tree, toggleterm](https://i.imgur.com/FGkX4l1.png)
 ![which-key](https://i.imgur.com/gAFpLsv.png)
 ![rust debugging](https://i.imgur.com/r6izDC3.png)
