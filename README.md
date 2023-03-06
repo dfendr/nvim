@@ -51,10 +51,11 @@
 
 ### Screenshots 📸
 
-![dashboard](https://i.imgur.com/45FhVEN.png)
+![dashboard](https://i.imgur.com/fJcOqfb.png)
 ![mini-dashboard](https://i.imgur.com/Fqd0OJP.png)
-![explorer-tree, toggleterm](https://i.imgur.com/FGkX4l1.png)
-![which-key](https://i.imgur.com/gAFpLsv.png)
+![explorer-tree, toggleterm, R REPL](https://i.imgur.com/AC1yls3.png)
+![Rust-LSP-Hover](https://i.imgur.com/gMwu1WJ.png)
+![which-key](https://i.imgur.com/pKxSs5s.png)
 ![rust debugging](https://i.imgur.com/r6izDC3.png)
 
 ## Install 💻
@@ -89,3 +90,10 @@ git clone https://github.com/postfen/nvim.git
   - [Silicon](https://github.com/Aloxaf/silicon) for code snippet sharing.
 - [BrowserSync](https://browsersync.io/) for live updating web previews when
   working with JS/TS/HTML
+
+### Acknowledgements
+
+- [TJ Devries](https://github.com/tjdevries)
+- [chris@machine](https://github.com/ChristianChiarulli)
+- [devaslife](https://github.com/craftzdog)
+- [ThePrimeagen](https://github.com/ThePrimeagen)
