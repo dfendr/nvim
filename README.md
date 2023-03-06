@@ -1,7 +1,7 @@
 # 🍄 My personal Neovim configuration 🌱
 
-![Daylight](https://i.imgur.com/jh46kXC.png =800x)
-![Nighttime](https://i.imgur.com/MdLBbXT.png =800x)
+![Daylight](https://i.imgur.com/jh46kXC.png)
+![Nighttime](https://i.imgur.com/MdLBbXT.png)
 
 - **Use at your own discretion**
 - Linux/macOS.
@@ -39,8 +39,8 @@
 
 ### Screenshots 📸
 
-![mini-dashboard](https://i.imgur.com/Fqd0OJP.png =500x)
-![dashboard](https://i.imgur.com/45FhVEN.png =700x )
-![explorer-tree, toggleterm](https://i.imgur.com/FGkX4l1.png =700x)
-![which-key](https://i.imgur.com/gAFpLsv.png =700x)
-![rust debugging](https://i.imgur.com/r6izDC3.png =700x)
+![mini-dashboard](https://i.imgur.com/Fqd0OJP.png)
+![dashboard](https://i.imgur.com/45FhVEN.png)
+![explorer-tree, toggleterm](https://i.imgur.com/FGkX4l1.png)
+![which-key](https://i.imgur.com/gAFpLsv.png)
+![rust debugging](https://i.imgur.com/r6izDC3.png)
