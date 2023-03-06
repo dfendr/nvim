@@ -24,7 +24,7 @@ function M.config()
                 },
                 filetypes = { "c", "cpp" },
             }),
-            diagnostics.flake8,
+            diagnostics.ruff,
             diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
             diagnostics.markdownlint,
             formatting.sql_formatter,

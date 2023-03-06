@@ -4,7 +4,7 @@ return {
         { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
         { "mfussenegger/nvim-jdtls", ft = { "java" } },
         { "ray-x/lsp_signature.nvim" },
-        { "folke/neodev.nvim", config = true },
+        { "folke/neodev.nvim", config = true, ft = { "lua" } },
     },
     {
         "neovim/nvim-lspconfig",
