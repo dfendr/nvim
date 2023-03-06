@@ -16,7 +16,7 @@ function M.config()
     end
 
     silicon.setup({
-        theme = "auto",
+        theme = "Nord",
         output = string.format(
             "SILICON_%s-%s-%s_%s-%s.png",
             os.date("%Y"),
@@ -29,12 +29,12 @@ function M.config()
         bgImage = "", -- path to image, must be png
         roundCorner = true,
         windowControls = true,
-        lineNumber = true,
-        font = "monospace",
+        lineNumber = false,
+        font = "Fira Code",
         lineOffset = 1, -- from where to start line number
         linePad = 2, -- padding between lines
-        padHoriz = 80, -- Horizontal padding
-        padVert = 100, -- vertical padding
+        padHoriz = 30, -- Horizontal padding
+        padVert = 30, -- vertical padding
         shadowBlurRadius = 10,
         shadowColor = "#555555",
         shadowOffsetX = 8,

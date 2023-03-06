@@ -1,6 +1,8 @@
 return {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
+    lazy = true,
+    ft = {"norg"},
     opts = {
         load = {
             ["core.defaults"] = {}, -- Loads default behaviour
