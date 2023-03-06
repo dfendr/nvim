@@ -1,5 +1,6 @@
 return {
     {
+        -- Document Generator
         "danymat/neogen",
         event = "VeryLazy",
         config = function()
@@ -9,12 +10,13 @@ return {
         version = "*",
     },
     {
-
+        -- Zen Mode/Focus. "Spotlight" effect on codie
         "folke/twilight.nvim",
         config = true,
         cmd = { "Zenmode", "Twilight" },
     },
     {
+        -- Rust Cargo package version checker
         "saecki/crates.nvim",
         version = "v0.3.0",
         dependencies = { "nvim-lua/plenary.nvim" },

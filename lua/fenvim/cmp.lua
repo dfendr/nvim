@@ -3,8 +3,7 @@ local M = {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-        -- "windwp/nvim-autopairs",
-        -- "hrsh7th/cmp-nvim-lsp-signature-help",
+        "windwp/nvim-autopairs",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
@@ -35,63 +34,8 @@ function M.config()
         return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
     end
 
-    --   פּ ﯟ   some other good icons
+
     local kind_icons = require("fenvim.ui.icons").kind
-    -- local {
-    --     Text = "",
-    --     Method = "",
-    --     Function = "",
-    --     Constructor = "",
-    --     Field = "",
-    --     Variable = "",
-    --     Class = "ﴯ",
-    --     Interface = "",
-    --     Module = "",
-    --     Property = "ﰠ",
-    --     Unit = "",
-    --     Value = "",
-    --     Enum = "",
-    --     Keyword = "",
-    --     Snippet = "",
-    --     Color = "",
-    --     File = "",
-    --     Reference = "",
-    --     Folder = "",
-    --     EnumMember = "",
-    --     Constant = "",
-    --     Struct = "",
-    --     Event = "",
-    --     Operator = "",
-    --     TypeParameter = "",
-    -- }
-    -- local kind_icons = {
-    --     Text = "",
-    --     Method = "m",
-    --     Function = "",
-    --     Constructor = "",
-    --     Field = "",
-    --     Variable = "",
-    --     Class = "",
-    --     Interface = "",
-    --     Module = "",
-    --     Property = "",
-    --     Unit = "",
-    --     Value = "",
-    --     Enum = "",
-    --     Keyword = "",
-    --     Snippet = "",
-    --     Color = "",
-    --     File = "",
-    --     Reference = "",
-    --     Folder = "",
-    --     EnumMember = "",
-    --     Constant = "",
-    --     Struct = "",
-    --     Event = "",
-    --     Operator = "",
-    --     TypeParameter = "",
-    -- }
-    -- find more here: https://www.nerdfonts.com/cheat-sheet
 
     local luasnip = require("luasnip")
     cmp.setup({

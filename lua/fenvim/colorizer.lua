@@ -16,7 +16,7 @@ return {
             css_fn      = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
             -- Available modes: foreground, background
             -- Available modes for `mode`: foreground, background,  virtualtext
-            mode        = "background", -- Set the display mode.
+            mode        = "virtualtext", -- Set the display mode.
             virtualtext = "■",
         },
     },

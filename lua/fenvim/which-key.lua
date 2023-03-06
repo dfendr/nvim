@@ -5,7 +5,6 @@ function M.config()
         return
     end
 
-    -- local funcs = require("utils.functions")
     local setup = {
         plugins = {
             marks = true, -- shows a list of your marks on ' and `
@@ -81,12 +80,6 @@ function M.config()
             "<cmd> lua require('silicon').visualise_api({show_buf = false, to_clip = true})<cr>",
             "Screenshot V-Selection",
         },
-        -- S = { "<cmd> lua require('silicon').visualise(true,true)<cr>", "Screenshot Entire Buffer" },
-        -- a = {
-        --     name = "Align",
-        --     c = {"<cmd>lua require(utils.functions).align_by_char()<CR>", "Align by Char" },
-        -- -- q = { '<cmd>lua require("utils.functions").smart_quit()<CR>', "Quit" },
-        -- },
     }
 
     local mappings = {
@@ -106,7 +99,6 @@ function M.config()
         P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         w = { "<cmd>w<CR>", "Write" },
-        -- h = { "<cmd>nohlsearch<CR>", "No HL" },
         q = { '<cmd>lua require("utils.functions").smart_quit()<CR>', "Quit" },
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         v = { "<cmd>vsplit<cr>", "vsplit" },
@@ -116,7 +108,6 @@ function M.config()
             f = { "<cmd>Telescope buffers<cr>", "Find" },
             b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
             n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-            -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
             e = {
                 "<cmd>BufferLinePickClose<cr>",
                 "Pick which buffer to close",
@@ -177,7 +168,6 @@ function M.config()
         f = {
             name = "Find",
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-            -- b = { "<cmd>lua require(\"telescope.builtin\").buffers()<cr>", "Find Buffers" },
             B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope commands<cr>", "Commands" },
             C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
@@ -294,20 +284,11 @@ function M.config()
         },
 
         r = {
-            -- name = "Session",
-            -- s = { "<cmd>SaveSession<cr>", "Save" },
-            -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
-            -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
-            -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
             name = "Quickrun",
             r = { "<cmd>RunCode<cr>", "Run File" },
             f = { '<cmd>RunCode "float" float<cr>', "Run (Floating Window)" },
             t = { '<cmd>RunCode "toggleterm"<cr>', "Run (Terminal)" },
             q = { '<cmd>RunCode "toggle"quickfiwx<cr>', "Run (Quickfix)" },
-            -- m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-            -- r = { "<cmd>SnipReset<cr>", "Reset" },
-            -- t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-            -- x = { "<cmd>SnipTerminate<cr>", "Terminate" },
         },
 
         t = {
@@ -322,7 +303,6 @@ function M.config()
             p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
             s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify-TUI" },
             f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-            --h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
             t = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
             v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
         },

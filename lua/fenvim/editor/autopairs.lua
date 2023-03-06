@@ -24,8 +24,6 @@ function M.config()
             end_key = "$",
             keys = "qwertyuiopzxcvbnmasdfghjkl",
             check_comma = true,
-            -- highlight = "Search",
-            -- highlight_grey = "Comment",
             highlight = "PmenuSel",
             highlight_grey = "LineNr",
         },
