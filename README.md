@@ -1,5 +1,5 @@
-
 #
+
 ![Daylight](https://i.imgur.com/jh46kXC.png)
 ![Nighttime](https://i.imgur.com/MdLBbXT.png)
 
@@ -30,17 +30,24 @@
 
 ### Already Supported Language (e.g. Languages I use with Fenvim)
 
-- Bash
-- Zsh
-- C
-- C#
-- Lua
-- Javacript
-- Markdown
-- Perl
-- Python
-- Rust
-- R
+| Language  | Supported |
+| --------- | :-------: |
+| Bash      |    ✅     |
+| Zsh       |    ✅     |
+| C         |    ✅     |
+| C#        |    ✅     |
+| Lua       |    ✅     |
+| Javacript |    ✅     |
+| Java      |    🌀     |
+| Markdown  |    ✅     |
+| Perl      |    ✅     |
+| Rust      |    ✅     |
+| R         |    ✅     |
+
+|     |                      |
+| --- | -------------------- |
+| ✅  | Supported            |
+| 🌀  | Not fully supported. |
 
 ### Screenshots 📸
 
