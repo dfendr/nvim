@@ -163,9 +163,9 @@ function M.config()
             s = { "<cmd>source %<cr>", "Source Current Buffer" },
             m = {
                 name = "Misc/Goofs",
-                -- f = { "<cmd> CellularAutomaton make_it_rain<CR>", "Fall" },
-                -- l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
-                -- s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
+                r = { "<cmd> CellularAutomaton make_it_rain<CR>", "Make it Rain" },
+                l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
+                s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
             },
             S = { '<cmd>lua require("utils.functions").toggle_option("spell")<cr>', "Spell" },
             o = { '<cmd>lua require("utils.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
