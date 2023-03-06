@@ -21,7 +21,7 @@ function M.config()
                 ["cmp.entry.get_documentation"] = false,
             },
             hover = {
-                enabled = true,
+                enabled = false,
                 view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
                 opts = {}, -- merged with defaults from documentation

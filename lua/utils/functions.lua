@@ -108,6 +108,7 @@ function M.get_buf_option(opt)
     end
 end
 
+
 function M.smart_quit()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
