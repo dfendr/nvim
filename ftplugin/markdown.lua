@@ -6,7 +6,7 @@ end
 local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    buffer = 0, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
@@ -24,7 +24,6 @@ local mappings = {
 }
 which_key.register(mappings, opts)
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 
 -- Shorten function name
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
@@ -37,4 +36,3 @@ map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts) -- ??
 -- vim.cmd[[set formatoptions+=r]]
 -- vim.cmd[[set comments-=fb:-]]
 -- vim.cmd[[set comments+=:-]]
-
