@@ -11,7 +11,7 @@ end
 local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    buffer = 0, -- Global mappings. Specify a buffer number for buffer local mappings
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
@@ -38,7 +38,7 @@ vim.keymap.set("n", "<leader>Lh", toggle_hints)
 local mappings = {
     L = {
         name = "Rust",
-        L = {"<cmd>LspStop><cr><cmd>LspStart<cr>", "Start LSP in new workspace"},
+        L = { "<cmd>LspStop><cr><cmd>LspStart<cr>", "Start LSP in new workspace" },
         r = { "<cmd>RustRunnables<Cr>", "Runnables" },
         t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
         m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
