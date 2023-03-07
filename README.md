@@ -56,7 +56,7 @@
 ![explorer-tree, toggleterm, R REPL](https://i.imgur.com/AC1yls3.png)
 ![Rust-LSP-Hover](https://i.imgur.com/gMwu1WJ.png)
 ![which-key](https://i.imgur.com/pKxSs5s.png)
-![rust debugging](https://i.imgur.com/r6izDC3.png)
+![rust debugging](https://i.imgur.com/xpAu3IN.png)
 
 ## Install 💻
 
