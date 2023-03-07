@@ -23,7 +23,7 @@
 - 📄 Per filetype shortcuts accessed with `<leader> L`
 - 🌐 Automatic LSP integrations via `Mason`, with modular format for adding LSP
   options per server.
-- 🏃 Quickrun files with `<leader>rr` using `Coderunnier.nvim`
+- 🏃 Quickrun files with `<leader>rr` using `Coderunner.nvim`
 - 🐛 Quick DAP setup with `mason-nvim-dap.nvim`, meaning easy debugging!
 - 🤔 No need to remember _all_ keybinds, `<leader>` pops up a helpful keybind
   guide, provided by `which-key.nvim`
@@ -44,10 +44,10 @@
 | Rust      |    ✅     |
 | R         |    ✅     |
 
-|     |                      |
-| --- | -------------------- |
-| ✅  | Supported            |
-| 🌀  | Not fully supported. |
+|     |           |
+| --- | --------- |
+| ✅  | Supported |
+| 🌀  | Linting   |
 
 ### Screenshots 📸
 
