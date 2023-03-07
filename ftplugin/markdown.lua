@@ -18,8 +18,10 @@ vim.cmd("setlocal scrolloff=10")
 local mappings = {
     L = {
         name = "Markdown",
-        p = { "<cmd>MarkdownPreviewToggle<Cr>", "Markdown Preview On/Off" },
-        P = { "<cmd>PasteImg<Cr>", "Paste Image" },
+        l = { "<cmd>!md2pdf %:p<cr>", "Comvert to Latex" },
+        p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
+        P = { "<cmd>PasteImg<cr>", "Paste Image" },
+        s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
     },
 }
 which_key.register(mappings, opts)

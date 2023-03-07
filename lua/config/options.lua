@@ -32,6 +32,7 @@ local options = {
     relativenumber = true, -- Show relative numbers (on in normal mode due to AutoCmd below)
     ruler = true, -- Measures line/col
     scrolloff = 0, -- Minimal number of lines viewable above/below cursor on scroll.
+    shellcmdflag = "-ic", -- Run commands from "!" mode in interactive mode (sources custom functions)
     showmode = false, -- No need to show --INSERT--, cursor will let me know.
     signcolumn = "yes", -- TESTING, might be cool to just have the LSP signs replace the numbers.
     sidescrolloff = 2, -- Minimal number of lines viewable left/right cursor on sidescroll.
