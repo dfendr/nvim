@@ -40,108 +40,144 @@ function M.config()
     vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
     local Terminal = require("toggleterm.terminal").Terminal
-    local gitui = Terminal:new({
-        cmd = "gitui",
-        hidden = true,
-        direction = "float",
-        float_opts = {
-            border = "none",
-            width = 100000,
-            height = 100000,
-        },
-        on_open = function(_)
-            vim.cmd("startinsert!")
-            -- vim.cmd "set laststatus=0"
-        end,
-        on_close = function(_)
-            -- vim.cmd "set laststatus=3"
-        end,
-        count = 99,
-    })
 
     function _GITUI_TOGGLE()
+        local gitui = Terminal:new({
+            cmd = "gitui",
+            hidden = true,
+            direction = "float",
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+                -- vim.cmd "set laststatus=0"
+            end,
+            on_close = function(_)
+                -- vim.cmd "set laststatus=3"
+            end,
+            count = 99,
+        })
         gitui:toggle()
     end
 
-    local lazygit = Terminal:new({
-        cmd = "lazygit",
-        hidden = true,
-        direction = "float",
-        float_opts = {
-            border = "none",
-            width = 100000,
-            height = 100000,
-        },
-        on_open = function(_)
-            vim.cmd("startinsert!")
-            -- vim.cmd "set laststatus=0"
-        end,
-        on_close = function(_)
-            -- vim.cmd "set laststatus=3"
-        end,
-        count = 99,
-    })
-
     function _LAZYGIT_TOGGLE()
+        local lazygit = Terminal:new({
+            cmd = "lazygit",
+            hidden = true,
+            direction = "float",
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+                -- vim.cmd "set laststatus=0"
+            end,
+            on_close = function(_)
+                -- vim.cmd "set laststatus=3"
+            end,
+            count = 99,
+        })
         lazygit:toggle()
     end
 
-    local spotify = Terminal:new({
-        cmd = "spt",
-        hidden = true,
-        direction = "float",
-        float_opts = {
-            border = "none",
-            width = 100000,
-            height = 100000,
-        },
-        on_open = function(_)
-            vim.cmd("startinsert!")
-            -- vim.cmd "set laststatus=0"
-        end,
-        on_close = function(_)
-            -- vim.cmd "set laststatus=3"
-        end,
-        count = 99,
-    })
+    function _SLIDES_TOGGLE()
+        local slides = Terminal:new({
+            cmd = "slides " .. vim.fn.expand("%:p"),
+            hidden = true,
+            direction = "float",
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+                -- vim.cmd "set laststatus=0"
+            end,
+            on_close = function(_)
+                -- vim.cmd "set laststatus=3"
+            end,
+            count = 99,
+        })
+        slides:toggle()
+    end
+
+    function __TOGGLE()
+        local slides = Terminal:new({
+            cmd = "slides " .. vim.fn.expand("%:p"),
+            hidden = true,
+            direction = "float",
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+                -- vim.cmd "set laststatus=0"
+            end,
+            on_close = function(_)
+                -- vim.cmd "set laststatus=3"
+            end,
+            count = 99,
+        })
+        slides:toggle()
+    end
 
     function _SPT_TOGGLE()
+        local spotify = Terminal:new({
+            cmd = "spt",
+            hidden = true,
+            direction = "float",
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+                -- vim.cmd "set laststatus=0"
+            end,
+            on_close = function(_)
+                -- vim.cmd "set laststatus=3"
+            end,
+            count = 99,
+        })
         spotify:toggle()
     end
 
-    local node = Terminal:new({ cmd = "node", hidden = true })
-
     function _NODE_TOGGLE()
+        local node = Terminal:new({ cmd = "node", hidden = true })
         node:toggle()
     end
 
-    local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-
     function _NCDU_TOGGLE()
+        local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
         ncdu:toggle()
     end
 
-    local btop = Terminal:new({ cmd = "btop", hidden = true })
-
     function _BTOP_TOGGLE()
+        local btop = Terminal:new({ cmd = "btop", hidden = true })
         btop:toggle()
     end
 
-    local python = Terminal:new({ cmd = "python3", hidden = true })
-
     function _PYTHON_TOGGLE()
+        local python = Terminal:new({ cmd = "python3", hidden = true })
         python:toggle()
     end
 
-    local cargo_run = Terminal:new({ cmd = "cargo run", hidden = true })
-
     function _CARGO_RUN()
+        local cargo_run = Terminal:new({ cmd = "cargo run", hidden = true })
         cargo_run:toggle()
     end
 
-    local cargo_test = Terminal:new({ cmd = "cargo test", hidden = true })
-
     function _CARGO_TEST()
+        local cargo_test = Terminal:new({ cmd = "cargo test", hidden = true })
         cargo_test:toggle()
     end
 
