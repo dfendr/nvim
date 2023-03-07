@@ -2,8 +2,8 @@ local M = {}
 
 function M.config()
     vim.opt.list = true
-    vim.opt.listchars:append "trail:⋅"
-    vim.opt.listchars:append "space: "
+    vim.opt.listchars:append("trail:⋅")
+    vim.opt.listchars:append("space: ")
     --vim.opt.listchars:append "eol:↴"
     --vim.opt.listchars:append "eol:﬌"
     -- vim.opt.listchars:append tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:○
@@ -13,6 +13,7 @@ function M.config()
     end
 
     vim.api.nvim_create_autocmd("BufEnter", {
+
         group = vim.api.nvim_create_augroup("IndentBlanklineBigFile", {}),
         pattern = "*",
         callback = function()
