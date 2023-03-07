@@ -2,6 +2,12 @@ local M = {}
 
 function M.config()
     require("noice").setup({
+        routes = {
+            {
+                view = "notify",
+                filter = { event = "msg_showmode" },
+            },
+        },
         lsp = {
             progress = {
                 enabled = false,
