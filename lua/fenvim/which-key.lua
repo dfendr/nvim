@@ -231,7 +231,7 @@ function M.config()
                 "Undo Stage Hunk",
             },
             o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-            b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+            B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
             d = {
                 "<cmd>Gitsigns diffthis HEAD<cr>",
