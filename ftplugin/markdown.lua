@@ -6,7 +6,7 @@ end
 local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
-    buffer = 0, -- Global mappings. Specify a buffer number for buffer local mappings
+    buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
@@ -18,7 +18,7 @@ vim.cmd("setlocal scrolloff=10")
 local mappings = {
     L = {
         name = "Markdown",
-        l = { "<cmd>!md2pdf %:p<cr>", "Comvert to Latex" },
+        l = { "<cmd>!md2pdf %:p<cr>", "Convert to Latex" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
         P = { "<cmd>PasteImg<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
