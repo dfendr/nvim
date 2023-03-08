@@ -11,7 +11,7 @@ end
 local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
-    buffer = 0, -- Global mappings. Specify a buffer number for buffer local mappings
+    buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
@@ -27,11 +27,6 @@ local function toggle_hints()
     end
 end
 --
-vim.keymap.set("n", "<leader>Lh", toggle_hints)
--- vim.api.nvim_buf_add_user_command("RustToggleInlayHints", function()
---     toggle_hints()
--- end)
-
 -- NOTE: Temporarily disabling CMP to learn rust better.
 -- require('cmp').setup.buffer { enabled = false }
 
@@ -51,16 +46,6 @@ local mappings = {
             "Reload Workspace",
         },
         o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
-        H = { "<cmd>RustDisableInlayHints<Cr>", "Disable Hints" },
-        -- S = { "<cmd>RustSSR<Cr>", "SSR" },
-        -- h = { "<cmd>RustToggleInlayHints<Cr>", "Toggle Hints" },
-        -- r = { "<cmd>lua _CARGO_RUN()<cr>", "Cargo Run" },
-        -- j = { "<cmd>RustJoinLines<Cr>", "Join Lines" },
-        -- s = { "<cmd>RustStartStandaloneServerForBuffer<Cr>", "Start Server Buf" },
-        -- a = { "<cmd>RustHoverActions<Cr>", "Hover Actions" },
-        -- a = { "<cmd>RustHoverRange<Cr>", "Hover Range" },
-        -- j = { "<cmd>RustMoveItemDown<Cr>", "Move Item Down" },
-        -- k = { "<cmd>RustMoveItemUp<Cr>", "Move Item Up" },
     },
 }
 
