@@ -151,7 +151,7 @@ function M.config()
             w = { "<cmd>WindowsToggleAutowidth<cr>", "Toggle Window Autowidth" },
             r = { '<cmd>lua require("utils.functions").toggle_option("relativenumber")<cr>', "Relative" },
             l = { '<cmd>lua require("utils.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-            s = { "<cmd>source %<cr>", "Source Current Buffer" },
+            s = { "<cmd>ScrollbarToggle<cr>", "Toggle Scrollbar" },
             m = {
                 name = "Misc/Goofs",
                 r = { "<cmd> CellularAutomaton make_it_rain<CR>", "Make it Rain" },
@@ -216,6 +216,7 @@ function M.config()
 
         g = {
             name = "Git",
+            b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle Git Blame" },
             g = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
             G = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
             j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
