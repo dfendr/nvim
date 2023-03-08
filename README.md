@@ -49,14 +49,38 @@
 | ✅  | Supported |
 | 🌀  | Linting   |
 
-### Screenshots 📸
+## 🌟 Showcase
 
-![dashboard](https://i.imgur.com/fJcOqfb.png)
-![mini-dashboard](https://i.imgur.com/Fqd0OJP.png)
-![explorer-tree, toggleterm, R REPL](https://i.imgur.com/AC1yls3.png)
-![Rust-LSP-Hover](https://i.imgur.com/gMwu1WJ.png)
-![which-key](https://i.imgur.com/pKxSs5s.png)
-![rust debugging](https://i.imgur.com/xpAu3IN.png)
+<details>
+<summary>Dashboard</summary>
+  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://imgur.com/fJcOqfb.png
+">
+</details>
+
+<details>
+<summary>Tiny Dashboard</summary>
+  <img width="700" alt="Size Aware Dashboard For Mini Editing" src="https://i.imgur.com/Fqd0OJP.png">
+</details>
+
+<details>
+<summary>Which-Key provides easy reminders for more complex keybinds</summary>
+  <img width="700" alt="Editor showing commands, in WhichKey popup" src="https://i.imgur.com/pKxSs5s.png">
+</details>
+
+<details>
+<summary>Example: Editing an R file, with R Repl in Toggleable Terminal</summary>
+  <img width="700" alt="Example: Editing an R file, with R Repl in Toggleable Terminal, Explorer Tree in Left Panel" src="https://i.imgur.com/AC1yls3.png">
+</details>
+
+<details>
+<summary>Example: LSP inspections</summary>
+  <img width="700" alt="Examining the documentation for .iter() in Rust" src="https://i.imgur.com/gMwu1WJ.png">
+</details>
+
+<details>
+<summary>Example: Debugging</summary>
+  <img width="700" alt="Debugging in Neovim, Rust example" src="https://i.imgur.com/xpAu3IN.png">
+</details>
 
 ## Install 💻
 
