@@ -22,6 +22,7 @@ local M = {
 function M.config()
     vim.o.completeopt = "menuone,noselect"
 
+    require("luasnip.loaders.from_vscode").lazy_load()
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
@@ -33,7 +34,6 @@ function M.config()
         local col = vim.fn.col(".") - 1
         return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
     end
-
 
     local kind_icons = require("fenvim.ui.icons").kind
 
@@ -111,6 +111,7 @@ function M.config()
 
         sources = {
             -- { name = "nvim_lsp_signature_help" },
+            { name = "neorg" },
             { name = "nvim_lsp" },
             { name = "buffer" },
             { name = "luasnip" },
