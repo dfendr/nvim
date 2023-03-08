@@ -53,8 +53,7 @@
 
 <details>
 <summary>Dashboard</summary>
-  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://imgur.com/fJcOqfb.png
-">
+  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://imgur.com/fJcOqfb.png">
 </details>
 
 <details>
