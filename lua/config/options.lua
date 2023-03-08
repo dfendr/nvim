@@ -93,3 +93,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
 })
+
+--NOTE: SEMANTIC HIGHLIGHT ERRORS? ENABLE THIS
+-- Disable semantic highlights. -- for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+--     vim.api.nvim_set_hl(0, group, {})
+-- end
