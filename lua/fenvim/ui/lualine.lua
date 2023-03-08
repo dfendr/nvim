@@ -1,14 +1,8 @@
 local M = {}
+
 function M.config()
     local status_ok, lualine = pcall(require, "lualine")
-    -- local notification = require("notify.service.notification")
-
-    if not status_ok then
-        return
-    end
-
     -- TODO: work on this guy some more. Can do some cool stuff
-
     local lualine_scheme = vim.api.nvim_command_output("colo")
     local colors = {
         dark = "#202020",
@@ -407,7 +401,6 @@ function M.config()
 
     ---------------------------------------------------------------------------
     -----------------------------Spaces----------------------------------------
-    -- TODO: Do I even want to finish and use this?
     local spaces = {
         function()
             local buf_ft = vim.bo.filetype
@@ -436,12 +429,9 @@ function M.config()
                 return ""
             end
 
-            -- TODO: update codicons and use their indent
             return " " .. shiftwidth .. space .. " "
         end,
         padding = 0,
-        -- separator = "%#SLSeparator#" .. " │" .. "%*",
-        -- cond = hide_in_width_100,
     }
     -------------------------------------------------------------------------------
     -----------------------------MISC-----------------------------------------
@@ -463,6 +453,28 @@ function M.config()
             return icons.unix
         end
     end
+
+    local wordcount = {
+        "words",
+        cond = function()
+            local ft = vim.opt_local.filetype:get()
+            local count = {
+                latex = true,
+                tex = true,
+                text = true,
+                txt = true,
+                markdown = true,
+                vimwiki = true,
+                neorg = true,
+            }
+            return count[ft] ~= nil
+        end,
+        fmt = function()
+            local words = vim.fn.wordcount()["words"]
+            return "Words: " .. words
+        end,
+    }
+
     -------------------------------------------------------------------------------
     -----------------------------Treesitter Icon------------------------------
     --TODO:Finish this function and apply to statusbar
@@ -511,7 +523,7 @@ function M.config()
                 encoding,
                 fileformat,
             },
-            lualine_y = { spaces, location, progress },
+            lualine_y = { wordcount, spaces, location, progress },
             lualine_z = { { clock } },
         },
 
@@ -520,6 +532,24 @@ function M.config()
             lualine_b = {},
             lualine_c = { "filename" },
             lualine_x = { "filetype" },
+            lualine_y = {},
+            lualine_z = {},
+        },
+        winbar = {
+            lualine_a = {
+                {},
+            },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {},
+        },
+        inactive_winbar = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
             lualine_y = {},
             lualine_z = {},
         },
