@@ -492,6 +492,7 @@ function M.config()
     -------------------------------------------------------------------------------
     ------------------------------Auto Theme application---------------------------
 
+
     -- Get current theme
     -- TODO: Fix the auto-custom theme change.
     local vimtheme = vim.api.nvim_command_output("colo")
@@ -499,6 +500,11 @@ function M.config()
     if vimtheme == "gruvbox-baby" then
         lualine_theme = gruvbox_baby_custom
     end
+
+
+
+    ---------------------------------------------------------------------------
+    --------------------------Lualine Setup------------------------------------
 
     lualine.setup({
         options = {
