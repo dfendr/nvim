@@ -17,5 +17,3 @@ require("lazy").setup("fenvim", {
 if vim.g.neovide then
     require("fenvim.ui.neovide")
 end
-
---TODO: Fix Alpha shortcuts

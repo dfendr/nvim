@@ -4,12 +4,12 @@ local M = {}
 
 function M.config()
     -- Default Palette
-
+    vim.o.background = "dark" -- or "light" for light mode
     require("gruvbox").setup({
         undercurl = true,
         underline = true,
         bold = true,
-        italic = true,
+        italic = false,
         strikethrough = true,
         invert_selection = false,
         invert_signs = false,
@@ -18,6 +18,7 @@ function M.config()
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "hard", -- can be "hard", "soft" or empty string
         overrides = {},
+        dim_inactive = true,
     })
 
     local colorscheme = "gruvbox"
