@@ -2,16 +2,23 @@ return {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
     lazy = true,
-    ft = {"norg"},
+    ft = { "norg" },
+    cmd = "Neorg",
     opts = {
         load = {
             ["core.defaults"] = {}, -- Loads default behaviour
             ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+            ["core.norg.completion"] = {
+                config = {
+                    engine = "nvim-cmp",
+                },
+            },
+
+            ["core.integrations.telescope"] = {}, -- Telescope Integration
             ["core.norg.dirman"] = { -- Manages Neorg workspaces
-                ["core.integrations.telescope"] = {}, -- Telescope Integration
                 config = {
                     workspaces = {
-                        personal = "~/Repos/Personal/obsidian-vault/",
+                        personal = "~/Repos/Personal/Notes/",
                         work = "~/Repos/Work/Notes/",
                     },
                 },
