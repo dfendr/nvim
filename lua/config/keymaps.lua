@@ -1,15 +1,22 @@
+-- Keybind function shortcut
+local function map(mode, key, cmd, opts)
+    local options = {}
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, key, cmd, options)
+end
+
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
-
--- Shorten function name
--- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
-local map = require("utils").map
 
 -- Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
-map("n", "<C-i>", "<C-i>", opts) -- ??
+-- map("n", "<C-i>", "<C-i>", opts) -- ??
+
 
 --NORMAL--
 
