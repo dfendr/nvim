@@ -85,8 +85,10 @@ au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeou
 augroup END
 ]])
 
-vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- These two stop vim from adding comment strings when
-vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- pressing enter on comment strings in Insert mode.
+-- These two stop vim from adding comment strings when
+-- pressing enter on comment strings in Insert mode.
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
 -- Removing trailing whitesspace on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -95,6 +97,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 --NOTE: SEMANTIC HIGHLIGHT ERRORS? ENABLE THIS
--- Disable semantic highlights. -- for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
---     vim.api.nvim_set_hl(0, group, {})
--- end
+-- Disable semantic highlights.
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+    vim.api.nvim_set_hl(0, group, {})
+end
