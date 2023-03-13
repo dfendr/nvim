@@ -30,6 +30,8 @@ function M.config()
             "tsx",
             "css",
             "html",
+            "sql",
+            "vim",
         },
         sync_install = false,
         ignore_install = { "" }, -- List of parsers to ignore installing

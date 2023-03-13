@@ -67,7 +67,7 @@
 </details>
 
 <details>
-<summary>Example: Editing an R file, with R Repl in Toggleable Terminal</summary>
+<summary>Example: Editing an R file, with R REPL in Toggleable Terminal</summary>
   <img width="700" alt="Example: Editing an R file, with R Repl in Toggleable Terminal, Explorer Tree in Left Panel" src="https://i.imgur.com/AC1yls3.png">
 </details>
 

@@ -37,7 +37,9 @@ return {
         -- Cute UI widget for LSP loading
         "j-hui/fidget.nvim",
         event = "BufReadPre",
-        config = true,
+        config = function()
+            require("fenvim.ui.fidget").config()
+        end,
         enabled = true,
     },
 
