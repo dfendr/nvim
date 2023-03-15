@@ -14,10 +14,6 @@ local term_opts = { silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-map("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>") -- pop WhichKey up on leader press
--- map("n", "<C-i>", "<C-i>", opts) -- ??
-
-
 --NORMAL--
 
 -- Do not yank with x

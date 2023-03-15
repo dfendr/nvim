@@ -153,6 +153,6 @@ return {
         "RaafatTurki/hex.nvim",
         config = true,
         event = "VeryLazy",
-        enabled = false,
+        enabled = true,
     },
 }
