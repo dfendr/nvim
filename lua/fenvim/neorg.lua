@@ -1,11 +1,16 @@
 return {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    lazy = true,
     ft = { "norg" },
     cmd = "Neorg",
     opts = {
         load = {
+            ["core.keybinds"] = {
+                config = {
+                    default_keybinds = true,
+                    neorg_leader = ",",
+                },
+            },
             ["core.defaults"] = {}, -- Loads default behaviour
             ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
             ["core.norg.completion"] = {
@@ -13,7 +18,6 @@ return {
                     engine = "nvim-cmp",
                 },
             },
-
             ["core.integrations.telescope"] = {}, -- Telescope Integration
             ["core.norg.dirman"] = { -- Manages Neorg workspaces
                 config = {
@@ -21,6 +25,7 @@ return {
                         personal = "~/Repos/Personal/Notes/",
                         work = "~/Repos/Work/Notes/",
                     },
+                    index = "index.norg",
                 },
             },
         },

@@ -18,7 +18,7 @@ function M.config()
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "hard", -- can be "hard", "soft" or empty string
         overrides = {},
-        dim_inactive = true,
+        dim_inactive = false,
     })
 
     local colorscheme = "gruvbox"

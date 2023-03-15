@@ -14,6 +14,8 @@ local opts = {
 vim.cmd("setlocal shiftwidth=2")
 vim.cmd("setlocal tabstop=2")
 vim.cmd("setlocal scrolloff=10")
+vim.cmd("setlocal tw=79")
+vim.cmd("setlocal spell")
 
 local mappings = {
     L = {
@@ -34,6 +36,7 @@ local map = require("utils").map
 -- Remap space as leader key
 --map("", "<Space>", "<Nop>", opts)
 map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts) -- ??
+map("n", "<C-,>", "1z=", opts) -- ??
 
 -- vim.cmd[[set formatoptions+=r]]
 -- vim.cmd[[set comments-=fb:-]]
