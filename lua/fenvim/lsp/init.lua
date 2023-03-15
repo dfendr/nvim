@@ -3,7 +3,7 @@ return {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
         { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
         { "mfussenegger/nvim-jdtls", ft = { "java" } },
-        { "ray-x/lsp_signature.nvim" },
+        { "ray-x/lsp_signature.nvim", enabled = false },
         { "folke/neodev.nvim", config = true, ft = { "lua" } },
     },
     {

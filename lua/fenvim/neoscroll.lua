@@ -1,5 +1,6 @@
 local M = {
     "karb94/neoscroll.nvim",
+    enabled = true,
     keys = {
         { "<c-k>", desc = "Scroll Up" },
         { "<c-j>", desc = "Scroll Down" },
@@ -12,6 +13,18 @@ function M.config()
         return
     end
     neoscroll.setup({
+        pre_hook = function()
+            vim.opt.eventignore:append({
+                "WinScrolled",
+                "CursorMoved",
+            })
+        end,
+        post_hook = function()
+            vim.opt.eventignore:remove({
+                "WinScrolled",
+                "CursorMoved",
+            })
+        end,
         -- All these keys will be mapped to their corresponding default scrolling animation
         mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
         hide_cursor = true, -- Hide cursor while scrolling
@@ -26,8 +39,8 @@ function M.config()
 
     local t = {}
     -- Syntax: t[keys] = {function, {function arguments}}
-    t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
-    t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '250'}}
+    t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } }
+    t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "250" } }
     -- t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '450'}}
     -- t['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '450'}}
     -- t['<C-y>'] = {'scroll', {'-0.10', 'false', '100'}}

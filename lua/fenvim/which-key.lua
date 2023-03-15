@@ -94,7 +94,9 @@ function M.config()
             "Explorer",
         },
         h = { "<cmd>split<cr>", "split" },
-        N = { "<cmd>lua require('telescope').extensions.notify.notify()<cr>", "Notifications" },
+        N = {
+            N = {"<cmd>Neorg workspace personal<cr>", "Neorg Workspace"}
+        },
 
         P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
