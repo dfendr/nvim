@@ -28,6 +28,8 @@ function M.config()
           Misc = { color = colors.purple },
         },
     })
+
+vim.cmd("ScrollbarToggle")
 end
 
 return M

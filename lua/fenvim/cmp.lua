@@ -10,6 +10,7 @@ local M = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-emoji",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         { "hrsh7th/cmp-cmdline", enabled = cmdline },
         { "dmitmel/cmp-cmdline-history", enabled = cmdline },
         "hrsh7th/cmp-path",
@@ -53,7 +54,7 @@ function M.config()
             ["<C-j>"] = cmp.mapping.select_next_item(),
             ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
             ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-            ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({}), { "i", "c" }),
+            -- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({}), { "i", "c" }),
             ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
             ["<C-e>"] = cmp.mapping({
                 i = cmp.mapping.abort(),
@@ -110,7 +111,7 @@ function M.config()
         },
 
         sources = {
-            -- { name = "nvim_lsp_signature_help" },
+            { name = "nvim_lsp_signature_help" },
             { name = "neorg" },
             { name = "nvim_lsp" },
             { name = "buffer" },
