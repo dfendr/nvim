@@ -12,6 +12,7 @@ require("lazy").setup("fenvim", {
     checker = { enabled = false },
     diff = { cmd = "diffview.nvim" },
     ui = { border = "rounded" },
+    change_detection = { enabled = false },
 })
 
 if vim.g.neovide then
