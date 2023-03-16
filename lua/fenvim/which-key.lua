@@ -219,8 +219,8 @@ function M.config()
         g = {
             name = "Git",
             b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle Git Blame" },
-            g = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
-            G = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
+            G = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
+            g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
             j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
             k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
             l = { "<cmd>GitBlameToggle<cr>", "Blame" },
