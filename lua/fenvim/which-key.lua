@@ -95,7 +95,7 @@ function M.config()
         },
         h = { "<cmd>split<cr>", "split" },
         N = {
-            N = {"<cmd>Neorg workspace personal<cr>", "Neorg Workspace"}
+            N = { "<cmd>Neorg workspace personal<cr>", "Neorg Workspace" },
         },
 
         P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
@@ -173,6 +173,7 @@ function M.config()
             B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope commands<cr>", "Commands" },
             C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+            e = { "<cmd>Telescope file_browser<cr>", "File Browser" },
             f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
             h = { "<cmd>Telescope help_tags<cr>", "Help" },
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
@@ -222,6 +223,7 @@ function M.config()
             G = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
             g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
             j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+            i = { "<cmd>Gitignore<cr>", "Generate gitignore" },
             k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
             l = { "<cmd>GitBlameToggle<cr>", "Blame" },
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
