@@ -113,8 +113,12 @@ M.on_attach = function(client, bufnr)
             require("jdtls.dap").setup_dap_main_class_configs()
         end
     end
+
+    if client.name == "tsserver" then
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
+
     if client.name == "clangd" then -- disable formatting, handled by null-ls
-        -- client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
         client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
     end
 end
