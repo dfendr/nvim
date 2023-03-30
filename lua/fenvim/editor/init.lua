@@ -155,4 +155,11 @@ return {
         event = "VeryLazy",
         enabled = true,
     },
+
+    {
+        "simrat39/symbols-outline.nvim",
+        config = true,
+        opts = { relative_width = true, width = 10 },
+        cmd = "SymbolsOutline",
+    },
 }
