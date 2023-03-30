@@ -61,11 +61,15 @@ return {
         dependencies = { "anuvyklack/middleclass" },
         event = "WinNew",
         config = true,
+        opts = { ignore = {
+            filetype = { "Outline" },
+        } },
     },
     {
         -- Scrollbar on the side, helpful for diagnostics
         "petertriho/nvim-scrollbar",
         event = "BufReadPost",
+        enabled = true,
         config = function()
             require("fenvim.ui.scrollbar").config()
         end,
