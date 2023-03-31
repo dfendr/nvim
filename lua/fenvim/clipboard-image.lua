@@ -1,5 +1,6 @@
 local M = {
-    "ekickx/clipboard-image.nvim",
+    "postfen/clipboard-image.nvim",
+    enabled = true,
     ft = { "md", "markdown" },
     -- Dependency on: pngpaste
     -- install with `brew install pngpaste`
