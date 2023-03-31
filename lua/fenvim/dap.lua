@@ -55,8 +55,8 @@ function M.config()
         icons = { expanded = "", collapsed = "", circular = "" },
         mappings = {
             -- Use a table to apply multiple mappings
-            expand = { "<CR>", "<2-LeftMouse>" },
-            open = "o",
+            expand = { "o", "<2-LeftMouse>" },
+            open = "<CR>",
             remove = "d",
             edit = "e",
             repl = "r",
@@ -64,7 +64,7 @@ function M.config()
         },
         -- Expand lines larger than the window
         -- Requires >= 0.7
-        expand_lines = vim.fn.has("nvim-0.7"),
+        expand_lines = true,
         -- Layouts define sections of the screen to place windows.
         -- The position can be "left", "right", "top" or "bottom".
         -- The size specifies the height/width depending on position. It can be an Int

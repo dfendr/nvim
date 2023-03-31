@@ -73,7 +73,10 @@ function M.config()
 
         ["tsserver"] = function()
             local tsserver_opts = require("fenvim.lsp.settings.tsserver")
-            require("typescript").setup({ server = opts, tsserver_opts })
+            local extra_opts =
+                { on_attach = { client = { server_capabilities = { documentFormattingProvider = false } } } }
+            local tsserver_opts_ext = vim.tbl_deep_extend("force", extra_opts, opts)
+            require("typescript").setup({ server = tsserver_opts_ext, tsserver_opts })
         end,
 
         ["clangd"] = function()

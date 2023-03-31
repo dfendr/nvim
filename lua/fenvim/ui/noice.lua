@@ -5,7 +5,11 @@ function M.config()
         routes = {
             {
                 view = "notify",
-                filter = { event = "msg_showmode" },
+                filter = {
+                    event = { "msg_showmode", "msg_show" },
+                    kind = "search_count",
+                },
+                opts = { skip = true },
             },
         },
         lsp = {
