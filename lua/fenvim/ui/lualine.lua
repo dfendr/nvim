@@ -16,7 +16,7 @@ function M.config()
         yellow = "#EEBD35",
         dark_green = "#98971A",
         orange = "#D65D0E",
-        red = "#CC241D",
+        red = "#cc241d",
         magenta = "#B16286",
         pink = "#D4879C",
         light_blue = "#7FA2AC",
@@ -459,6 +459,8 @@ function M.config()
         cond = function()
             local ft = vim.opt_local.filetype:get()
             local count = {
+                c = true,
+                lua = true,
                 latex = true,
                 tex = true,
                 text = true,
@@ -492,7 +494,6 @@ function M.config()
     -------------------------------------------------------------------------------
     ------------------------------Auto Theme application---------------------------
 
-
     -- Get current theme
     -- TODO: Fix the auto-custom theme change.
     local vimtheme = vim.api.nvim_command_output("colo")
@@ -500,8 +501,6 @@ function M.config()
     if vimtheme == "gruvbox-baby" then
         lualine_theme = gruvbox_baby_custom
     end
-
-
 
     ---------------------------------------------------------------------------
     --------------------------Lualine Setup------------------------------------
@@ -538,24 +537,6 @@ function M.config()
             lualine_b = {},
             lualine_c = { "filename" },
             lualine_x = { "filetype" },
-            lualine_y = {},
-            lualine_z = {},
-        },
-        winbar = {
-            lualine_a = {
-                {},
-            },
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {},
-            lualine_y = {},
-            lualine_z = {},
-        },
-        inactive_winbar = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {},
             lualine_y = {},
             lualine_z = {},
         },
