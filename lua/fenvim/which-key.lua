@@ -95,7 +95,7 @@ function M.config()
         },
         h = { "<cmd>split<cr>", "split" },
         N = {
-            N = { "<cmd>Neorg workspace personal<cr>", "Neorg Workspace" },
+            N = {"<cmd>Neorg workspace personal<cr>", "Neorg Workspace"}
         },
 
         P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
