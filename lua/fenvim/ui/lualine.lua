@@ -459,8 +459,6 @@ function M.config()
         cond = function()
             local ft = vim.opt_local.filetype:get()
             local count = {
-                c = true,
-                lua = true,
                 latex = true,
                 tex = true,
                 text = true,

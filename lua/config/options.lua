@@ -91,15 +91,18 @@ vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
 -- Removing trailing whitesspace on save.
-vim.api.nvim_exec([[augroup RemoveTrailingWhitespace
+vim.api.nvim_exec(
+    [[augroup RemoveTrailingWhitespace
   autocmd!
   autocmd BufWritePre * lua Remove_trailing_whitespace()
-augroup END]], false)
+augroup END]],
+    false
+)
 
 function Remove_trailing_whitespace()
-  local cursor_position = vim.api.nvim_win_get_cursor(0)
-  vim.api.nvim_command("%s/\\s\\+$//e")
-  vim.api.nvim_win_set_cursor(0, cursor_position)
+    local cursor_position = vim.api.nvim_win_get_cursor(0)
+    vim.api.nvim_command("%s/\\s\\+$//e")
+    vim.api.nvim_win_set_cursor(0, cursor_position)
 end
 
 --NOTE: SEMANTIC HIGHLIGHT ERRORS? ENABLE THIS

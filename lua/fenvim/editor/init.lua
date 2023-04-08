@@ -162,4 +162,9 @@ return {
         opts = { relative_width = true, width = 10 },
         cmd = "SymbolsOutline",
     },
+    {
+        -- Big files over 2mb activate BigFile mode, disabling some plugins.
+        "LunarVim/bigfile.nvim",
+        config = true,
+    },
 }
