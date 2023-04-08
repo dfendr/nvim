@@ -9,6 +9,7 @@ return {
     {
         -- bufferline
         "akinsho/nvim-bufferline.lua",
+        enabled = true,
         event = "BufAdd",
         -- Keeps buffers and tabs scoped/separate
         dependencies = { "tiagovla/scope.nvim", config = true },
@@ -47,7 +48,7 @@ return {
         -- noicer ui
         "folke/noice.nvim",
         event = "VeryLazy",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
