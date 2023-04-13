@@ -66,9 +66,6 @@ vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
 vim.cmd("set formatoptions+=r") -- Insert the comment leader when you press Enter in Insert Mode
 
--- Format Option Settings, r -
---vim.cmd "set fo-=r "
-
 -- Relative number toggle, only in Normal mode
 vim.api.nvim_command([[
 augroup RelativeNumberToggle
@@ -90,16 +87,20 @@ augroup END
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
+
+-- Whitespace chars
+-- vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
+
 -- Removing trailing whitesspace on save.
 vim.api.nvim_exec(
     [[augroup RemoveTrailingWhitespace
   autocmd!
-  autocmd BufWritePre * lua Remove_trailing_whitespace()
+  autocmd BufWritePre * lua remove_trailing_whitespace()
 augroup END]],
     false
 )
 
-function Remove_trailing_whitespace()
+function remove_trailing_whitespace()
     local cursor_position = vim.api.nvim_win_get_cursor(0)
     vim.api.nvim_command("%s/\\s\\+$//e")
     vim.api.nvim_win_set_cursor(0, cursor_position)
