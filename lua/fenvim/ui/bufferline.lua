@@ -96,55 +96,51 @@ function M.config()
         },
 
         highlights = {
-            buffer_visible = {
-                -- fg = { attribute = "fg", highlight = "Comment" },
-                -- bg = "CursorColumn",
-                italic = false,
-            },
-
             fill = {
-                fg = "#181A1A",
-                bg = "#181A1A",
+                bg = "#171919",
             },
-            --     tab_selected =
-            --         fg = { attribute = "fg", highlight = "Normal" },
-            --         bg = { attribute = "bg", highlight = "Normal" },
-            --     },
+            buffer_selected = {
+                fg = "#ff0000",
+                -- --   bg = {attribute='bg',highlight='#0000ff'},
+                -- --   gui = 'none'
+            },
+            buffer_visible = {
+                fg = { attribute = "fg", highlight = "Comment", italic = false }, -- doesn't seem to work
+                -- bg = { attribute = "bg", highlight = "CursorColumn" },
+            },
+            tab_selected = {
+                fg = { attribute = "fg", highlight = "Normal" },
+                bg = { attribute = "bg", highlight = "Normal" },
+            },
             modified = {
-                -- fg = "Comment",
-                -- bg = "CursorColumn",
+                fg = { attribute = "fg", highlight = "Comment" },
+                -- bg = { attribute = "bg", highlight = "CursorColumn" },
             },
-
-            --     modified_selected = {
-            --         fg = { attribute = "fg", highlight = "Normal" },
-            --         -- bg = { attribute = "bg", highlight = "Normal" },
-            --     },
-            -- modified_visible = {
-            --     fg = { attribute = "fg", highlight = "CursorLine" },
-            -- bg = { attribute = "bg", highlight = "Normal" },
-            -- },
-            --     --
-            --     separator = {
-            --         fg = { attribute = "bg", highlight = "Normal" },
-            --         bg = { attribute = "bg", highlight = "Normal" },
-            --     },
+            modified_selected = {
+                fg = { attribute = "fg", highlight = "Normal" },
+                -- bg = { attribute = "bg", highlight = "Normal" },
+            },
+            modified_visible = {
+                --     fg = { attribute = "fg", highlight = "CursorLine" },
+                bg = { attribute = "bg", highlight = "Normal" },
+            },
+            --
+            separator = {
+                fg = { attribute = "bg", highlight = "Normal" },
+                bg = { attribute = "bg", highlight = "Normal" },
+            },
             separator_selected = {
                 fg = "#FFFFFF",
                 bg = "#FFFFFF",
             },
-
-            -- tab = {
-            --     fg = "#837965",
-            -- },
-            --     separator_visible = {
-            --         fg = { attribute = "bg", highlight = "#FFFFFF" },
-            --         bg = { attribute = "bg", highlight = "#FFFFFF" },
-            --     },
-            --     indicator_selected = {
-            --         fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-            --         bg = { attribute = "bg", highlight = "Normal" },
-            --     },
-            -- },
+            separator_visible = {
+                fg = "#FFFFFF",
+                bg = "#FFFFFF",
+            },
+            indicator_selected = {
+                fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+                bg = { attribute = "bg", highlight = "Normal" },
+            },
         },
     })
 end

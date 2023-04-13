@@ -50,7 +50,7 @@ function M.config()
     end
 
     -- autosetup of adapters listed above
-    require("mason-nvim-dap").setup_handlers()
+    require("mason-nvim-dap").setup()
     dapui.setup({
         icons = { expanded = "", collapsed = "", circular = "" },
         mappings = {
