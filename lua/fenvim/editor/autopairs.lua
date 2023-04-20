@@ -5,6 +5,9 @@ function M.config()
         return
     end
 
+    local rule = require("nvim-autopairs.rule")
+    local cond = require("nvim-autopairs.conds")
+
     npairs.setup({
         check_ts = true,
         ts_config = {
@@ -28,9 +31,13 @@ function M.config()
         },
     })
 
-    --TODO: : Add rules for MD
-    -- local Rule = require("nvim-autopairs.rule")
-    -- npairs.add_rule(Rule("**", "**", "md"))
+    -- Autopairs for closures
+    npairs.add_rules({
+        rule("|", "|", { "rust", "go", "lua" })
+            :with_move(cond.after_regex("|"))
+            :with_pair(cond.not_before_regex(" ", 1)),
+        rule("**", "**", { "markdown" }):with_move(cond.after_regex("**")),
+    })
 end
 
 return M
