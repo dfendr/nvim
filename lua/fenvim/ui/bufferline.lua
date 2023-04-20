@@ -100,7 +100,7 @@ function M.config()
                 bg = "#171919",
             },
             buffer_selected = {
-                fg = "#ff0000",
+                fg = "#E7D7AD",
                 -- --   bg = {attribute='bg',highlight='#0000ff'},
                 -- --   gui = 'none'
             },
