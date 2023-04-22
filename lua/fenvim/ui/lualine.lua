@@ -346,7 +346,6 @@ function M.config()
     }
     local location = {
         "location",
-        -- separator = {right = "" },
         padding = 1,
         always_visible = false,
         cond = hide_in_width(40),
@@ -358,7 +357,6 @@ function M.config()
 
     local progress = {
         "progress",
-        -- separator = {right = "" },
         padding = 1,
         always_visible = false,
         cond = hide_in_width(60),
@@ -373,9 +371,6 @@ function M.config()
         "filename",
         always_visible = false,
         cond = hide_in_width(80),
-        -- fmt = function(str)
-        --     return "  "..str
-        -- end,
         on_click = function()
             -- funcs.open_explorer()
             -- vim.cmd("q")
@@ -508,10 +503,12 @@ function M.config()
             globalstatus = true,
             icons_enabled = true,
             theme = lualine_theme,
-            --component_separators = { left = '', right = ''},
-            --section_separators = { left = '', right = ''},
+            -- component_separators = { left = '', right = ''},
+            -- section_separators = { left = '', right = ''},
             section_separators = { left = "", right = "" },
             component_separators = { left = "", right = "" },
+            -- section_separators = { left = "", right = "" },
+            -- component_separators = { left = "", right = "" },
             disabled_filetypes = {
                 { "alpha", "NvimTree", "dashboard" },
             },
@@ -522,7 +519,7 @@ function M.config()
             lualine_b = { branch, diff },
             lualine_c = { diagnostics },
             lualine_x = {
-                filename, --[[ filetype, ]]
+                -- filename, --[[ filetype, ]]
                 encoding,
                 fileformat,
             },

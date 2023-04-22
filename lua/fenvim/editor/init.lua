@@ -165,6 +165,7 @@ return {
     {
         -- Big files over 2mb activate BigFile mode, disabling some plugins.
         "LunarVim/bigfile.nvim",
+        enabled = true,
         config = true,
     },
 }

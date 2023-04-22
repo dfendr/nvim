@@ -75,4 +75,12 @@ return {
             require("fenvim.ui.scrollbar").config()
         end,
     },
+    {
+        "SmiteshP/nvim-navic",
+        dependencies = { "neovim/nvim-lspconfig" },
+        enabled = require("config.settings").ui.breadcrumbs,
+        config = function()
+            require("fenvim.ui.navic").setup()
+        end,
+    },
 }
