@@ -102,6 +102,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+    require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     client.server_capabilities.semanticTokensProvider = false
     require("fenvim.lsp.lsp-signature").config()
     lsp_keymaps(bufnr)

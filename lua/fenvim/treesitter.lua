@@ -4,7 +4,7 @@ local M = {
     dependencies = {
         "HiPhish/nvim-ts-rainbow2",
         "nvim-treesitter/playground",
-        "nvim-treesitter/nvim-treesitter-context",
+        -- "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
     lazy = false,
