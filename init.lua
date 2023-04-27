@@ -4,14 +4,14 @@ require("utils/lazy_bootstrap") -- bootstraps folke/lazy
 
 ----------------------------------------------[[  User Settings ]]
 
-require("config") -- loads lua/user/init.lua
+require("core")
 
 ----------------------------------------------[[  Load Plugins  ]]
 
 require("lazy").setup("fenvim", {
     checker = { enabled = false },
     diff = { cmd = "diffview.nvim" },
-    ui = { border = "rounded" },
+    ui = { border = require("core.prefs").ui.border_style },
     change_detection = { enabled = false },
 })
 
