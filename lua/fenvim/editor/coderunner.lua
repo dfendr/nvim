@@ -12,6 +12,7 @@ function M.config()
             go = "go run %",
             javascript = "node %",
             jl = "cd $dir && julia %",
+            kotlin = "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
             lua = "luajit $file",
             perl = "cd $dir && perl $file",
             python = "cd $dir && python3 $file",
@@ -22,7 +23,7 @@ function M.config()
             typescript = "deno run %",
         },
         float = {
-            border = "rounded",
+            border = require("core.prefs").ui.border_style,
         },
     })
 end

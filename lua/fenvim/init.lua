@@ -22,8 +22,15 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         ft = { "toml", "rust", "rs" },
         config = function()
-            require("crates").setup()
+            require("crates").setup({
+                null_ls = {
+                    enabled = true,
+                    name = "crates.nvim",
+                },
+                popup = {
+                    border = require("core.prefs").ui.border_style,
+                },
+            })
         end,
     },
-
 }

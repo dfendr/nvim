@@ -57,7 +57,9 @@ function M.config()
     -- │          |             │
     -- └────────────────────────┘
 
-    local function dynamic_header() --TODO: Tweak this and fix the height/width conditions later.
+
+
+    local function dynamic_header()
         local uis = vim.api.nvim_list_uis()[1]
         local height = uis.height
         local width = uis.width
@@ -179,6 +181,50 @@ function M.config()
         end
         return val
     end
+    -- ╭──────────────────────────────────────────────────────────╮
+    -- │ Time Widget - Credit to Ecovim                                            │
+    -- ╰──────────────────────────────────────────────────────────╯
+
+    local thingy =
+        io.popen('echo "$(LANG=en_us_88591; date +%a) $(date +%d) $(LANG=en_us_88591; date +%b)" | tr -d "\n"')
+    if thingy == nil then
+        return
+    end
+    local date = thingy:read("*a")
+    thingy:close()
+
+    local datetime = os.date(" %H:%M")
+
+    local hi_top_section = {
+        type = "text",
+        val = "┌────────────   Today is "
+            .. date
+            .. " ────────────┐",
+        opts = {
+            position = "center",
+            hl = "Comment",
+        },
+    }
+
+    local hi_middle_section = {
+        type = "text",
+        val = "│                                                │",
+        opts = {
+            position = "center",
+            hl = "Comment",
+        },
+    }
+
+    local hi_bottom_section = {
+        type = "text",
+        val = "└───══───══───══───  "
+            .. datetime
+            .. "  ───══───══───══────┘",
+        opts = {
+            position = "center",
+            hl = "Comment",
+        },
+    }
 
     local options = {
         header = {

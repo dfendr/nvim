@@ -4,7 +4,7 @@ local M = {
     dependencies = {
         "HiPhish/nvim-ts-rainbow2",
         "nvim-treesitter/playground",
-        -- "nvim-treesitter/nvim-treesitter-context",
+        "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
     lazy = false,
@@ -41,16 +41,17 @@ function M.config()
             disable = { "text", "txt", "csv" }, -- list of language that will be disabled
             additional_vim_regex_highlighting = false,
         },
+
         rainbow = {
             enable = true,
             hlgroups = {
                 "TSRainbowMagenta",
                 "TSRainbowGray",
                 "TSRainbowCyan",
-                "TSRainbowGreen",
                 "TSRainbowYellow",
                 "TSRainbowOrange",
                 "TSRainbowPink",
+                "TSRainbowGreen",
             },
             -- disable = { "jsx", "cpp" }, -- list of languages you want to disable plugin for
             extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
