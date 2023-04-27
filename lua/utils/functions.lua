@@ -108,7 +108,6 @@ function M.get_buf_option(opt)
     end
 end
 
-
 function M.smart_quit()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
@@ -277,6 +276,16 @@ function M.fade_RGB(colour1, colour2, percentage)
     local g3 = tonumber(g1, 16) * (100 - percentage) / 100.0 + tonumber(g2, 16) * percentage / 100.0
     local b3 = tonumber(b1, 16) * (100 - percentage) / 100.0 + tonumber(b2, 16) * percentage / 100.0
     return "#" .. M.Dec2Hex(r3) .. M.Dec2Hex(g3) .. M.Dec2Hex(b3)
+end
+
+function M.is_lsp_client_running(client_name)
+    local clients = vim.lsp.get_active_clients()
+    for _, client in ipairs(clients) do
+        if client.name == client_name then
+            return true
+        end
+    end
+    return false
 end
 
 return M

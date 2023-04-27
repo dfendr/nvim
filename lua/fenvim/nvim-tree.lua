@@ -5,7 +5,7 @@ local M = {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
     enabled = true,
-    commit = "9c97e6449b0b0269bd44e1fd4857184dfa57bb4c"
+    commit = "9c97e6449b0b0269bd44e1fd4857184dfa57bb4c",
 }
 
 -- TODO: Migrate to on_attach
@@ -143,7 +143,7 @@ function M.config()
                 enable = false,
                 open_win_config = {
                     relative = "editor",
-                    border = "rounded",
+                    border = require("core.prefs").ui.border_style,
                     width = 40,
                     height = 40,
                     row = 1,

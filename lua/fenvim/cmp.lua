@@ -3,6 +3,8 @@ local M = {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
+
+        "onsails/lspkind.nvim",
         "windwp/nvim-autopairs",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
@@ -16,8 +18,6 @@ local M = {
         "hrsh7th/cmp-path",
     },
     enabled = true,
-
-    -- debug = true,
 }
 
 function M.config()
@@ -39,6 +39,11 @@ function M.config()
     local kind_icons = require("fenvim.ui.icons").kind
 
     local luasnip = require("luasnip")
+    luasnip.config.setup({
+        history = true,
+        region_check_events = "InsertEnter",
+        delete_check_events = "TextChanged,InsertLeave",
+    })
     cmp.setup({
         completion = {
             completeopt = "menu,menuone,noinsert",
@@ -92,6 +97,33 @@ function M.config()
                 "s",
             }),
         }),
+        -- formatting = {
+        --     fields = { "kind", "abbr", "menu" },
+        --     format = function(entry, vim_item)
+        --         vim_item.menu_hl_group = "CmpItemKind" .. vim_item.kind
+        --         -- vim_item.menu = vim_item.kind
+        --         vim_item.menu = ({
+        --             luasnip = vim_item.kind .. " " .. "[LuaSnip]",
+        --             buffer = vim_item.kind .. " " .. "[Buffer]",
+        --             path = vim_item.kind .. " " .. "[Path]",
+        --             emoji = vim_item.kind .. " " .. "[Emoji]",
+        --             nvim_lsp = vim_item.kind .. " " .. "[LSP]",
+        --             nvm_lua = vim_item.kind .. " " .. "[nvim_lua]",
+        --         })[entry.source.name]
+        --         -- vim_item.menu = ({
+        --         --     luasnip = "[LuaSnip]",
+        --         --     buffer = "[Buffer]",
+        --         --     path = "[Path]",
+        --         --     emoji = "[Emoji]",
+        --         --     nvim_lsp = "[LSP]",
+        --         --     nvm_lua = "[nvim_lua]",
+        --         -- })[entry.source.name]
+        --         vim_item.abbr = vim_item.abbr:sub(1, 50)
+        --         vim_item.kind = "[" .. kind_icons[vim_item.kind] .. "]"
+        --         return vim_item
+        --     end,
+        -- },
+
         formatting = {
             fields = { "kind", "abbr", "menu" },
             format = function(entry, vim_item)
@@ -129,7 +161,9 @@ function M.config()
             -- native_menu = true,
         },
         window = {
-            documentation = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered({
+                border = require("core.prefs").ui.border_style,
+            }),
         },
         -- view = { entries = "native" },
     })

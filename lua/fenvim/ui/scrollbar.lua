@@ -7,7 +7,12 @@ function M.config()
     -- local render = scrollbar.render
     -- scrollbar.render = require("util").throttle(300, render)
 
+    local status_ok, _ = pcall(require, "gruvbox-baby.colors")
+    if not status_ok then
+        return
+    end
     local colors = require("gruvbox-baby.colors").config()
+
     scrollbar.setup({
         handle = {
             color = colors.bg_highlight,
@@ -17,19 +22,19 @@ function M.config()
             "TelescopePrompt",
             "noice",
             "notify",
-            "NvimTree"
+            "NvimTree",
         },
         marks = {
-          Search = { color = colors.orange },
-          Error = { color = colors.error },
-          Warn = { color = colors.warning },
-          Info = { color = colors.info },
-          Hint = { color = colors.hint },
-          Misc = { color = colors.purple },
+            Search = { color = colors.orange },
+            Error = { color = colors.error },
+            Warn = { color = colors.warning },
+            Info = { color = colors.info },
+            Hint = { color = colors.hint },
+            Misc = { color = colors.purple },
         },
     })
 
-vim.cmd("ScrollbarToggle")
+    vim.cmd("ScrollbarToggle")
 end
 
 return M

@@ -6,7 +6,7 @@ function M.config()
     end
 
     -- Change LSPInfo border to rounded
-    require("lspconfig.ui.windows").default_options.border = "rounded"
+    require("lspconfig.ui.windows").default_options.border = require("core.prefs").ui.border_style
 
     M.server_capabilities = function()
         local active_clients = vim.lsp.get_active_clients()

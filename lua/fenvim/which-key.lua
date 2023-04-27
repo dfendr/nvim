@@ -45,7 +45,7 @@ function M.config()
             scroll_up = "<c-u>", -- binding to scroll up inside the popup
         },
         window = {
-            border = "rounded", -- none, single, double, shadow
+            border = require("core.prefs").ui.border_style,
             position = "bottom", -- bottom, top
             margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
             padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -95,7 +95,7 @@ function M.config()
         },
         h = { "<cmd>split<cr>", "split" },
         N = {
-            N = {"<cmd>Neorg workspace personal<cr>", "Neorg Workspace"}
+            N = { "<cmd>Neorg workspace personal<cr>", "Neorg Workspace" },
         },
 
         P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },

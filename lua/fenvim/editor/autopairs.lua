@@ -33,9 +33,9 @@ function M.config()
 
     -- Autopairs for closures
     npairs.add_rules({
-        rule("|", "|", { "rust", "go", "lua" })
-            :with_move(cond.after_regex("|"))
-            :with_pair(cond.not_before_regex(" ", 1)),
+        -- rule("|", "|", { "rust", "go", "lua" })
+        --     :with_move(cond.after_regex("|"))
+        --     :with_pair(cond.not_before_regex(" ", 1)),
         rule("**", "**", { "markdown" }):with_move(cond.after_regex("**")),
     })
 end

@@ -1,4 +1,4 @@
-require("config.options")
-require("config.keymaps")
+require("core.options")
+require("core.keymaps")
 -- On startup, until the plugin colorscheme is loaded, this colorscheme is used.
-vim.cmd([[colo habamax]])
+vim.cmd([[colo retrobox]])

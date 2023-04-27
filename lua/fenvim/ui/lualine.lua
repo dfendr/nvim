@@ -16,7 +16,7 @@ function M.config()
         yellow = "#EEBD35",
         dark_green = "#98971A",
         orange = "#D65D0E",
-        red = "#cc241d",
+        red = "#CC241D",
         magenta = "#B16286",
         pink = "#D4879C",
         light_blue = "#7FA2AC",
@@ -370,7 +370,9 @@ function M.config()
     local filename = {
         "filename",
         always_visible = false,
-        cond = hide_in_width(80),
+        cond = function()
+            return hide_in_width(80) and not require("core.prefs").ui.winbar_title
+        end,
         on_click = function()
             -- funcs.open_explorer()
             -- vim.cmd("q")
@@ -519,7 +521,7 @@ function M.config()
             lualine_b = { branch, diff },
             lualine_c = { diagnostics },
             lualine_x = {
-                -- filename, --[[ filetype, ]]
+                filename, --[[ filetype, ]]
                 encoding,
                 fileformat,
             },
