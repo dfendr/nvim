@@ -34,7 +34,7 @@ function M.config()
 
     require("mason").setup({
         ui = {
-            border = "rounded",
+            border = require("core.prefs").ui.border_style,
         },
         log_level = vim.log.levels.INFO,
         max_concurrent_installers = 4,

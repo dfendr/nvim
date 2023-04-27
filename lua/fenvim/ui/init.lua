@@ -1,3 +1,8 @@
+local ui_settings = require("core.prefs").ui
+if ui_settings.winbar_title and not ui_settings.navic then
+    require("fenvim.ui.breadcrumbs").setup()
+end
+
 return {
     -- "MunifTanjim/nui.nvim",
     {
@@ -9,6 +14,7 @@ return {
     {
         -- bufferline
         "akinsho/nvim-bufferline.lua",
+        -- commit = "eb4e95b",
         enabled = true,
         event = "BufAdd",
         -- Keeps buffers and tabs scoped/separate
@@ -78,9 +84,13 @@ return {
     {
         "SmiteshP/nvim-navic",
         dependencies = { "neovim/nvim-lspconfig" },
-        enabled = require("config.settings").ui.breadcrumbs,
+        enabled = ui_settings.winbar_title and ui_settings.navic,
         config = function()
             require("fenvim.ui.navic").setup()
         end,
+    },
+    { -- Dynamic colorcolumn, hidden until close. If over, it turns a diff color.
+        "Bekaboo/deadcolumn.nvim",
+        enabled = false,
     },
 }

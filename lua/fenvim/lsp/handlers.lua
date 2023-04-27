@@ -1,6 +1,6 @@
 local M = {}
 
-local settings = require("config.settings")
+local settings = require("core.prefs")
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local utils = require("fenvim.lsp.utils")
@@ -46,7 +46,7 @@ M.setup = function()
         float = {
             focusable = false,
             style = "minimal",
-            border = "rounded",
+            border = require("core.prefs").ui.border_style,
             source = "if_many", -- Or "always"
             header = "",
             prefix = "",
@@ -57,13 +57,13 @@ M.setup = function()
     vim.diagnostic.config(config)
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
+        border = require("core.prefs").ui.border_style,
         -- width = 60,
         -- height = 30,
     })
     --
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
+        border = require("core.prefs").ui.border_style,
         -- width = 60,
         -- height = 30,
     })
@@ -71,6 +71,10 @@ end
 
 local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
+
+    vim.diagnostic.config({
+        float = { border = require("core.prefs").ui.border_style },
+    })
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
@@ -83,27 +87,27 @@ local function lsp_keymaps(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_buf_set_keymap(
         bufnr,
         "n",
         "]e",
-        '<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR, border = "rounded" })<CR>',
+        "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>",
         opts
     )
     vim.api.nvim_buf_set_keymap(
         bufnr,
         "n",
         "[e",
-        '<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR, border = "rounded" })<CR>',
+        '<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>',
         opts
     )
 end
 
 M.on_attach = function(client, bufnr)
-    require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     client.server_capabilities.semanticTokensProvider = false
+    require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     require("fenvim.lsp.lsp-signature").config()
     lsp_keymaps(bufnr)
 

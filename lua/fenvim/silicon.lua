@@ -1,5 +1,5 @@
 local M = {
-    "narutoxy/silicon.lua",
+    "mhanberg//silicon.lua",
     dependencies = { "nvim-lua/plenary.nvim" },
     build = "cargo install silicon",
     cmd = "Silicon",
