@@ -26,6 +26,10 @@ local options = {
         -- nbsp = "⋅",
     },
     mouse = "a", -- enable mouse in all modes
+   -- netrw_banner = 0, -- disable that anoying Netrw banner
+   -- netrw_browser_split = 4, -- open in a prior window
+   -- netrw_altv = 1, -- open splits to the right
+   -- netrw_liststyle = 3, -- treeview
     number = true, -- Show line numbers on side.
     numberwidth = 2, -- Sets sidenumber width to 2 instead of default 4
     pumheight = 10, -- max number of autocompletion options that will show
@@ -57,6 +61,7 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+
 -- Whitespace chars
 -- vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
 --vim.opt.listchars:append "eol:↴"
@@ -64,47 +69,7 @@ end
 
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
-vim.cmd("set formatoptions+=r") -- Insert the comment leader when you press Enter in Insert Mode
 
--- Relative number toggle, only in Normal mode
-vim.api.nvim_command([[
-augroup RelativeNumberToggle
-autocmd InsertEnter * :set relativenumber
-autocmd InsertLeave * :set norelativenumber
-augroup END
-]])
-
--- highlight yanked text for 200ms using the "IncSearch" highlight group
-vim.cmd([[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})
-augroup END
-]])
-
--- These two stop vim from adding comment strings when
--- pressing enter on comment strings in Insert mode.
-vim.cmd("autocmd BufEnter * set formatoptions-=cro")
-vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
-
-
--- Whitespace chars
--- vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
-
--- Removing trailing whitesspace on save.
-vim.api.nvim_exec(
-    [[augroup RemoveTrailingWhitespace
-  autocmd!
-  autocmd BufWritePre * lua remove_trailing_whitespace()
-augroup END]],
-    false
-)
-
-function remove_trailing_whitespace()
-    local cursor_position = vim.api.nvim_win_get_cursor(0)
-    vim.api.nvim_command("%s/\\s\\+$//e")
-    vim.api.nvim_win_set_cursor(0, cursor_position)
-end
 
 --NOTE: SEMANTIC HIGHLIGHT ERRORS? ENABLE THIS
 -- Disable semantic highlights.
