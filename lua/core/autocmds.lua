@@ -60,6 +60,7 @@ augroup END]],
     false
 )
 
+-- Paired function to above autocmd
 function remove_trailing_whitespace()
     local cursor_position = vim.api.nvim_win_get_cursor(0)
     vim.api.nvim_command("%s/\\s\\+$//e")
