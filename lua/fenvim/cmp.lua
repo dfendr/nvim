@@ -120,7 +120,7 @@ function M.config()
                 --     nvim_lsp = "[LSP]",
                 --     nvm_lua = "[nvim_lua]",
                 -- })[entry.source.name]
-                vim_item.abbr = vim_item.abbr:sub(1, 35)
+                vim_item.abbr = vim_item.abbr:sub(1, 30)
                 -- vim_item.kind = "[" .. kind_icons[vim_item.kind] .. "]"
                 vim_item.kind = kind_icons[vim_item.kind]
                 return vim_item
@@ -164,11 +164,12 @@ function M.config()
             -- native_menu = true,
         },
         window = {
-            -- TODO: Figure out highlights for floats.
-            -- blue selections on grey?
+
+            -- TODO: Figure out highlights for floats/menu.
+            -- I like blue selections on grey
             completion = cmp.config.window.bordered({
                 border = border.completion_border,
-                winhighlight = "Normal:PMenu,FloatBorder:Pmenu,Search:Comment",
+                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:Comment",
             }),
             documentation = cmp.config.window.bordered({
                 border = border.documentation_border,
