@@ -188,7 +188,7 @@ function M.config()
             },
             oldfiles = {
                 theme = "dropdown",
-                enable_preview = false,
+                enable_preview = true,
                 initial_mode = "insert",
             },
 
