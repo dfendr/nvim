@@ -45,7 +45,7 @@ function M.config()
             scroll_up = "<c-u>", -- binding to scroll up inside the popup
         },
         window = {
-            border = require("core.prefs").ui.border_style,
+            border = require("core.prefs").ui.which_key.border_style,
             position = "bottom", -- bottom, top
             margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
             padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -196,8 +196,8 @@ function M.config()
         },
         s = {
             name = "Session",
-            s = { "<cmd>SaveSession<cr>", "Save" },
-            l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+            s = { "<cmd>SessionSave<cr>", "Save" },
+            l = { "<cmd>SessionRestore<cr>", "Load Last" },
             r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
             d = { "<cmd>Autosession delete<cr>", "Delete Session" },
             f = { "<cmd>SearchSession<cr>", "Find Session" },
