@@ -2,6 +2,7 @@ local M = {
     "postfen/clipboard-image.nvim",
     enabled = true,
     ft = { "md", "markdown" },
+    lazy = true,
     -- Dependency on: pngpaste
     -- install with `brew install pngpaste`
 }
