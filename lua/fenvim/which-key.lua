@@ -177,12 +177,11 @@ function M.config()
             f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
             h = { "<cmd>Telescope help_tags<cr>", "Help" },
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
-            i = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
+            m = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
             M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
             p = { "<cmd>Telescope lazy<cr>", "Find Plugins" },
             r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-
             R = { ":cd ~/Repos<CR> :Telescope find_files <CR>", "Search Repo Files" },
             s = { "<cmd>SearchSession<cr>", "Find Session" },
             S = {

@@ -186,6 +186,12 @@ function M.config()
                 enable_preview = false,
                 initial_mode = "insert",
             },
+            oldfiles = {
+                theme = "dropdown",
+                enable_preview = false,
+                initial_mode = "insert",
+            },
+
             planets = {
                 show_pluto = true,
                 show_moon = true,
