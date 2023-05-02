@@ -44,7 +44,7 @@ function M.config()
         colors.purple = "#b16286"
     end
 
-    if lualine_scheme == "gruvbox-baby" then
+    if lualine_scheme == "fenbox" then
         colors.dark = "#202020"
         colors.foreground = "#EBDBB2"
         colors.bg = "#282828"
@@ -71,20 +71,20 @@ function M.config()
     local mode_color = {
         n = colors.comment,
         i = colors.dark_green,
-        v = colors.orange,
-        [""] = colors.orange,
-        V = colors.orange,
-        c = colors.pink,
+        v = colors.pink,
+        [""] = colors.pink,
+        V = colors.pink,
+        c = colors.orange,
         no = "",
-        s = colors.pink,
-        S = colors.pink,
-        [""] = colors.pink,
+        s = colors.orange,
+        S = colors.orange,
+        [""] = colors.orange,
         ic = "",
-        R = colors.red,
+        R = colors.orange,
         Rv = "",
         cv = "",
         ce = "",
-        r = colors.red,
+        r = colors.orange,
         rm = "",
         ["r?"] = "",
         ["!"] = colors.light_blue,
@@ -130,21 +130,18 @@ function M.config()
     end
 
     --
-    local darker_green = (funcs.fade_RGB(colors.blue_gray, colors.bg_dark, 90)) -- TODO: finish the fade function
+    local darker_green = (funcs.fade_RGB(colors.blue_gray, colors.bg_dark, 90))
 
     local background = colors.bg_dark
     -- Maybe use these differently than just aliases?
-    local c_color = mode_color.c
-    local gruvbox_baby_custom = {
+    local fenbox_custom = {
         normal = {
             a = { fg = colors.bg, bg = mode_color.n },
             b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.n, background, 90) },
             c = {
                 fg = mode_color.text, --[[ bg = funcs.fade_RGB(n_color, background, 95) ]]
             },
-            -- z= { fg = mode_color.text },
         },
-
         insert = {
             a = { fg = colors.bg, bg = mode_color.i },
             b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.i, background, 90) },
@@ -292,9 +289,9 @@ function M.config()
             end
             return str
         end,
-        cond = hide_in_width(60),
+        cond = hide_in_width(50),
         on_click = function()
-            vim.cmd("lua _GITUI_TOGGLE()")
+            vim.cmd("lua _LAZYGIT_TOGGLE()")
         end,
     }
 
@@ -371,11 +368,10 @@ function M.config()
         "filename",
         always_visible = false,
         cond = function()
-            return hide_in_width(80) and not require("core.prefs").ui.winbar_title
+            return hide_in_width(30)() and not require("core.prefs").ui.winbar_title
         end,
         on_click = function()
-            -- funcs.open_explorer()
-            -- vim.cmd("q")
+            funcs.open_explorer()
         end,
     }
 
@@ -415,19 +411,16 @@ function M.config()
                 "",
             }
             local space = ""
-
             if contains(ui_filetypes, buf_ft) then
                 space = " "
             end
-
             local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-
             if shiftwidth == nil or shiftwidth == 4 then
                 return ""
             end
-
             return " " .. shiftwidth .. space .. " "
         end,
+        cond = hide_in_width(75),
         padding = 0,
     }
     -------------------------------------------------------------------------------
@@ -464,7 +457,7 @@ function M.config()
                 vimwiki = true,
                 neorg = true,
             }
-            return count[ft] ~= nil
+            return hide_in_width(60)() and count[ft] ~= nil --and hide_in_width(60))
         end,
         fmt = function()
             local words = vim.fn.wordcount()["words"]
@@ -474,18 +467,19 @@ function M.config()
 
     -------------------------------------------------------------------------------
     -----------------------------Treesitter Icon------------------------------
-    --TODO:Finish this function and apply to statusbar
-    -- local treesitter = {
-    --     function()
-    --         return ""
-    --     end,
-    --     color = function()
-    --         local buf = vim.api.nvim_get_current_buf()
-    --         local ts = vim.treesitter.highlighter.active[buf]
-    --         return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
-    --     end,
-    --     cond = conditions.hide_in_width,
-    -- }
+    local treesitter = {
+        function()
+            local buf = vim.api.nvim_get_current_buf()
+            local ts = vim.treesitter.highlighter.active[buf]
+            return ts and not vim.tbl_isempty(ts) and "" or ""
+        end,
+        color = function()
+            local buf = vim.api.nvim_get_current_buf()
+            local ts = vim.treesitter.highlighter.active[buf]
+            return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
+        end,
+        cond = hide_in_width(80),
+    }
     -------------------------------------------------------------------------------
     ------------------------------Auto Theme application---------------------------
 
@@ -493,8 +487,8 @@ function M.config()
     -- TODO: Fix the auto-custom theme change.
     local vimtheme = vim.api.nvim_command_output("colo")
     local lualine_theme = auto
-    if vimtheme == "gruvbox-baby" then
-        lualine_theme = gruvbox_baby_custom
+    if vimtheme == "fenbox" then
+        lualine_theme = fenbox_custom
     end
 
     ---------------------------------------------------------------------------
