@@ -184,12 +184,12 @@ function M.config()
             buffers = {
                 theme = "dropdown",
                 enable_preview = false,
-                initial_mode = "insert",
+                initial_mode = "normal",
             },
             oldfiles = {
                 theme = "dropdown",
                 enable_preview = true,
-                initial_mode = "insert",
+                initial_mode = "normal",
             },
 
             planets = {
