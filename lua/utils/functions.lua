@@ -130,13 +130,13 @@ function M.wrap_in_quotes(string)
 end
 
 function M.open_explorer()
+    local current_file_dir = vim.fn.expand("%:p:h")
     if vim.fn.has("mac") == 1 then
-        return vim.cmd("TermExec cmd='open \"%:p:h\"'")
+        vim.cmd("!open " .. current_file_dir)
     elseif vim.fn.has("win32") == 1 then
-        return vim.cmd("TermExec cmd='start \"%:p:h\"'")
-        -- return vim.cmd("TermExec cmd='start .' dir=\"%:p:h\"")
+        vim.cmd("!start " .. current_file_dir)
     else
-        return vim.cmd("TermExec cmd='nautilus\"%:p:h\"'")
+        vim.cmd("!xdg-open " .. current_file_dir)
     end
 end
 

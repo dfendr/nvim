@@ -38,7 +38,7 @@ function M.config()
 
     local kind_icons = require("fenvim.ui.icons").kind
 
-    local border = require("core.prefs").ui.cmp
+    local prefs = require("core.prefs").ui.cmp
 
     local luasnip = require("luasnip")
     luasnip.config.setup({
@@ -168,12 +168,12 @@ function M.config()
             -- TODO: Figure out highlights for floats/menu.
             -- I like blue selections on grey
             completion = cmp.config.window.bordered({
-                border = border.completion_border,
-                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:Comment",
+                border = prefs.completion_border,
+                winhighlight = prefs.winhighlight,
             }),
             documentation = cmp.config.window.bordered({
-                border = border.documentation_border,
-                -- winhighlight = "FloatBorder:NormalFloat,Search:None",
+                border = prefs.documentation_border,
+                winhighlight = prefs.winhighlight,
             }),
         },
         -- view = { entries = "native" },
