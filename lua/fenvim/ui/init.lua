@@ -54,7 +54,7 @@ return {
         -- noicer ui
         "folke/noice.nvim",
         event = "VeryLazy",
-        enabled = true,
+        enabled = not vim.g.neovide,
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
