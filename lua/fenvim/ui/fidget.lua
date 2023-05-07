@@ -41,6 +41,11 @@ function M.config()
                 )
             end,
         },
+        sources = { -- Sources to configure
+            ["null-ls"] = { -- Name of source
+                ignore = true, -- Ignore notifications from this source
+            },
+        },
     })
 end
 return M
