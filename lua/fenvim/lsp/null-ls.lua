@@ -9,6 +9,7 @@ function M.config()
     local formatting = null_ls.builtins.formatting
     local diagnostics = null_ls.builtins.diagnostics
     local completion = null_ls.builtins.completion
+    local code_actions = null_ls.builtins.code_actions
 
     null_ls.setup({
         debug = false,
@@ -31,6 +32,8 @@ function M.config()
             formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
             diagnostics.markdownlint,
             formatting.markdownlint,
+            code_actions.proselint,
+            diagnostics.proselint,
             completion.spell.with({ filetypes = { "markdown", ".md" } }),
             require("typescript.extensions.null-ls.code-actions"),
         },
