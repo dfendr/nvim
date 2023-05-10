@@ -106,6 +106,7 @@ function M.config()
         v = { "<cmd>vsplit<cr>", "vsplit" },
         b = {
             name = "Buffers",
+            C = { "<cmd>BufferLineCloseLeft<cr><cmd>BufferLineCloseRight<cr>", "Close All Other Buffers" },
             j = { "<cmd>BufferLinePick<cr>", "Jump" },
             f = { "<cmd>Telescope buffers<cr>", "Find" },
             b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
@@ -114,7 +115,7 @@ function M.config()
                 "<cmd>BufferLinePickClose<cr>",
                 "Pick which buffer to close",
             },
-            h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+            h = { "<cmd>BufferLineCloseLeft<cr>", "Close All to the Left" },
             l = {
                 "<cmd>BufferLineCloseRight<cr>",
                 "Close all to the right",
