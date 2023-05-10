@@ -1,4 +1,5 @@
 local M = {}
+local funcs = require("utils.functions")
 function M.config()
     local function button(sc, txt, keybind)
         local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -56,8 +57,6 @@ function M.config()
     -- │        . |             │
     -- │          |             │
     -- └────────────────────────┘
-
-
 
     local function dynamic_header()
         local uis = vim.api.nvim_list_uis()[1]
@@ -181,9 +180,6 @@ function M.config()
         end
         return val
     end
-    -- ╭──────────────────────────────────────────────────────────╮
-    -- │ Time Widget - Credit to Ecovim                                            │
-    -- ╰──────────────────────────────────────────────────────────╯
 
     local thingy =
         io.popen('echo "$(LANG=en_us_88591; date +%a) $(date +%d) $(LANG=en_us_88591; date +%b)" | tr -d "\n"')
@@ -195,56 +191,41 @@ function M.config()
 
     local datetime = os.date(" %H:%M")
 
-    local hi_top_section = {
-        type = "text",
-        val = "┌────────────   Today is "
-            .. date
-            .. " ────────────┐",
+    local dynamic_header_gif = {
+        type = "terminal",
+        command = "chafa -c full --fg-only --symbols braille ~/Downloads/test.gif",
+        width = 90,
+        height = 20,
         opts = {
             position = "center",
-            hl = "Comment",
+            redraw = true,
+            window_config = {},
         },
     }
 
-    local hi_middle_section = {
+    local dynamic_header_responsive = {
         type = "text",
-        val = "│                                                │",
+        val = dynamic_header,
         opts = {
             position = "center",
-            hl = "Comment",
-        },
-    }
-
-    local hi_bottom_section = {
-        type = "text",
-        val = "└───══───══───══───  "
-            .. datetime
-            .. "  ───══───══───══────┘",
-        opts = {
-            position = "center",
-            hl = "Comment",
+            hl = header_hl_group,
         },
     }
 
     local options = {
-        header = {
-            type = "text",
-            val = dynamic_header,
-            opts = {
-                position = "center",
-                hl = header_hl_group,
-            },
-        },
+        -- header = dynamic_header_responsive,
+        header = dynamic_header_responsive,
         buttons = {
             type = "group",
             val = {
 
+                button("t", icons.ui.Check .. " Todo List", ":lua require('utils.functions').open_todo()<CR>"),
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
                 button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
-                button("r", icons.misc.Watch.. " Find Recent", ":Telescope oldfiles<CR>"),
-                button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
+                button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),
                 button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
+                button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                 button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
                 button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
                 button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),

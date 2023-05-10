@@ -7,7 +7,7 @@ local M = {
         "theHamsta/nvim-dap-virtual-text",
         "williamboman/mason.nvim",
         {
-            "jayp0521/mason-nvim-dap.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
             dependencies = "williamboman/mason.nvim",
             config = function()
                 require("mason-nvim-dap").setup({

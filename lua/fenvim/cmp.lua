@@ -104,47 +104,11 @@ function M.config()
             format = function(entry, vim_item)
                 vim_item.menu_hl_group = "CmpItemKind" .. vim_item.kind
                 vim_item.menu = vim_item.kind
-                -- vim_item.menu = ({
-                --     luasnip = vim_item.kind .. " " .. "[LuaSnip]",
-                --     buffer = vim_item.kind .. " " .. "[Buffer]",
-                --     path = vim_item.kind .. " " .. "[Path]",
-                --     emoji = vim_item.kind .. " " .. "[Emoji]",
-                --     nvim_lsp = vim_item.kind .. " " .. "[LSP]",
-                --     nvm_lua = vim_item.kind .. " " .. "[nvim_lua]",
-                -- })[entry.source.name]
-                -- vim_item.menu = ({
-                --     luasnip = "[LuaSnip]",
-                --     buffer = "[Buffer]",
-                --     path = "[Path]",
-                --     emoji = "[Emoji]",
-                --     nvim_lsp = "[LSP]",
-                --     nvm_lua = "[nvim_lua]",
-                -- })[entry.source.name]
                 vim_item.abbr = vim_item.abbr:sub(1, 30)
-                -- vim_item.kind = "[" .. kind_icons[vim_item.kind] .. "]"
                 vim_item.kind = kind_icons[vim_item.kind]
                 return vim_item
             end,
         },
-
-        -- formatting = {
-        --     fields = { "kind", "abbr", "menu" },
-        --     format = function(entry, vim_item)
-        --         -- Kind icons
-        --         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        --         -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-        --         vim_item.menu = ({
-        --             luasnip = "[Snippet]",
-        --             buffer = "[Buffer]",
-        --             path = "[Path]",
-        --             emoji = "[Emoji]",
-        --             nvim_lsp = "[LSP]",
-        --             nvm_lua = "[NVIM_LUA]",
-        --         })[entry.source.name]
-        --         return vim_item
-        --     end,
-        -- },
-
         sources = {
             { name = "nvim_lsp_signature_help" },
             { name = "neorg" },
@@ -165,8 +129,6 @@ function M.config()
         },
         window = {
 
-            -- TODO: Figure out highlights for floats/menu.
-            -- I like blue selections on grey
             completion = cmp.config.window.bordered({
                 border = prefs.completion_border,
                 winhighlight = prefs.winhighlight,
