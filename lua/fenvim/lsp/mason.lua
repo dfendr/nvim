@@ -1,19 +1,20 @@
 local M = {}
 
 M.tools = {
-    "prettierd",
-    "stylua",
-    "selene",
-    "luacheck",
+    "black",
+    "clang-format",
+    "codelldb",
+    "debugpy",
     "eslint_d",
+    "flake8",
+    "luacheck",
+    "markdownlint",
+    "prettierd",
+    "ruff",
+    "selene",
     "shellcheck",
     "shfmt",
-    "black",
-    "codelldb",
-    "clang-format",
-    "markdownlint",
-    "flake8",
-    "debugpy",
+    "stylua"
 }
 
 function M.check()
@@ -49,7 +50,6 @@ function M.config()
             "jsonls",
             "marksman",
             "omnisharp",
-            "pyright",
             "rust_analyzer",
             "lua_ls",
             "tsserver",

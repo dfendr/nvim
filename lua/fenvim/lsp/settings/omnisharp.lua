@@ -5,7 +5,7 @@ else
     path = "C:\\Users\\dylfe\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp.dll"
 end
 --  TODO: Create function for system detection
-path = "/Users/fen/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll"
+path = "/Users/fen/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll"
 
 return {
     cmd = { "dotnet", path },

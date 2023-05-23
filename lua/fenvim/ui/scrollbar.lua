@@ -7,11 +7,11 @@ function M.config()
     -- local render = scrollbar.render
     -- scrollbar.render = require("util").throttle(300, render)
 
-    local status_ok, _ = pcall(require, "gruvbox-baby.colors")
+    local status_ok, _ = pcall(require, "fenbox.colors")
     if not status_ok then
         return
     end
-    local colors = require("gruvbox-baby.colors").config()
+    local colors = require("fenbox.colors").config()
 
     scrollbar.setup({
         handle = {

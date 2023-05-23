@@ -193,7 +193,6 @@ function M.config()
             W = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
             z = { "<cmd>ZenMode<cr>", "Zen" },
         },
-        P = { "<cmd> lua require('telescope').extensions.yank_history.yank_history({})<cr>", "Paste from Yanky" },
         q = { '<cmd>lua require("utils.functions").smart_quit()<CR>', "Quit" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         r = {
@@ -278,6 +277,12 @@ function M.config()
         },
         z = { name = "Zen" },
     }
+
+    -- incremental renaming if available
+    local ok, _ = pcall(require, "inc_rename")
+    if ok then
+        mappings.R = { ":IncRename ", "Rename" }
+    end
 
     local opts = {
         mode = "n", -- NORMAL mode

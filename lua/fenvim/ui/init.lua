@@ -31,7 +31,6 @@ return {
             require("fenvim.ui.lualine").config()
         end,
     },
-
     {
         -- dashboard
         "goolord/alpha-nvim",
@@ -39,7 +38,10 @@ return {
             require("fenvim.ui.alpha").config()
         end,
     },
-
+    {
+        "smjonas/inc-rename.nvim",
+        config = true,
+    },
     {
         -- Cute UI widget for LSP loading
         "j-hui/fidget.nvim",

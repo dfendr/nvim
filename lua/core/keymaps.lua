@@ -1,6 +1,13 @@
 -- Keybind function shortcut
-local function map(mode, key, cmd, opts)
+local function map(mode, key, cmd, opts, desc)
     local options = {}
+    if type(desc) == "table" then
+        opts = vim.tbl_extend("force", opts, desc)
+    else
+        if type(desc) == "string" then
+            opts.desc = desc
+        end
+    end
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end

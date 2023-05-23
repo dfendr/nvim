@@ -75,19 +75,6 @@ return {
         end,
     },
     {
-        "gbprod/yanky.nvim",
-        event = "BufReadPost",
-        dependencies = {
-            "kkharji/sqlite.lua",
-        },
-        enabled = function()
-            return not jit.os:find("Windows")
-        end,
-        config = function()
-            require("fenvim.editor.yanky").config()
-        end,
-    },
-    {
         "folke/todo-comments.nvim",
         event = "BufReadPost",
         cmd = { "TodoTrouble", "TodoTelescope" },
@@ -155,7 +142,6 @@ return {
         event = "VeryLazy",
         enabled = true,
     },
-
     {
         "simrat39/symbols-outline.nvim",
         config = true,

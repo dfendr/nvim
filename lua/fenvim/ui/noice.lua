@@ -5,11 +5,11 @@ function M.config()
         -- routes = {
         --     {
         --         view = "notify",
-                -- filter = {
-                --     event = { "msg_showmode", "msg_show" },
-                --     kind = "search_count",
-                -- },
-                -- opts = { skip = true },
+        -- filter = {
+        --     event = { "msg_showmode", "msg_show" },
+        --     kind = "search_count",
+        -- },
+        -- opts = { skip = true },
         --     },
         -- },
         lsp = {
@@ -22,8 +22,8 @@ function M.config()
                 --- @type NoiceFormat|string
                 format_done = "lsp_progress_done",
                 throttle = 1000 / 10, -- frequency to update lsp progress message
-                view = "notify",
-                -- view = "mini",
+                -- view = "notify",
+                view = "mini",
             },
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -45,6 +45,21 @@ function M.config()
                     throttle = 50, -- Debounce lsp signature help request by 50ms
                 },
             },
+        },
+        popupmenu = {
+            enabled = true, -- enables the Noice popupmenu UI
+            ---@type 'nui'|'cmp'
+            backend = "nui", -- backend to use to show regular cmdline completions
+            ---@type NoicePopupmenuItemKind|false
+            -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+            kind_icons = {}, -- set to `false` to disable icons
+        },
+        -- default options for require('noice').redirect
+        -- see the section on Command Redirection
+        ---@type NoiceRouteConfig
+        redirect = {
+            view = "popup",
+            filter = { event = "msg_show" },
         },
         smart_move = { enabled = true },
         health = { checker = true },

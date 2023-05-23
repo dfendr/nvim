@@ -115,7 +115,7 @@ function M.config()
     -- "  "
     local function day_icon_max()
         if daylight then
-            return "  "
+            return " 󰉊 "
         else
             return "  "
         end
@@ -418,7 +418,7 @@ function M.config()
             if shiftwidth == nil or shiftwidth == 4 then
                 return ""
             end
-            return " " .. shiftwidth .. space .. " "
+            return " " .. shiftwidth .. space .. " "
         end,
         cond = hide_in_width(75),
         padding = 0,

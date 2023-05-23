@@ -1,9 +1,17 @@
 local M = {}
 
+local function spinner_icon()
+    if require("utils.functions").daylight() then
+        return "star"
+    else
+        return "moon"
+    end
+end
+
 function M.config()
     require("fidget").setup({
         text = {
-            spinner = "pipe", -- animation shown when tasks are ongoing
+            spinner = spinner_icon(), -- animation shown when tasks are ongoing
             done = "✔", -- character shown when all tasks are complete
             commenced = "Started", -- message shown when task starts
             completed = "Completed", -- message shown when task completes
@@ -21,7 +29,7 @@ function M.config()
             relative = "win", -- where to anchor, either "win" or "editor"
             blend = 100, -- &winblend for the window
             zindex = nil, -- the zindex value for the window
-            border = "none", -- style of border for the fidget window
+            border = require("core.prefs").ui.fidget, -- style of border for the fidget window
         },
         fmt = {
             leftpad = true, -- right-justify text in fidget box
