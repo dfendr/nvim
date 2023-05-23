@@ -5,7 +5,7 @@ function M.config()
         return
     end
 
-    local rule = require("nvim-autopairs.rule")
+    local Rule = require("nvim-autopairs.rule")
     local cond = require("nvim-autopairs.conds")
 
     npairs.setup({
@@ -32,11 +32,25 @@ function M.config()
     })
 
     -- Autopairs for closures
+    -- require Rule function
     npairs.add_rules({
-        -- rule("|", "|", { "rust", "go", "lua" })
-        --     :with_move(cond.after_regex("|"))
-        --     :with_pair(cond.not_before_regex(" ", 1)),
-        rule("**", "**", { "markdown" }):with_move(cond.after_regex("**")),
+
+        -- Rule('**', '**', 'markdown')
+        --      :with_pair(cond.before_regex_check('%S', 1))
+        --      :with_pair(cond.after_regex_check('%S', 1))
+        --      :with_move(cond.none())
+        --      :with_del(cond.none()),
+        --
+        -- Rule('_', '_', 'markdown')
+        --     :with_pair(cond.before_regex_check('%S', 1))
+        --     :with_pair(cond.after_regex_check('%S', 1))
+        --     :with_move(cond.none())
+        --     :with_del(cond.none()),
+
+        -- Arrow key for js (item)=> -> (item)=> { } --
+        Rule("%(.*%)%s*%=>$", " {  }", { "typescript", "typescriptreact", "javascript" })
+            :use_regex(true)
+            :set_end_pair_length(2),
     })
 end
 

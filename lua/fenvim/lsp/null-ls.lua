@@ -28,7 +28,7 @@ function M.config()
             diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
             formatting.sql_formatter,
             formatting.google_java_format,
-            formatting.csharpier,
+            formatting.csharpier.with({ filetyes = { "cs" } }),
             formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
             diagnostics.markdownlint,
             formatting.markdownlint,
