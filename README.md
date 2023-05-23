@@ -23,7 +23,7 @@
 - 📄 Per filetype shortcuts accessed with `<leader> L`
 - 🌐 Automatic LSP integrations via `Mason`, with modular format for adding LSP
   options per server.
-- 🏃 Quickrun files with `<leader>rr` using `Coderunner.nvim`
+- 🏃 Quick-run files with `<leader>rr` using `Coderunner.nvim`
 - 🐛 Quick DAP setup with `mason-nvim-dap.nvim`, meaning easy debugging!
 - 🤔 No need to remember _all_ keybinds, `<leader>` pops up a helpful keybind
   guide, provided by `which-key.nvim`
@@ -106,7 +106,7 @@ git clone https://github.com/postfen/nvim.git
 
 ### Nice to Haves
 
-- Not neccesary to have, but shortcuts are already mapped for them.
+- Not necessary to have, but shortcuts are already mapped for them.
 - [GitUI](https://github.com/extrawurst/gitui) for easy source control without
   leaving Neovim.
 - [Cargo](https://www.rust-lang.org/tools/install)

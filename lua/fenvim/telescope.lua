@@ -172,6 +172,9 @@ function M.config()
 
             live_grep = {
                 theme = "dropdown",
+                additional_args = function(opts)
+                    return { "--hidden" }
+                end,
             },
             grep_string = {
                 theme = "dropdown",
@@ -179,6 +182,7 @@ function M.config()
             },
             find_files = {
                 theme = "dropdown",
+                find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
                 enable_preview = true,
             },
             buffers = {

@@ -100,7 +100,7 @@ local function lsp_keymaps(bufnr)
         bufnr,
         "n",
         "[e",
-        '<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>',
+        "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
         opts
     )
 end

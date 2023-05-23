@@ -159,55 +159,63 @@ function _G.Toggle_venn()
     end
 end
 
-function M.lsp_rename()
-    local curr_name = vim.fn.expand("<cword>")
-    local value = vim.fn.input("LSP Rename: ", curr_name)
-    local lsp_params = vim.lsp.util.make_position_params()
+-- function M.lsp_rename()
+--     local curr_name = vim.fn.expand("<cword>")
+--     local value = vim.fn.input("LSP Rename: ", curr_name)
+--     local lsp_params = vim.lsp.util.make_position_params()
+--
+--     if not value or #value == 0 or curr_name == value then
+--         return
+--     end
+--
+--     -- request lsp rename
+--     lsp_params.newName = value
+--     vim.lsp.buf_request(0, "textDocument/rename", lsp_params, function(_, res, ctx, _)
+--         if not res then
+--             return
+--         end
+--
+--         -- apply renames
+--         local client = vim.lsp.get_client_by_id(ctx.client_id)
+--         vim.lsp.util.apply_workspace_edit(res, client.offset_encoding)
+--
+--         -- print renames
+--         local changed_files_count = 0
+--         local changed_instances_count = 0
+--
+--         if res.documentChanges then
+--             for _, changed_file in pairs(res.documentChanges) do
+--                 changed_files_count = changed_files_count + 1
+--                 changed_instances_count = changed_instances_count + #changed_file.edits
+--             end
+--         elseif res.changes then
+--             for _, changed_file in pairs(res.changes) do
+--                 changed_instances_count = changed_instances_count + #changed_file
+--                 changed_files_count = changed_files_count + 1
+--             end
+--         end
+--
+--         -- compose the right print message
+--         print(
+--             string.format(
+--                 "renamed %s instance%s in %s file%s. %s",
+--                 changed_instances_count,
+--                 changed_instances_count == 1 and "" or "s",
+--                 changed_files_count,
+--                 changed_files_count == 1 and "" or "s",
+--                 changed_files_count > 1 and "To save them run ':wa'" or ""
+--             )
+--         )
+--     end)
+-- end
 
-    if not value or #value == 0 or curr_name == value then
-        return
-    end
-
-    -- request lsp rename
-    lsp_params.newName = value
-    vim.lsp.buf_request(0, "textDocument/rename", lsp_params, function(_, res, ctx, _)
-        if not res then
-            return
-        end
-
-        -- apply renames
-        local client = vim.lsp.get_client_by_id(ctx.client_id)
-        vim.lsp.util.apply_workspace_edit(res, client.offset_encoding)
-
-        -- print renames
-        local changed_files_count = 0
-        local changed_instances_count = 0
-
-        if res.documentChanges then
-            for _, changed_file in pairs(res.documentChanges) do
-                changed_files_count = changed_files_count + 1
-                changed_instances_count = changed_instances_count + #changed_file.edits
-            end
-        elseif res.changes then
-            for _, changed_file in pairs(res.changes) do
-                changed_instances_count = changed_instances_count + #changed_file
-                changed_files_count = changed_files_count + 1
-            end
-        end
-
-        -- compose the right print message
-        print(
-            string.format(
-                "renamed %s instance%s in %s file%s. %s",
-                changed_instances_count,
-                changed_instances_count == 1 and "" or "s",
-                changed_files_count,
-                changed_files_count == 1 and "" or "s",
-                changed_files_count > 1 and "To save them run ':wa'" or ""
-            )
-        )
-    end)
-end
+-- function M.rename()
+--     if pcall(require, "inc_rename") then
+--         return vim.cmd[[IncRename ]]
+--     else
+--         return vim.cmd([[lua vim.lsp.buf.rename()]])
+--     end
+-- end
 
 function M.adjust_color(color, amount)
     color = vim.trim(color)
@@ -302,25 +310,24 @@ function M.open_todo()
 end
 -- create colour gradient from hex values
 M.create_gradient = function(start, finish, steps)
-	local r1, g1, b1 =
-		tonumber("0x" .. start:sub(2, 3)), tonumber("0x" .. start:sub(4, 5)), tonumber("0x" .. start:sub(6, 7))
-	local r2, g2, b2 =
-		tonumber("0x" .. finish:sub(2, 3)), tonumber("0x" .. finish:sub(4, 5)), tonumber("0x" .. finish:sub(6, 7))
+    local r1, g1, b1 =
+        tonumber("0x" .. start:sub(2, 3)), tonumber("0x" .. start:sub(4, 5)), tonumber("0x" .. start:sub(6, 7))
+    local r2, g2, b2 =
+        tonumber("0x" .. finish:sub(2, 3)), tonumber("0x" .. finish:sub(4, 5)), tonumber("0x" .. finish:sub(6, 7))
 
-	local r_step = (r2 - r1) / steps
-	local g_step = (g2 - g1) / steps
-	local b_step = (b2 - b1) / steps
+    local r_step = (r2 - r1) / steps
+    local g_step = (g2 - g1) / steps
+    local b_step = (b2 - b1) / steps
 
-	local gradient = {}
-	for i = 1, steps do
-		local r = math.floor(r1 + r_step * i)
-		local g = math.floor(g1 + g_step * i)
-		local b = math.floor(b1 + b_step * i)
-		table.insert(gradient, string.format("#%02x%02x%02x", r, g, b))
-	end
+    local gradient = {}
+    for i = 1, steps do
+        local r = math.floor(r1 + r_step * i)
+        local g = math.floor(g1 + g_step * i)
+        local b = math.floor(b1 + b_step * i)
+        table.insert(gradient, string.format("#%02x%02x%02x", r, g, b))
+    end
 
-	return gradient
+    return gradient
 end
-
 
 return M
