@@ -9,7 +9,7 @@ local M = {
         cmp = {
             completion_border = "rounded",
             documentation_border = "rounded", -- winhighlight = "Normal:PMenu,CursorLine:Comment,Search:PmenuSel",
-            winhighlight = "FloatBorder:FloatBorder",
+            -- winhighlight = "FloatBorder:FloatBorder",
         },
         fidget = "none",
         navic = false,
