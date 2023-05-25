@@ -31,6 +31,12 @@ function M.config()
                     text_align = "left",
                     separator = true,
                 },
+                {
+                    filetype = "neo-tree",
+                    text = "EXPLORER",
+                    text_align = "left",
+                    -- separator = true,
+                },
             },
 
             color_icons = true, -- whether or not to add the filetype icon highlights

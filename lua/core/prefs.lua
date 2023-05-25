@@ -1,17 +1,17 @@
 local M = {
     lsp = {
-
         diagnostic_signs = false,
     },
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
+        transparent = false,
         border_style = "rounded",
         cmp = {
             completion_border = "rounded",
             documentation_border = "rounded", -- winhighlight = "Normal:PMenu,CursorLine:Comment,Search:PmenuSel",
-            winhighlight = "FloatBorder:FloatBorder"
+            winhighlight = "FloatBorder:FloatBorder",
         },
-        fidget = "single",
+        fidget = "none",
         navic = false,
         which_key = { border_style = "rounded" },
         winbar_title = false,
