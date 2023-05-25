@@ -45,7 +45,7 @@ function M.config()
         },
 
         rainbow = {
-            enable = true,
+            enable = false,
             hlgroups = {
                 "TSRainbowMagenta",
                 "TSRainbowGray",

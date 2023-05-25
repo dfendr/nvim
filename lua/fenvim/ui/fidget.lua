@@ -27,7 +27,7 @@ function M.config()
         },
         window = {
             relative = "win", -- where to anchor, either "win" or "editor"
-            blend = 100, -- &winblend for the window
+            blend = 0, -- &winblend for the window
             zindex = nil, -- the zindex value for the window
             border = require("core.prefs").ui.fidget, -- style of border for the fidget window
         },
