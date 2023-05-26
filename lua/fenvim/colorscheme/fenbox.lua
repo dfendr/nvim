@@ -8,7 +8,7 @@ function M.config()
     vim.g.fenbox_telescope_theme = false
     vim.g.fenbox_transparent_mode = false
     vim.g.fenbox_comment_style = { nil }
-    vim.g.fenbox_function_style = {"bold" }
+    vim.g.fenbox_function_style = { "bold" }
     -- vim.g.fenbox_function_style = { nil }
     vim.g.fenbox_keyword_style = "NONE"
     vim.g.fenbox_use_original_palette = true
@@ -22,4 +22,5 @@ function M.config()
         return
     end
 end
+
 return M
