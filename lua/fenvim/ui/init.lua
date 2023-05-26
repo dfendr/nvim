@@ -27,6 +27,7 @@ return {
     {
         -- statusline
         "nvim-lualine/lualine.nvim",
+        enabled = true,
         config = function()
             require("fenvim.ui.lualine").config()
         end,

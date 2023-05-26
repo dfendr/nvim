@@ -2,115 +2,12 @@ local M = {}
 
 function M.config()
     local status_ok, lualine = pcall(require, "lualine")
-    -- TODO: work on this guy some more. Can do some cool stuff
-    local lualine_scheme = vim.api.nvim_command_output("colo")
-    local colors = {
-        dark = "#202020",
-        foreground = "#EBDBB2",
-        bg = "#282828",
-        bg_dark = "#242424",
-        bg_light = "#32302F",
-        medium_gray = "#504945",
-        comment = "#665C54",
-        gray = "#DEDEDE",
-        yellow = "#EEBD35",
-        dark_green = "#98971A",
-        orange = "#D65D0E",
-        red = "#CC241D",
-        magenta = "#B16286",
-        pink = "#D4879C",
-        light_blue = "#7FA2AC",
-        dark_gray = "#83A598",
-        blue_gray = "#458588",
-        green = "#689D6A",
-        light_green = "#8EC07C",
-        white = "#E7D7AD",
-        white2 = "#D5C4A1",
-        white3 = "#BDAE93",
-    }
-
-    if lualine_scheme == "gruvbox" then
-        colors.gray = "#928374"
-        colors.dark_gray = "#3c3836"
-        colors.red = "#CC241D"
-        colors.blue = "#458588"
-        colors.green = "#427b58"
-        colors.cyan = "#8ec07c"
-        colors.orange = "#FE8019"
-        colors.indent = "#fe8019"
-        colors.indent = "#CE9178"
-        colors.yellow = "#d5c4a1"
-        colors.yellow_orange = "#BDAE93"
-        colors.purple = "#b16286"
-    end
-
-    if lualine_scheme == "fenbox" then
-        colors.dark = "#202020"
-        colors.foreground = "#EBDBB2"
-        colors.bg = "#282828"
-        colors.bg_dark = "#242424"
-        colors.bg_light = "#32302F"
-        colors.medium_gray = "#504945"
-        colors.comment = "#665C54"
-        colors.gray = "#DEDEDE"
-        colors.yellow = "#EEBD35"
-        colors.dark_green = "#98971A"
-        colors.orange = "#D65D0E"
-        colors.red = "#CC241D"
-        colors.magenta = "#B16286"
-        colors.pink = "#D4879C"
-        colors.light_blue = "#7fA2AC"
-        colors.dark_gray = "#83A598"
-        colors.blue_gray = "#458588"
-        colors.green = "#689D6A"
-        colors.light_green = "#8EC07C"
-        colors.white = "#E7D7AD"
-    end
-
-    -- Table that's used in functions to dynamically sets component colors based on mode
-    local mode_color = {
-        n = colors.comment,
-        i = colors.dark_green,
-        v = colors.pink,
-        [""] = colors.pink,
-        V = colors.pink,
-        c = colors.orange,
-        no = "",
-        s = colors.orange,
-        S = colors.orange,
-        [""] = colors.orange,
-        ic = "",
-        R = colors.orange,
-        Rv = "",
-        cv = "",
-        ce = "",
-        r = colors.orange,
-        rm = "",
-        ["r?"] = "",
-        ["!"] = colors.light_blue,
-        t = "",
-        text = colors.white,
-    }
 
     local funcs = require("utils.functions")
     local daylight = funcs.daylight() -- check time
+    ------------------------------------------------------------------------
 
-    -- change colors based on time (only normal mode atm)
-    local function n_time_colors()
-        if daylight then
-            mode_color.n = colors.comment
-            -- mode_color.n = colors.dark_green
-            mode_color.text = colors.white
-            return
-        else
-            mode_color.n = colors.comment
-            -- mode_color.n = colors.blue_gray
-            mode_color.text = colors.white2
-            return colors.comment
-        end
-    end
-
-    --[[ Mode Icons:     盛滛      ]]
+    --[[ Mode Icons:           ]]
     -- "  "
     -- "  "
     local function day_icon_max()
@@ -130,59 +27,13 @@ function M.config()
     end
 
     --
-    local darker_green = (funcs.fade_RGB(colors.blue_gray, colors.bg_dark, 90))
-
-    local background = colors.bg_dark
-    -- Maybe use these differently than just aliases?
-    local fenbox_custom = {
-        normal = {
-            a = { fg = colors.bg, bg = mode_color.n },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.n, background, 90) },
-            c = {
-                fg = mode_color.text, --[[ bg = funcs.fade_RGB(n_color, background, 95) ]]
-            },
-        },
-        insert = {
-            a = { fg = colors.bg, bg = mode_color.i },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.i, background, 90) },
-            c = { fg = mode_color.text },
-        },
-        visual = {
-            a = { fg = colors.bg, bg = mode_color.v },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.v, background, 90) },
-            c = { fg = mode_color.text },
-        },
-
-        visual_block = {
-            a = { fg = colors.bg, bg = mode_color.v },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.v, background, 90) },
-            c = { fg = mode_color.text },
-        },
-        replace = {
-            a = { fg = colors.bg, bg = mode_color.r },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.r, background, 90) },
-            c = { fg = mode_color.text },
-        },
-
-        inactive = {
-            a = { fg = colors.white, bg = colors.black },
-            b = { fg = mode_color.text },
-            c = { fg = mode_color.text },
-        },
-        command = {
-            a = { fg = colors.bg, bg = mode_color.c },
-            b = { fg = mode_color.text, bg = funcs.fade_RGB(mode_color.c, background, 90) },
-            c = { fg = mode_color.text },
-        },
-    }
-
     local function diff_source()
-        local gitsigns = vim.b.gitsigns_status_dict
+        local gitsigns = require("fenvim.ui.icons").git
         if gitsigns then
             return {
-                added = gitsigns.added,
-                modified = gitsigns.changed,
-                removed = gitsigns.removed,
+                added = gitsigns.Add,
+                modified = gitsigns.Diff,
+                removed = gitsigns.Remove,
             }
         end
     end
@@ -212,14 +63,6 @@ function M.config()
     --[[ Mode Icons:     盛滛            ]]
     local mode = {
         day_icon_max,
-        -- color = function()
-        --     -- auto change color according to neovims mode
-        --     return { fg = mode_color[vim.fn.mode()] }
-        -- end,
-        -- color = function()
-        --     -- auto change color according to neovims mode
-        --     return { bg = mode_color[vim.fn.mode()] }
-        -- end,
         padding = 0,
         on_click = function()
             vim.cmd("Alpha")
@@ -247,7 +90,7 @@ function M.config()
             return msg
         end,
         icon = " LSP:",
-        color = { fg = colors.white, gui = "bold" },
+        -- color = { fg = colors.white, gui = "bold" },
         padding = 1,
     }
 
@@ -306,10 +149,6 @@ function M.config()
             dos = "CRLF ",
             mac = "CR ",
         },
-        -- color = function()
-        --     -- auto change color according to neovims mode
-        --     return { fg = mode_color[vim.fn.mode()] }
-        -- end,
     }
 
     local filetype = {
@@ -318,10 +157,6 @@ function M.config()
         icon = nil,
         always_visible = false,
         cond = hide_in_width(80),
-        -- color = function()
-        --     -- auto change color according to neovims mode
-        --     return { fg = mode_color[vim.fn.mode()] }
-        -- end,
     }
 
     -------------------------------------------------------------------------------
@@ -336,10 +171,6 @@ function M.config()
         padding = 0,
         always_visible = false,
         cond = hide_in_width(80),
-        color = function()
-            -- auto change color according to neovims mode
-            return { bg = mode_color[vim.fn.mode()] }
-        end,
     }
     local location = {
         "location",
@@ -383,14 +214,6 @@ function M.config()
         local day_icon_str = day_icon()
         return date_str .. " " .. day_icon_str
     end
-
-    local clock_comp = {
-        clock,
-        color = function()
-            -- auto change color according to neovims mode
-            return { bg = mode_color[vim.fn.mode()] }
-        end,
-    }
 
     ---------------------------------------------------------------------------
     -----------------------------Spaces----------------------------------------
@@ -466,30 +289,10 @@ function M.config()
     }
 
     -------------------------------------------------------------------------------
-    -----------------------------Treesitter Icon------------------------------
-    local treesitter = {
-        function()
-            local buf = vim.api.nvim_get_current_buf()
-            local ts = vim.treesitter.highlighter.active[buf]
-            return ts and not vim.tbl_isempty(ts) and "" or ""
-        end,
-        color = function()
-            local buf = vim.api.nvim_get_current_buf()
-            local ts = vim.treesitter.highlighter.active[buf]
-            return { fg = ts and not vim.tbl_isempty(ts) and colors.green or colors.red }
-        end,
-        cond = hide_in_width(80),
-    }
-    -------------------------------------------------------------------------------
     ------------------------------Auto Theme application---------------------------
 
     -- Get current theme
     -- TODO: Fix the auto-custom theme change.
-    local vimtheme = vim.api.nvim_command_output("colo")
-    local lualine_theme = auto
-    if vimtheme == "fenbox" then
-        lualine_theme = fenbox_custom
-    end
 
     ---------------------------------------------------------------------------
     --------------------------Lualine Setup------------------------------------
@@ -498,7 +301,7 @@ function M.config()
         options = {
             globalstatus = true,
             icons_enabled = true,
-            theme = lualine_theme,
+            theme = "auto",
             -- component_separators = { left = '', right = ''},
             -- section_separators = { left = '', right = ''},
             section_separators = { left = "", right = "" },
