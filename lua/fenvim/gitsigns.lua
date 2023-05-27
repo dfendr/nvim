@@ -16,7 +16,7 @@ function M.config()
             delete = { hl = "GitSignsDelete", text = "󰜴 ", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
             topdelete = {
                 hl = "GitSignsDelete",
-                text = "ﰲ ",
+                text = "󰜴 ",
                 numhl = "GitSignsDeleteNr",
                 linehl = "GitSignsDeleteLn",
             },
