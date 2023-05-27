@@ -107,18 +107,47 @@ function M.get_buf_option(opt)
     end
 end
 
+function M.convert_to_unix()
+    -- First, remove ^M (carriage return characters)
+    local choice = vim.fn.confirm("Confirm conversion to Unix?", "&Yes\n&No", 2)
+    if choice == 1 then
+        local cursor_position = vim.api.nvim_win_get_cursor(0)
+        vim.api.nvim_command("%s/\\r//ge")
+        vim.api.nvim_win_set_cursor(0, cursor_position)
+
+        -- Then, convert the file from CRLF to LF
+        local old_fileformat = vim.api.nvim_buf_get_option(0, "fileformat")
+        vim.api.nvim_buf_set_option(0, "fileformat", "unix")
+        if old_fileformat == "dos" then
+            vim.api.nvim_command("write")
+            vim.api.nvim_command("edit")
+        end
+    end
+end
+
+function M.convert_to_dos()
+    -- Confirm the conversion before proceeding
+    local choice = vim.fn.confirm("Confirm conversion to DOS?", "&Yes\n&No", 2)
+    if choice == 1 then
+        -- Convert the file from LF to CRLF
+        local old_fileformat = vim.api.nvim_buf_get_option(0, "fileformat")
+        vim.api.nvim_buf_set_option(0, "fileformat", "dos")
+        if old_fileformat == "unix" then
+            vim.api.nvim_command("write")
+            vim.api.nvim_command("edit")
+        end
+    end
+end
+
 function M.smart_quit()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
     local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
     if modified and #buf_windows == 1 then
-        vim.ui.input({
-            prompt = "You have unsaved changes. Quit anyway? (y/n) ",
-        }, function(input)
-            if input == "y" then
-                vim.cmd("q!")
-            end
-        end)
+        local choice = vim.fn.confirm("You have unsaved changes. Quit anyway?", "&Yes\n&No", 2)
+        if choice == 1 then
+            vim.cmd("q!")
+        end
     else
         vim.cmd("q!")
     end

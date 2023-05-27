@@ -8,13 +8,14 @@ function M.config()
     ------------------------------------------------------------------------
 
     --[[ Mode Icons:           ]]
-    -- "  "
-    -- "  "
+    -- " 󰉊  󰉊 "
+    -- "    "
+
     local function day_icon_max()
         if daylight then
             return " 󰉊 "
         else
-            return "  "
+            return "  "
         end
     end
 
@@ -60,7 +61,7 @@ function M.config()
 
     ---------------- Sections-----------------
     -- Change mode string
-    --[[ Mode Icons:     盛滛            ]]
+    --[[ Mode Icons: 󰉊    盛滛            ]]
     local mode = {
         day_icon_max,
         padding = 0,
@@ -71,7 +72,6 @@ function M.config()
 
     -------------------------------------------------------------------------------
     -------------------------------LSP---------------------------------------------
-
     local lsp_info = {
         -- Lsp server name .
         function()
@@ -207,6 +207,34 @@ function M.config()
     }
 
     ---------------------------------------------------------------------------
+    ---------------------------------------------------------[[ Mixed Indent ]]
+    local function mixed_indent()
+        local space_pat = [[\v^ +]]
+        local tab_pat = [[\v^\t+]]
+        local space_indent = vim.fn.search(space_pat, "nwc")
+        local tab_indent = vim.fn.search(tab_pat, "nwc")
+        local mixed = (space_indent > 0 and tab_indent > 0)
+        local mixed_same_line
+        if not mixed then
+            mixed_same_line = vim.fn.search([[\v^(\t+ | +\t)]], "nwc")
+            mixed = mixed_same_line > 0
+        end
+        if not mixed then
+            return ""
+        end
+        if mixed_same_line ~= nil and mixed_same_line > 0 then
+            return "MI:" .. mixed_same_line
+        end
+        local space_indent_cnt = vim.fn.searchcount({ pattern = space_pat, max_count = 1e3 }).total
+        local tab_indent_cnt = vim.fn.searchcount({ pattern = tab_pat, max_count = 1e3 }).total
+        if space_indent_cnt > tab_indent_cnt then
+            return "MI:" .. tab_indent
+        else
+            return "MI:" .. space_indent
+        end
+    end
+
+    ---------------------------------------------------------------------------
     -----------------------------Clock-----------------------------------------
 
     local function clock()
@@ -288,12 +316,6 @@ function M.config()
         end,
     }
 
-    -------------------------------------------------------------------------------
-    ------------------------------Auto Theme application---------------------------
-
-    -- Get current theme
-    -- TODO: Fix the auto-custom theme change.
-
     ---------------------------------------------------------------------------
     --------------------------Lualine Setup------------------------------------
 
@@ -304,10 +326,10 @@ function M.config()
             theme = "auto",
             -- component_separators = { left = '', right = ''},
             -- section_separators = { left = '', right = ''},
-            section_separators = { left = "", right = "" },
-            component_separators = { left = "", right = "" },
             -- section_separators = { left = "", right = "" },
             -- component_separators = { left = "", right = "" },
+            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
             disabled_filetypes = {
                 { "alpha", "NvimTree", "dashboard" },
             },
@@ -322,7 +344,7 @@ function M.config()
                 encoding,
                 fileformat,
             },
-            lualine_y = { wordcount, spaces, location, progress },
+            lualine_y = { wordcount, mixed_indent, spaces, location, progress },
             lualine_z = { { clock } },
         },
 

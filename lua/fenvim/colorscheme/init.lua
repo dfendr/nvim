@@ -1,5 +1,7 @@
 return {
     { "rktjmp/lush.nvim" },
+    { "Shatur/neovim-ayu" },
+    { "EdenEast/nightfox.nvim" },
     {
         "xiyaowong/transparent.nvim",
         enabled = require("core.prefs").ui.transparent,
@@ -7,7 +9,7 @@ return {
     },
     {
         "postfen/fenbox",
-        branch = "sandbox",
+        -- branch = "sandbox",
         lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()

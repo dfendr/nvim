@@ -174,6 +174,7 @@ function M.config()
             b = { '<cmd>lua require("utils.functions").toggle_tabline()<cr>', "Toggle Bufferline" },
             c = { "<cmd>lua vim.g.cmp_active=false<cr>", "Completion off" },
             C = { "<cmd>lua vim.g.cmp_active=true<cr>", "Completion on" },
+            d = { "<cmd>lua require('utils.functions').convert_to_dos()<CR>", "Convert to DOS Formatting" },
             h = { "<cmd>HexToggle<cr>", "Toggle Hex Editor" },
             l = { '<cmd>lua require("utils.functions").toggle_option("cursorline")<cr>', "Cursorline" },
             m = {
@@ -188,6 +189,7 @@ function M.config()
             s = { "<cmd>ScrollbarToggle<cr>", "Toggle Scrollbar" },
             S = { '<cmd>lua require("utils.functions").toggle_option("spell")<cr>', "Spell" },
             t = { "<cmd>Twilight<cr>", "Twilight" },
+            u = { "<cmd>lua require('utils.functions').convert_to_unix()<CR>", "Convert to Unix Formatting" },
             v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
             w = { "<cmd>WindowsToggleAutowidth<cr>", "Toggle Window Autowidth" },
             W = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
