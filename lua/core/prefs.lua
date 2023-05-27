@@ -1,4 +1,7 @@
 local M = {
+    autocommands = {
+        convert_to_unix_formatting_on_save= false,
+    },
     lsp = {
         diagnostic_signs = false,
     },
