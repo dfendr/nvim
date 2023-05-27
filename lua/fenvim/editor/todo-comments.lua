@@ -5,15 +5,38 @@ function M.config()
         return
     end
 
-    local icons = require("fenvim.ui.icons")
+    -- TODO:
+    -- Test Todo-comments colors
+    -- NOTE:
+    -- Testing note colors
+    -- PERF:
+    -- Faster implementation
+    -- WARNING:
+    -- Watch it !!!
+    -- HACK:
+    -- mind ya manners
+    -- BUG:
+    -- damn man
+    -- FIXME:
+    -- Please fix
 
-    -- TODO: Match colors to gruvbox
+    local icons = require("fenvim.ui.icons")
     local error_red = "#F44747"
     local warning_orange = "#ff8800"
-    -- local info_yellow = "#FFCC66"
+    local info_yellow = "#FFCC66"
     local hint_blue = "#4FC1FF"
     local perf_purple = "#7C3AED"
     local note_green = "#10B981"
+
+    if pcall(require, "fenbox") then
+        local c = require("fenbox.colors").config()
+        error_red = c.red
+        warning_orange = c.orange
+        info_yellow = c.bright_yellow
+        hint_blue = c.clean_green
+        perf_purple = c.magenta
+        note_green = c.soft_green
+    end
 
     todo_comments.setup({
         signs = true, -- show icons in the signs column
@@ -28,7 +51,7 @@ function M.config()
             },
             TODO = { icon = icons.ui.Check, color = hint_blue, alt = { "TIP" } },
             HACK = { icon = icons.ui.Fire, color = warning_orange },
-            WARN = { icon = icons.diagnostics.Warning, color = warning_orange, alt = { "WARNING", "XXX" } },
+            WARN = { icon = icons.diagnostics.Warning, color = info_yellow, alt = { "WARNING", "XXX" } },
             PERF = { icon = icons.ui.Dashboard, color = perf_purple, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
             NOTE = { icon = icons.ui.Note, color = note_green, alt = { "INFO" } },
         },
