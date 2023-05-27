@@ -52,19 +52,25 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Removing trailing whitesspace on save.
-vim.api.nvim_exec(
-    [[augroup RemoveTrailingWhitespace
-  autocmd!
-  autocmd BufWritePre * lua remove_trailing_whitespace()
-augroup END]],
-    false
-)
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = "*",
+    callback = function(event)
+        local cursor_position = vim.api.nvim_win_get_cursor(0)
+        vim.api.nvim_command("%s/\\s\\+$//e")
+        vim.api.nvim_win_set_cursor(0, cursor_position)
+    end,
+})
 
--- Paired function to above autocmd
-function remove_trailing_whitespace()
-    local cursor_position = vim.api.nvim_win_get_cursor(0)
-    vim.api.nvim_command("%s/\\s\\+$//e")
-    vim.api.nvim_win_set_cursor(0, cursor_position)
+if require("core.prefs").autocommands.convert_to_unix_formatting_on_save then
+    -- Automatically convert to unix formatting on save
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+        pattern = "*",
+        callback = function(event)
+            local cursor_position = vim.api.nvim_win_get_cursor(0)
+            vim.api.nvim_command("%s/\\r//ge") -- replace the \s with \r to remove ^M
+            vim.api.nvim_win_set_cursor(0, cursor_position)
+        end,
+    })
 end
 
 -- These two stop vim from adding comment strings when
@@ -72,44 +78,42 @@ end
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
 
-
-
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
-  callback = function()
-    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
-    if ok and cl then
-      vim.wo.cursorline = true
-      vim.api.nvim_win_del_var(0, "auto-cursorline")
-    end
-  end,
+    callback = function()
+        local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+        if ok and cl then
+            vim.wo.cursorline = true
+            vim.api.nvim_win_del_var(0, "auto-cursorline")
+        end
+    end,
 })
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
-  callback = function()
-    local cl = vim.wo.cursorline
-    if cl then
-      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
-      vim.wo.cursorline = false
-    end
-  end,
+    callback = function()
+        local cl = vim.wo.cursorline
+        if cl then
+            vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+            vim.wo.cursorline = false
+        end
+    end,
 })
 
 -- create directories when needed, when saving a file
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("better_backup", { clear = true }),
-  callback = function(event)
-    local file = vim.loop.fs_realpath(event.match) or event.match
-    local backup = vim.fn.fnamemodify(file, ":p:~:h")
-    backup = backup:gsub("[/\\]", "%%")
-    vim.go.backupext = backup
-  end,
+    group = vim.api.nvim_create_augroup("better_backup", { clear = true }),
+    callback = function(event)
+        local file = vim.loop.fs_realpath(event.match) or event.match
+        local backup = vim.fn.fnamemodify(file, ":p:~:h")
+        backup = backup:gsub("[/\\]", "%%")
+        vim.go.backupext = backup
+    end,
 })
 
 -- Fix conceallevel for json & help files
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "json", "jsonc" },
-  callback = function()
-    vim.wo.spell = false
-    vim.wo.conceallevel = 0
-  end,
+    pattern = { "json", "jsonc" },
+    callback = function()
+        vim.wo.spell = false
+        vim.wo.conceallevel = 0
+    end,
 })
