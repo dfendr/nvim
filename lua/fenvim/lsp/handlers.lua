@@ -108,7 +108,6 @@ end
 M.on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = false
     require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
-    require("fenvim.lsp.lsp-signature").config()
     lsp_keymaps(bufnr)
 
     if client.name == "jdt.ls" then
@@ -119,11 +118,7 @@ M.on_attach = function(client, bufnr)
         end
     end
 
-    if client.name == "tsserver" then
-        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-    end
-
-    if client.name == "clangd" then -- disable formatting, handled by null-ls
+    if client.name == "tsserver" or client.name == "clangd" then
         client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
     end
 end
