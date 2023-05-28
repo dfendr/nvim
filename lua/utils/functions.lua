@@ -139,7 +139,7 @@ function M.convert_to_dos()
     end
 end
 
-function M.smart_quit()
+function M.smart_close ()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
     local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
@@ -153,6 +153,30 @@ function M.smart_quit()
     end
 end
 
+function M.smart_exit()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+    local buffers = vim.api.nvim_list_bufs()
+
+    if not modified then
+        for _, buf in ipairs(buffers) do
+            if vim.api.nvim_buf_get_option(buf, "modified") then
+                vim.api.nvim_set_current_buf(buf)
+                modified = true
+                break
+            end
+        end
+    end
+
+    if modified then
+        local choice = vim.fn.confirm("You have unsaved changes. Quit anyway?", "&Yes\n&No", 2)
+        if choice == 1 then
+            vim.cmd("qa!")
+        end
+    else
+        vim.cmd("qa!")
+    end
+end
 function M.wrap_in_quotes(string)
     return '"' .. string .. '"'
 end
