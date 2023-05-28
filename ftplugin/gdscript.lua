@@ -10,3 +10,10 @@ vim.lsp.start({
     vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
   end
 })
+
+[[
+In Godot External Editor Settings:
+Use External Editor: On
+Exec Path: nvim
+Exec Flags: --server /tmp/godot.pipe --remote-send "<esc>:n {file}<CR>:call cursor({line},{col})<CR>"
+]]
