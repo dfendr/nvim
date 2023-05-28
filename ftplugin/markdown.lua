@@ -16,6 +16,7 @@ vim.cmd("setlocal tabstop=2")
 -- vim.cmd("set scrolloff=10")
 vim.cmd("setlocal tw=79")
 vim.cmd("setlocal spell")
+vim.cmd("setlocal conceallevel=3")
 
 local mappings = {
     L = {
