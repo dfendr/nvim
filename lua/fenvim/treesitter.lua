@@ -27,6 +27,7 @@ function M.config()
             "javascript",
             "lua",
             "markdown",
+            "markdown_inline",
             "python",
             "regex",
             "rust",
@@ -45,7 +46,7 @@ function M.config()
         },
 
         rainbow = {
-            enable = false,
+            enable = true,
             hlgroups = {
                 "TSRainbowMagenta",
                 "TSRainbowGray",
