@@ -195,7 +195,8 @@ function M.config()
             W = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
             z = { "<cmd>ZenMode<cr>", "Zen" },
         },
-        q = { '<cmd>lua require("utils.functions").smart_quit()<CR>', "Quit" },
+        q = { '<cmd>lua require("utils.functions").smart_close()<CR>', "Close Window" },
+        Q = { '<cmd>lua require("utils.functions").smart_exit()<CR>', "Exit" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         r = {
             name = "Quickrun",
