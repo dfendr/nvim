@@ -21,12 +21,19 @@ vim.cmd("setlocal conceallevel=3")
 local mappings = {
     L = {
         name = "Markdown",
-        l = { "<cmd>!md2pdf %:p<cr>", "Convert to Latex" },
+        l = { "<cmd>lua ConvertToLatex()<cr>", "Convert to Latex" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
         P = { "<cmd>PasteImg<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
     },
 }
+
+function ConvertToLatex()
+    local path = vim.fn.expand("%:p")
+    local quoted_path = vim.fn.shellescape(path)
+    vim.cmd("!md2pdf " .. quoted_path)
+end
+
 which_key.register(mappings, opts)
 local opts = { noremap = true, silent = true }
 
