@@ -39,8 +39,9 @@ return {
             require("fenvim.ui.alpha").config()
         end,
     },
-    {
+    { -- incremental renaming, see renames in all instances of variable, live.
         "smjonas/inc-rename.nvim",
+        enabled = false,
         config = true,
     },
     {

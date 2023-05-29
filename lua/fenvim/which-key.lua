@@ -340,7 +340,7 @@ function M.config()
         z = { name = "Zen" },
     }
 
-    -- incremental renaming if available
+    -- If inc_rename installed, change rename command.
     local ok, _ = pcall(require, "inc_rename")
     if ok then
         mappings.R = { ":IncRename ", "Rename" }
