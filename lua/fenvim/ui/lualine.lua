@@ -11,11 +11,19 @@ function M.config()
     -- " 󰉊  󰉊 "
     -- "    "
 
-    local function day_icon()
+    local function day_icon_left()
         if daylight then
             return " 󰉊 "
         else
             return "  "
+        end
+    end
+
+    local function day_icon_right()
+        if daylight then
+            return ""
+        else
+            return ""
         end
     end
 
@@ -55,7 +63,7 @@ function M.config()
     -- Change mode string
     --[[ Mode Icons: 󰉊    盛滛            ]]
     local mode = {
-        day_icon,
+        day_icon_left,
         padding = 0,
         on_click = function()
             vim.cmd("Alpha")
@@ -231,7 +239,7 @@ function M.config()
 
     local function clock()
         local date_str = os.date("%-H:%M")
-        local day_icon_str = day_icon()
+        local day_icon_str = day_icon_right()
         return date_str .. " " .. day_icon_str
     end
 
