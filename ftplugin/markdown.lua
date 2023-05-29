@@ -11,12 +11,12 @@ local opts = {
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
 }
-vim.cmd("setlocal shiftwidth=2")
-vim.cmd("setlocal tabstop=2")
--- vim.cmd("set scrolloff=10")
-vim.cmd("setlocal tw=79")
-vim.cmd("setlocal spell")
-vim.cmd("setlocal conceallevel=3")
+vim.opt_local.shiftwidth = 2
+vim.opt_local.tabstop = 2
+-- vim.wo.scrolloff = 10 -- sets globally
+vim.opt_local.textwidth = 79
+vim.opt_local.spell = true
+vim.opt_local.conceallevel = 3
 
 local mappings = {
     L = {
@@ -28,11 +28,22 @@ local mappings = {
     },
 }
 
+
+------------------------------------------------------ [[ConvertToLatex]]
+-- Shell script used for ConvertToLatex
+-- Place in .bashrc, and make sure pandoc is installed.
+
+-- md2pdf() {
+-- 	v2=${1:0:-3}
+-- 	pandoc "$1" -o "$v2".pdf -V geometry:margin=1in
+-- }
+
 function ConvertToLatex()
     local path = vim.fn.expand("%:p")
     local quoted_path = vim.fn.shellescape(path)
     vim.cmd("!md2pdf " .. quoted_path)
 end
+------------------------------------------------------
 
 which_key.register(mappings, opts)
 local opts = { noremap = true, silent = true }
