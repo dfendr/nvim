@@ -156,7 +156,7 @@ function M.config()
             highlight_opened_files = "all",
             root_folder_modifier = ":t",
             indent_markers = {
-                enable = false,
+                enable = true,
                 icons = {
                     corner = "└ ",
                     edge = "│ ",
@@ -165,7 +165,7 @@ function M.config()
             },
             icons = {
                 webdev_colors = true,
-                git_placement = "before",
+                git_placement = "after",
                 padding = " ",
                 symlink_arrow = " ➛ ",
                 show = {
@@ -188,12 +188,20 @@ function M.config()
                         symlink_open = "",
                     },
                     git = {
-                        unstaged = "",
-                        staged = "s",
+                        -- unstaged = "M",
+                        -- staged = "S",
+                        -- unmerged = "",
+                        -- renamed = "R",
+                        -- untracked = "U",
+                        -- deleted = "",
+                        -- ignored = "◌",
+                        unstaged = "",
+                        staged = "",
                         unmerged = "",
-                        renamed = "➜",
+                        renamed = "",
                         untracked = "u",
-                        deleted = "",
+                        deleted = "",
+                        -- deleted = "",
                         ignored = "◌",
                     },
                 },
@@ -232,11 +240,9 @@ function M.config()
         },
         view = {
             width = 30,
-            -- height = 30,
             hide_root_folder = false,
             side = "left",
             adaptive_size = false,
-            --auto_resize = true,
             float = {
                 enable = false,
                 open_win_config = {
@@ -248,17 +254,6 @@ function M.config()
                     col = 1,
                 },
             },
-            -- mappings = {
-            --     custom_only = false,
-            --     list = {
-            --         { key = { "l", "<cr>", "o" }, cb = tree_cb("edit") },
-            --         { key = "h", cb = tree_cb("close_node") },
-            --         { key = "v", cb = tree_cb("vsplit") },
-            --         { key = "b", cb = tree_cb("split") }, -- heuristic "Below"
-            --         { key = "t", cb = tree_cb("tabnew") },
-            --         { key = "gh", cb = tree_cb("toggle_file_info") },
-            --     },
-            -- },
             number = false,
             relativenumber = false,
         },
