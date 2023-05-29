@@ -41,7 +41,12 @@ local mappings = {
 function ConvertToLatex()
     local path = vim.fn.expand("%:p")
     local quoted_path = vim.fn.shellescape(path)
-    vim.cmd("!md2pdf " .. quoted_path)
+    vim.fn.system("md2pdf " .. quoted_path)
+    if vim.v.shell_error == 0 then
+        vim.notify("Conversion Success", vim.log.levels.INFO)
+    else
+        vim.notify("Conversion Failure", vim.log.levels.ERROR)
+    end
 end
 ------------------------------------------------------
 
