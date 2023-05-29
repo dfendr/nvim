@@ -11,19 +11,11 @@ function M.config()
     -- " 󰉊  󰉊 "
     -- "    "
 
-    local function day_icon_max()
+    local function day_icon()
         if daylight then
             return " 󰉊 "
         else
             return "  "
-        end
-    end
-
-    local function day_icon()
-        if daylight then
-            return ""
-        else
-            return ""
         end
     end
 
@@ -63,7 +55,7 @@ function M.config()
     -- Change mode string
     --[[ Mode Icons: 󰉊    盛滛            ]]
     local mode = {
-        day_icon_max,
+        day_icon,
         padding = 0,
         on_click = function()
             vim.cmd("Alpha")
