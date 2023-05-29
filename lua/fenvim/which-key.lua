@@ -154,7 +154,6 @@ function M.config()
             i = { "<cmd>Gitignore<cr>", "Generate gitignore" },
             j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
             k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-            l = { "<cmd>GitBlameToggle<cr>", "Blame" },
             o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
             R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },

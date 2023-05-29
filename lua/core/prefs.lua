@@ -11,13 +11,13 @@ local M = {
         border_style = "rounded",
         cmp = {
             completion_border = "rounded",
-            documentation_border = "rounded", -- winhighlight = "Normal:PMenu,CursorLine:Comment,Search:PmenuSel",
+            documentation_border = "rounded",
             -- winhighlight = "FloatBorder:FloatBorder",
         },
         fidget = "none",
-        navic = false,
-        which_key = { border_style = "rounded" },
         winbar_title = false,
+        navic = false, -- winbar_title must be true as well for navic to activate.
+        which_key = { border_style = "rounded" },
     },
 }
 
