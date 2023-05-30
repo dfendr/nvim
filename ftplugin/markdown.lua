@@ -18,10 +18,12 @@ vim.opt_local.textwidth = 79
 vim.opt_local.spell = true
 vim.opt_local.conceallevel = 3
 
+
+
 local mappings = {
     L = {
         name = "Markdown",
-        l = { "<cmd>lua ConvertToLatex()<cr>", "Convert to Latex" },
+        l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
         P = { "<cmd>PasteImg<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
@@ -51,7 +53,8 @@ end
 ------------------------------------------------------
 
 which_key.register(mappings, opts)
-local opts = { noremap = true, silent = true }
+
+opts = { noremap = true, silent = true }
 
 -- Shorten function name
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
