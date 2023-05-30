@@ -209,6 +209,8 @@ function M.config()
             d = { ":normal a°<Esc>", "Insert °" },
             p = { ":normal aπ<Esc>", "Insert π" },
             u = { ":normal aµ<Esc>", "Insert µ" },
+            m = { ":normal a♂<Esc>", "Insert ♂" },
+            f = { ":normal a♀<Esc>", "Insert ♀" },
             s = {
                 name = "Subscripts",
                 ["0"] = { ":normal a₀<Esc>", "Insert subscript 0" },
