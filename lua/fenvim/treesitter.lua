@@ -36,7 +36,7 @@ function M.config()
             "typescript",
             "vim",
         },
-        sync_install = false,
+        sync_install = true,
         auto_install = true,
         ignore_install = { "perl" }, -- List of parsers to ignore installing
         highlight = {
