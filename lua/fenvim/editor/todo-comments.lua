@@ -28,7 +28,7 @@ function M.config()
     local perf_purple = "#7C3AED"
     local note_green = "#10B981"
 
-    if pcall(require, "fenbox") then
+    if vim.api.nvim_exec2("colo", { output = true }) == "fenbox" then
         local c = require("fenbox.colors").config()
         error_red = c.red
         warning_orange = c.orange
