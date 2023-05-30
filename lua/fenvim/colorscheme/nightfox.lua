@@ -28,7 +28,6 @@ require('nightfox').setup({
       -- ...
     },
   },
-  palettes = {dayfox},
   specs = {},
   groups = {},
 })
