@@ -5,7 +5,7 @@ function M.config()
         return
     end
 
-    bufferline.setup({
+    local opts = {
         options = {
             --         mode = "buffers", -- set to "tabs" to only show tabpages instead
             --         numbers = "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -64,9 +64,6 @@ function M.config()
         },
 
         highlights = {
-            fill = {
-                bg = "#171919",
-            },
             buffer_selected = {
                 fg = "#E7D7AD",
                 -- --   bg = {attribute='bg',highlight='#0000ff'},
@@ -110,6 +107,12 @@ function M.config()
                 bg = { attribute = "bg", highlight = "Normal" },
             },
         },
-    })
+    }
+
+    if vim.api.nvim_exec2("colo", { output = true }) == "fenbox" then
+        opts.highlights.fill = { bg = "#171919" }
+    end
+
+    bufferline.setup(opts)
 end
 return M
