@@ -1,6 +1,11 @@
 local M = {}
 
 M.config = function()
+    local status_ok, nvim_tree = pcall(require, "transparent")
+    if not status_ok then
+        return
+    end
+
     require("transparent").setup({
         groups = { -- table: default groups
             "Comment",

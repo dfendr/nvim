@@ -5,7 +5,7 @@ return {
     {
         "xiyaowong/transparent.nvim",
         enabled = require("core.prefs").ui.transparent,
-        config = require("fenvim.colorscheme.transparency"),
+        config = require("fenvim.colorscheme.transparency").config(),
     },
     {
         "postfen/fenbox",
