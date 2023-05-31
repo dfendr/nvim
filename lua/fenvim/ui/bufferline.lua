@@ -109,7 +109,7 @@ function M.config()
         },
     }
 
-    if vim.api.nvim_exec2("colo", { output = true }) == "fenbox" then
+    if vim.api.nvim_exec2("colo", { output = true }).output == "fenbox" then
         opts.highlights.fill = { bg = "#171919" }
     end
 
