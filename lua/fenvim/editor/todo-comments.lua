@@ -28,7 +28,7 @@ function M.config()
     local perf_purple = "#7C3AED"
     local note_green = "#10B981"
 
-    if vim.api.nvim_exec2("colo", { output = true }) == "fenbox" then
+    if vim.api.nvim_exec2("colo", { output = true }).output == "fenbox" then
         local c = require("fenbox.colors").config()
         error_red = c.red
         warning_orange = c.orange
@@ -51,7 +51,7 @@ function M.config()
             },
             TODO = { icon = icons.ui.Check, color = hint_blue, alt = { "TIP" } },
             HACK = { icon = icons.ui.Fire, color = warning_orange },
-            WARN = { icon = icons.diagnostics.Warning, color = info_yellow, alt = { "WARNING", "XXX" } },
+            WAR = { icon = icons.diagnostics.Warning, color = info_yellow, alt = { "WARNING", "XXX" } },
             PERF = { icon = icons.ui.Dashboard, color = perf_purple, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
             NOTE = { icon = icons.ui.Note, color = note_green, alt = { "INFO" } },
         },
