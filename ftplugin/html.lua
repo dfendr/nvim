@@ -6,7 +6,7 @@ end
 
 local opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<leader>",
+    prefix = "<localleader>",
     buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -14,11 +14,9 @@ local opts = {
 }
 
 local mappings = {
-    L = {
         name = "HTML",
         p = { ':BrowserPreview<CR>', "BrowserSync Preview On" },
         P = { ':BrowserStop<CR>', "BrowserSync Preview Off" },
-    },
 }
 
 which_key.register(mappings, opts)

@@ -10,7 +10,7 @@ end
 
 local opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<leader>",
+    prefix = "<localleader>",
     buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -31,22 +31,20 @@ end
 -- require('cmp').setup.buffer { enabled = false }
 
 local mappings = {
-    L = {
-        name = "Rust",
-        L = { "<cmd>LspStop><cr><cmd>LspStart<cr>", "Start LSP in new workspace" },
-        r = { "<cmd>RustRunnables<Cr>", "Runnables" },
-        t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
-        m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
-        c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
-        p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
-        d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
-        v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
-        R = {
-            "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-            "Reload Workspace",
-        },
-        o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
+    name = "Rust",
+    L = { "<cmd>LspStop><cr><cmd>LspStart<cr>", "Start LSP in new workspace" },
+    r = { "<cmd>RustRunnables<Cr>", "Runnables" },
+    t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
+    m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
+    c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
+    p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
+    d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
+    v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
+    R = {
+        "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+        "Reload Workspace",
     },
+    o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
 }
 
 which_key.register(mappings, opts)
