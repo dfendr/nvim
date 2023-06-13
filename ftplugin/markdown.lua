@@ -5,7 +5,7 @@ end
 
 local opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<leader>",
+    prefix = "<localleader>",
     buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -21,13 +21,11 @@ vim.opt_local.conceallevel = 3
 
 
 local mappings = {
-    L = {
         name = "Markdown",
         l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
         P = { "<cmd>PasteImg<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
-    },
 }
 
 
