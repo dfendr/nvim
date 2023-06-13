@@ -122,6 +122,7 @@ function M.config()
             B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
             c = { "<cmd>Telescope commands<cr>", "Commands" },
+            d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Cur. Buffer Diagnostics" },
             e = { "<cmd>Telescope file_browser<cr>", "File Browser" },
             f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
             h = { "<cmd>Telescope help_tags<cr>", "Help" },
@@ -207,6 +208,7 @@ function M.config()
         S = {
             name = "Symbols",
             d = { ":normal a°<Esc>", "Insert °" },
+            c = { ":normal a●<Esc>", "Insert °" },
             p = { ":normal aπ<Esc>", "Insert π" },
             u = { ":normal aµ<Esc>", "Insert µ" },
             m = { ":normal a♂<Esc>", "Insert ♂" },
@@ -327,7 +329,7 @@ function M.config()
             T = { '<cmd>lua require("utils.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
             u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
             v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
-            w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
+            w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
         },
         p = {
             name = "Package Manager",
