@@ -2,6 +2,8 @@ local M = {
     "karb94/neoscroll.nvim",
     enabled = true,
     keys = {
+        { "<c-u>", desc = "Scroll Up" },
+        { "<c-d>", desc = "Scroll Down" },
         { "<c-k>", desc = "Scroll Up" },
         { "<c-j>", desc = "Scroll Down" },
     },

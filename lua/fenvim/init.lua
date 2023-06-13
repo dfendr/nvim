@@ -13,7 +13,8 @@ return {
         -- Zen Mode/Focus. "Spotlight" effect on codie
         "folke/twilight.nvim",
         config = true,
-        cmd = { "Zenmode", "Twilight" },
+        enabled = true,
+        cmd = {"Twilight" },
     },
     {
         -- Rust Cargo package version checker
