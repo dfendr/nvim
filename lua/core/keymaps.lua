@@ -19,7 +19,7 @@ local term_opts = { silent = true }
 
 -- Remap space as leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 --NORMAL--
 
