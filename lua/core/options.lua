@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 local options = {
     autoread = true, -- automatically update files if updated elsewhere.
     autochdir = false, -- automatically change nvim path to current buffer
