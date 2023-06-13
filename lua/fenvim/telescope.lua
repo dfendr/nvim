@@ -91,19 +91,18 @@ function M.config()
 
             mappings = {
                 i = {
-                    ["<C-n>"] = actions.cycle_history_next,
-                    ["<C-p>"] = actions.cycle_history_prev,
+                    -- ["<C-n>"] = actions.cycle_history_next,
+                    -- ["<C-p>"] = actions.cycle_history_prev,
 
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
+                    ["<C-n>"] = actions.move_selection_next,
+                    ["<C-p>"] = actions.move_selection_previous,
+                    ["<Down>"] = actions.move_selection_next,
+                    ["<Up>"] = actions.move_selection_previous,
 
                     ["<C-b>"] = actions.results_scrolling_up,
                     ["<C-f>"] = actions.results_scrolling_down,
 
                     ["<C-c>"] = actions.close,
-
-                    ["<Down>"] = actions.move_selection_next,
-                    ["<Up>"] = actions.move_selection_previous,
 
                     ["<CR>"] = actions.select_default,
                     ["<C-s>"] = actions.select_horizontal,
@@ -112,8 +111,8 @@ function M.config()
 
                     ["<c-d>"] = require("telescope.actions").delete_buffer,
 
-                    -- ["<C-u>"] = actions.preview_scrolling_up,
-                    -- ["<C-d>"] = actions.preview_scrolling_down,
+                    ["<C-u>"] = actions.preview_scrolling_up,
+                    ["<C-d>"] = actions.preview_scrolling_down,
 
                     -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
                     ["<Tab>"] = actions.close,
@@ -172,9 +171,9 @@ function M.config()
 
             live_grep = {
                 theme = "dropdown",
-                additional_args = function(opts)
-                    return { "--hidden" }
-                end,
+additional_args = function(opts)
+                return {"--hidden"}
+            end
             },
             grep_string = {
                 theme = "dropdown",
