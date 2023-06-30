@@ -15,8 +15,7 @@ local M = {
             -- winhighlight = "FloatBorder:FloatBorder",
         },
         fidget = "none",
-        winbar_title = false,
-        navic = false, -- winbar_title must be true as well for navic to activate.
+        breadcrumbs = false, -- winbar_title must be true as well for breadcrumbs to activate.
         which_key = { border_style = "rounded" },
     },
 }
