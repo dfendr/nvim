@@ -13,6 +13,7 @@ function M.config()
             javascript = "node %",
             jl = "cd $dir && julia %",
             kotlin = "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+            lisp = "clisp $file",
             lua = "luajit $file",
             perl = "cd $dir && perl $file",
             python = "cd $dir && python3 $file",

@@ -1,7 +1,4 @@
 local ui_settings = require("core.prefs").ui
-if ui_settings.winbar_title and not ui_settings.navic then
-    require("fenvim.ui.breadcrumbs").setup()
-end
 
 return {
     -- "MunifTanjim/nui.nvim",
@@ -86,16 +83,15 @@ return {
             require("fenvim.ui.scrollbar").config()
         end,
     },
-    {
-        "SmiteshP/nvim-navic",
-        dependencies = { "neovim/nvim-lspconfig" },
-        enabled = ui_settings.winbar_title and ui_settings.navic,
-        config = function()
-            require("fenvim.ui.navic").setup()
-        end,
-    },
     { -- Dynamic colorcolumn, hidden until close. If over, it turns a diff color.
         "Bekaboo/deadcolumn.nvim",
         enabled = false,
+    },
+    {
+        "Bekaboo/dropbar.nvim",
+        enabled = ui_settings.breadcrumbs,
+        config = function()
+            require("fenvim.ui.dropbar").config()
+        end,
     },
 }

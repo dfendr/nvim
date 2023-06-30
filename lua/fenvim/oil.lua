@@ -1,6 +1,7 @@
 local M = {
     "stevearc/oil.nvim",
     event = "VeryLazy",
+    enabled = true,
 }
 
 M.config = function()
