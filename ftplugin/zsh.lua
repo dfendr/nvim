@@ -1,1 +1,1 @@
-require"nvim-treesitter.parsers".filetype_to_parsername.zsh = "bash"
+vim.treesitter.language.register("bash", "zsh")
