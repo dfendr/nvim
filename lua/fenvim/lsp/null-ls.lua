@@ -23,7 +23,7 @@ function M.config()
                     "--style",
                     "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}}",
                 },
-                filetypes = { "c", "cpp" },
+                filetypes = { "c", "cpp", "arduino" },
             }),
             diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
             formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
