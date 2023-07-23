@@ -14,7 +14,7 @@ return {
         "folke/twilight.nvim",
         config = true,
         enabled = true,
-        cmd = {"Twilight" },
+        cmd = { "Twilight" },
     },
     {
         -- Rust Cargo package version checker
@@ -30,6 +30,24 @@ return {
                 },
                 popup = {
                     border = require("core.prefs").ui.border_style,
+                },
+            })
+        end,
+    },
+    {
+        "mrshmllow/open-handlers.nvim",
+        -- We modify builtin functions, so be careful lazy loading
+        lazy = false,
+        cond = vim.ui.open ~= nil,
+        config = function()
+            local oh = require("open-handlers")
+            oh.setup({
+                -- In order, each handler is tried.
+                -- The first handler to successfully open will be used.
+                handlers = {
+                    oh.issue, -- A builtin which handles github and gitlab issues
+                    oh.commit, -- A builtin which handles git commits
+                    oh.native, -- Default native handler. Should always be last
                 },
             })
         end,
