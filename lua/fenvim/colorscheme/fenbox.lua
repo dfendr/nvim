@@ -1,4 +1,4 @@
-local M = {} -- Example config in Lua
+local M = {}
 
 function M.config()
     vim.o.termguicolors = false
