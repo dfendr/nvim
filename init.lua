@@ -21,7 +21,7 @@ if vim.g.neovide then
 end
 
 -- TODO:
+-- Move bufferline highlights
 -- Fix Zen Mode, no twilight mode, no numbers. "Reading/Notes" mode.
--- Move bufferline highlights  + TodoComment highlights into fenbox
 -- Fix Markdown/Rust autopairs (** and |)
 

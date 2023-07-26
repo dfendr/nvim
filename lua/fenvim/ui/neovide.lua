@@ -72,7 +72,7 @@ let g:neovide_cursor_antialiasing = v:true
 let g:neovide_cursor_unfocused_outline_width = 0.125
 ]])
 -- Font
-vim.opt.guifont = { "FiraCode Nerd Font", ":h14" }
+vim.opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h12" }
 -- vim.opt.guifont = {"Hack:h14:i:#e-subpixelantialias:#h-none"}
 
 
