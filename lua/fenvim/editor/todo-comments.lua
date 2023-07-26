@@ -19,6 +19,10 @@ function M.config()
     -- damn man
     -- FIXME:
     -- Please fix
+    -- TEST:
+    -- Does this work?
+    -- INFO:
+    -- This is a strange one
 
     local icons = require("fenvim.ui.icons")
     local error_red = "#F44747"
