@@ -281,7 +281,7 @@ function M.fade_RGB(colour1, colour2, percentage)
 end
 
 function M.is_lsp_client_running(client_name)
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
     for _, client in ipairs(clients) do
         if client.name == client_name then
             return true
