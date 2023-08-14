@@ -27,6 +27,7 @@ function M.config()
             }),
             diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
             formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+            formatting.jq.with({ filetypes = { "json" } }),
             formatting.sql_formatter,
             formatting.google_java_format,
             formatting.csharpier.with({ filetyes = { "cs" } }),

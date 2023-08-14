@@ -9,7 +9,7 @@ function M.config()
     require("lspconfig.ui.windows").default_options.border = require("core.prefs").ui.border_style
 
     M.server_capabilities = function()
-        local active_clients = vim.lsp.get_active_clients()
+        local active_clients = vim.lsp.get_clients()
         local active_client_map = {}
 
         for index, value in ipairs(active_clients) do
@@ -24,10 +24,10 @@ function M.config()
         }, function(choice)
             print(
                 vim.inspect(
-                    vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities.executeCommandProvider
+                    vim.lsp.get_clients()[active_client_map[choice]].server_capabilities.executeCommandProvider
                 )
             )
-            vim.pretty_print(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities)
+            vim.pretty_print(vim.lsp.get_clients()[active_client_map[choice]].server_capabilities)
         end)
     end
     require("fenvim.lsp.handlers").setup()
