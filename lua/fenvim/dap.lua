@@ -52,10 +52,6 @@ function M.config()
         return
     end
 
-    local utils_status_ok, utils = pcall(require, "utils.debug_helpers")
-    if not utils_status_ok then
-        return
-    end
 
     -- autosetup of adapters listed above
     require("mason-nvim-dap").setup()
