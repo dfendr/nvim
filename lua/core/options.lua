@@ -18,10 +18,9 @@ local options = {
         extends = "◣",
         lead = "⋅",
         precedes = "◢",
-        space = "⋅",
+        space = " ",
         tab = "» ",
-        trail = "·",
-        -- nbsp = "⋅",
+        trail = "⋅",
     },
     mouse = "a", -- enable mouse in all modes
    -- netrw_banner = 0, -- disable that anoying Netrw banner
@@ -59,11 +58,6 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-
--- Whitespace chars
--- vim.opt.listchars = "tab:▷ ,trail:·,extends:◣,precedes:◢,nbsp:⋅,space:⋅"
---vim.opt.listchars:append "eol:↴"
---vim.opt.listchars:append "eol:﬌"
 
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
