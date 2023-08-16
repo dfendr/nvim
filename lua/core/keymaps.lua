@@ -53,6 +53,9 @@ map("n", "<M-Down>", ":resize -2<CR>", opts, "Decrease Horizontal Size")
 map("n", "<M-Right>", ":vertical resize +2<CR>", opts, "Increase Vertical Size")
 map("n", "<M-Left>", ":vertical resize -2<CR>", opts, "Decrease Vertical Size")
 
+map("n", "<C-l>", "$", opts, "Move to end of line")
+map("n", "<C-h>", "^", opts, "Move to begining of line")
+
 -- VISUAL --
 -- Stay in indent mode after indentation
 map("v", "<", "<gv", opts, "Indent Left")
@@ -64,7 +67,6 @@ map("x", "J", ":move '>+1<CR>gv-gv", opts, "Shift Text Down")
 
 -- Paste without putting overwritten text in clipboard
 map("x", "p", '"_dP', opts, "Noncopying Paste")
-
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
