@@ -4,10 +4,10 @@ local M = {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
     enabled = true,
-    cmd = "NvimTreeToggle",
+    -- cmd = "NvimTreeToggle",
 }
 
---
+
 local function on_attach(bufnr)
     local api = require("nvim-tree.api")
 
@@ -95,14 +95,9 @@ function M.config()
         return
     end
 
-    local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-    if not config_status_ok then
-        return
-    end
 
     local icons = require("fenvim.ui.icons")
 
-    local tree_cb = nvim_tree_config.nvim_tree_callback
 
     local function natural_cmp(left, right)
         -- Prioritize directories over files.
@@ -136,7 +131,7 @@ function M.config()
         end
     end
 
-    require("nvim-tree").setup({
+    nvim_tree.setup({
         sort_by = function(nodes)
             table.sort(nodes, natural_cmp)
         end,
