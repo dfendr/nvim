@@ -23,6 +23,7 @@ local M = {
                         "coreclr",
                     },
                     automatic_setup = true,
+                    handlers = {},
                 })
             end,
         },
@@ -44,8 +45,15 @@ function M.config()
         return
     end
 
+    dap.set_log_level("TRACE")
+
     local dap_ui_status_ok, dapui = pcall(require, "dapui")
     if not dap_ui_status_ok then
+        return
+    end
+
+    local utils_status_ok, utils = pcall(require, "utils.debug_helpers")
+    if not utils_status_ok then
         return
     end
 
@@ -146,6 +154,17 @@ function M.config()
         },
     }
 
+    dap.adapters.coreclr = {
+        type = "executable",
+        command = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"),
+        -- command = "/usr/local/bin/netcoredbg/netcoredbg",
+
+        args = { "--interpreter=vscode" },
+    }
+
+    -- Neotest Test runner looks at this table
+    dap.adapters.netcoredbg = vim.deepcopy(dap.adapters.coreclr)
+
     dap.configurations.c = {
         {
             type = "codelldb",
@@ -159,5 +178,61 @@ function M.config()
     }
 
     dap.configurations.cpp = dap.configurations.c
+
+    vim.g.dotnet_build_project = function()
+        local default_path = vim.fn.getcwd() .. "/"
+        if vim.g["dotnet_last_proj_path"] ~= nil then
+            default_path = vim.g["dotnet_last_proj_path"]
+        end
+        local path = vim.fn.input("Path to your *proj file", default_path, "file")
+        vim.g["dotnet_last_proj_path"] = path
+        local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
+        print("")
+        print("Cmd to execute: " .. cmd)
+        local f = os.execute(cmd)
+        if f == 0 then
+            print("\nBuild: ✔️ ")
+        else
+            print("\nBuild: ❌ (code: " .. f .. ")")
+        end
+    end
+
+    vim.g.dotnet_get_dll_path = function()
+        local request = function()
+            return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        end
+
+        if vim.g["dotnet_last_dll_path"] == nil then
+            vim.g["dotnet_last_dll_path"] = request()
+        else
+            if
+                vim.fn.confirm(
+                    "Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"],
+                    "&yes\n&no",
+                    2
+                ) == 1
+            then
+                vim.g["dotnet_last_dll_path"] = request()
+            end
+        end
+        return vim.g["dotnet_last_dll_path"]
+    end
+
+    dap.configurations.cs = {
+        {
+            type = "coreclr",
+            name = "launch - netcoredbg",
+            request = "launch",
+            program = function()
+                if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+                    vim.g.dotnet_build_project()
+                end
+                return vim.g.dotnet_get_dll_path()
+            end,
+        },
+    }
+
+    require("dap.ext.vscode").load_launchjs(nil, { coreclr = { "cs" } })
 end
+
 return M

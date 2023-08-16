@@ -10,7 +10,7 @@ return {
         version = "*",
     },
     {
-        -- Zen Mode/Focus. "Spotlight" effect on codie
+        -- Zen Mode/Focus. "Spotlight" effect on code
         "folke/twilight.nvim",
         config = true,
         enabled = true,

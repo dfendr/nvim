@@ -24,62 +24,47 @@ vim.g.maplocalleader = ","
 --NORMAL--
 
 -- Do not yank with x
-map("n", "x", '"_x', opts)
+map("n", "x", '"_x', opts, "Yankless Character Delete")
 
 -- Select all
-map("n", "yA", ":0,$y<cr>", opts)
+map("n", "yA", ":0,$y<cr>", opts, "Select All")
 
 -- New Tab/Easy Splits
 -- Tabs --
-map("n", "<m-t>", ":tabnew %<cr>", opts)
-map("n", "te", ":tabedit<CR>", opts)
+map("n", "<m-t>", ":tabnew %<cr>", opts, "New Tab")
+map("n", "te", ":tabedit<CR>", opts, "New Tab-Edit")
 
 -- Easy Buffer Navigation
-map("n", "[b", ":bprevious<CR>", opts)
-map("n", "]b", ":bnext<CR>", opts)
-map("n", "[t", ":tabprevious<CR>", opts)
-map("n", "]t", ":tabnext<CR>", opts)
--- map("n", "gb", ":bnext<CR>", opts)
-
-map("n", "<C-w> c", ":bdelete!<CR>", opts)
-map("n", "<C-\\>", ":vsplit<CR>", opts) -- VSCode-like shortcut
+map("n", "[b", ":bprevious<CR>", opts, "Previous Buffer")
+map("n", "]b", ":bnext<CR>", opts, "Next Buffer")
+map("n", "[t", ":tabprevious<CR>", opts, "Previous Tab")
+map("n", "]t", ":tabnext<CR>", opts, "Next Tab")
+map("n", "<C-w> c", ":bdelete!<CR>", opts, "Delete Buffer")
 
 -- Explorer/Tree
-map("n", "<Leader>e", ":lua require'nvim-tree'.toggle()<CR>", opts)
+map("n", "<Leader>e", ":lua require'nvim-tree'.toggle()<CR>", opts, "Toggle Explorer")
 
 -- Easy Source
-map("n", "<Leader><Leader>x", ":so $MYVIMRC<CR>", opts)
+map("n", "<Leader><Leader>x", ":so $MYVIMRC<CR>", opts, "Source Current File")
 
 -- Resize with arrows
-map("n", "<M-Up>", ":resize +2<CR>", opts)
-map("n", "<M-Down>", ":resize -2<CR>", opts)
-map("n", "<M-Left>", ":vertical resize -2<CR>", opts)
-map("n", "<M-Right>", ":vertical resize +2<CR>", opts)
-
--- Navigate Lines
-map("n", "<C-l>", "$", opts)
-map("n", "<C-h>", "^", opts)
+map("n", "<M-Up>", ":resize +2<CR>", opts, "Increase Horizontal Size")
+map("n", "<M-Down>", ":resize -2<CR>", opts, "Decrease Horizontal Size")
+map("n", "<M-Right>", ":vertical resize +2<CR>", opts, "Increase Vertical Size")
+map("n", "<M-Left>", ":vertical resize -2<CR>", opts, "Decrease Vertical Size")
 
 -- VISUAL --
 -- Stay in indent mode after indentation
-map("v", "<", "<gv", opts)
-map("v", ">", ">gv", opts)
+map("v", "<", "<gv", opts, "Indent Left")
+map("v", ">", ">gv", opts, "Indent Right")
 
--- Navigate Lines
-map("v", "<C-l>", "$", opts)
-map("v", "<C-h>", "^", opts)
-
--- Move text up and down (doesn't work in terms that don't send alt correctly)
-map("v", "<A-j>", ":m .+1<CR>==", opts)
-map("v", "<A-k>", ":m .-2<CR>==", opts)
-map("x", "p", '"_dP', opts)
-map("x", "K", ":move '<-2<CR>gv-gv", opts)
-
--- VISUAL BLOCK --
 -- Move text up and down (sick as hell)
-map("x", "J", ":move '>+1<CR>gv-gv", opts)
-map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+map("x", "K", ":move '<-2<CR>gv-gv", opts, "Shift Text Up")
+map("x", "J", ":move '>+1<CR>gv-gv", opts, "Shift Text Down")
+
+-- Paste without putting overwritten text in clipboard
+map("x", "p", '"_dP', opts, "Noncopying Paste")
+
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
