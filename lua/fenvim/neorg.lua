@@ -13,17 +13,18 @@ return {
                 },
             },
             ["core.defaults"] = {}, -- Loads default behaviour
-            ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-            ["core.norg.completion"] = {
+            ["core.concealer"] = {}, -- Adds pretty icons to your documents
+            ["core.completion"] = {
                 config = {
                     engine = "nvim-cmp",
+                    name = "Neorg",
                 },
             },
             ["core.integrations.telescope"] = {}, -- Telescope Integration
-            ["core.norg.dirman"] = { -- Manages Neorg workspaces
+            ["core.dirman"] = { -- Manages Neorg workspaces
                 config = {
                     workspaces = {
-                        personal = "~/Repos/Personal/Notes/",
+                        home = "~/Repos/Personal/Notes/",
                         work = "~/Repos/Work/Notes/",
                     },
                     index = "index.norg",
