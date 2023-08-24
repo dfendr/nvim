@@ -41,20 +41,26 @@ function M.config()
         max_concurrent_installers = 4,
     })
 
+
+    local servers_to_install = {
+        "awk_ls",
+        "bashls",
+        "html",
+        "jsonls",
+        "marksman",
+        "tsserver",
+        "yamlls",
+    }
+
+    if not (require("utils.functions").is_arm_linux()) then
+        table.insert(servers_to_install, "clangd")
+        table.insert(servers_to_install, "omnisharp")
+        table.insert(servers_to_install, "rust_analyzer")
+        table.insert(servers_to_install, "lua_ls")
+    end
+
     require("mason-lspconfig").setup({
-        ensure_installed = {
-            "awk_ls",
-            "bashls",
-            "clangd",
-            "html",
-            "jsonls",
-            "marksman",
-            "omnisharp",
-            "rust_analyzer",
-            "lua_ls",
-            "tsserver",
-            "yamlls",
-        },
+        ensure_installed = servers_to_install,
         automatic_installation = true,
     })
 
@@ -67,8 +73,8 @@ function M.config()
         end,
 
         ["jdtls"] = function()
-        --     local java_opts = require("fenvim.lsp.settings.java")
-        --     require("jdtls").start_or_attach(java_opts)
+            --     local java_opts = require("fenvim.lsp.settings.java")
+            --     require("jdtls").start_or_attach(java_opts)
         end,
 
         ["rust_analyzer"] = function()

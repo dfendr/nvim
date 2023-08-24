@@ -290,6 +290,17 @@ function M.is_lsp_client_running(client_name)
     return false
 end
 
+function M.is_arm_linux()
+  local uname = vim.fn.system('uname -m')
+  local is_arm = uname:match('arm') or uname:match('aarch64')
+
+  local os_type = vim.fn.system('uname -s')
+  local is_linux = os_type:match('Linux')
+
+  return is_arm and is_linux
+end
+
+
 function M.open_todo()
     local home_dir = os.getenv("HOME")
     local todo_path = home_dir .. "/todo.md"
