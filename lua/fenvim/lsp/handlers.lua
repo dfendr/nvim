@@ -58,8 +58,8 @@ M.setup = function()
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = require("core.prefs").ui.border_style,
-        -- width = 60,
-        -- height = 30,
+        width = 60,
+        height = 30,
     })
     --
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -86,7 +86,6 @@ local function lsp_keymaps(bufnr)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_buf_set_keymap(
@@ -103,6 +102,13 @@ local function lsp_keymaps(bufnr)
         "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
         opts
     )
+    -- check if code-action preview plugin is installed
+    local ok, _ = pcall(require, "actions-preview")
+    if ok then
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua require('actions-preview').code_actions()<cr>", opts)
+    else
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    end
 end
 
 M.on_attach = function(client, bufnr)
@@ -110,13 +116,6 @@ M.on_attach = function(client, bufnr)
     require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     lsp_keymaps(bufnr)
 
-    if client.name == "jdt.ls" then
-        vim.lsp.codelens.refresh()
-        if JAVA_DAP_ACTIVE then
-            require("jdtls").setup_dap({ hotcodereplace = "auto" })
-            require("jdtls.dap").setup_dap_main_class_configs()
-        end
-    end
 
     if client.name == "tsserver" or client.name == "clangd" then
         client.server_capabilities.documentFormattingProvider = false -- 0.8 and later

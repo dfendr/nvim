@@ -87,7 +87,6 @@ function M.config()
         [" "] = { "<cmd>nohl<cr>", "Clear Highlighting" },
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
         b = {
             name = "Buffers",
             b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
@@ -149,7 +148,7 @@ function M.config()
             b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle Git Blame" },
             B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-            d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
+            d = { "<cmd>DiffviewOpen<cr>", "Diff" },
             G = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
             g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
             i = { "<cmd>Gitignore<cr>", "Generate gitignore" },
@@ -163,7 +162,7 @@ function M.config()
             u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
         },
         h = { "<cmd>split<cr>", "split" },
-        N = { N = { "<cmd>Neorg workspace personal<cr>", "Neorg Workspace" } },
+        N = { N = { "<cmd>Neorg workspace home<cr>", "Neorg Workspace" } },
         n = {
             name = "New...",
             n = { "<cmd>enew<CR>", "New File" },
@@ -303,7 +302,8 @@ function M.config()
         w = { "<cmd>w<CR>", "Write" },
         l = {
             name = "LSP",
-            a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+            -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+            a = { "<cmd>lua require('actions-preview').code_action()<cr>", "Code Action" },
             d = { "<cmd>Neogen<cr>", "Generate Annotation" },
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
             f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
@@ -347,6 +347,14 @@ function M.config()
     if ok then
         mappings.R = { ":IncRename ", "Rename" }
     end
+
+    -- If actions-preview is installed, change the code action command.
+    local ok, _ = pcall(require, "actions-preview")
+    if ok then
+        mappings.l.a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "Code Action" }
+    end
+
+    -- other mappings here ...
 
     local opts = {
         mode = "n", -- NORMAL mode

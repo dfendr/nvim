@@ -52,7 +52,6 @@ function M.config()
         return
     end
 
-
     -- autosetup of adapters listed above
     require("mason-nvim-dap").setup()
     dapui.setup({
@@ -128,7 +127,8 @@ function M.config()
         dapui.close({})
     end
 
-    require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+    local dir = vim.fs.normalize(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python/")
+    require("dap-python").setup(dir)
     dap.configurations.lua = {
         {
             type = "nlua",
