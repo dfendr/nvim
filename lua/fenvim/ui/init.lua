@@ -94,4 +94,10 @@ return {
             require("fenvim.ui.dropbar").config()
         end,
     },
+    {
+        "aznhe21/actions-preview.nvim",
+        config = function()
+            require("fenvim.ui.actions-preview").config()
+        end,
+    },
 }
