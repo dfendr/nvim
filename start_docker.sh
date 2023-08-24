@@ -31,5 +31,3 @@ else
     docker run --name $CONTAINER_NAME -it $IMAGE_NAME
   fi
 fi
-# EOL
-
