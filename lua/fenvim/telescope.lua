@@ -104,14 +104,14 @@ function M.config()
                     ["<C-b>"] = actions.results_scrolling_up,
                     ["<C-f>"] = actions.results_scrolling_down,
 
-                    ["<C-c>"] = actions.close,
+                    -- ["<C-c>"] = actions.close,
 
                     ["<CR>"] = actions.select_default,
                     ["<C-s>"] = actions.select_horizontal,
                     ["<C-v>"] = actions.select_vertical,
                     ["<C-t>"] = actions.select_tab,
 
-                    ["<c-d>"] = require("telescope.actions").delete_buffer,
+                    ["<C-c>"] = require("telescope.actions").delete_buffer,
 
                     ["<C-u>"] = actions.preview_scrolling_up,
                     ["<C-d>"] = actions.preview_scrolling_down,
@@ -173,9 +173,9 @@ function M.config()
 
             live_grep = {
                 theme = "dropdown",
-additional_args = function(opts)
-                return {"--hidden"}
-            end
+                additional_args = function(opts)
+                    return { "--hidden" }
+                end,
             },
             grep_string = {
                 theme = "dropdown",
