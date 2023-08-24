@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Define the image name
-IMAGE_NAME="fenvim:latest"
+IMAGE_NAME="fenvim"
+CONTAINER_NAME="fenvim_container"
 
 # Check if the image already exists
 docker images | grep -q "$IMAGE_NAME"
@@ -12,5 +13,23 @@ if [ $? -ne 0 ]; then
   docker build -t $IMAGE_NAME .
 fi
 
-# Run the image in interactive mode with a terminal
-docker run -it $IMAGE_NAME
+# Check if the container is already running
+docker ps | grep -q "$CONTAINER_NAME"
+
+# If the container is running, attach to it
+if [ $? -eq 0 ]; then
+  echo "Container is running, attaching..."
+  docker exec -it $CONTAINER_NAME /bin/bash
+else
+  # Check if the container exists but is stopped
+  docker ps -a | grep -q "$CONTAINER_NAME"
+  if [ $? -eq 0 ]; then
+    echo "Container exists but is stopped, starting..."
+    docker start -i $CONTAINER_NAME
+  else
+    echo "Container does not exist, creating a new one..."
+    docker run --name $CONTAINER_NAME -it $IMAGE_NAME
+  fi
+fi
+# EOL
+
