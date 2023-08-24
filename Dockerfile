@@ -26,6 +26,7 @@ RUN adduser -D ${USERNAME} && \
 USER ${USERNAME}
 
 # Set up environment variables
+ENV USERNAME=${USERNAME}
 ENV EDITOR nvim
 ENV MAIN_SHELL zsh
 ENV PATH="/home/${USERNAME}/.cargo/bin:/usr/local/go/bin:${PATH}"
@@ -53,3 +54,5 @@ RUN git clone https://github.com/postfen/nvim /home/${USERNAME}/.config/nvim
 # Set up the terminal
 ENV TERM xterm-256color
 
+# Set the entrypoint to pull updates from the Fenvim repository and start Neovim
+ENTRYPOINT ["sh", "-c", "git -C /home/${USERNAME}/.config/nvim pull && exec nvim \"$@\"", "--"]
