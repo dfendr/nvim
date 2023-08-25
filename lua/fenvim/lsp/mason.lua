@@ -63,6 +63,7 @@ function M.config()
         ensure_installed = servers_to_install,
         automatic_installation = true,
     })
+    M.check()
 
 
     require("mason-lspconfig").setup_handlers({
