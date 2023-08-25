@@ -219,8 +219,8 @@ function M.config()
             type = "group",
             val = {
 
-                button("t", icons.ui.Check .. " Todo List", ":lua require('utils.functions').open_todo()<CR>"),
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
+                button("t", icons.ui.Check .. " Todo List", ":lua require('utils.functions').open_todo()<CR>"),
                 button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                 button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),
