@@ -5,9 +5,8 @@ FROM alpine:latest
 RUN apk update && \
     apk add --no-cache \
     build-base cmake automake autoconf libtool pkgconf git curl wget \
-    python3 py3-pip luajit gettext-dev libxml2-dev libxslt-dev zsh expat \
-    libssl1.1 freetype expat-dev libxcb-dev harfbuzz \
-    nodejs npm bash fzf ripgrep
+    python3 py3-pip luajit gettext-dev libxml2-dev libxslt-dev zsh \
+    nodejs npm bash fzf ripgrep openjdk17
 
 # Install Go
 RUN wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz && \
@@ -29,7 +28,10 @@ USER ${USERNAME}
 ENV USERNAME=${USERNAME}
 ENV EDITOR nvim
 ENV MAIN_SHELL zsh
+ENV SH zsh
 ENV PATH="/home/${USERNAME}/.cargo/bin:/usr/local/go/bin:${PATH}"
+ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # Create workspace
 WORKDIR /home/${USERNAME}/workspace
@@ -39,14 +41,23 @@ RUN git clone --depth 1 https://github.com/neovim/neovim.git /tmp/neovim && \
     cd /tmp/neovim && \
     make CMAKE_BUILD_TYPE=RelWithDebInfo
 
+
+
 # Switch back to root to install
 USER root
 RUN cd /tmp/neovim && \
     make install && \
     rm -rf /tmp/neovim
 
+
+# Install Starship
+RUN sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
+
 # Switch back to the user
 USER ${USERNAME}
+
+# Add Starship initialization to .zshrc
+RUN echo 'eval "$(starship init zsh)"' >> /home/${USERNAME}/.zshrc
 
 # Clone Fenvim configuration
 RUN git clone https://github.com/postfen/nvim /home/${USERNAME}/.config/nvim
@@ -55,4 +66,4 @@ RUN git clone https://github.com/postfen/nvim /home/${USERNAME}/.config/nvim
 ENV TERM xterm-256color
 
 # Set the entrypoint to pull updates from the Fenvim repository and start Neovim
-ENTRYPOINT ["sh", "-c", "git -C /home/${USERNAME}/.config/nvim pull && exec nvim \"$@\"", "--"]
+ENTRYPOINT ["zsh", "-c", "git -C /home/${USERNAME}/.config/nvim pull && exec nvim \"$@\"", "--"]

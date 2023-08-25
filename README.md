@@ -53,7 +53,7 @@
 
 <details>
 <summary>Dashboard</summary>
-  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://imgur.com/fJcOqfb.png">
+  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://i.imgur.com/SABWYrC.png">
 </details>
 
 <details>
@@ -63,22 +63,22 @@
 
 <details>
 <summary>Which-Key provides easy reminders for more complex keybinds</summary>
-  <img width="700" alt="Editor showing commands, in WhichKey popup" src="https://i.imgur.com/pKxSs5s.png">
+  <img width="700" alt="Editor showing commands, in WhichKey popup" src="https://i.imgur.com/44QPgnt.png">
 </details>
 
 <details>
 <summary>Example: Editing an R file, with R REPL in Toggleable Terminal</summary>
-  <img width="700" alt="Example: Editing an R file, with R Repl in Toggleable Terminal, Explorer Tree in Left Panel" src="https://i.imgur.com/AC1yls3.png">
+  <img width="700" alt="Example: Editing an R file, with R Repl in Toggleable Terminal, Explorer Tree in Left Panel" src="https://i.imgur.com/PMvsZQJ.png">
 </details>
 
 <details>
 <summary>Example: LSP inspections</summary>
-  <img width="700" alt="Examining the documentation for .iter() in Rust" src="https://i.imgur.com/gMwu1WJ.png">
+  <img width="700" alt="Examining the documentation for .iter() in Rust" src="https://i.imgur.com/ZK296f2.png">
 </details>
 
 <details>
 <summary>Example: Debugging</summary>
-  <img width="700" alt="Debugging in Neovim, Rust example" src="https://i.imgur.com/xpAu3IN.png">
+  <img width="700" alt="Debugging in Neovim, Rust example" src="https://i.imgur.com/F6RkyFW.png">
 </details>
 
 ## Install 💻
@@ -107,10 +107,8 @@ git clone https://github.com/postfen/nvim.git
 ### Nice to Haves
 
 - Not necessary to have, but shortcuts are already mapped for them.
-- [GitUI](https://github.com/extrawurst/gitui) for easy source control without
+- [Lazygit](https://github.com/jesseduffield/lazygit) for easy source control without
   leaving Neovim.
-- [Cargo](https://www.rust-lang.org/tools/install)
-  - [Silicon](https://github.com/Aloxaf/silicon) for code snippet sharing.
 - [BrowserSync](https://browsersync.io/) for live updating web previews when
   working with JS/TS/HTML
 
@@ -118,5 +116,5 @@ git clone https://github.com/postfen/nvim.git
 
 - [TJ Devries](https://github.com/tjdevries)
 - [chris@machine](https://github.com/ChristianChiarulli)
-- [devaslife](https://github.com/craftzdog)
+- [craftzdog](https://github.com/craftzdog)
 - [ThePrimeagen](https://github.com/ThePrimeagen)
