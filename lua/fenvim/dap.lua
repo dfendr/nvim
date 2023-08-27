@@ -10,23 +10,19 @@ local M = {
             "jay-babu/mason-nvim-dap.nvim",
             dependencies = "williamboman/mason.nvim",
             config = function()
-                local ensure_installed = {
-                    "python",
-                    "codelldb",
-                    "javascript",
-                    "cppdbg",
-                    "node2",
-                    "chrome",
-                    "firefox",
-                    "bash",
-                }
-
-                if not (require("utils.functions").is_arm_linux()) then
-                    table.insert(ensure_installed, "coreclr")
-                end
-
                 require("mason-nvim-dap").setup({
-                    ensure_installed = ensure_installed,
+                    ensure_installed = {
+
+                        "python",
+                        "codelldb",
+                        "javascript",
+                        "cppdbg",
+                        "node2",
+                        "chrome",
+                        "firefox",
+                        "bash",
+                        "coreclr",
+                    },
                     automatic_installation = true,
                     automatic_setup = true,
                     handlers = {},
