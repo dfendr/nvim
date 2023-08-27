@@ -41,30 +41,23 @@ function M.config()
         max_concurrent_installers = 4,
     })
 
-
-    local servers_to_install = {
-        "awk_ls",
-        "bashls",
-        "html",
-        "jsonls",
-        "marksman",
-        "tsserver",
-        "yamlls",
-        "pyright",
-    }
-
-    if not (require("utils.functions").is_arm_linux()) then
-        table.insert(servers_to_install, "clangd")
-        table.insert(servers_to_install, "omnisharp")
-        table.insert(servers_to_install, "rust_analyzer")
-        table.insert(servers_to_install, "lua_ls")
-    end
-
     require("mason-lspconfig").setup({
-        ensure_installed = servers_to_install,
+        ensure_installed = {
+            "awk_ls",
+            "bashls",
+            "html",
+            "jsonls",
+            "marksman",
+            "tsserver",
+            "yamlls",
+            "pyright",
+            "clangd",
+            "omnisharp",
+            "rust_analyzer",
+            "lua_ls",
+        },
         automatic_installation = true,
     })
-
 
     require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler
