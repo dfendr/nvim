@@ -50,6 +50,7 @@ function M.config()
         "marksman",
         "tsserver",
         "yamlls",
+        "pyright",
     }
 
     if not (require("utils.functions").is_arm_linux()) then
