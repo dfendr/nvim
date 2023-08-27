@@ -6,7 +6,7 @@ RUN apk update && \
     apk add --no-cache \
     build-base cmake automake autoconf libtool pkgconf git curl wget \
     python3 py3-pip luajit gettext-dev libxml2-dev libxslt-dev zsh \
-    nodejs npm bash fzf ripgrep openjdk17
+    nodejs npm bash fzf ripgrep openjdk17 gzip unzip luarocks
 
 # Install Go
 RUN wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz && \
