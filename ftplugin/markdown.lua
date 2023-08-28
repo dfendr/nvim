@@ -18,32 +18,25 @@ vim.opt_local.textwidth = 79
 vim.opt_local.spell = true
 vim.opt_local.conceallevel = 3
 
-
-
 local mappings = {
-        name = "Markdown",
-        l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
-        p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
-        P = { "<cmd>PasteImg<cr>", "Paste Image" },
-        s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
+    name = "Markdown",
+    l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
+    p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
+    P = { "<cmd>PasteImg<cr>", "Paste Image" },
+    s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
 }
 
-
 ------------------------------------------------------ [[ConvertToLatex]]
--- Shell script used for ConvertToLatex
--- Place in .bashrc, and make sure pandoc is installed.
-
--- md2pdf() {
--- 	v2=${1:0:-3}
--- 	pandoc "$1" -o "$v2".pdf -V geometry:margin=1in
--- }
-
-
+-- pandox required
 function ConvertToLatex()
     local path = vim.fn.expand("%:p")
     local dir = vim.fn.expand("%:p:h")
+    local base_name = vim.fn.fnamemodify(path, ":r")
     local quoted_path = vim.fn.shellescape(path)
-    vim.fn.system("cd " .. dir .. " && md2pdf " .. quoted_path)
+    local quoted_pdf_path = vim.fn.shellescape(base_name .. ".pdf")
+    vim.fn.system(
+        "cd " .. dir .. " && pandoc " .. quoted_path .. " -o " .. quoted_pdf_path .. " -V geometry:margin=1in"
+    )
     if vim.v.shell_error == 0 then
         vim.notify("Conversion Success", vim.log.levels.INFO)
     else

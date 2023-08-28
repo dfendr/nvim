@@ -65,15 +65,6 @@ return {
             require("fenvim.editor.coderunner").config()
         end,
     },
-
-    {
-        "is0n/jaq-nvim",
-        event = "VeryLazy",
-        enabled = false,
-        config = function()
-            require("fenvim.editor.jaq").config()
-        end,
-    },
     {
         "folke/todo-comments.nvim",
         event = "BufReadPost",
@@ -145,6 +136,16 @@ return {
         enabled = true,
     },
     {
+        -- Improved Undo
+        "kevinhwang91/nvim-fundo",
+        dependencies = "kevinhwang91/promise-async",
+        config = function()
+            require("fundo").install()
+            vim.o.undofile = true
+            require("fundo").setup()
+        end,
+    },
+    {
         "simrat39/symbols-outline.nvim",
         config = true,
         opts = { relative_width = true, width = 10 },
@@ -155,5 +156,12 @@ return {
         "LunarVim/bigfile.nvim",
         enabled = true,
         config = true,
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async",
+        config = function()
+            require("fenvim.editor.ufo").config()
+        end,
     },
 }

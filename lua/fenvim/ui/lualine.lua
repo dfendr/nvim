@@ -206,6 +206,24 @@ function M.config()
         end,
     }
 
+
+    ---------------------------------------------------------------------------
+    ---------------------------------------------------------[[ Noice  ]]
+local noice = {
+    function()
+        local status, noice = pcall(require, "noice")
+        if status then
+            return noice.api.status.mode.get()
+        else
+            return ""
+        end
+    end,
+    cond = function()
+        local status = pcall(require, "noice")
+        return status and require("noice").api.statusline.mode.has()
+    end,
+    -- color = { fg = "#ff9e64" },
+}
     ---------------------------------------------------------------------------
     ---------------------------------------------------------[[ Mixed Indent ]]
     local function mixed_indent()
@@ -340,6 +358,8 @@ function M.config()
             lualine_b = { branch, diff },
             lualine_c = { diagnostics },
             lualine_x = {
+
+                noice,
                 filename, --[[ filetype, ]]
                 encoding,
                 fileformat,

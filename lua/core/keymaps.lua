@@ -29,6 +29,8 @@ map("n", "x", '"_x', opts, "Yankless Character Delete")
 -- Select all
 map("n", "yA", ":0,$y<cr>", opts, "Select All")
 
+
+
 -- New Tab/Easy Splits
 -- Tabs --
 map("n", "<m-t>", ":tabnew %<cr>", opts, "New Tab")
@@ -67,6 +69,10 @@ map("x", "J", ":move '>+1<CR>gv-gv", opts, "Shift Text Down")
 
 -- Paste without putting overwritten text in clipboard
 map("x", "p", '"_dP', opts, "Noncopying Paste")
+
+
+-- Define the keybinding to delete blank lines in visual selection
+map('x', '<Space>on', ':s/^$\\n//g<CR>', opts, "Delete blank lines in visual selection")
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)
