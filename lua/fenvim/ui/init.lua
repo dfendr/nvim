@@ -83,17 +83,6 @@ return {
             require("fenvim.ui.scrollbar").config()
         end,
     },
-    { -- Dynamic colorcolumn, hidden until close. If over, it turns a diff color.
-        "Bekaboo/deadcolumn.nvim",
-        enabled = false,
-    },
-    {
-        "Bekaboo/dropbar.nvim",
-        enabled = ui_settings.breadcrumbs,
-        config = function()
-            require("fenvim.ui.dropbar").config()
-        end,
-    },
     {
         "aznhe21/actions-preview.nvim",
         config = function()

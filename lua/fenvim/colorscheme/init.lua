@@ -1,12 +1,4 @@
 return {
-    { "rktjmp/lush.nvim" },
-    { "Shatur/neovim-ayu" },
-    { "EdenEast/nightfox.nvim" },
-    {
-        "xiyaowong/transparent.nvim",
-        enabled = require("core.prefs").ui.transparent,
-        config = require("fenvim.colorscheme.transparency").config(),
-    },
     {
         "postfen/fenbox",
         -- branch = "sandbox",
@@ -16,4 +8,11 @@ return {
             require("fenvim.colorscheme.fenbox").config()
         end,
     },
+    { "Shatur/neovim-ayu" },
+    { "EdenEast/nightfox.nvim" },
+    {
+        "xiyaowong/transparent.nvim",
+        enabled = require("core.prefs").ui.transparent,
+        config = require("fenvim.colorscheme.transparency").config(),
+    }
 }

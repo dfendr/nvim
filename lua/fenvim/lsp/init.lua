@@ -20,13 +20,8 @@ return {
     },
     -- },
     {
-        "Maan2003/lsp_lines.nvim",
+        url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         event = "BufReadPre",
-        opts = {
-            text = {
-                done = "✔",
-            },
-        },
     },
     {
         "williamboman/mason.nvim",

@@ -72,13 +72,13 @@ function M.config()
         },
     }
     local xmappings = {
-        S = {
-            "<cmd> lua require('silicon').visualise_api({show_buf = true, to_clip = true})<cr>",
-            "Screenshot Buffer,",
-        },
         s = {
-            "<cmd> lua require('silicon').visualise_api({show_buf = false, to_clip = true})<cr>",
-            "Screenshot V-Selection",
+            ":'<,'>TrozoUploadSelection<CR>",
+            "Upload V-Selection To paste.rs",
+        },
+        S = {
+            "<cmd>TrozoUploadFile<CR>",
+            "Upload File To paste.rs",
         },
     }
 
