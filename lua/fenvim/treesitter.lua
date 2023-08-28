@@ -29,7 +29,6 @@ function M.config()
             "markdown",
             "markdown_inline",
             "python",
-            "regex",
             "rust",
             "sql",
             "typescript",

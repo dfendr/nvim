@@ -2,6 +2,7 @@ local M = {
     "mfussenegger/nvim-dap",
     event = "BufReadPost",
     dependencies = {
+        "jbyuki/one-small-step-for-vimkind",
         "rcarriga/nvim-dap-ui",
         "simrat39/rust-tools.nvim",
         "theHamsta/nvim-dap-virtual-text",
@@ -162,6 +163,18 @@ function M.config()
 
     -- Neotest Test runner looks at this table
     dap.adapters.netcoredbg = vim.deepcopy(dap.adapters.coreclr)
+
+    dap.configurations.lua = {
+        {
+            type = "nlua",
+            request = "attach",
+            name = "Attach to running Neovim instance",
+        },
+    }
+
+    dap.adapters.nlua = function(callback, config)
+        callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+    end
 
     dap.configurations.c = {
         {

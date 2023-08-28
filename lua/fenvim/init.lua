@@ -52,4 +52,10 @@ return {
             })
         end,
     },
+    {
+        "postfen/trozo.nvim",
+        enabled = true,
+        config = true,
+        cmd = { "TrozoUploadSelection", "TrozoUploadFile" },
+    },
 }
