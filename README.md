@@ -25,6 +25,7 @@
   options per server.
 - 🏃 Quick-run files with `<leader>rr` using `Coderunner.nvim`
 - 🐛 Quick DAP setup with `mason-nvim-dap.nvim`, meaning easy debugging!
+- ☁️ Database Explorer via dadbod-vim!
 - 🤔 No need to remember _all_ keybinds, `<leader>` pops up a helpful keybind
   guide, provided by `which-key.nvim`
 
@@ -53,7 +54,7 @@
 
 <details>
 <summary>Dashboard</summary>
-  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://i.imgur.com/SABWYrC.png">
+  <img width="700" alt="Landing Page Dashboard For Easy Shortcuts" src="https://i.imgur.com/u3iy142.png">
 </details>
 
 <details>
@@ -74,6 +75,11 @@
 <details>
 <summary>Example: LSP inspections</summary>
   <img width="700" alt="Examining the documentation for .iter() in Rust" src="https://i.imgur.com/ZK296f2.png">
+</details>
+
+<details>
+<summary>Database Integration</summary>
+  <img width="700" alt="Querying a Sandbox Database in the editor" src="https://i.imgur.com/CnA5XB5.png">
 </details>
 
 <details>
