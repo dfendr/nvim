@@ -213,7 +213,6 @@ function M.config()
     }
 
     local options = {
-        -- header = dynamic_header_responsive,
         header = dynamic_header_responsive,
         buttons = {
             type = "group",
@@ -221,11 +220,12 @@ function M.config()
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
                 button("t", icons.ui.Check .. " Todo List", ":lua require('utils.functions').open_todo()<CR>"),
-                button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
-                button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
-                button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),
+                button("d", icons.ui.Table.. " Access Database", "<cmd>DBUI<cr><c-w>l<cmd>bd<cr><c-w>h"),
+                -- button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
+                -- button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
+                -- button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),
                 button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
-                button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
+                -- button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                 button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
                 button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
                 button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),

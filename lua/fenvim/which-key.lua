@@ -102,6 +102,7 @@ function M.config()
         },
         c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
         C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
+        D = {"<cmd>DBUIToggle<cr>", "Database Mode"},
         d = {
             name = "Debug",
             b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
