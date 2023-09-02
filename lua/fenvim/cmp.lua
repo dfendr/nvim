@@ -13,6 +13,7 @@ local M = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lsp-signature-help",
+        "kristijanhusak/vim-dadbod-completion",
         { "hrsh7th/cmp-cmdline", enabled = cmdline },
         { "dmitmel/cmp-cmdline-history", enabled = cmdline },
         "hrsh7th/cmp-path",
@@ -142,6 +143,7 @@ function M.config()
         },
         -- view = { entries = "native" },
     })
+
 
     if cmdline then
         cmp.setup.cmdline(":", {
