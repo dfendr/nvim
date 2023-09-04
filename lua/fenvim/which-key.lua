@@ -131,7 +131,8 @@ function M.config()
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
             m = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
             M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-            p = { "<cmd>Telescope lazy<cr>", "Find Plugins" },
+            P = { "<cmd>Telescope lazy<cr>", "Find Plugins" },
+            p = { "<cmd>Telescope projects<cr>", "Projects" },
             R = { ":cd ~/Repos<CR> :Telescope find_files <CR>", "Search Repo Files" },
             r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
             S = {
