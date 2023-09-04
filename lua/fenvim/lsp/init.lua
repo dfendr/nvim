@@ -12,6 +12,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "simrat39/rust-tools.nvim",
+            "akinsho/flutter-tools.nvim",
         },
 
         config = function()
@@ -43,4 +44,28 @@ return {
         end,
     },
 
+    {
+        "akinsho/flutter-tools.nvim",
+        lazy = true,
+        ft = "dart",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "stevearc/dressing.nvim", -- optional for vim.ui.select
+        },
+        config = function()
+            local status_ok, telescope = pcall(require, "telescope")
+            if status_ok then
+                telescope.load_extension("flutter")
+            end
+            local on_attach = require("fenvim.lsp.handlers").on_attach
+            local capabilities = require("fenvim.lsp.handlers").capabilities
+
+            require("flutter-tools").setup({
+                lsp = {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                },
+            })
+        end,
+    },
 }
