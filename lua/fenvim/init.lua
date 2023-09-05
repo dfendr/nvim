@@ -55,7 +55,7 @@ return {
     {
         "postfen/trozo.nvim",
         enabled = true,
-        config = { clipboard = true, browser = true },
+        opts = { clipboard = true, browser = true },
         cmd = { "TrozoUploadSelection", "TrozoUploadFile" },
     },
     {
