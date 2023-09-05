@@ -1,7 +1,7 @@
 return {
     {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
-        { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
+        -- { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
         { "mfussenegger/nvim-jdtls", ft = { "java" } },
         { "ray-x/lsp_signature.nvim", enabled = false },
         { "folke/neodev.nvim", config = true, ft = { "lua" } },
@@ -22,6 +22,7 @@ return {
     -- },
     {
         url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = true,
         event = "BufReadPre",
     },
     {
@@ -37,7 +38,7 @@ return {
 
     {
         "jose-elias-alvarez/null-ls.nvim",
-        dependencies = "jose-elias-alvarez/typescript.nvim",
+        -- dependencies = "jose-elias-alvarez/typescript.nvim",
         event = "BufReadPost",
         config = function()
             require("fenvim.lsp.null-ls").config()

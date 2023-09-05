@@ -48,7 +48,7 @@ function M.config()
             "html",
             "jsonls",
             "marksman",
-            "tsserver",
+            -- "tsserver",
             "yamlls",
             "pyright",
             "clangd",
@@ -77,12 +77,12 @@ function M.config()
             require("rust-tools").setup(rust_opts)
         end,
 
-        ["tsserver"] = function()
-            local tsserver_opts = require("fenvim.lsp.settings.tsserver")
+        ["vtsls"] = function()
+            -- local tsserver_opts = require("fenvim.lsp.settings.tsserver")
             local extra_opts =
                 { on_attach = { client = { server_capabilities = { documentFormattingProvider = false } } } }
             local tsserver_opts_ext = vim.tbl_deep_extend("force", extra_opts, opts)
-            require("typescript").setup({ server = tsserver_opts_ext, tsserver_opts })
+            require("lspconfig").vtsls.setup(tsserver_opts_ext)
         end,
 
         ["clangd"] = function()
