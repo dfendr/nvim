@@ -31,19 +31,20 @@
 
 ### Already Supported Language (e.g. Languages I use with Fenvim)
 
-| Language  | Supported |
-| --------- | :-------: |
-| Bash      |    ✅     |
-| Zsh       |    ✅     |
-| C         |    ✅     |
-| C#        |    ✅     |
-| Lua       |    ✅     |
-| Javacript |    ✅     |
-| Java      |    🌀     |
-| Markdown  |    ✅     |
-| Perl      |    ✅     |
-| Rust      |    ✅     |
-| R         |    ✅     |
+| Language     | Supported |
+| ------------ | :-------: |
+| Bash         |    ✅     |
+| C            |    ✅     |
+| C#           |    ✅     |
+| Dart/Flutter |    ✅     |
+| Java         |    🌀     |
+| Javacript    |    ✅     |
+| Lua          |    ✅     |
+| Markdown     |    ✅     |
+| Perl         |    ✅     |
+| R            |    ✅     |
+| Rust         |    ✅     |
+| Zsh          |    ✅     |
 
 |     |           |
 | --- | --------- |
