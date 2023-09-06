@@ -53,5 +53,4 @@ opts = { noremap = true, silent = true }
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
 local map = require("utils").map
 
-map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts) -- ??
-map("n", "<C-,>", "1z=", opts) -- ??
+map("n", "<C-,>", "1z=", opts) -- change spelling error to first suggestion
