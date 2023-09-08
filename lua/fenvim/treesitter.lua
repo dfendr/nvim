@@ -1,6 +1,7 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    commit = "f2778bd",
     dependencies = {
         "HiPhish/nvim-ts-rainbow2",
         "nvim-treesitter/playground",
