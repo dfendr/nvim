@@ -52,3 +52,4 @@ opts = { noremap = true, silent = true }
 local map = require("utils").map
 
 map("n", "<C-,>", "1z=", opts) -- change spelling error to first suggestion
+map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts)

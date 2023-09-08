@@ -13,6 +13,7 @@ function M.config()
     vim.g.fenbox_use_original_palette = true
 
     vim.cmd("hi @neorg.markup.strikethrough gui=strikethrough")
+    vim.cmd("hi @text.strike.markdown_inline gui=strikethrough")
 
     local colorscheme = "fenbox"
     local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
