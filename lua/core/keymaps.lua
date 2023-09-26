@@ -57,6 +57,8 @@ map("n", "<M-Left>", ":vertical resize -2<CR>", opts, "Decrease Vertical Size")
 
 map("n", "<C-l>", "$", opts, "Move to end of line")
 map("n", "<C-h>", "^", opts, "Move to begining of line")
+map("v", "<C-l>", "$", opts, "Move to end of line")
+map("v", "<C-h>", "^", opts, "Move to begining of line")
 
 -- VISUAL --
 -- Stay in indent mode after indentation
