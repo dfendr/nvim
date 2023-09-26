@@ -162,7 +162,13 @@ function M.config()
     end
 
     function _BTOP_TOGGLE()
-        local btop = Terminal:new({ cmd = "btop", hidden = true })
+        local btop = Terminal:new({ cmd = "btop", hidden = true,
+            float_opts = {
+                border = "none",
+                width = 100000,
+                height = 100000,
+            },
+        })
         btop:toggle()
     end
 

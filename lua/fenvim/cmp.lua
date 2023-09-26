@@ -143,7 +143,6 @@ function M.config()
         -- view = { entries = "native" },
     })
 
-
     if cmdline then
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
