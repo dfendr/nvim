@@ -230,7 +230,7 @@ function M.config()
         },
         view = {
             width = 30,
-            hide_root_folder = false,
+            -- hide_root_folder = false,
             side = "left",
             adaptive_size = false,
             float = {

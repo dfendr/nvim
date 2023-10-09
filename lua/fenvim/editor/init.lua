@@ -40,6 +40,7 @@ return {
     {
         -- dots in indents for easy space counting
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         event = "BufReadPost",
         config = function()
             require("fenvim.editor.indent-blankline").config()
