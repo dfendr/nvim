@@ -184,11 +184,11 @@ end
 function M.open_explorer()
     local current_file_dir = vim.fn.expand("%:p:h")
     if vim.fn.has("mac") == 1 then
-        vim.cmd("!open " .. current_file_dir)
+        vim.cmd("silent !open " .. current_file_dir)
     elseif vim.fn.has("win32") == 1 then
-        vim.cmd("!start " .. current_file_dir)
+        vim.cmd("silent !start " .. current_file_dir)
     else
-        vim.cmd("!xdg-open " .. current_file_dir)
+        vim.cmd("silent !xdg-open " .. current_file_dir)
     end
 end
 
