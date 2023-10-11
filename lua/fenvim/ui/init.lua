@@ -20,7 +20,6 @@ return {
             require("fenvim.ui.bufferline").config()
         end,
     },
-
     {
         -- statusline
         "nvim-lualine/lualine.nvim",
@@ -56,7 +55,8 @@ return {
         -- noicer ui
         "folke/noice.nvim",
         event = "VeryLazy",
-        enabled = not vim.g.neovide,
+        -- enabled = not vim.g.neovide,
+        enabled = false,
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
