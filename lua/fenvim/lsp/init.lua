@@ -37,7 +37,7 @@ return {
     },
 
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         -- dependencies = "jose-elias-alvarez/typescript.nvim",
         event = "BufReadPost",
         config = function()
