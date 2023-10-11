@@ -1,16 +1,16 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    commit = "f2778bd",
+    --commit = "f2778bd", // Dart bug not present here :\
     dependencies = {
-        "HiPhish/nvim-ts-rainbow2",
-        "nvim-treesitter/playground",
+        { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPost" },
         "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
     lazy = false,
     event = "BufReadPost",
 }
+
 function M.config()
     local status_ok, configs = pcall(require, "nvim-treesitter.configs")
     if not status_ok then
@@ -44,28 +44,32 @@ function M.config()
             additional_vim_regex_highlighting = false,
         },
 
-        rainbow = {
-            enable = true,
-            hlgroups = {
-                "TSRainbowMagenta",
-                "TSRainbowGray",
-                "TSRainbowCyan",
-                "TSRainbowYellow",
-                "TSRainbowOrange",
-                "TSRainbowPink",
-                "TSRainbowGreen",
-            },
-            -- disable = { "jsx", "cpp" }, -- list of languages you want to disable plugin for
-            extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-            max_file_lines = 1000, -- Do not enable for files with more than n lines, int
-            -- colors = {"#518387", "#a86885", "#548287", "#6E9054", "#CD9E39", "#C87924" }, -- table of hex strings
-            -- term colors = {}, -- table of colour name strings
-        },
         indent = { enable = true, disable = { "yaml", "python" } },
-        context_commentstring = {
-            enable = true,
-            enable_autocmd = false,
-        },
     })
+
+    -- setup  TS comment context plugin
+    require("ts_context_commentstring").setup({})
+
+    -- Setup Rainbow delimiters
+    local rainbow_delimiters = require("rainbow-delimiters")
+    vim.g.rainbow_delimiters = {
+        strategy = {
+            [""] = rainbow_delimiters.strategy["global"],
+            vim = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+            [""] = "rainbow-delimiters",
+            -- lua = "rainbow-blocks",
+        },
+        highlight = {
+            "TSRainbowMagenta",
+            "TSRainbowGray",
+            "TSRainbowCyan",
+            "TSRainbowYellow",
+            "TSRainbowOrange",
+            "TSRainbowPink",
+            "TSRainbowGreen",
+        },
+    }
 end
 return M
