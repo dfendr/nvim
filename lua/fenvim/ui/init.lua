@@ -89,4 +89,8 @@ return {
             require("fenvim.ui.actions-preview").config()
         end,
     },
+    {
+        "lukas-reineke/headlines.nvim",
+        config = true,
+    },
 }

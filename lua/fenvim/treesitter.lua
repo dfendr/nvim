@@ -37,7 +37,7 @@ function M.config()
         },
         sync_install = true,
         auto_install = true,
-        ignore_install = { "perl" }, -- List of parsers to ignore installing
+        ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
             enable = true, -- false will disable the whole extension
             disable = { "text", "txt", "csv" }, -- list of language that will be disabled

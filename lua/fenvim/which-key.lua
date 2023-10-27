@@ -102,7 +102,7 @@ function M.config()
         },
         c = { "<cmd>b#<bar>bd#<CR>", "Close Buffer" },
         C = { "<cmd>bdelete!<CR>", "Close Buffer&Split" },
-        D = {"<cmd>DBUIToggle<cr>", "Database Mode"},
+        D = { "<cmd>DBUIToggle<cr>", "Database Mode" },
         d = {
             name = "Debug",
             b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
@@ -226,6 +226,8 @@ function M.config()
                 ["7"] = { ":normal a₇<Esc>", "Insert subscript 7" },
                 ["8"] = { ":normal a₈<Esc>", "Insert subscript 8" },
                 ["9"] = { ":normal a₉<Esc>", "Insert subscript 9" },
+                ["-"] = { ":normal a₋<Esc>", "Insert subscript -" },
+                ["+"] = { ":normal a₊<Esc>", "Insert subscript +" },
             },
             S = {
                 name = "Superscripts",
@@ -239,6 +241,8 @@ function M.config()
                 ["7"] = { ":normal a⁷<Esc>", "Insert superscript 7" },
                 ["8"] = { ":normal a⁸<Esc>", "Insert superscript 8" },
                 ["9"] = { ":normal a⁹<Esc>", "Insert superscript 9" },
+                ["-"] = { ":normal a⁻<Esc>", "Insert superscript -" },
+                ["+"] = { ":normal a⁺<Esc>", "Insert superscript +" },
             },
             g = {
                 name = "Greek Symbols",
@@ -310,6 +314,7 @@ function M.config()
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
             f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
             H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
+            h = { "<cmd>lua vim.lsp.inlay_hint(0, nil)<cr>", "Toggle Inlay Hints" },
             i = { "<cmd>LspInfo<cr>", "Info" },
             I = { "<cmd>Mason<cr>", "LSP Installer Info" },
             j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic" },
