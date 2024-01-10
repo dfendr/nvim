@@ -11,7 +11,6 @@ return {
         event = "BufReadPre",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "simrat39/rust-tools.nvim",
             "akinsho/flutter-tools.nvim",
         },
 
@@ -44,7 +43,16 @@ return {
             require("fenvim.lsp.null-ls").config()
         end,
     },
+    {
+        "mrcjkb/rustaceanvim",
+        version = "^3",
+        ft = { "rust" },
+    },
 
+    {
+        "p00f/clangd_extensions.nvim",
+        ft = { "c", "cpp" },
+    },
     {
         "akinsho/flutter-tools.nvim",
         lazy = true,

@@ -6,8 +6,7 @@
 local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
 local codelldb_path = extension_path .. "codelldb"
 local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
-
-local opts = {
+vim.g.rustaceanvim = {
     tools = { -- rust-tools options
         -- callback to execute once rust-analyzer is done initializing the workspace
         -- runnables = { use_telescope = true },
@@ -143,13 +142,7 @@ local opts = {
             },
         },
     }, -- rust-analyer options
-
-    -- debugging stuff
-    dap = {
-        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-    },
 }
 
-return opts
 
 -- require("rust-tools").setup(opts)

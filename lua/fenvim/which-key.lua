@@ -129,7 +129,7 @@ function M.config()
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
-            m = { "<cmd>lua require('telescope').extensions.media_files.media_files()<cr>", "Media" },
+            m = { "<cmd>Telescope marks<cr>", "Marks" },
             M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
             P = { "<cmd>Telescope lazy<cr>", "Find Plugins" },
             p = { "<cmd>Telescope projects<cr>", "Projects" },

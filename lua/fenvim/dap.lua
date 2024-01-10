@@ -4,7 +4,6 @@ local M = {
     dependencies = {
         "jbyuki/one-small-step-for-vimkind",
         "rcarriga/nvim-dap-ui",
-        "simrat39/rust-tools.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "williamboman/mason.nvim",
         {

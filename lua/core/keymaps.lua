@@ -72,8 +72,9 @@ map("x", "J", ":move '>+1<CR>gv-gv", opts, "Shift Text Down")
 -- Paste without putting overwritten text in clipboard
 map("x", "p", '"_dP', opts, "Noncopying Paste")
 
--- Define the keybinding to delete blank lines in visual selection
+-- keybinding to delete blank lines in visual selection
 map("x", "<Space>on", ":s/^$\\n//g<CR>", opts, "Delete blank lines in visual selection")
+map("x", "<Space>ow", ":s/\\%V\\s\\+//g<CR>", opts, "Delete all whitespace in visual selection")
 
 -- Terminal --
 -- Better terminal navigation (allows easy window switching)

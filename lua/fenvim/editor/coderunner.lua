@@ -5,7 +5,8 @@ function M.config()
         mode = "float",
         filetype = {
             awk = "awk -f $file",
-            c = "cd $dir && cc -Wall -fsanitize=address -Wno-nullability-completeness -Wextra -pedantic -g -std=c99 $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
+            riscv = "cd $dir && java -jar ~/bin/rars.jar $file",
+            c = "cd $dir && cc -Wall -fsanitize=address -Wno-nullability-completeness -Wextra -pedantic -g -std=c11 -Wall $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
             cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
             cs = "cd $dir && dotnet run",
             go = "cd $dir && go run $fileName",
