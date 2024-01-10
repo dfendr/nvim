@@ -73,8 +73,8 @@ function M.config()
         end,
 
         ["rust_analyzer"] = function()
-            local rust_opts = require("fenvim.lsp.settings.rust")
-            require("rust-tools").setup(rust_opts)
+            -- local rust_opts = require("fenvim.lsp.settings.rust")
+            -- require("rust-tools").setup(rust_opts)
         end,
 
         ["vtsls"] = function()

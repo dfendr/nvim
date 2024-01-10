@@ -8,6 +8,33 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- Define an autocommand group
+local autofold = vim.api.nvim_create_augroup("AutoFold", { clear = true })
+
+-- Function to check buffer type and execute command
+local function executeIfRegularBuffer(cmd)
+    local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if buftype == '' and bufname ~= '' then
+        vim.cmd(cmd)
+    end
+end
+
+-- Autocommand for BufWinLeave
+vim.api.nvim_create_autocmd("BufWinLeave", {
+    pattern = "*",
+    callback = function() executeIfRegularBuffer('mkview') end,
+    group = autofold,
+})
+
+-- Autocommand for BufWinEnter
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = "*",
+    callback = function() executeIfRegularBuffer('silent loadview') end,
+    group = autofold,
+})
+
+
 -- Relative number toggle, only in Normal mode
 vim.api.nvim_command([[
 augroup RelativeNumberToggle
