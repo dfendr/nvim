@@ -44,7 +44,7 @@ function M.config()
             additional_vim_regex_highlighting = false,
         },
 
-        indent = { enable = true, disable = { "yaml", "python", "dart" } },
+        indent = { enable = true, disable = { "c", "yaml", "python", "dart", "markdown", "markdown_inline" } },
     })
 
     -- setup  TS comment context plugin

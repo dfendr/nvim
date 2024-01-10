@@ -1,6 +1,6 @@
 local M = {
     autocommands = {
-        convert_to_unix_formatting_on_save= false,
+        convert_to_unix_formatting_on_save = false,
     },
     lsp = {
         diagnostic_signs = false,
@@ -16,6 +16,7 @@ local M = {
         },
         fidget = "none",
         breadcrumbs = false, -- winbar_title must be true as well for breadcrumbs to activate.
+        winbar_title = false,
         which_key = { border_style = "rounded" },
     },
 }

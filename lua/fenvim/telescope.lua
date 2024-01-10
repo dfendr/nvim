@@ -142,6 +142,9 @@ function M.config()
                     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                     ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
+
+                    ["<C-n>"] = actions.move_selection_next,
+                    ["<C-p>"] = actions.move_selection_previous,
                     ["j"] = actions.move_selection_next,
                     ["k"] = actions.move_selection_previous,
                     ["H"] = actions.move_to_top,

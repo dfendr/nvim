@@ -158,7 +158,31 @@ return {
         -- Big files over 2mb activate BigFile mode, disabling some plugins.
         "LunarVim/bigfile.nvim",
         enabled = true,
-        config = true,
+        config = function()
+            require("bigfile").setup({
+                filesize = 2,
+                -- detect long python files
+                pattern = function(bufnr, filesize_mib)
+                    -- you can't use `nvim_buf_line_count` because this runs on BufReadPre
+                    local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
+                    local file_length = #file_contents
+                    local filetype = vim.filetype.match({ buf = bufnr })
+                    if filetype == "dbout" then
+                        return true
+                    end
+                end,
+                features = { -- features to disable
+                    "indent_blankline",
+                    "illuminate",
+                    "lsp",
+                    "treesitter",
+                    "syntax",
+                    "matchparen",
+                    "vimopts",
+                    "filetype",
+                },
+            })
+        end,
     },
     {
         "kevinhwang91/nvim-ufo",
@@ -166,5 +190,12 @@ return {
         config = function()
             require("fenvim.editor.ufo").config()
         end,
+    },
+    {
+
+        "chrishrb/gx.nvim",
+        event = { "BufEnter" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = true, -- default settings
     },
 }
