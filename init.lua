@@ -21,7 +21,6 @@ if vim.g.neovide then
 end
 
 -- TODO:
--- Register more complicated keymaps from keymaps.lua to whichkey
 -- Fix Markdown/Rust autopairs (** and |)
 -- Fix Zen Mode, no twilight mode, no numbers. "Reading/Notes" mode.
 -- Add strikethrough to Fenbox theme so it's not needed in setup
