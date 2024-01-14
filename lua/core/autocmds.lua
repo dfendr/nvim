@@ -15,8 +15,18 @@ local autofold = vim.api.nvim_create_augroup("AutoFold", { clear = true })
 local function executeIfRegularBuffer(cmd)
     local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
     local bufname = vim.api.nvim_buf_get_name(0)
-    if buftype == '' and bufname ~= '' then
-        vim.cmd(cmd)
+    local modifiable = vim.api.nvim_buf_get_option(0, 'modifiable')
+
+    if buftype == '' and bufname ~= '' and modifiable then
+        -- For 'loadview', check if the view file exists
+        if cmd == 'silent loadview' then
+            local viewfile = vim.fn.fnameescape(vim.fn.expand('%:p:h')) .. '/view/' .. vim.fn.fnameescape(vim.fn.expand('%:t'))
+            if vim.fn.filereadable(viewfile) ~= 0 then
+                vim.cmd(cmd)
+            end
+        else
+            vim.cmd(cmd)
+        end
     end
 end
 

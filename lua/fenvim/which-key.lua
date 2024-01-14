@@ -4,6 +4,8 @@ function M.config()
     if not status_ok then
         return
     end
+    -- Resource keymaps
+    require("core.keymaps").setup_keymaps()
 
     local setup = {
         plugins = {
