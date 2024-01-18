@@ -43,7 +43,6 @@ function M.config()
 
     require("mason-lspconfig").setup({
         ensure_installed = {
-            "awk_ls",
             "bashls",
             "html",
             "jsonls",
