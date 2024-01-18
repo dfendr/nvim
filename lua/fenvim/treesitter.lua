@@ -7,7 +7,7 @@ local M = {
         "nvim-treesitter/nvim-treesitter-context",
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    lazy = false,
+    lazy = true,
     event = "BufReadPost",
 }
 
