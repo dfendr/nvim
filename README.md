@@ -12,6 +12,7 @@
 > daytime/nighttime UI changes.
 
 - **Use at your own discretion, WIP**
+- Created for Neovim 0.10
 - Linux/macOS.
 
 ## Features 🌲
