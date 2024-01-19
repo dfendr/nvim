@@ -198,4 +198,43 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         config = true, -- default settings
     },
+    {
+        "chrisgrieser/nvim-scissors",
+        requires = "nvim-telescope/telescope.nvim", -- optional dependency
+        config = function()
+            local map = require("utils.functions").map
+
+            -- Set key mappings for scissors plugin using custom map function
+            map("n", "<leader>aS", "<cmd>lua require('scissors').editSnippet()<CR>", {}, "Edit Snippet")
+            map("x", "<leader>as", "<cmd>lua require('scissors').addNewSnippet()<CR>", {}, "Add New Snippet")
+
+            require("scissors").setup({
+                snippetDir = require("utils.functions").get_snippet_path(),
+                editSnippetPopup = {
+                    height = 0.4, -- relative to the window, number between 0 and 1
+                    width = 0.6,
+                    border = require("core.prefs").ui.border_style,
+                    keymaps = {
+                        cancel = "q",
+                        saveChanges = "<CR>", -- alternatively, can also use `:w`
+                        goBackToSearch = "<BS>",
+                        deleteSnippet = "<C-x>",
+                        duplicateSnippet = "<C-d>",
+                        openInFile = "<C-o>",
+                        insertNextToken = "<C-t>", -- insert & normal mode
+                        jumpBetweenBodyAndPrefix = "<Tab>", -- insert & normal mode
+                    },
+                },
+                telescope = {
+                    -- By default, the query only searches snippet prefixes. Set this to
+                    -- `true` to also search the body of the snippets.
+                    alsoSearchSnippetBody = false,
+                },
+                -- `none` writes as a minified json file using `vim.encode.json`.
+                -- `yq`/`jq` ensure formatted & sorted json files, which is relevant when
+                -- you version control your snippets.
+                jsonFormatter = "none", -- "yq"|"jq"|"none"
+            })
+        end,
+    },
 }

@@ -24,6 +24,7 @@ function M.config()
     vim.o.completeopt = "menuone,noselect"
 
     require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = {require("utils.functions").get_snippet_path()} })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
