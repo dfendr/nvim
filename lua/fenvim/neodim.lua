@@ -1,6 +1,7 @@
 return {
     "zbirenbaum/neodim",
     event = "LspAttach",
+    enabled = false,
     --branch = "v2",
     config = function()
         require("neodim").setup({

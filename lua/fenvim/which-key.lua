@@ -74,6 +74,9 @@ function M.config()
         },
     }
     local xmappings = {
+        --TODO: Add in scissors commands
+
+        a = { name = "Annotate", },
         s = {
             ":'<,'>TrozoUploadSelection<CR>",
             "Upload V-Selection To paste.rs",
@@ -89,6 +92,7 @@ function M.config()
         [" "] = { "<cmd>nohl<cr>", "Clear Highlighting" },
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
+        a = { name = "Annotate", d = { "<cmd>Neogen<cr>", "Generate Annotation" } },
         b = {
             name = "Buffers",
             b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
@@ -312,7 +316,6 @@ function M.config()
             name = "LSP",
             -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
             a = { "<cmd>lua require('actions-preview').code_action()<cr>", "Code Action" },
-            d = { "<cmd>Neogen<cr>", "Generate Annotation" },
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
             f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
             H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },

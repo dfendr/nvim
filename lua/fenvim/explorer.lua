@@ -150,7 +150,7 @@ function M.config()
             highlight_opened_files = "all",
             root_folder_modifier = ":t",
             indent_markers = {
-                enable = true,
+                enable = false,
                 icons = {
                     corner = "└ ",
                     edge = "│ ",
