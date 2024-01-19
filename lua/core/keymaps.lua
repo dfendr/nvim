@@ -1,6 +1,8 @@
 -- Keybind function shortcut
 local M = {}
 
+-- TODO: Remove this or the one in util functions.
+-- Alternatively move core functions to core folder.
 local function map(mode, key, cmd, opts, desc)
     local options = {}
     if type(desc) == "table" then

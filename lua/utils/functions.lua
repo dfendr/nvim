@@ -21,6 +21,15 @@ M.load_override = function(default_table, plugin_name)
     return merge_tb("force", default_table, user_table) or {}
 end
 
+function M.get_snippet_path()
+    local config_path = vim.loop.fs_realpath(vim.fn.stdpath('config'))
+    local snippet_relative_path = {"snippets"}
+    local path_separator = package.config:sub(1,1)  -- Gets the path separator based on the OS
+    local snippet_path = table.concat(vim.tbl_flatten({config_path, snippet_relative_path}), path_separator)
+
+    return snippet_path
+end
+
 function M.sniprun_enable()
     vim.cmd([[
     %SnipRun
@@ -189,6 +198,40 @@ function M.open_explorer()
         vim.cmd("silent !start " .. current_file_dir)
     else
         vim.cmd("silent !xdg-open " .. current_file_dir)
+    end
+end
+
+-- Keybind function shortcut
+function M.map(mode, key, cmd, opts, desc)
+    local options = {}
+    if type(desc) == "table" then
+        opts = vim.tbl_extend("force", opts, desc)
+    else
+        if type(desc) == "string" then
+            options.desc = desc
+        end
+    end
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+
+    vim.api.nvim_set_keymap(mode, key, cmd, options)
+
+    -- Check if whichkey is available and a description is provided
+    if pcall(require, "which-key") and type(desc) == "string" then
+        local whichkey = require("which-key")
+        local wk_opts = {
+            mode = mode, -- NORMAL, VISUAL, INSERT, etc.
+            prefix = "",
+            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+            silent = true, -- use `silent` when creating keymaps
+            noremap = true, -- use `noremap` when creating keymaps
+            nowait = true, -- use `nowait` when creating keymaps
+        }
+        local mappings = {
+            [key] = { cmd, desc },
+        }
+        whichkey.register(mappings, wk_opts)
     end
 end
 
