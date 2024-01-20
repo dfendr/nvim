@@ -22,10 +22,10 @@ M.load_override = function(default_table, plugin_name)
 end
 
 function M.get_snippet_path()
-    local config_path = vim.loop.fs_realpath(vim.fn.stdpath('config'))
-    local snippet_relative_path = {"snippets"}
-    local path_separator = package.config:sub(1,1)  -- Gets the path separator based on the OS
-    local snippet_path = table.concat(vim.tbl_flatten({config_path, snippet_relative_path}), path_separator)
+    local config_path = vim.loop.fs_realpath(vim.fn.stdpath("config"))
+    local snippet_relative_path = { "snippets" }
+    local path_separator = package.config:sub(1, 1) -- Gets the path separator based on the OS
+    local snippet_path = table.concat(vim.tbl_flatten({ config_path, snippet_relative_path }), path_separator)
 
     return snippet_path
 end
@@ -65,8 +65,6 @@ function M.remove_augroup(name)
         vim.cmd("au! " .. name)
     end
 end
-
-vim.cmd([[ command! SnipRunToggle execute 'lua require("user.functions").toggle_sniprun()' ]])
 
 -- get length of current word
 function M.get_word_length()
@@ -148,7 +146,7 @@ function M.convert_to_dos()
     end
 end
 
-function M.smart_close ()
+function M.smart_close()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
     local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
@@ -201,6 +199,14 @@ function M.open_explorer()
     end
 end
 
+
+function M.code_action()
+    local status, err = pcall(require('actions-preview').code_action)
+    if not status then
+        vim.lsp.buf.code_action()
+    end
+end
+
 -- Keybind function shortcut
 function M.map(mode, key, cmd, opts, desc)
     local options = {}
@@ -235,24 +241,11 @@ function M.map(mode, key, cmd, opts, desc)
     end
 end
 
-function _G.Toggle_venn()
-    local venn_enabled = vim.inspect(vim.b.venn_enabled)
-    if venn_enabled == "nil" then
-        vim.b.venn_enabled = true
-        vim.cmd([[setlocal ve=all]])
-        -- draw a line on HJKL keystokes
-        vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", { noremap = true })
-        -- draw a box by pressing "f" with visual selection
-        vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
-    else
-        vim.cmd([[setlocal ve=]])
-        vim.cmd([[mapclear <buffer>]])
-        vim.b.venn_enabled = nil
-    end
+function M.toggle_inlay_hints()
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
+
 
 function M.adjust_color(color, amount)
     color = vim.trim(color)
@@ -332,7 +325,6 @@ function M.is_lsp_client_running(client_name)
     end
     return false
 end
-
 
 function M.open_todo()
     local home_dir = os.getenv("HOME")
