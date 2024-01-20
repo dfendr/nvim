@@ -32,16 +32,6 @@ function M.config()
     local perf_purple = "#7C3AED"
     local note_green = "#10B981"
 
-    if vim.api.nvim_exec2("colo", { output = true }).output == "fenbox" then
-        local c = require("fenbox.colors").config()
-        error_red = c.red
-        warning_orange = c.orange
-        info_yellow = c.bright_yellow
-        hint_blue = c.clean_green
-        perf_purple = c.magenta
-        note_green = c.soft_green
-    end
-
     todo_comments.setup({
         signs = true, -- show icons in the signs column
         sign_priority = 8, -- sign priority

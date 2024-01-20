@@ -1,4 +1,4 @@
-local status_ok, functions = pcall(require, "utils.functions")
+local status_ok, functions = pcall(require, "core.functions")
 if not status_ok then
     return
 end
