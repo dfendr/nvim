@@ -224,7 +224,7 @@ function M.config()
             },
             man_pages = {
                 -- initial_mode = "normal",
-                man_cmd = { "apropos", "." }, -- Does this work on Linux also?
+                -- man_cmd = { "apropos", "." }, -- Does this work on Linux also?
             },
 
             -- Default configuration for builtin pickers goes here:

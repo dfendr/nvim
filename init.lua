@@ -19,8 +19,3 @@ require("lazy").setup("fenvim", {
 if vim.g.neovide then
     require("fenvim.ui.neovide")
 end
-
--- TODO:
--- Fix Markdown/Rust autopairs (** and |)
--- Fix Zen Mode, no twilight mode, no numbers. "Reading/Notes" mode.
--- Add strikethrough to Fenbox theme so it's not needed in setup

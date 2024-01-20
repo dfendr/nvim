@@ -47,7 +47,6 @@ function M.config()
             "html",
             "jsonls",
             "marksman",
-            -- "tsserver",
             "yamlls",
             "pyright",
             "clangd",

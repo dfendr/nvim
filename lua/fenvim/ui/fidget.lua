@@ -1,7 +1,7 @@
 local M = {}
 
 local function spinner_icon()
-    if require("utils.functions").daylight() then
+    if require("core.functions").daylight() then
         return "star"
     else
         return "moon"

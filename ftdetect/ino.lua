@@ -1,1 +1,1 @@
-vim.cmd([[autocmd BufRead,BufNewFile *.keymap set filetype=cpp]])
+vim.cmd([[autocmd BufRead,BufNewFile *.keymap set filetype=c]])
