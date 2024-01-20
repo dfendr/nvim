@@ -10,6 +10,12 @@ return {
         version = "*",
     },
     {
+        -- Git Diff viewer
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+        config = true,
+    },
+    {
         -- Zen Mode/Focus. "Spotlight" effect on code
         "folke/twilight.nvim",
         config = true,
@@ -53,7 +59,7 @@ return {
         end,
     },
     {
-        "postfen/trozo.nvim",
+        "dfendr/trozo.nvim",
         enabled = true,
         opts = { clipboard = true, browser = true },
         cmd = { "TrozoUploadSelection", "TrozoUploadFile" },
@@ -61,7 +67,7 @@ return {
     {
         "tpope/vim-dadbod",
         dependencies = {
-            { "kristijanhusak/vim-dadbod-completion", },
+            { "kristijanhusak/vim-dadbod-completion" },
             {
                 "kristijanhusak/vim-dadbod-ui",
                 config = function()

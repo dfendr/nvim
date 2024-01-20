@@ -1,0 +1,1 @@
+{"ifnull":{"prefix":"ifnull","body":["if (${1:}==NULL){","    fprintf(stderr, \"${2:}\\n\");","    exit(1);","}"]}}

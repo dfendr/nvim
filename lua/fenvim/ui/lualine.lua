@@ -1,9 +1,9 @@
 local M = {}
 
 function M.config()
-    local status_ok, lualine = pcall(require, "lualine")
+    local _, lualine = pcall(require, "lualine")
 
-    local funcs = require("utils.functions")
+    local funcs = require("core.functions")
     local daylight = funcs.daylight() -- check time
     ------------------------------------------------------------------------
 
@@ -45,10 +45,6 @@ function M.config()
         end
     end
 
-    local hl_str = function(str, hl) -- Highlight string
-        return "%#" .. hl .. "#" .. str .. "%*"
-    end
-
     -- check if value in table
     local function contains(t, value)
         for _, v in pairs(t) do
@@ -76,7 +72,7 @@ function M.config()
         -- Lsp server name .
         function()
             local msg = "No Active Lsp"
-            local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+            local buf_ft = vim.api.nvim_get_option_value('filetype', {buf = 0})
             local clients = vim.lsp.get_clients()
             if next(clients) == nil then
                 return msg
@@ -283,7 +279,7 @@ local noice = {
             if contains(ui_filetypes, buf_ft) then
                 space = " "
             end
-            local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+            local shiftwidth= vim.api.nvim_get_option_value('shiftwidth', {buf = 0})
             if shiftwidth == nil or shiftwidth == 4 then
                 return ""
             end

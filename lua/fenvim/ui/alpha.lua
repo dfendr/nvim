@@ -1,5 +1,5 @@
 local M = {}
-local funcs = require("utils.functions")
+local funcs = require("core.functions")
 function M.config()
     local function button(sc, txt, keybind)
         local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -36,7 +36,7 @@ function M.config()
     local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
 
     local icons = require("fenvim.ui.icons")
-    local daylight = require("utils.functions").daylight()
+    local daylight = require("core.functions").daylight()
     if daylight then
         header_hl_group = "@string"
     else
@@ -219,7 +219,7 @@ function M.config()
             val = {
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
-                button("t", icons.ui.Check .. " Todo List", ":lua require('utils.functions').open_todo()<CR>"),
+                button("t", icons.ui.Check .. " Todo List", ":lua require('core.functions').open_todo()<CR>"),
                 button("d", icons.ui.Table.. " Access Database", "<cmd>DBUI<cr><c-w>l<cmd>bd<cr><c-w>h"),
                 -- button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 -- button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
