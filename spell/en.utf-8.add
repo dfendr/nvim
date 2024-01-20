@@ -561,3 +561,14 @@ malloc
 opto
 cpp
 c11
+MSB
+RTS
+CTS
+Tx
+JTAG
+I2C
+SPI
+minicom
+PID
+pid
+waitpid
