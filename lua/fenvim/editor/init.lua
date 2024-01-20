@@ -93,20 +93,6 @@ return {
         end,
     },
     {
-        "gaoDean/autolist.nvim",
-        ft = {
-            "markdown",
-            "text",
-            "tex",
-            "plaintex",
-        },
-        event = "BufReadPost",
-        enabled = false,
-        config = function()
-            require("fenvim.editor.autolist").config()
-        end,
-    },
-    {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
         config = function()
@@ -161,7 +147,6 @@ return {
         config = function()
             require("bigfile").setup({
                 filesize = 2,
-                -- detect long python files
                 pattern = function(bufnr, filesize_mib)
                     -- you can't use `nvim_buf_line_count` because this runs on BufReadPre
                     local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
@@ -192,7 +177,6 @@ return {
         end,
     },
     {
-
         "chrishrb/gx.nvim",
         event = { "BufEnter" },
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -200,16 +184,16 @@ return {
     },
     {
         "chrisgrieser/nvim-scissors",
-        requires = "nvim-telescope/telescope.nvim", -- optional dependency
+        dependencies = "nvim-telescope/telescope.nvim", -- optional dependency
         config = function()
-            local map = require("utils.functions").map
+            local map = require("core.functions").map
 
             -- Set key mappings for scissors plugin using custom map function
             map("n", "<leader>aS", "<cmd>lua require('scissors').editSnippet()<CR>", {}, "Edit Snippet")
             map("x", "<leader>as", "<cmd>lua require('scissors').addNewSnippet()<CR>", {}, "Add New Snippet")
 
             require("scissors").setup({
-                snippetDir = require("utils.functions").get_snippet_path(),
+                snippetDir = require("core.functions").get_snippet_path(),
                 editSnippetPopup = {
                     height = 0.4, -- relative to the window, number between 0 and 1
                     width = 0.6,

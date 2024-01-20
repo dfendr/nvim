@@ -2,7 +2,9 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.textwidth = 79
 vim.opt_local.spell = true
-vim.opt_local.conceallevel = 3
+vim.opt_local.conceallevel = 2
+-- vim.opt_local.encoding = "utf-16"
+-- vim.opt_local.fileencoding = "utf-16"
 
 ------------------------------------------------------ [[ConvertToLatex]]
 -- pandox required
@@ -42,7 +44,7 @@ if status_ok then
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
     }
 
-        which_key.register(mappings, opts)
+    which_key.register(mappings, opts)
 end
 
 opts = { noremap = true, silent = true }

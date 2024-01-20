@@ -76,7 +76,7 @@ function M.config()
     local xmappings = {
         --TODO: Add in scissors commands
 
-        a = { name = "Annotate", },
+        a = { name = "Annotate" },
         s = {
             ":'<,'>TrozoUploadSelection<CR>",
             "Upload V-Selection To paste.rs",
@@ -135,8 +135,8 @@ function M.config()
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
-            m = { "<cmd>Telescope marks<cr>", "Marks" },
-            M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+            M = { "<cmd>Telescope marks<cr>", "Marks" },
+            m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
             P = { "<cmd>Telescope lazy<cr>", "Find Plugins" },
             p = { "<cmd>Telescope projects<cr>", "Projects" },
             R = { ":cd ~/Repos<CR> :Telescope find_files <CR>", "Search Repo Files" },
@@ -178,32 +178,25 @@ function M.config()
         },
         o = {
             name = "Options",
-            b = { '<cmd>lua require("utils.functions").toggle_tabline()<cr>', "Toggle Bufferline" },
+            b = { '<cmd>lua require("core.functions").toggle_tabline()<cr>', "Toggle Bufferline" },
             c = { "<cmd>lua vim.g.cmp_active=false<cr>", "Completion off" },
             C = { "<cmd>lua vim.g.cmp_active=true<cr>", "Completion on" },
-            d = { "<cmd>lua require('utils.functions').convert_to_dos()<CR>", "Convert to DOS Formatting" },
+            d = { "<cmd>lua require('core.functions').convert_to_dos()<CR>", "Convert to DOS Formatting" },
             h = { "<cmd>HexToggle<cr>", "Toggle Hex Editor" },
-            l = { '<cmd>lua require("utils.functions").toggle_option("cursorline")<cr>', "Cursorline" },
-            m = {
-                name = "Misc/Goofs",
-                r = { "<cmd> CellularAutomaton make_it_rain<CR>", "Make it Rain" },
-                l = { "<cmd> CellularAutomaton game_of_life<CR>", "Game of Life" },
-                s = { "<cmd> CellularAutomaton slide<CR>", "Slide" },
-            },
+            l = { '<cmd>lua require("core.functions").toggle_option("cursorline")<cr>', "Cursorline" },
             O = { "<cmd>e $MYVIMRC | :cd %:p:h <CR>", "Open Options" },
-            o = { '<cmd>lua require("utils.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
-            r = { '<cmd>lua require("utils.functions").toggle_option("relativenumber")<cr>', "Relative" },
+            o = { '<cmd>lua require("core.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
+            r = { '<cmd>lua require("core.functions").toggle_option("relativenumber")<cr>', "Relative" },
             s = { "<cmd>ScrollbarToggle<cr>", "Toggle Scrollbar" },
-            S = { '<cmd>lua require("utils.functions").toggle_option("spell")<cr>', "Spell" },
+            S = { '<cmd>lua require("core.functions").toggle_option("spell")<cr>', "Spell" },
             t = { "<cmd>Twilight<cr>", "Twilight" },
-            u = { "<cmd>lua require('utils.functions').convert_to_unix()<CR>", "Convert to Unix Formatting" },
-            v = { "<cmd>:lua Toggle_venn()<CR>", "Toggle Drawing Mode (Venn)" },
+            u = { "<cmd>lua require('core.functions').convert_to_unix()<CR>", "Convert to Unix Formatting" },
             w = { "<cmd>WindowsToggleAutowidth<cr>", "Toggle Window Autowidth" },
-            W = { '<cmd>lua require("utils.functions").toggle_option("wrap")<cr>', "Wrap" },
+            W = { '<cmd>lua require("core.functions").toggle_option("wrap")<cr>', "Wrap" },
             z = { "<cmd>ZenMode<cr>", "Zen" },
         },
-        q = { '<cmd>lua require("utils.functions").smart_close()<CR>', "Close Window" },
-        Q = { '<cmd>lua require("utils.functions").smart_exit()<CR>', "Exit" },
+        q = { '<cmd>lua require("core.functions").smart_close()<CR>', "Close Window" },
+        Q = { '<cmd>lua require("core.functions").smart_exit()<CR>', "Exit" },
         R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         r = {
             name = "Quickrun",
@@ -314,12 +307,11 @@ function M.config()
         w = { "<cmd>w<CR>", "Write" },
         l = {
             name = "LSP",
-            -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-            a = { "<cmd>lua require('actions-preview').code_action()<cr>", "Code Action" },
+            a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
             f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
             H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
-            h = { "<cmd>lua vim.lsp.inlay_hint(0, nil)<cr>", "Toggle Inlay Hints" },
+            h = { "<cmd>lua require('core.functions').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
             i = { "<cmd>LspInfo<cr>", "Info" },
             I = { "<cmd>Mason<cr>", "LSP Installer Info" },
             j = { "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", "Next Diagnostic" },
@@ -338,7 +330,7 @@ function M.config()
             s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
             S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
             t = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
-            T = { '<cmd>lua require("utils.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+            T = { '<cmd>lua require("core.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
             u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
             v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
             w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
@@ -365,8 +357,6 @@ function M.config()
     if ok then
         mappings.l.a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "Code Action" }
     end
-
-    -- other mappings here ...
 
     local opts = {
         mode = "n", -- NORMAL mode

@@ -58,8 +58,8 @@ M.setup = function()
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = require("core.prefs").ui.border_style,
-    --     -- width = 60,
-    --     -- height = 30,
+        --     -- width = 60,
+        --     -- height = 30,
     })
     --
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -116,9 +116,13 @@ M.on_attach = function(client, bufnr)
     require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     lsp_keymaps(bufnr)
 
+    if client.supports_method("textDocument/inlayHint") then
+        vim.lsp.inlay_hint.enable(bufnr, true)
+    end
 
     if client.name == "tsserver" or client.name == "clangd" then
         client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+        client.server_capabilities.documentRangeFormattingProvider = false -- 0.8 and later
     end
 end
 
