@@ -105,6 +105,20 @@ function M.isempty(s)
     return s == nil or s == ""
 end
 
+function M.format_buffer()
+    local excluded_servers = { "tsserver", "clangd" }
+    vim.lsp.buf.format({
+        filter = function(client)
+            for _, excluded_server in ipairs(excluded_servers) do
+                if client.name == excluded_server then
+                    return false
+                end
+            end
+            return true
+        end,
+    })
+end
+
 function M.get_buf_option(opt)
     local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
     if not status_ok then
@@ -199,9 +213,8 @@ function M.open_explorer()
     end
 end
 
-
 function M.code_action()
-    local status, err = pcall(require('actions-preview').code_action)
+    local status, err = pcall(require("actions-preview").code_action)
     if not status then
         vim.lsp.buf.code_action()
     end
@@ -245,7 +258,6 @@ function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
-
 
 function M.adjust_color(color, amount)
     color = vim.trim(color)
