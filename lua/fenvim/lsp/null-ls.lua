@@ -13,13 +13,7 @@ function M.config()
         { exe = "prettier", source = formatting.prettier.with({ extra_args = { "--tab-width", "2" } }), type = "formatting" },
         { exe = "black", source = formatting.black.with({ extra_args = { "--line-length", "79" } }), type = "formatting" },
         { exe = "stylua", source = formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }), type = "formatting" },
-        { exe = "clang-format", source = formatting.clang_format.with({
-            extra_args = {
-                "--style",
-                "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}}",
-            },
-            filetypes = { "c", "cpp", "arduino" },
-        }), type = "formatting" },
+        { exe = "clang-format", source = formatting.clang_format.with({ extra_args = { "--style", "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}}", }, filetypes = { "c", "cpp", "arduino" }, }), type = "formatting" },
         { exe = "shellcheck", source = diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }), type = "diagnostics" },
         { exe = "shfmt", source = formatting.shfmt.with({ filetypes = { "sh", "zsh" } }), type = "formatting" },
         { exe = "jq", source = formatting.jq.with({ filetypes = { "json" } }), type = "formatting" },
