@@ -309,7 +309,7 @@ function M.config()
             name = "LSP",
             a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-            f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+            f = { "<cmd>lua require('core.functions').format_buffer()<CR>", "Format" },
             H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
             h = { "<cmd>lua require('core.functions').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
             i = { "<cmd>LspInfo<cr>", "Info" },
