@@ -295,6 +295,8 @@ function M.config()
         },
         T = {
             name = "Treesitter",
+            t = { "<cmd>lua require('core.functions').toggle_treesitter_local()<CR>", "Toggle Local TS Highlighting" },
+            T = { "<cmd>lua require('core.functions').toggle_treesitter_global()<CR>", "Toggle TS Highlighting" },
             h = { "<cmd>Inspect<cr>", "Inspect Highlight Groups" },
             p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
             r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },

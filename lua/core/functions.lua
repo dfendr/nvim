@@ -119,7 +119,6 @@ function M.format_buffer()
     })
 end
 
-
 function M.convert_to_unix()
     -- First, remove ^M (carriage return characters)
     local choice = vim.fn.confirm("Confirm conversion to Unix?", "&Yes\n&No", 2)
@@ -173,7 +172,7 @@ function M.smart_exit()
 
     if not modified then
         for _, buf in ipairs(buffers) do
-            if  vim.api.nvim_get_option_value("modified", { buf = buf }) then
+            if vim.api.nvim_get_option_value("modified", { buf = buf }) then
                 vim.api.nvim_set_current_buf(buf)
                 modified = true
                 break
@@ -234,7 +233,7 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
         local wk_opts = {
             mode = mode, -- NORMAL, VISUAL, INSERT, etc.
             prefix = "",
-            buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+            buffer = bufnr, -- nil == Global
             silent = true,
             noremap = true,
             nowait = true,
@@ -249,6 +248,30 @@ end
 function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+end
+
+function M.toggle_treesitter_local()
+    local current_buf = vim.api.nvim_get_current_buf()
+
+    if vim.treesitter.highlighter.active[current_buf] then
+        -- Disable Tree-sitter highlighting
+        vim.cmd("TSBufDisable highlight")
+    else
+        -- Enable Tree-sitter highlighting
+        vim.cmd("TSBufEnable highlight")
+    end
+end
+
+function M.toggle_treesitter_global()
+    local current_buf = vim.api.nvim_get_current_buf()
+
+    if vim.treesitter.highlighter.active[current_buf] then
+        -- Disable Tree-sitter highlighting
+        vim.cmd("TSDisable highlight")
+    else
+        -- Enable Tree-sitter highlighting
+        vim.cmd("TSEnable highlight")
+    end
 end
 
 function M.adjust_color(color, amount)
