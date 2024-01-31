@@ -68,27 +68,6 @@ function M.config()
 
     -------------------------------------------------------------------------------
     -------------------------------LSP---------------------------------------------
-    local lsp_info = {
-        -- Lsp server name .
-        function()
-            local msg = "No Active Lsp"
-            local buf_ft = vim.api.nvim_get_option_value('filetype', {buf = 0})
-            local clients = vim.lsp.get_clients()
-            if next(clients) == nil then
-                return msg
-            end
-            for _, client in ipairs(clients) do
-                local filetypes = client.config.filetypes
-                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                    return client.name
-                end
-            end
-            return msg
-        end,
-        icon = " LSP:",
-        -- color = { fg = colors.white, gui = "bold" },
-        padding = 1,
-    }
 
     -- Diagnostics
     local diagnostics = {
@@ -203,23 +182,6 @@ function M.config()
     }
 
 
-    ---------------------------------------------------------------------------
-    ---------------------------------------------------------[[ Noice  ]]
-local noice = {
-    function()
-        local status, noice = pcall(require, "noice")
-        if status then
-            return noice.api.status.mode.get()
-        else
-            return ""
-        end
-    end,
-    cond = function()
-        local status = pcall(require, "noice")
-        return status and require("noice").api.statusline.mode.has()
-    end,
-    -- color = { fg = "#ff9e64" },
-}
     ---------------------------------------------------------------------------
     ---------------------------------------------------------[[ Mixed Indent ]]
     local function mixed_indent()
@@ -355,7 +317,6 @@ local noice = {
             lualine_c = { diagnostics },
             lualine_x = {
 
-                noice,
                 filename, --[[ filetype, ]]
                 encoding,
                 fileformat,

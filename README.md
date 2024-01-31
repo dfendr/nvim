@@ -19,7 +19,7 @@
 
 - 🧩 Modular Format
 - 💤 Automatic plugin installation (and lazy loading!) via `lazy.vim`
-- 🌅 Daytime/NightTime changes (statusbar icons and dasboard) 🌔
+- 🌅 Daytime/Nighttime changes (statusbar icons and dashboard) 🌔
 - 🤏 Size aware, dynamically changes UI elements when resized.
 - 📄 Per filetype shortcuts accessed with `<leader> L`
 - 🌐 Automatic LSP integrations via `Mason`, with modular format for adding LSP
@@ -103,7 +103,7 @@ fi
 # Move into nvim directory
 cd nvim
 
-# Clone postfen/nvim repository
+# Clone dfendr/nvim repository
 git clone https://github.com/postfen/nvim.git
 ```
 
