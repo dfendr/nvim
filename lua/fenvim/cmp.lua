@@ -12,6 +12,7 @@ local M = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-emoji",
+        "SergioRibera/cmp-dotenv",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         { "hrsh7th/cmp-cmdline", enabled = cmdline },
         { "dmitmel/cmp-cmdline-history", enabled = cmdline },
@@ -24,7 +25,7 @@ function M.config()
     vim.o.completeopt = "menuone,noselect"
 
     require("luasnip.loaders.from_vscode").lazy_load()
-    require("luasnip.loaders.from_vscode").lazy_load({ paths = {require("core.functions").get_snippet_path()} })
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = { require("core.functions").get_snippet_path() } })
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then
@@ -74,9 +75,7 @@ function M.config()
             -- Set `select` to `false` to only confirm explicitly selected items.
             ["<CR>"] = cmp.mapping.confirm({ select = true }),
             ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.expandable() then
+                if luasnip.expandable() then
                     luasnip.expand({})
                 elseif luasnip.expand_or_jumpable() then
                     luasnip.expand_or_jump()
@@ -90,9 +89,7 @@ function M.config()
                 "s",
             }),
             ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
+                if luasnip.jumpable(-1) then
                     luasnip.jump(-1)
                 else
                     fallback()
@@ -114,6 +111,7 @@ function M.config()
         },
         sources = {
             { name = "nvim_lsp_signature_help" },
+            { name = "dotenv" },
             { name = "neorg" },
             { name = "nvim_lsp" },
             { name = "buffer" },
