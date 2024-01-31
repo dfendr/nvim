@@ -3,7 +3,6 @@ local M = {}
 local settings = require("core.prefs")
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local utils = require("fenvim.lsp.utils")
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -71,43 +70,32 @@ end
 
 local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
+    local f = require("core.functions")
 
+    -- Diagnostic display
     vim.diagnostic.config({
         float = { border = require("core.prefs").ui.border_style },
     })
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts) -- Go Hover
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- Go ...Lerror? Go....let me see diagnostics? Convenient but not easy to remember.
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-f>", "<cmd>Format<cr>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "]e",
-        "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>",
-        opts
-    )
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "[e",
-        "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
-        opts
-    )
-    -- check if code-action preview plugin is installed
+
+    -- LSP Key mappings
+    f.map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts, "Go To Definitions", bufnr)
+    f.map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, "Hover Documentation", bufnr)
+    f.map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Show Line Diagnostics", bufnr)
+    f.map("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts, "Go To Implementations", bufnr)
+    f.map("n", "gr", "<cmd>Telescope lsp_references<CR>", opts, "Go To References", bufnr)
+    f.map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Signature Help", bufnr)
+    f.map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
+    f.map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts, "Previous Diagnostic", bufnr)
+    f.map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts, "Next Diagnostic", bufnr)
+    f.map("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Next Error", bufnr)
+    f.map("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Previous Error", bufnr)
+
+    -- Code action key mapping
     local ok, _ = pcall(require, "actions-preview")
     if ok then
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua require('actions-preview').code_actions()<cr>", opts)
+        f.map("n", "<C-.>", "<cmd>lua require('actions-preview').code_actions()<cr>", opts, "Code Actions Preview", bufnr)
     else
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        f.map("n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts, "Code Actions", bufnr)
     end
 end
 

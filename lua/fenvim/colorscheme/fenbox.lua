@@ -6,7 +6,7 @@ function M.config()
 
     -- Enable telescope theme
     vim.g.fenbox_telescope_theme = false
-    vim.g.fenbox_transparent_mode = false
+    vim.g.fenbox_transparent_mode = require("core.prefs").ui.transparent
     vim.g.fenbox_comment_style = { "italic" }
     vim.g.fenbox_function_style = { "bold" }
     vim.g.fenbox_keyword_style = "NONE"
