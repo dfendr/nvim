@@ -1,5 +1,4 @@
 local M = {}
-local funcs = require("core.functions")
 function M.config()
     local function button(sc, txt, keybind)
         local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -37,11 +36,9 @@ function M.config()
 
     local icons = require("fenvim.ui.icons")
     local daylight = require("core.functions").daylight()
+    local header_hl_group = "@label"
     if daylight then
         header_hl_group = "@string"
-    else
-        header_hl_group = "@label" -- deep blue
-        -- header_hl_group = "Error" -- RED
     end
 
     -- ┌────────────────────────┐
@@ -191,18 +188,6 @@ function M.config()
 
     local datetime = os.date(" %H:%M")
 
-    local dynamic_header_gif = {
-        type = "terminal",
-        command = "chafa -c full --fg-only --symbols braille ~/Downloads/test.gif",
-        width = 90,
-        height = 20,
-        opts = {
-            position = "center",
-            redraw = true,
-            window_config = {},
-        },
-    }
-
     local dynamic_header_responsive = {
         type = "text",
         val = dynamic_header,
@@ -220,7 +205,7 @@ function M.config()
 
                 button("n", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
                 button("t", icons.ui.Check .. " Todo List", ":lua require('core.functions').open_todo()<CR>"),
-                button("d", icons.ui.Table.. " Access Database", "<cmd>DBUI<cr><c-w>l<cmd>bd<cr><c-w>h"),
+                button("d", icons.ui.Table .. " Access Database", "<cmd>DBUI<cr><c-w>l<cmd>bd<cr><c-w>h"),
                 -- button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                 -- button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                 -- button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),

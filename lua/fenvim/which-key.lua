@@ -88,8 +88,6 @@ function M.config()
     }
 
     local mappings = {
-
-        [" "] = { "<cmd>nohl<cr>", "Clear Highlighting" },
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
         a = { name = "Annotate", d = { "<cmd>Neogen<cr>", "Generate Annotation" } },
@@ -305,6 +303,7 @@ function M.config()
         },
         v = { "<cmd>vsplit<cr>", "vsplit" },
         w = { "<cmd>w<CR>", "Write" },
+        W = { "<cmd>wa<CR>", "Save All Buffers" },
         l = {
             name = "LSP",
             a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
@@ -353,8 +352,8 @@ function M.config()
     end
 
     -- If actions-preview is installed, change the code action command.
-    local ok, _ = pcall(require, "actions-preview")
-    if ok then
+    local ok2, _ = pcall(require, "actions-preview")
+    if ok2 then
         mappings.l.a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "Code Action" }
     end
 

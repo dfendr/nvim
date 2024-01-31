@@ -119,14 +119,6 @@ function M.format_buffer()
     })
 end
 
-function M.get_buf_option(opt)
-    local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
-    if not status_ok then
-        return nil
-    else
-        return buf_option
-    end
-end
 
 function M.convert_to_unix()
     -- First, remove ^M (carriage return characters)
@@ -137,8 +129,8 @@ function M.convert_to_unix()
         vim.api.nvim_win_set_cursor(0, cursor_position)
 
         -- Then, convert the file from CRLF to LF
-        local old_fileformat = vim.api.nvim_buf_get_option(0, "fileformat")
-        vim.api.nvim_buf_set_option(0, "fileformat", "unix")
+        local old_fileformat = vim.api.nvim_get_option_value("fileformat", { buf = 0 })
+        vim.api.nvim_set_option_value("fileformat", "unix", { buf = 0 })
         if old_fileformat == "dos" then
             vim.api.nvim_command("write")
             vim.api.nvim_command("edit")
@@ -151,8 +143,8 @@ function M.convert_to_dos()
     local choice = vim.fn.confirm("Confirm conversion to DOS?", "&Yes\n&No", 2)
     if choice == 1 then
         -- Convert the file from LF to CRLF
-        local old_fileformat = vim.api.nvim_buf_get_option(0, "fileformat")
-        vim.api.nvim_buf_set_option(0, "fileformat", "dos")
+        local old_fileformat = vim.api.nvim_get_option_value("fileformat", { buf = 0 })
+        vim.api.nvim_set_option_value("fileformat", "dos", { buf = 0 })
         if old_fileformat == "unix" then
             vim.api.nvim_command("write")
             vim.api.nvim_command("edit")
@@ -163,7 +155,7 @@ end
 function M.smart_close()
     local bufnr = vim.api.nvim_get_current_buf()
     local buf_windows = vim.call("win_findbuf", bufnr)
-    local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+    local modified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
     if modified and #buf_windows == 1 then
         local choice = vim.fn.confirm("You have unsaved changes. Quit anyway?", "&Yes\n&No", 2)
         if choice == 1 then
@@ -176,12 +168,12 @@ end
 
 function M.smart_exit()
     local bufnr = vim.api.nvim_get_current_buf()
-    local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+    local modified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
     local buffers = vim.api.nvim_list_bufs()
 
     if not modified then
         for _, buf in ipairs(buffers) do
-            if vim.api.nvim_buf_get_option(buf, "modified") then
+            if  vim.api.nvim_get_option_value("modified", { buf = buf }) then
                 vim.api.nvim_set_current_buf(buf)
                 modified = true
                 break
@@ -221,7 +213,7 @@ function M.code_action()
 end
 
 -- Keybind function shortcut
-function M.map(mode, key, cmd, opts, desc)
+function M.map(mode, key, cmd, opts, desc, bufnr)
     local options = {}
     if type(desc) == "table" then
         opts = vim.tbl_extend("force", opts, desc)
@@ -242,10 +234,10 @@ function M.map(mode, key, cmd, opts, desc)
         local wk_opts = {
             mode = mode, -- NORMAL, VISUAL, INSERT, etc.
             prefix = "",
-            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-            silent = true, -- use `silent` when creating keymaps
-            noremap = true, -- use `noremap` when creating keymaps
-            nowait = true, -- use `nowait` when creating keymaps
+            buffer = bufnr, -- Global mappings. Specify a buffer number for buffer local mappings
+            silent = true,
+            noremap = true,
+            nowait = true,
         }
         local mappings = {
             [key] = { cmd, desc },
@@ -258,7 +250,6 @@ function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
 end
-
 
 function M.adjust_color(color, amount)
     color = vim.trim(color)

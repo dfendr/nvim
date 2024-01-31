@@ -32,6 +32,11 @@ function M.config()
     local perf_purple = "#7C3AED"
     local note_green = "#10B981"
 
+    local f = require("core.functions")
+    local opts = { noremap = true, silent = true }
+    f.map("n", "]t", '<cmd>lua require("todo-comments").jump_next()<cr>', opts, "Next todo comment")
+    f.map("n", "[t", '<cmd>lua require("todo-comments").jump_prev()<cr>', opts, "Previous todo comment")
+
     todo_comments.setup({
         signs = true, -- show icons in the signs column
         sign_priority = 8, -- sign priority
