@@ -211,6 +211,12 @@ function M.config()
             u = { ":normal aµ<Esc>", "Insert µ" },
             m = { ":normal a♂<Esc>", "Insert ♂" },
             f = { ":normal a♀<Esc>", "Insert ♀" },
+            l = {
+                name = "Logical",
+                n = { ":normal a¬<Esc>", "Insert ¬" },
+                a = { ":normal a∧<Esc>", "Insert ∧" },
+                e = { ":normal a∈<Esc>", "Insert ∈" },
+            },
             s = {
                 name = "Subscripts",
                 ["0"] = { ":normal a₀<Esc>", "Insert subscript 0" },
