@@ -6,7 +6,6 @@ local M = {
     cmd = "NvimTreeToggle",
 }
 
-
 local function on_attach(bufnr)
     local api = require("nvim-tree.api")
 
@@ -94,9 +93,7 @@ function M.config()
         return
     end
 
-
     local icons = require("fenvim.ui.icons")
-
 
     local function natural_cmp(left, right)
         -- Prioritize directories over files.
@@ -161,7 +158,7 @@ function M.config()
                 webdev_colors = true,
                 git_placement = "after",
                 padding = " ",
-                symlink_arrow = " ➛ ",
+                symlink_arrow = icons.documents.SymlinkArrow,
                 show = {
                     file = true,
                     folder = true,
@@ -169,17 +166,17 @@ function M.config()
                     git = true,
                 },
                 glyphs = {
-                    default = "",
-                    symlink = "",
+                    default = icons.documents.File,
+                    symlink = icons.documents.Symlink,
                     folder = {
                         arrow_open = icons.ui.arrowopen,
                         arrow_closed = icons.ui.arrowclosed,
-                        default = "",
-                        open = "",
-                        empty = "",
-                        empty_open = "",
-                        symlink = "",
-                        symlink_open = "",
+                        default = icons.documents.Default,
+                        open = icons.documents.OpenFolder,
+                        empty = icons.documents.Folder,
+                        empty_open = icons.documents.OpenFolderEmpty,
+                        symlink = icons.documents.SymlinkFolder,
+                        symlink_open = icons.documents.SymlinkFolder,
                     },
                     git = {
                         -- unstaged = "M",
@@ -189,13 +186,13 @@ function M.config()
                         -- untracked = "U",
                         -- deleted = "",
                         -- ignored = "◌",
-                        unstaged = "",
-                        staged = "",
-                        unmerged = "",
-                        renamed = "",
-                        untracked = "u",
-                        deleted = "",
-                        ignored = "◌",
+                        unstaged = icons.git.UnstagedCircle,
+                        staged = icons.git.StagedCircle,
+                        unmerged = icons.git.Unmerged,
+                        renamed = icons.git.Rename,
+                        untracked = icons.git.Untracked,
+                        deleted = icons.git.Deleted,
+                        ignored = icons.git.IgnoreCircle,
                     },
                 },
             },
@@ -226,7 +223,7 @@ function M.config()
         git = {
             enable = true,
             ignore = true,
-            timeout = 500,
+            timeout = 300,
         },
         view = {
             width = 30,
