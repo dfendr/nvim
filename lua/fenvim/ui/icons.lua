@@ -4,7 +4,6 @@
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 vim.g.use_nerd_icons = true
 if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
-    -- elseif vim.fn.has "mac" == 1 then
     return {
         kind = {
             Array = "",
@@ -33,7 +32,7 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Package = "",
             Property = "",
             Reference = "",
-            Snippet = "",--
+            Snippet = "", --
             String = "",
             Struct = "",
             Text = "",
@@ -41,7 +40,6 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Unit = "",
             Value = "",
             Variable = "",
-
         },
         type = {
             Array = "",
@@ -54,7 +52,12 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             File = "",
             Files = "",
             Folder = "󰉋",
-            OpenFolder = "",
+            Default = " ",
+            OpenFolderEmpty = "",
+            OpenFolder = "",
+            SymlinkFolder = "",
+            SymlinkFile = "",
+            SymlinkArrow = "➛",
         },
         git = {
             Add = "",
@@ -65,12 +68,18 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Diff = "",
             Repo = "",
             Octoface = "",
+            Deleted = " ",
+            Unmerged = " ",
+            Untracked = "u",
+            IgnoreCircle = "◌",
+            StagedCircle = "",
+            UnstagedCircle = "",
         },
         ui = {
             ArrowClosed = "",
             ArrowOpen = "",
             Lock = "",
-            Circle = "",
+            Circle = " ",
             BigCircle = "",
             BigUnfilledCircle = "",
             Close = "",
@@ -84,7 +93,6 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Bug = "",
             Stacks = "",
             Scopes = "",
-            Watches = "",
             DebugConsole = "",
             Code = "",
             Telescope = "",
@@ -112,7 +120,7 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Hint = "",
         },
         misc = {
-            Robot = "ﮧ",
+            Robot = "󰚩",
             Squirrel = "",
             Tag = "",
             Watch = "",
@@ -165,17 +173,28 @@ else
             File = " ",
             Files = " ",
             Folder = " ",
-            OpenFolder = " ",
+            Default = " ",
+            OpenFolderEmpty = " ",
+            OpenFolder = " ",
+            SymlinkFolder = " ",
+            SymlinkFile = "",
+            SymlinkArrow = " ➛ ",
         },
         git = {
             Add = " ",
             Mod = " ",
             Remove = " ",
-            Ignore = " ",
             Rename = " ",
-            Diff = " ",
             Repo = " ",
             Octoface = " ",
+            Ignore = " ",
+            Deleted = " ",
+            Diff = " ",
+            Unmerged = " ",
+            Untracked = "u ",
+            IgnoreCircle = "◌ ",
+            StagedCircle = " ",
+            UnstagedCircle = " ",
         },
         ui = {
             ArrowClosed = "",
