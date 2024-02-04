@@ -145,17 +145,10 @@ return {
         "LunarVim/bigfile.nvim",
         enabled = true,
         config = function()
+            -- default config
             require("bigfile").setup({
-                filesize = 2,
-                pattern = function(bufnr, filesize_mib)
-                    -- you can't use `nvim_buf_line_count` because this runs on BufReadPre
-                    local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
-                    local file_length = #file_contents
-                    local filetype = vim.filetype.match({ buf = bufnr })
-                    if filetype == "dbout" then
-                        return true
-                    end
-                end,
+                filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
                 features = { -- features to disable
                     "indent_blankline",
                     "illuminate",

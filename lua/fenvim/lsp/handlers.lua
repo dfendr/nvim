@@ -78,17 +78,21 @@ local function lsp_keymaps(bufnr)
     })
 
     -- LSP Key mappings
+    f.map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts, "Go To Declaration", bufnr)
     f.map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts, "Go To Definitions", bufnr)
     f.map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, "Hover Documentation", bufnr)
     f.map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Show Line Diagnostics", bufnr)
-    f.map("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts, "Go To Implementations", bufnr)
+    f.map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts, "Go To Implementations", bufnr)
     f.map("n", "gr", "<cmd>Telescope lsp_references<CR>", opts, "Go To References", bufnr)
-    f.map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Signature Help", bufnr)
+    f.map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Show Signature Help", bufnr)
     f.map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
     f.map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts, "Previous Diagnostic", bufnr)
     f.map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts, "Next Diagnostic", bufnr)
     f.map("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Next Error", bufnr)
     f.map("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Previous Error", bufnr)
+    f.map("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts, "Add Workspace Folder", bufnr)
+    f.map("n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts, "Remove Workspace Folder", bufnr)
+    f.map("n", "<leader>lwl", "<cmd>lua  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts, "List Workspace Folders", bufnr)
 
     -- Code action key mapping
     local ok, _ = pcall(require, "actions-preview")
