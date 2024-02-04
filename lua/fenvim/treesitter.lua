@@ -40,7 +40,9 @@ function M.config()
         ignore_install = {}, -- List of parsers to ignore installing
         highlight = {
             enable = true, -- false will disable the whole extension
-            disable = { "text", "txt", "csv" }, -- list of language that will be disabled
+            disable = function(_, bufnr) -- Disable in files with more than 5K
+                return vim.api.nvim_buf_line_count(bufnr) > 5000
+            end,
             additional_vim_regex_highlighting = false,
         },
 
