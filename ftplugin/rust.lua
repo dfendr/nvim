@@ -91,7 +91,7 @@ vim.g.rustaceanvim = {
 
             -- whether the hover action window gets automatically focused
             -- default: false
-            auto_focus = true,
+            auto_focus = false,
         },
     },
 
@@ -164,11 +164,13 @@ if status_ok then
         m = { "<cmd>RustLsp expandMacro<Cr>", "Expand Macro" },
         c = { "<cmd>RustLsp openCargo<Cr>", "Open Cargo" },
         p = { "<cmd>RustLsp parentModule<Cr>", "Parent Module" },
-        d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
+        d = { "<cmd>RustLsp debuggables<cr>", "Debuggables" },
         v = { "<cmd>RustLsp viewCrateGraph<Cr>", "View Crate Graph" },
         R = { "<cmd>RustLsp reloadWorkspace<Cr>", "Reload Workspace" },
         o = { "<cmd>RustLsp openExternalDocs<Cr>", "Open External Docs" },
     }
+
+    local map = require("core.functions").map
 
     which_key.register(mappings, opts)
 end
