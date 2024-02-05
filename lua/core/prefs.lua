@@ -15,7 +15,8 @@ local M = {
             -- winhighlight = "FloatBorder:FloatBorder",
         },
         fidget = "none",
-        breadcrumbs = false, -- winbar_title must be true as well for breadcrumbs to activate.
+        breadcrumbs = false,
+        context = true,  -- "Sticky scroll"
         winbar_title = false,
         which_key = { border_style = "rounded" },
     },
