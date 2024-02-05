@@ -20,7 +20,10 @@ if status_ok then
         o = { "<cmd>lua require('crates').show_popup()<CR>", "Show popup" },
         r = { "<cmd>lua require('crates').reload()<CR>", "Reload" },
         v = { "<cmd>lua require('crates').show_versions_popup()<CR>", "Show Versions" },
-        f = { "<cmd>lua require('crates').show_features_popup()<CR>", "Show Features" },
+        f = {
+            "<cmd>lua require('crates').show_features_popup()<CR><cmd>lua require('crates').show_features_popup()<CR>",
+            "Show Features",
+        },
         d = { "<cmd>lua require('crates').show_dependencies_popup()<CR>", "Show Dependencies Popup" },
         u = { "<cmd>lua require('crates').update_crate()<CR>", "Update Crate" },
         a = { "<cmd>lua require('crates').update_all_crates()<CR>", "Update All Crates" },
@@ -33,6 +36,7 @@ if status_ok then
     }
 
     if rust_analyzer_running then
+        vim.notify("ANALYZER RUNNING")
         which_key.register(mappings, opts)
     end
 end
