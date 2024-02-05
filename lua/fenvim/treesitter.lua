@@ -4,11 +4,15 @@ local M = {
     --commit = "f2778bd", // Dart bug not present here :\
     dependencies = {
         { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPost" },
-        "nvim-treesitter/nvim-treesitter-context",
+
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            enabled = require("core.prefs").ui.context,
+        },
         "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    lazy = true,
-    event = "BufReadPost",
+    -- lazy = true,
+    -- event = "BufReadPre",
 }
 
 function M.config()

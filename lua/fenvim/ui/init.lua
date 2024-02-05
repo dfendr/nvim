@@ -7,7 +7,14 @@ return {
         event = "VeryLazy",
         config = true,
     },
-
+    {
+        "Bekaboo/dropbar.nvim",
+        -- optional, but required for fuzzy finder support
+        enabled = require("core.prefs").ui.breadcrumbs,
+        dependencies = {
+            "nvim-telescope/telescope-fzf-native.nvim",
+        },
+    },
     {
         -- bufferline
         "akinsho/nvim-bufferline.lua",
@@ -90,7 +97,7 @@ return {
     },
     {
         "lukas-reineke/headlines.nvim",
-        ft = {"markdown", "orgmode", "neorg"},
+        ft = { "markdown", "orgmode", "neorg" },
         config = true,
     },
 }

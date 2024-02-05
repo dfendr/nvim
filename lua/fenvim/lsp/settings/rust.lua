@@ -6,6 +6,7 @@
 local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
 local codelldb_path = extension_path .. "codelldb"
 local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
+
 vim.g.rustaceanvim = {
     tools = { -- rust-tools options
         -- callback to execute once rust-analyzer is done initializing the workspace
@@ -14,7 +15,6 @@ vim.g.rustaceanvim = {
         -- how to execute terminal commands
 
         on_initialized = function(_)
-            -- require("fenvim.lsp.lsp-signature").config()
             vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
                 pattern = { "*.rs" },
                 callback = function()
@@ -37,7 +37,7 @@ vim.g.rustaceanvim = {
             -- Only show inlay hints for the current line
             only_current_line = true,
 
-            -- Event which triggers a refersh of the inlay hints.
+            -- Event which triggers a refresh of the inlay hints.
             -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
             -- not that this may cause higher CPU usage.
             -- This option is only respected when only_current_line and
@@ -92,7 +92,7 @@ vim.g.rustaceanvim = {
 
             -- whether the hover action window gets automatically focused
             -- default: false
-            auto_focus = true,
+            auto_focus = false,
         },
     },
 
@@ -131,12 +131,12 @@ vim.g.rustaceanvim = {
                         "--",
                         "-W",
                         "clippy::all",
-                        -- "-W",
-                        -- "clippy::pedantic",
+                        "-W",
+                        "clippy::pedantic",
                         "-W",
                         "clippy::unwrap_used",
-                        -- "-A",
-                        -- "clippy::must_use",
+                        "-A",
+                        "clippy::must_use",
                     },
                 },
             },
