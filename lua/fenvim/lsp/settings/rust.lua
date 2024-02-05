@@ -23,7 +23,7 @@ vim.g.rustaceanvim = {
             })
         end,
 
-        executor = require("rust-tools/executors").toggleterm,
+        executor = require("rustaceanvim/executors").toggleterm,
         single_file_support = true,
 
         -- automatically call rustreloadworkspace when writing to a cargo.toml file.
