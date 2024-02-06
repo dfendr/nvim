@@ -63,56 +63,10 @@ function M.config()
             -- },
         },
 
-        highlights = {
-            buffer_selected = {
-                fg = "#E7D7AD",
-                -- --   bg = {attribute='bg',highlight='#0000ff'},
-                -- --   gui = 'none'
-            },
-            buffer_visible = {
-                fg = { attribute = "fg", highlight = "Comment", italic = false }, -- doesn't seem to work
-                -- bg = { attribute = "bg", highlight = "CursorColumn" },
-            },
-            tab_selected = {
-                fg = { attribute = "fg", highlight = "Normal" },
-                bg = { attribute = "bg", highlight = "Normal" },
-            },
-            modified = {
-                fg = { attribute = "fg", highlight = "Comment" },
-                -- bg = { attribute = "bg", highlight = "CursorColumn" },
-            },
-            modified_selected = {
-                fg = { attribute = "fg", highlight = "Normal" },
-                -- bg = { attribute = "bg", highlight = "Normal" },
-            },
-            modified_visible = {
-                --     fg = { attribute = "fg", highlight = "CursorLine" },
-                bg = { attribute = "bg", highlight = "Normal" },
-            },
-            --
-            separator = {
-                fg = { attribute = "bg", highlight = "Normal" },
-                bg = { attribute = "bg", highlight = "Normal" },
-            },
-            separator_selected = {
-                fg = "#FFFFFF",
-                bg = "#FFFFFF",
-            },
-            separator_visible = {
-                fg = "#FFFFFF",
-                bg = "#FFFFFF",
-            },
-            indicator_selected = {
-                fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
-                bg = { attribute = "bg", highlight = "Normal" },
-            },
-        },
+        highlights = {},
     }
-
-    if vim.api.nvim_exec2("colo", { output = true }).output == "fenbox" then
-        opts.highlights.fill = { bg = "#171919" }
-    end
 
     bufferline.setup(opts)
 end
+
 return M
