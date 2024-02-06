@@ -16,7 +16,7 @@ local M = {
         },
         fidget = "none",
         breadcrumbs = false,
-        context = true,  -- "Sticky scroll"
+        context = false,  -- "Sticky scroll"
         winbar_title = false,
         which_key = { border_style = "rounded" },
     },

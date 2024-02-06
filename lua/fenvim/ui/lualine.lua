@@ -83,6 +83,25 @@ function M.config()
             vim.cmd("TroubleToggle")
         end,
     }
+    -- List servers
+
+    local  lsp_servers= {
+        "fancy_lsp_servers",
+        cond = function()
+            -- local ft = vim.opt_local.filetype:get()
+            -- local count = {
+            --     latex = true,
+            --     tex = true,
+            --     text = true,
+            --     txt = true,
+            --     markdown = true,
+            --     vimwiki = true,
+            --     neorg = true,
+            -- }
+            -- return hide_in_width(80)() and count[ft] ~= nil --and hide_in_width(60))
+            return hide_in_width(80)()
+        end,
+    }
 
     --------------------------------------------------------------------
     ------------------------------- Git --------------------------------
@@ -226,20 +245,24 @@ function M.config()
             local buf_ft = vim.bo.filetype
 
             local ui_filetypes = {
-                "help",
-                "packer",
-                "neogitstatus",
-                "NvimTree",
-                "Trouble",
-                "lir",
-                "Outline",
-                "spectre_panel",
-                "DressingSelect",
                 "",
+                "DressingSelect",
+                "NvimTree",
+                "Outline",
+                "Trouble",
+                "alpha",
+                "prompt",
+                "TelescopePrompt",
+                "Telescope",
+                "help",
+                "lir",
+                "neogitstatus",
+                "packer",
+                "spectre_panel",
             }
             local space = ""
             if contains(ui_filetypes, buf_ft) then
-                space = " "
+                return ""
             end
             local shiftwidth= vim.api.nvim_get_option_value('shiftwidth', {buf = 0})
             if shiftwidth == nil or shiftwidth == 4 then
@@ -317,7 +340,7 @@ function M.config()
             lualine_c = { diagnostics },
             lualine_x = {
 
-                filename, --[[ filetype, ]]
+                lsp_servers, filename, --[[ filetype, ]]
                 encoding,
                 fileformat,
             },

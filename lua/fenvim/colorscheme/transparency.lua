@@ -6,9 +6,14 @@ M.config = function()
         return
     end
 
+    require('transparent').clear_prefix('lualine')
+    require('transparent').clear_prefix('BufferLine')
+
+
     require("transparent").setup({
         groups = { -- table: default groups
             "Comment",
+            "BufferLineBackground",
             "Conditional",
             "Constant",
             "CursorLineNr",
@@ -32,6 +37,7 @@ M.config = function()
             "NoiceFormatProgressTodo",
             "NoiceMini",
             "NonText",
+            "NoText",
             "Normal",
             "NormalFloat",
             "NormalNC",
@@ -50,5 +56,6 @@ M.config = function()
         extra_groups = {}, -- table: additional groups that should be cleared
         exclude_groups = {}, -- table: groups you don't want to clear
     })
+
 end
 return M
