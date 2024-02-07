@@ -99,7 +99,7 @@ function M.config()
             --     neorg = true,
             -- }
             -- return hide_in_width(80)() and count[ft] ~= nil --and hide_in_width(60))
-            return hide_in_width(80)()
+            return hide_in_width(100)()
         end,
     }
 
