@@ -216,6 +216,7 @@ function M.config()
                 n = { ":normal a¬<Esc>", "Insert ¬" },
                 a = { ":normal a∧<Esc>", "Insert ∧" },
                 e = { ":normal a∈<Esc>", "Insert ∈" },
+                s = { ":normal a<Esc>", "Insert Σ" },
             },
             s = {
                 name = "Subscripts",
