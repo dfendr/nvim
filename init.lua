@@ -19,3 +19,7 @@ require("lazy").setup("fenvim", {
 if vim.g.neovide then
     require("fenvim.ui.neovide")
 end
+
+--TODO:
+-- Fix none-ls or move to conform
+-- Fix Transparency mode (lualine bugs)
