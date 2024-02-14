@@ -36,6 +36,8 @@ return {
                 { "tic", "tac", "toe" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" },
+                { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" },
+                { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" },
             },
         },
     },
