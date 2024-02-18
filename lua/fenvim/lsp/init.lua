@@ -34,13 +34,19 @@ return {
             require("fenvim.lsp.mason").config()
         end,
     },
+    {
+        "stevearc/conform.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("fenvim.lsp.formatting").config()
+        end,
+    },
 
     {
-        "nvimtools/none-ls.nvim",
-        -- dependencies = "jose-elias-alvarez/typescript.nvim",
-        event = "BufReadPost",
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("fenvim.lsp.null-ls").config()
+            require("fenvim.lsp.linting").config()
         end,
     },
     {
