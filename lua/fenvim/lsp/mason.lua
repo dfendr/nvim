@@ -10,6 +10,7 @@ M.tools = {
     "luacheck",
     "prettierd",
     "selene",
+    "ruff",
     "shfmt",
     "stylua",
 }
@@ -45,9 +46,9 @@ function M.config()
             "html",
             "jsonls",
             "lua_ls",
+            "pyright",
             "marksman",
             "omnisharp",
-            "ruff_lsp",
             "rust_analyzer",
             "yamlls",
         },
