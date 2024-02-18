@@ -3,10 +3,13 @@ if not status_ok then
     return
 end
 
-local rust_analyzer_running = functions.is_lsp_client_running("rust_analyzer")
+if vim.fn.expand('%:t') ~= 'Cargo.toml' then
+    return
+end
 
-local status_ok, which_key = pcall(require, "which-key")
-if status_ok then
+
+local status_ok2, which_key = pcall(require, "which-key")
+if status_ok2 then
     local opts = {
         mode = "n", -- NORMAL mode
         prefix = "<localleader>",
@@ -35,8 +38,5 @@ if status_ok then
         C = { "<cmd>lua require('crates').open_crates_io()<CR>", "Open Crate.io" },
     }
 
-    if rust_analyzer_running then
-        vim.notify("ANALYZER RUNNING")
         which_key.register(mappings, opts)
-    end
 end
