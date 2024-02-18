@@ -106,18 +106,17 @@ function M.isempty(s)
 end
 
 function M.format_buffer()
-    local excluded_servers = { "tsserver", "clangd" }
-    vim.lsp.buf.format({
-        filter = function(client)
-            for _, excluded_server in ipairs(excluded_servers) do
-                if client.name == excluded_server then
-                    return false
-                end
-            end
-            return true
-        end,
-    })
+    if pcall(require, "conform") then
+        -- conform is available, use it for formatting
+        vim.cmd("lua require('conform').format({ lsp_fallback = true, async = false, timeout_ms = 500 })")
+    else
+        -- conform is not available, use LSP formatting
+        vim.lsp.buf.format({async = false})
+    end
 end
+
+vim.api.nvim_create_user_command("FormatBuffer", M.format_buffer, {})
+
 
 function M.convert_to_unix()
     -- First, remove ^M (carriage return characters)

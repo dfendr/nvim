@@ -90,7 +90,6 @@ function M.config()
     local mappings = {
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
-        a = { name = "Annotate", d = { "<cmd>Neogen<cr>", "Generate Annotation" } },
         b = {
             name = "Buffers",
             b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
@@ -316,8 +315,10 @@ function M.config()
         l = {
             name = "LSP",
             a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
+            d = { "<cmd>Neogen<cr>", "Generate Annotation" },
+            f = { "<cmd>FormatBuffer<cr>", "Format Buffer" },
             F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-            f = { "<cmd>lua require('core.functions').format_buffer()<CR>", "Format" },
+            C = { "<cmd>ConformInfo<CR>", "Formatting Info" },
             H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
             h = { "<cmd>lua require('core.functions').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
             i = { "<cmd>LspInfo<cr>", "Info" },

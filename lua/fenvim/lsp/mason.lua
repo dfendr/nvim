@@ -8,11 +8,8 @@ M.tools = {
     "eslint_d",
     "flake8",
     "luacheck",
-    "markdownlint",
     "prettierd",
-    "ruff",
     "selene",
-    "shellcheck",
     "shfmt",
     "stylua",
 }
@@ -44,15 +41,15 @@ function M.config()
     require("mason-lspconfig").setup({
         ensure_installed = {
             "bashls",
+            "clangd",
             "html",
             "jsonls",
-            "marksman",
-            "yamlls",
-            "pyright",
-            "clangd",
-            "omnisharp",
-            "rust_analyzer",
             "lua_ls",
+            "marksman",
+            "omnisharp",
+            "ruff_lsp",
+            "rust_analyzer",
+            "yamlls",
         },
         automatic_installation = true,
     })
