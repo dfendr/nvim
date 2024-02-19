@@ -1,1 +1,1 @@
-{"ind":{"prefix":"ind","body":["#ifndef ${1:}","#define ${1:}","","","#endif \/\/ ${1:}"]}}
+{"ind":{"body":["#ifndef ${1:}","#define ${1:}","","","#endif \/\/ ${1:}"],"prefix":"ind"},"\/\/\/":{"body":["\/*"," * ${1:}","*\/"],"prefix":"\/\/\/"}}
