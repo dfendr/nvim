@@ -21,5 +21,4 @@ if vim.g.neovide then
 end
 
 --TODO:
--- Fix none-ls or move to conform
 -- Fix Transparency mode (lualine bugs)
