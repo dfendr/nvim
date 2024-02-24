@@ -12,8 +12,7 @@ local opts = {
 
 -- Shorten function name
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
-local map = require("utils").map
+local map = require("core.functions").map
 
 -- Remap space as leader key
---map("", "<Space>", "<Nop>", opts)
-map("n", "<C-,>", "1z=", opts) -- Shortcut to autocorrection for spelling
+map("n", "<C-,>", "1z=", opts, "Correct Spelling", 0) -- Shortcut to autocorrection for spelling
