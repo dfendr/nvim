@@ -11,6 +11,8 @@ local options = {
     cursorline = true, -- Highlight current line
     expandtab = true, -- Insert spaces instead of tabs
     fileencoding = "utf-8", -- the encoding written to a file
+    foldexpr = "v:lua.vim.treesitter.foldexpr()",
+    foldtext = "v:lua.vim.treesitter.foldtext()",
     -- guifont = "monospace:h17", -- Font used in neovim GUI app.
     ignorecase = true, -- ignore case in search patterns
     laststatus = 3, -- Global statusline
@@ -62,10 +64,3 @@ end
 
 vim.opt.shortmess:append("c") -- keeps search from being "noisy", e.g.suppresses messages
 vim.cmd("set whichwrap+=<,>,[,],h,l") -- Wraps movement e.g. hold l to pass through a line -> continues to next line
-
-
---NOTE: SEMANTIC HIGHLIGHT ERRORS? ENABLE THIS
--- Disable semantic highlights.
-for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-    vim.api.nvim_set_hl(0, group, {})
-end
