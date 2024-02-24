@@ -33,6 +33,8 @@ return {
             -- User defined loops ()
             additions = {
                 { "Foo", "Bar" },
+                { "Right", "Left" },
+                { "right", "left" },
                 { "tic", "tac", "toe" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" },
