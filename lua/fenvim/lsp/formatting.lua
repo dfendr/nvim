@@ -1,7 +1,7 @@
 return {
     "stevearc/conform.nvim",
     lazy = true,
-    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         local conform = require("conform")
         local map = require("core.functions").map
@@ -12,10 +12,9 @@ return {
         conform.formatters.clang_format = {
             prepend_args = {
                 "--style",
-                "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, BraceWrapping: {AfterFunction: false}}",
+                "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, PointerAlignment: Right, BraceWrapping: {AfterFunction: false}}",
             },
         }
-
         conform.setup({
             formatters_by_ft = {
                 javascript = { "prettier" },
