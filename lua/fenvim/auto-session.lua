@@ -1,6 +1,7 @@
 local M = {
     "rmagatti/auto-session",
     enabled = true,
+    event = "VeryLazy",
     dependencies = {
         "rmagatti/session-lens",
         { "nvim-telescope/telescope.nvim", branch = "0.1.x" },
