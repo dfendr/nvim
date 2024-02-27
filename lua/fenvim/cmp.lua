@@ -11,13 +11,24 @@ local M = {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-emoji",
         "SergioRibera/cmp-dotenv",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         { "hrsh7th/cmp-cmdline", enabled = cmdline },
         { "dmitmel/cmp-cmdline-history", enabled = cmdline },
         "hrsh7th/cmp-path",
+        {
+            "allaman/emoji.nvim",
+            ft = "markdown",
+            dependencies = {
+                --  for nvim-cmp integration
+                "hrsh7th/nvim-cmp",
+            },
+            opts = {
+                enable_cmp_integration = true,
+            },
+        },
     },
+
     enabled = true,
 }
 
