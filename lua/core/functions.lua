@@ -95,9 +95,9 @@ local diagnostics_active = true
 function M.toggle_diagnostics()
     diagnostics_active = not diagnostics_active
     if diagnostics_active then
-        vim.diagnostic.show()
+        vim.diagnostic.disable()
     else
-        vim.diagnostic.hide()
+        vim.diagnostic.enable()
     end
 end
 
