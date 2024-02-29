@@ -95,14 +95,6 @@
 # Move into ~/.config directory
 cd ~/.config
 
-# Create nvim directory if it doesn't exist
-if [ ! -d "nvim" ]; then
-  mkdir nvim
-fi
-
-# Move into nvim directory
-cd nvim
-
 # Clone dfendr/nvim repository
 git clone https://github.com/postfen/nvim.git
 ```
