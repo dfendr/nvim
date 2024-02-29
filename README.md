@@ -103,6 +103,7 @@ git clone https://github.com/postfen/nvim.git
 
 - [Neovim](https://github.com/neovim/neovim) nightly
 - [NPM](https://nodejs.org/en/download/) (>= 16.0) -- for LSP
+- Nerd Font (or else you'll get missing icons)
 
 ### Nice to Haves
 
