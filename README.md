@@ -39,7 +39,7 @@
 | C#           |    ✅     |
 | Dart/Flutter |    ✅     |
 | Java         |    🌀     |
-| Javacript    |    ✅     |
+| Javascript   |    ✅     |
 | Lua          |    ✅     |
 | Markdown     |    ✅     |
 | Perl         |    ✅     |
