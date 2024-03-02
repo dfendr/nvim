@@ -2,9 +2,7 @@ local M = {
     autocommands = {
         convert_to_unix_formatting_on_save = false,
     },
-    lsp = {
-        diagnostic_signs = false,
-    },
+    lsp = { show_diagnostic_signs = false },
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
         transparent = false,
@@ -12,13 +10,13 @@ local M = {
         cmp = {
             completion_border = "rounded",
             documentation_border = "rounded",
-            -- winhighlight = "FloatBorder:FloatBorder",
         },
-        fidget = "none",
-        breadcrumbs = false,
-        context = false,  -- "Sticky scroll"
-        winbar_title = false,
         which_key = { border_style = "rounded" },
+        fidget = { border_style = "none" },
+
+        breadcrumbs = false,
+        context = false, -- "Sticky scroll"
+        winbar_title = false,
     },
 }
 
