@@ -47,7 +47,7 @@ if status_ok then
     which_key.register(mappings, opts)
 end
 
-opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)

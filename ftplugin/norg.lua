@@ -20,7 +20,5 @@ if status_ok then
         -- P = { "<cmd>PasteImg<cr>", "Paste Image" },
         -- s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
     }
+    which_key.register(mappings, opts)
 end
-
-local opts = { noremap = true, silent = true }
-which_key.register(mappings, opts)
