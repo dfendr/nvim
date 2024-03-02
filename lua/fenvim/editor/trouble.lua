@@ -6,6 +6,12 @@ function M.config()
         return
     end
 
+    local use_diagnostic_signs = false
+    local status_ok, prefs = pcall(require, "core.ui")
+    if status_ok then
+        use_diagnostic_signs = prefs.lsp.show_diagnostic_signs
+    end
+
     local icons = require("fenvim.ui.icons")
 
     trouble.setup({
@@ -53,7 +59,7 @@ function M.config()
             information = icons.diagnostics.Information,
             other = icons.misc.Squirrel,
         },
-        use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+        use_diagnostic_signs = show_diagnostic_signs, -- enabling this will use the signs defined in your lsp client
     })
 end
 return M
