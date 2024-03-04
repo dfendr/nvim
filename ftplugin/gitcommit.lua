@@ -3,7 +3,6 @@ vim.cmd("setlocal spell")
 
 local opts = {
     mode = "n", -- NORMAL mode
-    prefix = "<leader>",
     buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
