@@ -74,8 +74,8 @@ function M.config()
         },
     }
     local xmappings = {
-        --TODO: Add in scissors commands
 
+        f = { name = "Find", t = { "<cmd>Telescope grep_string<cr>", "Find Word" } },
         a = { name = "Annotate" },
         s = {
             ":'<,'>TrozoUploadSelection<CR>",
