@@ -15,7 +15,7 @@ local M = {
         fidget = { border_style = "none" },
 
         breadcrumbs = false,
-        context = false, -- "Sticky scroll"
+        context = true, -- "Sticky scroll"
         winbar_title = false,
     },
 }
