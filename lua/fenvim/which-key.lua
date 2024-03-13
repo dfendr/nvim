@@ -131,6 +131,7 @@ function M.config()
             h = { "<cmd>Telescope help_tags<cr>", "Help" },
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
             M = { "<cmd>Telescope marks<cr>", "Marks" },
             m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
@@ -147,6 +148,9 @@ function M.config()
             T = { "<cmd>TodoTelescope<cr>", "Find TODOs" },
             v = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
             w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+            D = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+            W = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+
         },
         g = {
             name = "Git",
