@@ -60,7 +60,7 @@ USER ${USERNAME}
 RUN echo 'eval "$(starship init zsh)"' >> /home/${USERNAME}/.zshrc
 
 # Clone Fenvim configuration and install lazy +
-RUN git clone --depth 1 https://github.com/postfen/nvim /home/${USERNAME}/.config/nvim && \
+RUN git clone --depth 1 https://github.com/dfendr/nvim /home/${USERNAME}/.config/nvim && \
     git clone --depth 1 --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git /home/${USERNAME}/.local/share/nvim && \
     nvim --headless -c "let &runtimepath.=','.string(\"/home/$( whoami )/.local/share/nvim\") | quit"
 

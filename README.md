@@ -96,7 +96,7 @@
 cd ~/.config
 
 # Clone dfendr/nvim repository
-git clone https://github.com/postfen/nvim.git
+git clone https://github.com/dfendr/nvim.git
 ```
 
 ### Dependencies
