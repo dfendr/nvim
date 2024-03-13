@@ -1,5 +1,5 @@
 local M = {
-    "postfen/clipboard-image.nvim",
+    "dfendr/clipboard-image.nvim",
     enabled = true,
     ft = { "md", "markdown" },
     lazy = true,
