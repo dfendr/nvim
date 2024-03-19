@@ -1,0 +1,13 @@
+{
+  "cfgtest": {
+    "body": [
+      "mod tests {",
+      "    #[test]",
+      "    fn ${1:test_my_function}() {",
+      "        ${2:assert_eq!(2 + 2, 4)};",
+      "    }",
+      "}"
+    ],
+    "prefix": "cfgtest"
+  }
+}
