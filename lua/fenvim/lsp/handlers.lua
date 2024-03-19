@@ -34,9 +34,6 @@ M.setup = function()
         -- disable virtual text
         on_attach_callback = nil,
         on_init_callback = nil,
-        -- on_init_callback = function(_)
-        --     require("fenvim.lsp.lsp-signature").config()
-        -- end,
         virtual_lines = false,
         virtual_text = false,
         update_in_insert = false,
@@ -68,8 +65,6 @@ M.setup = function()
     })
 end
 
----
----@param bufnr
 local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
     local map = require("core.functions").map
@@ -127,8 +122,8 @@ M.on_attach = function(client, bufnr)
     end
 
     if client.name == "tsserver" or client.name == "clangd" then
-        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-        client.server_capabilities.documentRangeFormattingProvider = false -- 0.8 and later
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
     end
 end
 
