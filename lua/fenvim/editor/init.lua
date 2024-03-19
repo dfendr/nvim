@@ -12,6 +12,7 @@ return {
             require("fenvim.editor.autopairs").config()
         end,
     },
+    { "folke/neoconf.nvim" },
     {
         -- Text alignment
         "echasnovski/mini.align",
@@ -21,6 +22,7 @@ return {
             require("fenvim.editor.align").config()
         end,
     },
+
     {
         -- True/False toggler
         "nat-418/boole.nvim",
