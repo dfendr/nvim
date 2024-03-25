@@ -766,3 +766,16 @@ ALUSrc
 ALUOper
 PSCrc
 Expr
+DMA
+O1
+PcSRC
+WAW
+devt
+drvdata
+fmt
+llseek
+readdir
+ioctrl
+mmap
+RW
+MEM

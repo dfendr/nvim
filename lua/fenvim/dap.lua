@@ -3,7 +3,7 @@ local M = {
     event = "BufReadPost",
     dependencies = {
         "jbyuki/one-small-step-for-vimkind",
-        "rcarriga/nvim-dap-ui",
+        {"rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio"},
         "theHamsta/nvim-dap-virtual-text",
         "williamboman/mason.nvim",
         {

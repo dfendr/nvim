@@ -223,6 +223,7 @@ function M.config()
                 initial_mode = "normal",
             },
             man_pages = {
+                sections = {"ALL"}
                 -- initial_mode = "normal",
                 -- man_cmd = { "apropos", "." }, -- Does this work on Linux also?
             },

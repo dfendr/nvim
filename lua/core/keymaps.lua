@@ -68,6 +68,12 @@ function M.setup_keymaps()
     map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
     map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
     map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+    -- exit terminal, done in this way as terminal captures other input
+    local exitTerm = function()
+        vim.cmd(":ToggleTerm")
+    end
+    vim.keymap.set("t", "<esc><esc>", exitTerm)
 end
 
 return M
