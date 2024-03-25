@@ -22,7 +22,6 @@ return {
             require("fenvim.editor.align").config()
         end,
     },
-
     {
         -- True/False toggler
         "nat-418/boole.nvim",
@@ -37,7 +36,13 @@ return {
                 { "Foo", "Bar" },
                 { "Right", "Left" },
                 { "right", "left" },
-                { "tic", "tac", "toe" },
+                { "After", "Before" },
+                { "after", "before" },
+                { "Over", "Under" },
+                { "over", "under" },
+                { "Major", "Minor" },
+                { "major", "minor" },
+                { "tac", "tac", "toe" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" },
                 { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" },

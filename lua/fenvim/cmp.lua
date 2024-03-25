@@ -11,6 +11,7 @@ local M = {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
+        "f3fora/cmp-spell",
         "SergioRibera/cmp-dotenv",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         { "hrsh7th/cmp-cmdline", enabled = cmdline },
@@ -122,7 +123,25 @@ function M.config()
         },
         sources = {
             { name = "nvim_lsp_signature_help" },
-            { name = "dotenv" },
+            {
+                name = "dotenv",
+                enable_in_context = function()
+                    local filetypes = { "rs", "lua", "sh", "zsh" }
+                    for _, v in pairs(filetypes) do
+                        if vim.bo.filetype == v then
+                            return true
+                        end
+                    end
+                    return false
+                end,
+            },
+            {
+                name = "spell",
+                option = { keep_all_entries = false },
+                enable_in_context = function()
+                    return vim.bo.filetype == "md"
+                end,
+            },
             { name = "neorg" },
             { name = "nvim_lsp" },
             { name = "buffer" },

@@ -115,6 +115,8 @@ end
 
 M.on_attach = function(client, bufnr)
     require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
+    -- Don't use semantic tokens
+    -- client.server_capabilities.semanticTokensProvider = nil
     lsp_keymaps(bufnr)
 
     if client.supports_method("textDocument/inlayHint") then
