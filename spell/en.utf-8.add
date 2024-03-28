@@ -779,3 +779,6 @@ ioctrl
 mmap
 RW
 MEM
+DSR
+ctrl
+dir
