@@ -12,6 +12,7 @@ local M = {
         "nvim-telescope/telescope-dap.nvim",
         "BurntSushi/ripgrep",
         "tsakirist/telescope-lazy.nvim",
+        "catgoose/telescope-helpgrep.nvim",
     },
 }
 
@@ -26,6 +27,7 @@ function M.config()
     telescope.load_extension("file_browser")
     telescope.load_extension("fzf")
     telescope.load_extension("lazy")
+    telescope.load_extension("helpgrep")
     local icons = require("fenvim.ui.icons")
 
     telescope.setup({
@@ -142,7 +144,6 @@ function M.config()
                     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                     ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-
                     ["<C-n>"] = actions.move_selection_next,
                     ["<C-p>"] = actions.move_selection_previous,
                     ["j"] = actions.move_selection_next,
@@ -223,7 +224,7 @@ function M.config()
                 initial_mode = "normal",
             },
             man_pages = {
-                sections = {"ALL"}
+                sections = { "ALL" },
                 -- initial_mode = "normal",
                 -- man_cmd = { "apropos", "." }, -- Does this work on Linux also?
             },
@@ -262,6 +263,11 @@ function M.config()
                 -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
                 filetypes = { "png", "webp", "jpg", "jpeg" },
                 find_cmd = "rg", -- find command (defaults to `fd`)
+            },
+            helpgrep = {
+                ignore_paths = {
+                    vim.fn.stdpath("state") .. "/lazy/readme",
+                },
             },
         },
     })

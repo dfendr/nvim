@@ -11,8 +11,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Relative number toggle, only in Normal mode
 vim.api.nvim_command([[
 augroup RelativeNumberToggle
-autocmd InsertEnter * :set relativenumber
-autocmd InsertLeave * :set norelativenumber
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 augroup END
 ]])
 

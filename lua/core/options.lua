@@ -11,6 +11,7 @@ local options = {
     cursorline = true, -- Highlight current line
     expandtab = true, -- Insert spaces instead of tabs
     fileencoding = "utf-8", -- the encoding written to a file
+    fillchars = {eob = " "};
     foldexpr = "v:lua.vim.treesitter.foldexpr()",
     foldtext = "v:lua.vim.treesitter.foldtext()",
     -- guifont = "monospace:h17", -- Font used in neovim GUI app.
