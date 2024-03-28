@@ -128,7 +128,7 @@ function M.config()
             d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Cur. Buffer Diagnostics" },
             e = { "<cmd>Telescope file_browser<cr>", "File Browser" },
             f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
-            h = { "<cmd>Telescope help_tags<cr>", "Help" },
+            h = { "<cmd>Telescope helpgrep<cr>", "Help" },
             H = { "<cmd>Telescope highlights<cr>", "Highlights" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 
