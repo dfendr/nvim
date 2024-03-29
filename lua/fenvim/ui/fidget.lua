@@ -17,7 +17,6 @@ function M.config()
     require("fidget").setup({
         progress = {
             ignore_done_already = true, -- Ignore new tasks that are already complete
-            ignore = { "null-ls" },
             display = {
                 done_icon = "✔", -- character shown when all tasks are complete
                 progress_icon = { pattern = spinner_icon(), period = 1 },
