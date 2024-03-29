@@ -9,12 +9,25 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Relative number toggle, only in Normal mode
-vim.api.nvim_command([[
-augroup RelativeNumberToggle
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-augroup END
-]])
+vim.api.nvim_create_augroup("RelativeNumberToggle", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = "RelativeNumberToggle",
+  callback = function()
+    if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
+      vim.o.relativenumber = false
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = "RelativeNumberToggle",
+  callback = function()
+    if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
+      vim.o.relativenumber = true
+    end
+  end,
+})
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPre", {
