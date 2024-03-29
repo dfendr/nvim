@@ -25,15 +25,11 @@ return {
     {
         -- Rust Cargo package version checker
         "saecki/crates.nvim",
-        version = "v0.3.0",
+        tag = "stable",
         dependencies = { "nvim-lua/plenary.nvim" },
         event = { "BufRead Cargo.toml" },
         config = function()
             require("crates").setup({
-                null_ls = {
-                    enabled = true,
-                    name = "crates.nvim",
-                },
                 popup = {
                     border = require("core.prefs").ui.border_style,
                 },
