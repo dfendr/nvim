@@ -170,11 +170,11 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
     callback = function(ev)
         local byte_size = vim.api.nvim_buf_get_offset(ev.buf, vim.api.nvim_buf_line_count(ev.buf))
         if byte_size > 1024 * 1024 then
-            if vim.g.loaded_matchparen then
+            if vim.fn.exists(':NoMatchParen') == 1 then
                 vim.cmd('NoMatchParen')
             end
         else
-            if not vim.g.loaded_matchparen then
+            if vim.fn.exists(':DoMatchParen') == 1 then
                 vim.cmd('DoMatchParen')
             end
         end
