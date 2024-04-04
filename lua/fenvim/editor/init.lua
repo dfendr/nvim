@@ -33,11 +33,15 @@ return {
             },
             -- User defined loops ()
             additions = {
+                { "Up", "Down" },
+                { "up", "down" },
+                { "UP", "DOWN" },
                 { "After", "Before" },
                 { "after", "before" },
                 { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "Foo", "Bar" },
+                { "HIGH", "LOW" },
                 { "Major", "Minor" },
                 { "major", "minor" },
                 { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten" },

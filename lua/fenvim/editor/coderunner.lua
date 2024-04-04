@@ -5,6 +5,7 @@ function M.config()
         mode = "float",
         filetype = {
             awk = "awk -f $file",
+            arduino = "cd '$dir' && make",
             riscv = "cd '$dir' && java -jar ~/bin/rars.jar '$file'",
             c = "cd '$dir' && cc -Wall -fsanitize=address -Wno-nullability-completeness -Wextra -pedantic -g -std=c11 -Wall $fileName -o $fileNameWithoutExt && '$dir/$fileNameWithoutExt' && rm '$dir/$fileNameWithoutExt' && rm -rf '$dir/$fileNameWithoutExt.dSYM'",
             cpp = "cd '$dir' && g++ $fileName -o $fileNameWithoutExt && '$dir/$fileNameWithoutExt'",
@@ -18,7 +19,7 @@ function M.config()
             lisp = "clisp $file",
             lua = "luajit $file",
             perl = "cd '$dir' && perl $file",
-            python = "cd '$dir' && python3 $file",
+            python = "cd '$dir' && python3 '$file'",
             r = "cd '$dir' && Rscript $file",
             rust = "cd '$dir' && cargo run",
             sh = "cd '$dir' && bash $file",
