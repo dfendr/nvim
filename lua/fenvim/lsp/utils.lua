@@ -118,7 +118,7 @@ function M.setup_codelens_refresh(client, bufnr)
         return
     end
     local group = "lsp_code_lens_refresh"
-    local cl_events = { "BufEnter", "InsertLeave" }
+    local cl_events = { "BufReadPost", "InsertLeave" }
     local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
         group = group,
         buffer = bufnr,

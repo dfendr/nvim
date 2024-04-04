@@ -27,6 +27,7 @@ function M.config()
                 numhl = "GitSignsChangeNr",
                 linehl = "GitSignsChangeLn",
             },
+            untracked = { text = "┆" },
         },
         signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
         numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -58,9 +59,6 @@ function M.config()
             relative = "cursor",
             row = 0,
             col = 1,
-        },
-        yadm = {
-            enable = false,
         },
     })
 end

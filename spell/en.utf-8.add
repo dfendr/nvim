@@ -782,3 +782,8 @@ MEM
 DSR
 ctrl
 dir
+extern
+timestamp
+RISCV
+RV32
+syscall
