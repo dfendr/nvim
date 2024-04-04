@@ -5,7 +5,7 @@ local M = {
     lsp = { show_diagnostic_signs = false },
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
-        transparent = true,
+        transparent = false,
         border_style = "rounded",
         cmp = {
             completion_border = "rounded",
