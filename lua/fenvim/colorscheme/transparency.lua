@@ -8,26 +8,25 @@ M.config = function()
 
     -- require('transparent').clear_prefix('lualine')
     require("transparent").clear_prefix("BufferLine")
-    vim.cmd([[:highlight BufferLineFill ctermfg=None ctermbg=None guifg=None guibg=None]])
 
     require("transparent").setup({
         "BufferLineBackground",
+        "BufferLineFill",
         "Comment",
         "Conditional",
         "Constant",
         "CursorLineNr",
-        "EOB",
         "EndOfBuffer",
+        "EOB",
         "FidgetTask",
         "FidgetTitle",
         "FloatBorder",
         "FloatShadow",
         "FloatShadowThrough",
         "Function",
+        "Headline",
         "Identifier",
         "LineNr",
-        "NoText",
-        "BufferLineFill",
         "NoiceFormatProgressDone",
         "NoiceFormatProgressTodo",
         "NoiceLspProgressClient",
@@ -39,6 +38,7 @@ M.config = function()
         "Normal",
         "NormalFloat",
         "NormalNC",
+        "NoText",
         "NvimTreeNormal",
         "NvimTreeNormalNC",
         "NvimTreeSignColumn",
