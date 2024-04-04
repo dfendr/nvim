@@ -169,7 +169,7 @@ function M.config()
                 winhighlight = prefs.winhighlight,
             }),
         },
-        -- view = { entries = "native" },
+        -- view = { entries = { follow_cursor = true } },
     })
 
     if cmdline then

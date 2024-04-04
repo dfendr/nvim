@@ -1,1 +1,12 @@
-{"ind":{"body":["#ifndef ${1:}","#define ${1:}","","","#endif \/\/ ${1:}"],"prefix":"ind"},"\/\/\/":{"body":["\/*"," * ${1:}","*\/"],"prefix":"\/\/\/"}}
+{
+  "ind": {
+    "body": ["#ifndef ${1:}", "#define ${1:}", "", "", "#endif // ${1:}"],
+    "prefix": "ind"
+  },
+  "///": {
+    "prefix": "///",
+    "body": ["/*", " * ${1:}", " */"],
+    "description": "Insert Block Comment"
+  }
+}
+
