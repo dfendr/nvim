@@ -1,4 +1,7 @@
 return {
+    client = {
+        server_capabilities = { documentFormattingProvider = false, documentRangeFormattingProvider = false },
+    },
     cmd = {
         -- see clangd --help-hidden
         "clangd",
