@@ -2,8 +2,6 @@
 vim.cmd("setlocal spell")
 
 local opts = {
-    mode = "n", -- NORMAL mode
-    buffer = 0, -- Local Buffer
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
