@@ -158,6 +158,7 @@ function M.config()
             B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
             d = { "<cmd>DiffviewOpen<cr>", "Diff" },
+            D = { "<cmd>DiffviewClode<cr>", "CloseDiff" },
             G = { "<cmd>lua _GITUI_TOGGLE()<CR>", "GitUI" },
             g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "LazyGit" },
             i = { "<cmd>Gitignore<cr>", "Generate gitignore" },
