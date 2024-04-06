@@ -21,7 +21,7 @@ function M.config()
 
     local function day_icon_right()
         if daylight then
-            return ""
+            return "󰖨"
         else
             return ""
         end
