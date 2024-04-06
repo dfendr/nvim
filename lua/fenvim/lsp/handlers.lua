@@ -123,6 +123,11 @@ M.on_attach = function(client, bufnr)
         vim.lsp.inlay_hint.enable(bufnr, true)
     end
 
+    -- must be in on attach(?)
+    if client.name == "tsserver" or client.name == "clangd" then
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end
 end
 
 function M.enable_format_on_save()
