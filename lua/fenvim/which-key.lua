@@ -314,7 +314,7 @@ function M.config()
             g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups" },
         },
         v = { "<cmd>vsplit<cr>", "vsplit" },
-        w = { "<cmd>update<CR>", "Write" },
+        w = { "<cmd>w<CR>", "Write" },
         W = { "<cmd>wa<CR>", "Save All Buffers" },
         l = {
             name = "LSP",
