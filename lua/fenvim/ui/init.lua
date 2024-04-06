@@ -31,7 +31,7 @@ return {
         -- statusline
         "nvim-lualine/lualine.nvim",
         enabled = true,
-        dependencies = {"meuter/lualine-so-fancy.nvim"},
+        dependencies = { "meuter/lualine-so-fancy.nvim" },
         config = function()
             require("fenvim.ui.lualine").config()
         end,
