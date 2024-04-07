@@ -10,8 +10,8 @@ function M.config()
             cursor = 5,
             width = 36,
             align_shortcut = "right",
-            hl = "AlphaButtons",
-            hl_shortcut = "TSNumber",
+            hl = "Normal",
+            hl_shortcut = "AlphaButtons",
         }
 
         if keybind then
