@@ -29,7 +29,7 @@ return {
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },
-        event = { "BufReadPre", "BufNew" },
+        event = "VeryLazy",
         config = function()
             require("fenvim.lsp.mason").config()
         end,

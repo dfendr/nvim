@@ -7,7 +7,6 @@ M.tools = {
     "debugpy",
     "eslint_d",
     "flake8",
-    "luacheck",
     "prettier",
     "selene",
     "ruff",
@@ -54,6 +53,7 @@ function M.config()
         },
         automatic_installation = true,
     })
+    M.check();
 
     require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler
