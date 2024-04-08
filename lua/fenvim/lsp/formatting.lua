@@ -18,6 +18,7 @@ return {
         conform.setup({
             formatters_by_ft = {
                 arduino = { "clang-format" },
+                tex = { "bibtex-tidy" },
                 bash = { "shfmt" },
                 c = { "clang-format" },
                 cpp = { "clang-format" },

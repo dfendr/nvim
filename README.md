@@ -35,6 +35,7 @@
 | Language     | Supported |
 | ------------ | :-------: |
 | Bash         |    ✅     |
+| Latex        |    ✅     |
 | C            |    ✅     |
 | C#           |    ✅     |
 | Dart/Flutter |    ✅     |
@@ -112,6 +113,7 @@ git clone https://github.com/dfendr/nvim.git
   leaving Neovim.
 - [BrowserSync](https://browsersync.io/) for live updating web previews when
   working with JS/TS/HTML
+- `latexmk` for compiling latex documents with VimTex
 
 ### Acknowledgements
 
