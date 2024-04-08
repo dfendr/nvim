@@ -8,7 +8,7 @@ M.tools = {
     "eslint_d",
     "flake8",
     "luacheck",
-    "prettierd",
+    "prettier",
     "selene",
     "ruff",
     "shfmt",
