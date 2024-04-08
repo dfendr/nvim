@@ -40,7 +40,7 @@ if status_ok then
         name = "Markdown",
         l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
-        P = { "<cmd>PasteImg<cr>", "Paste Image" },
+        P = { "<cmd>PasteImage<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
     }
 
@@ -54,4 +54,4 @@ local opts = { noremap = true, silent = true }
 local map = require("utils").map
 
 map("n", "<C-,>", "1z=", opts) -- change spelling error to first suggestion
-map("i", "<m-p>", "<cmd>PasteImg<Cr>", opts)
+map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts)

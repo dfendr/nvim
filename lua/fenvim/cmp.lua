@@ -9,6 +9,7 @@ local M = {
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
+        "micangl/cmp-vimtex",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "f3fora/cmp-spell",
@@ -123,6 +124,19 @@ function M.config()
         },
         sources = {
             { name = "nvim_lsp_signature_help" },
+            {
+                name = "vimtex",
+                enable_in_context = function()
+                    local filetypes = { "tex" }
+                    for _, v in pairs(filetypes) do
+                        if vim.bo.filetype == v then
+                            return true
+                        end
+                    end
+                    return false
+                end,
+            },
+
             {
                 name = "dotenv",
                 enable_in_context = function()
