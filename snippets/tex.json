@@ -1,0 +1,19 @@
+{
+  "mono": { "body": "\\texttt{${1:}}", "prefix": "mono" },
+  "bi": { "body": "\\textbf{\\textit{${1:}}}", "prefix": "bi" },
+  "i": { "body": "\\textit{${1:}}", "prefix": "i" },
+  "b": { "prefix": "b", "body": "\\textbf{${1:}}" },
+  "monoblock": {
+    "body": ["\\begin{verbatim}", "${1:}", "\\end{verbatim}"],
+    "prefix": "monoblock"
+  },
+  "alias": {
+    "body": "\\newcommand{\\${alias}}[1]{\\${2:command}{#1}}",
+    "prefix": "alias"
+  },
+  "verbatim": {
+    "body": ["\\begin{verbatim}", "${1:}", "\\end{verbatim}"],
+    "prefix": "verbatim"
+  }
+}
+
