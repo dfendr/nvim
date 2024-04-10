@@ -1,4 +1,8 @@
 {
+  "ind": {
+    "body": ["#ifndef ${1:}", "#define ${1:}", "", "", "#endif // ${1:}"],
+    "prefix": "ind"
+  },
   "ifnull": {
     "body": [
       "if (${1:}==NULL){",
