@@ -128,8 +128,9 @@ function M.config()
             d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Cur. Buffer Diagnostics" },
             e = { "<cmd>Telescope file_browser<cr>", "File Browser" },
             f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
-            h = { "<cmd>Telescope helpgrep<cr>", "Help" },
-            H = { "<cmd>Telescope highlights<cr>", "Highlights" },
+            H = { "<cmd>Telescope helpgrep<cr>", "Grep Help" },
+            h = { "<cmd>Telescope help_tags<cr>", "Help" },
+            g = { "<cmd>Telescope highlights<cr>", "Highlight Groups" },
             k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 
             l = { "<cmd>Telescope resume<cr>", "Last Search" },
@@ -150,7 +151,6 @@ function M.config()
             w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
             D = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
             W = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-
         },
         g = {
             name = "Git",
