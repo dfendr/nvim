@@ -224,6 +224,12 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
         options = vim.tbl_extend("force", options, opts)
     end
 
+    -- Check if cmd is a function and use the callback option
+    if type(cmd) == "function" then
+        options.callback = cmd
+        cmd = ''
+    end
+
     vim.api.nvim_set_keymap(mode, key, cmd, options)
 
     -- Check if whichkey is available and a description is provided
@@ -243,7 +249,6 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
         whichkey.register(mappings, wk_opts)
     end
 end
-
 function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
