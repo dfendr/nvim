@@ -87,6 +87,7 @@ function M.config()
         },
     }
 
+
     local mappings = {
         ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
         [";"] = { "<cmd>Alpha<cr>", "Dashboard" },
@@ -185,6 +186,7 @@ function M.config()
             C = { "<cmd>lua vim.g.cmp_active=true<cr>", "Completion on" },
             d = { "<cmd>lua require('core.functions').convert_to_dos()<CR>", "Convert to DOS Formatting" },
             h = { "<cmd>HexToggle<cr>", "Toggle Hex Editor" },
+            k = { "<cmd>Screenkey<cr>", "Toggle Show Keypresses" },
             l = { '<cmd>lua require("core.functions").toggle_option("cursorline")<cr>', "Cursorline" },
             O = { "<cmd>e $MYVIMRC | :cd %:p:h <CR>", "Open Options" },
             o = { '<cmd>lua require("core.functions").open_explorer()<cr>exit<cr>', "Open in File Explorer" },
@@ -207,7 +209,94 @@ function M.config()
             r = { "<cmd>RunCode<cr>", "Run File" },
             t = { '<cmd>RunCode "toggleterm"<cr>', "Run (Terminal)" },
         },
-        S = {
+        S = { "<cmd>IconPickerNormal<cr>", "Symbols" },
+        s = {
+            name = "Session",
+            d = { "<cmd>Autosession delete<cr>", "Delete Session" },
+            f = { "<cmd>SearchSession<cr>", "Find Session" },
+            l = { "<cmd>SessionRestore<cr>", "Load Last" },
+            r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
+            s = { "<cmd>SessionSave<cr>", "Save" },
+        },
+        t = {
+            name = "Terminal",
+            ["1"] = { ":1ToggleTerm<cr>", "1" },
+            ["2"] = { ":2ToggleTerm<cr>", "2" },
+            ["3"] = { ":3ToggleTerm<cr>", "3" },
+            ["4"] = { ":4ToggleTerm<cr>", "4" },
+            b = { "<cmd>lua _BTOP_TOGGLE()<cr>", "Btop" },
+            f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+            n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+            p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+            s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify-TUI" },
+            t = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+            u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
+            v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+        },
+        T = {
+            name = "Treesitter",
+            t = { "<cmd>lua require('core.functions').toggle_treesitter_local()<CR>", "Toggle Local TS Highlighting" },
+            T = { "<cmd>lua require('core.functions').toggle_treesitter_global()<CR>", "Toggle TS Highlighting" },
+            h = { "<cmd>Inspect<cr>", "Inspect Highlight Groups" },
+            p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+            r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
+            c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
+            g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups" },
+        },
+        v = { "<cmd>vsplit<cr>", "vsplit" },
+        w = { "<cmd>w<CR>", "Write" },
+        W = { "<cmd>wa<CR>", "Save All Buffers" },
+        l = {
+            name = "LSP",
+            a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
+            d = { "<cmd>Neogen<cr>", "Generate Annotation" },
+            f = { "<cmd>FormatBuffer<cr>", "Format Buffer" },
+            F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+            C = { "<cmd>ConformInfo<CR>", "Formatting Info" },
+            H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
+            h = { "<cmd>lua require('core.functions').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
+            i = { "<cmd>LspInfo<cr>", "Info" },
+            I = { "<cmd>Mason<cr>", "LSP Installer Info" },
+            l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+            o = { "<cmd>SymbolsOutline<cr>", "Outline" },
+            q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+            R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+            s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+            S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+            t = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
+            T = { '<cmd>lua require("core.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+            v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
+            w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
+        },
+        p = {
+            name = "Package Manager",
+            i = { "<cmd>Lazy install<cr>", "Install" },
+            o = { "<cmd>Lazy<cr>", "Open" },
+            S = { "<cmd>Lazy profile<cr>", "Status" },
+            s = { "<cmd>Lazy sync<cr>", "Sync" },
+            u = { "<cmd>Lazy update<cr>", "Update" },
+        },
+        z = { name = "Zen" },
+    }
+
+    -- If inc_rename installed, change rename command.
+    local ok, _ = pcall(require, "inc_rename")
+    if ok then
+        mappings.R = { ":IncRename ", "Rename" }
+    end
+
+    -- If actions-preview is installed, change the code action command.
+    ---@diagnostic disable-next-line: redefined-local
+    local ok, _ = pcall(require, "actions-preview")
+    if ok then
+        mappings.l.a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "Code Action" }
+    end
+
+    --  if no symbol plugin, use backup keybinds
+    ---@diagnostic disable-next-line: redefined-local
+    local ok, _ = pcall(require, "icon-picker")
+    if not ok then
+        mappings.S = {
             name = "Symbols",
             d = { ":normal a°<Esc>", "Insert °" },
             c = { ":normal a●<Esc>", "Insert °" },
@@ -280,87 +369,7 @@ function M.config()
                 y = { ":normal aψ<Esc>", "Insert ψ" },
                 z = { ":normal aζ<Esc>", "Insert ζ" },
             },
-        },
-        s = {
-            name = "Session",
-            d = { "<cmd>Autosession delete<cr>", "Delete Session" },
-            f = { "<cmd>SearchSession<cr>", "Find Session" },
-            l = { "<cmd>SessionRestore<cr>", "Load Last" },
-            r = { "<cmd>Autosession search<cr>", "Load Last Dir" },
-            s = { "<cmd>SessionSave<cr>", "Save" },
-        },
-        t = {
-            name = "Terminal",
-            ["1"] = { ":1ToggleTerm<cr>", "1" },
-            ["2"] = { ":2ToggleTerm<cr>", "2" },
-            ["3"] = { ":3ToggleTerm<cr>", "3" },
-            ["4"] = { ":4ToggleTerm<cr>", "4" },
-            b = { "<cmd>lua _BTOP_TOGGLE()<cr>", "Btop" },
-            f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-            n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-            p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-            s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify-TUI" },
-            t = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-            u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-            v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-        },
-        T = {
-            name = "Treesitter",
-            t = { "<cmd>lua require('core.functions').toggle_treesitter_local()<CR>", "Toggle Local TS Highlighting" },
-            T = { "<cmd>lua require('core.functions').toggle_treesitter_global()<CR>", "Toggle TS Highlighting" },
-            h = { "<cmd>Inspect<cr>", "Inspect Highlight Groups" },
-            p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-            r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
-            c = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
-            g = { "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", "View Highlight Groups" },
-        },
-        v = { "<cmd>vsplit<cr>", "vsplit" },
-        w = { "<cmd>w<CR>", "Write" },
-        W = { "<cmd>wa<CR>", "Save All Buffers" },
-        l = {
-            name = "LSP",
-            a = { "<cmd>lua require('core.functions').code_action()<CR>", "Code Action" },
-            d = { "<cmd>Neogen<cr>", "Generate Annotation" },
-            f = { "<cmd>FormatBuffer<cr>", "Format Buffer" },
-            F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-            C = { "<cmd>ConformInfo<CR>", "Formatting Info" },
-            H = { "<cmd>IlluminateToggle<cr>", "Toggle Doc HL" },
-            h = { "<cmd>lua require('core.functions').toggle_inlay_hints()<CR>", "Toggle Inlay Hints" },
-            i = { "<cmd>LspInfo<cr>", "Info" },
-            I = { "<cmd>Mason<cr>", "LSP Installer Info" },
-            l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-            o = { "<cmd>SymbolsOutline<cr>", "Outline" },
-            q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-            R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
-            s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-            S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-            t = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
-            T = { '<cmd>lua require("core.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
-            u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
-            v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
-            w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
-        },
-        p = {
-            name = "Package Manager",
-            i = { "<cmd>Lazy install<cr>", "Install" },
-            o = { "<cmd>Lazy<cr>", "Open" },
-            S = { "<cmd>Lazy profile<cr>", "Status" },
-            s = { "<cmd>Lazy sync<cr>", "Sync" },
-            u = { "<cmd>Lazy update<cr>", "Update" },
-        },
-        z = { name = "Zen" },
-    }
-
-    -- If inc_rename installed, change rename command.
-    local ok, _ = pcall(require, "inc_rename")
-    if ok then
-        mappings.R = { ":IncRename ", "Rename" }
-    end
-
-    -- If actions-preview is installed, change the code action command.
-    local ok2, _ = pcall(require, "actions-preview")
-    if ok2 then
-        mappings.l.a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "Code Action" }
+        }
     end
 
     local opts = {
@@ -372,16 +381,7 @@ function M.config()
         nowait = true, -- use `nowait` when creating keymaps
     }
 
-    local m_opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "m",
-        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
-    }
-
-    local v_opts = {
+    local vopts = {
         mode = "v", -- VISUAL mode
         prefix = "<leader>",
         buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -402,6 +402,5 @@ function M.config()
     which_key.setup(setup)
     which_key.register(mappings, opts)
     which_key.register(xmappings, xopts)
-    --which_key.register(m_mappings, m_opts)
 end
 return M

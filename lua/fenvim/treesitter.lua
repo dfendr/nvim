@@ -4,6 +4,7 @@ local M = {
     --commit = "f2778bd", // Dart bug not present here :\
     dependencies = {
         { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPost" },
+        { "yorickpeterse/nvim-tree-pairs", event = "BufReadPost", config = true },
 
         {
             "nvim-treesitter/nvim-treesitter-context",
