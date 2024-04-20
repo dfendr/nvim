@@ -2,18 +2,23 @@ local M = {}
 
 local merge_tb = vim.tbl_deep_extend
 
-vim.cmd([[
-function! CloseAllBuffersExceptCurrent()
-  let current_buf_num = bufnr('%')
-  for buf_num in range(1, bufnr('$'))
-    if bufexists(buf_num) && buflisted(buf_num) && buf_num != current_buf_num
-      execute 'bdelete' buf_num
-    endif
-  endfor
-endfunction
+local function close_all_buffers_except_current()
+    local current_buf_num = vim.api.nvim_get_current_buf()
+    local buffers = vim.api.nvim_list_bufs()
 
-command! Bonly call CloseAllBuffersExceptCurrent()
-]])
+    for _, buf_num in ipairs(buffers) do
+        if vim.api.nvim_buf_is_loaded(buf_num) and
+           vim.api.nvim_buf_is_valid(buf_num) and
+           buf_num ~= current_buf_num then
+            local buftype = vim.bo[buf_num].buftype
+            if buftype ~= 'terminal' then
+                vim.api.nvim_buf_delete(buf_num, {force = false})
+            end
+        end
+    end
+end
+
+vim.api.nvim_create_user_command('Bonly', close_all_buffers_except_current, {})
 
 M.load_override = function(default_table, plugin_name)
     local user_table = M.load_config().plugins.override[plugin_name] or {}
@@ -220,11 +225,12 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
             options.desc = desc
         end
     end
+
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
 
-    -- Check if cmd is a function and use the callback option
+    -- Check if cmd is a function and attach as a callback
     if type(cmd) == "function" then
         options.callback = cmd
         cmd = ''
@@ -249,6 +255,7 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
         whichkey.register(mappings, wk_opts)
     end
 end
+
 function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
