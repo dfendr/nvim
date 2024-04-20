@@ -38,6 +38,7 @@ return {
                 { "after", "before" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "high", "low" },
+                { "back", "forward" },
                 { "major", "minor" },
                 { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" },
                 { "over", "under" },
@@ -60,13 +61,12 @@ return {
     {
         -- Automatically change tabstop to match doc
         "nmac427/guess-indent.nvim",
-        event = "BufReadPre",
+        event = "BufReadPost",
         config = true,
         opts = {
             filetype_exclude = {
                 "netrw",
                 "tutor",
-                "markdown",
             },
         },
     },
