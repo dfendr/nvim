@@ -69,7 +69,6 @@ function M.setup_keymaps()
     map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
     map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-    -- exit terminal, done in this way as terminal captures input
 end
 
 return M
