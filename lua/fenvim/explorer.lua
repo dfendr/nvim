@@ -37,8 +37,8 @@ local function on_attach(bufnr)
     vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts("Toggle Git Clean"))
     vim.keymap.set("n", "[c", api.node.navigate.git.prev, opts("Prev Git"))
     vim.keymap.set("n", "]c", api.node.navigate.git.next, opts("Next Git"))
-    vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
-    vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
+    vim.keymap.set("n", "D", api.fs.remove, opts("Delete"))
+    vim.keymap.set("n", "d", api.fs.trash, opts("Trash"))
     vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
     vim.keymap.set("n", "e", api.fs.rename_basename, opts("Rename: Basename"))
     vim.keymap.set("n", "]e", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
@@ -243,6 +243,14 @@ function M.config()
             },
             number = false,
             relativenumber = false,
+        },
+
+        ui = {
+            confirm = {
+                remove = true,
+                trash = true,
+                default_yes = false,
+            },
         },
     })
 end
