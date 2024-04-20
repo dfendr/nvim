@@ -51,7 +51,7 @@ local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 -- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
-local map = require("utils").map
+local map = require("core.functions").map
 
-map("n", "<C-,>", "1z=", opts) -- change spelling error to first suggestion
-map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts)
+map("n", "<C-,>", "1z=", opts, "Correct Spelling") -- change spelling error to first suggestion
+map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts, "Paste Image")
