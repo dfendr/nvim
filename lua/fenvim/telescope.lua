@@ -1,6 +1,7 @@
 local M = {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
+    -- tag = "0.1.6",
+    branch = "master",
     dependencies = {
         "nvim-lua/plenary.nvim",
         {
@@ -23,11 +24,6 @@ function M.config()
     end
 
     local actions = require("telescope.actions")
-    telescope.load_extension("media_files")
-    telescope.load_extension("file_browser")
-    telescope.load_extension("fzf")
-    telescope.load_extension("lazy")
-    telescope.load_extension("helpgrep")
     local icons = require("fenvim.ui.icons")
 
     telescope.setup({
@@ -35,20 +31,16 @@ function M.config()
 
             prompt_prefix = icons.ui.Telescope .. " ",
             selection_caret = " ",
-            path_display = { "smart" },
+            path_display = { "filename_first" },
             file_ignore_patterns = {
                 ".git/",
                 "target/",
-                "docs/",
                 "vendor/*",
                 "%.lock",
                 "__pycache__/*",
                 "%.sqlite3",
                 "%.ipynb",
                 "node_modules/*",
-                -- "%.jpg",
-                -- "%.jpeg",
-                -- "%.png",
                 "%.svg",
                 "%.otf",
                 "%.ttf",
@@ -188,6 +180,7 @@ function M.config()
                 theme = "dropdown",
                 find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
                 enable_preview = true,
+                path_display = { "filename_first" },
             },
             buffers = {
                 theme = "dropdown",
@@ -198,6 +191,7 @@ function M.config()
                 theme = "dropdown",
                 enable_preview = true,
                 initial_mode = "insert",
+                path_display = { "filename_first" },
             },
 
             planets = {
@@ -228,14 +222,6 @@ function M.config()
                 -- initial_mode = "normal",
                 -- man_cmd = { "apropos", "." }, -- Does this work on Linux also?
             },
-
-            -- Default configuration for builtin pickers goes here:
-            -- picker_name = {
-            --   picker_config_key = value,
-            --   ...
-            -- }
-            -- Now the picker_config_key will be applied every time you call this
-            -- builtin picker
         },
         extensions = {
             file_browser = {
@@ -269,5 +255,12 @@ function M.config()
             },
         },
     })
+
+    telescope.load_extension("media_files")
+    telescope.load_extension("file_browser")
+    telescope.load_extension("fzf")
+    telescope.load_extension("lazy")
+    telescope.load_extension("helpgrep")
 end
+
 return M
