@@ -3,8 +3,6 @@ vim.opt_local.tabstop = 2
 vim.opt_local.textwidth = 79
 vim.opt_local.spell = true
 vim.opt_local.conceallevel = 2
--- vim.opt_local.encoding = "utf-16"
--- vim.opt_local.fileencoding = "utf-16"
 
 ------------------------------------------------------ [[ConvertToLatex]]
 -- pandox required
@@ -31,9 +29,9 @@ if status_ok then
         mode = "n", -- NORMAL mode
         prefix = "<localleader>",
         buffer = 0, -- Local Buffer
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
+        silent = true,
+        noremap = true,
+        nowait = true,
     }
 
     local mappings = {
@@ -49,9 +47,6 @@ end
 
 local opts = { noremap = true, silent = true }
 
--- Shorten function name
--- map(mode, key, cmd, options) = (vim.api.nvim_set_keymap(mode, key, cmd, options)
 local map = require("core.functions").map
-
 map("n", "<C-,>", "1z=", opts, "Correct Spelling") -- change spelling error to first suggestion
 map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts, "Paste Image")

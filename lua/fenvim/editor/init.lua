@@ -33,19 +33,22 @@ return {
             },
             -- User defined loops ()
             allow_caps_additions = {
-                { "up", "down" },
-                { "min", "max" },
                 { "after", "before" },
+                { "back", "forward" },
+                { "enter", "exit" },
+                { "entering", "exiting" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "high", "low" },
-                { "back", "forward" },
+                { "lower", "higher" },
                 { "major", "minor" },
+                { "min", "max" },
                 { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" },
                 { "over", "under" },
                 { "right", "left" },
                 { "start", "stop" },
                 { "starts", "stops" },
                 { "tac", "tac", "toe" },
+                { "up", "down" },
             },
         },
     },
@@ -194,6 +197,7 @@ return {
     {
         "chrisgrieser/nvim-scissors",
         dependencies = "nvim-telescope/telescope.nvim", -- optional dependency
+        event = { "BufReadPost" },
         config = function()
             local map = require("core.functions").map
 
