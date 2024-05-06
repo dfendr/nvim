@@ -81,13 +81,11 @@ local function lsp_keymaps(bufnr)
         map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts, "Go To Definitions", bufnr)
         map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts, "Go To Implementations", bufnr)
         map("n", "gr", "<cmd>Telescope lsp_references<CR>", opts, "Go To References", bufnr)
-        map("n", "<leader>lds", "<cmd>Telescope lsp_document_symbols<CR>", opts, "Document Symbols", bufnr)
-        map("n", "<leader>lws", "<cmd>Telescope lsp_workspace_symbols<CR>", opts, "Workspace Symbols", bufnr)
     else
         -- Fallback LSP mappings if Telescope is not installed
-        map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts, "Go To Definitions", bufnr)
-        map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts, "Go To Implementations", bufnr)
-        map("n", "gr", "<cmd>Telescope lsp_references<CR>", opts, "Go To References", bufnr)
+        map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts, "Go To Definition", bufnr)
+        map("n", "gi", "<cmd>lua vim.lsp.buf.implemention()<CR>", opts, "Go To Implemention", bufnr)
+        map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts, "Go To References", bufnr)
     end
 
     -- Non-Telescope LSP mappings
@@ -98,11 +96,39 @@ local function lsp_keymaps(bufnr)
     map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
     map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts, "Previous Diagnostic", bufnr)
     map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts, "Next Diagnostic", bufnr)
-    map( "n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Next Error", bufnr)
-    map( "n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>", opts, "Previous Error", bufnr)
+    map(
+        "n",
+        "]e",
+        "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>",
+        opts,
+        "Next Error",
+        bufnr
+    )
+    map(
+        "n",
+        "[e",
+        "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
+        opts,
+        "Previous Error",
+        bufnr
+    )
     map("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts, "Add Workspace Folder", bufnr)
-    map( "n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts, "Remove Workspace Folder", bufnr)
-    map( "n", "<leader>lwl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts, "List Workspace Folders", bufnr)
+    map(
+        "n",
+        "<leader>lwr",
+        "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
+        opts,
+        "Remove Workspace Folder",
+        bufnr
+    )
+    map(
+        "n",
+        "<leader>lwl",
+        "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+        opts,
+        "List Workspace Folders",
+        bufnr
+    )
 
     -- Code action key mapping
     local ok, _ = pcall(require, "actions-preview")

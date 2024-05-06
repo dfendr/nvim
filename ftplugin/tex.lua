@@ -30,7 +30,7 @@ if status_ok then
     which_key.register(mappings, opts)
 
     local opts = { noremap = true, silent = true }
-    local map = require("utils").map
+    local map = require("core.functions").map
 
     map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts)
 end
