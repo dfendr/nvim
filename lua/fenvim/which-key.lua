@@ -149,9 +149,9 @@ function M.config()
             t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
             T = { "<cmd>TodoTelescope<cr>", "Find TODOs" },
             v = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
-            w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
+            W = { "<cmd>Telescope grep_string<cr>", "Find Word" },
             D = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-            W = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+            w = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
         },
         g = {
             name = "Git",
