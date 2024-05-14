@@ -94,6 +94,7 @@ function M.config()
     end
 
     local icons = require("fenvim.ui.icons")
+    local show_icons = require("core.prefs").ui.show_icons
 
     local function natural_cmp(left, right)
         -- Prioritize directories over files.
@@ -160,10 +161,10 @@ function M.config()
                 padding = " ",
                 symlink_arrow = icons.documents.SymlinkArrow,
                 show = {
-                    file = true,
-                    folder = true,
-                    folder_arrow = true,
-                    git = true,
+                    file = show_icons,
+                    folder = show_icons,
+                    folder_arrow = show_icons,
+                    git = show_icons,
                 },
                 glyphs = {
                     default = icons.documents.File,
