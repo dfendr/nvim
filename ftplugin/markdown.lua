@@ -12,13 +12,17 @@ function ConvertToLatex()
     local base_name = vim.fn.fnamemodify(path, ":r")
     local quoted_path = vim.fn.shellescape(path)
     local quoted_pdf_path = vim.fn.shellescape(base_name .. ".pdf")
-    vim.fn.system(
-        "cd " .. dir .. " && pandoc " .. quoted_path .. " -o " .. quoted_pdf_path .. " -V geometry:margin=1in"
-    )
+
+    -- Properly quote the directory and paths
+    local command = string.format('cd "%s" && pandoc %s -o %s -V geometry:margin=1in', dir, quoted_path, quoted_pdf_path)
+
+    -- Capture the output of the pandoc command
+    local result = vim.fn.system(command)
+
     if vim.v.shell_error == 0 then
         vim.notify("Conversion Success", vim.log.levels.INFO)
     else
-        vim.notify("Conversion Failure", vim.log.levels.ERROR)
+        vim.notify("Conversion Failure: " .. result, vim.log.levels.ERROR)
     end
 end
 ------------------------------------------------------
