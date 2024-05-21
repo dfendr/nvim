@@ -10,10 +10,9 @@ local M = {
             "nvim-treesitter/nvim-treesitter-context",
             enabled = require("core.prefs").ui.context,
         },
-        "JoosepAlviste/nvim-ts-context-commentstring",
     },
     -- lazy = true,
-    -- event = "BufReadPre",
+    event = "BufReadPre",
 }
 
 function M.config()
@@ -55,7 +54,11 @@ function M.config()
     })
 
     -- setup  TS comment context plugin
-    require("ts_context_commentstring").setup({})
+    -- require("ts_context_commentstring").setup({
+    --     languages = {
+    --         cpp = "// %s",
+    --     },
+    -- })
 
     -- Setup Rainbow delimiters
     local rainbow_delimiters = require("rainbow-delimiters")
