@@ -13,10 +13,9 @@ function ConvertToLatex()
     local quoted_path = vim.fn.shellescape(path)
     local quoted_pdf_path = vim.fn.shellescape(base_name .. ".pdf")
 
-    -- Properly quote the directory and paths
     local command = string.format('cd "%s" && pandoc %s -o %s -V geometry:margin=1in', dir, quoted_path, quoted_pdf_path)
 
-    -- Capture the output of the pandoc command
+    -- Capture the output of the pandoc command for error reporting
     local result = vim.fn.system(command)
 
     if vim.v.shell_error == 0 then
@@ -41,6 +40,7 @@ if status_ok then
     local mappings = {
         name = "Markdown",
         l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
+        i = { "<cmd>GuessIndent<cr>", "Guess Indent" },
         p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
         P = { "<cmd>PasteImage<cr>", "Paste Image" },
         s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
