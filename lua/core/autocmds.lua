@@ -8,26 +8,35 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- Relative number toggle, only in Normal mode
-vim.api.nvim_create_augroup("RelativeNumberToggle", { clear = true })
+-- -- Relative number toggle, only in Normal mode
+-- vim.api.nvim_create_augroup("RelativeNumberToggle", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("InsertEnter", {
+--     group = "RelativeNumberToggle",
+--     callback = function()
+--         -- Check if the current window is a floating window
+--         local winid = vim.api.nvim_get_current_win()
+--         local config = vim.api.nvim_win_get_config(winid)
+--         if config.zindex ~= nil then
+--             -- If it's a floating window, do nothing
+--             return
+--         end
+--
+--         -- otherwise check if its a specific filetype
+--         if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
+--             vim.o.relativenumber = false
+--         end
+--     end,
+-- })
 
-vim.api.nvim_create_autocmd("InsertEnter", {
-    group = "RelativeNumberToggle",
-    callback = function()
-        if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
-            vim.o.relativenumber = false
-        end
-    end,
-})
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-    group = "RelativeNumberToggle",
-    callback = function()
-        if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
-            vim.o.relativenumber = true
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--     group = "RelativeNumberToggle",
+--     callback = function()
+--         if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
+--             vim.o.relativenumber = true
+--         end
+--     end,
+-- })
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPre", {
@@ -145,6 +154,8 @@ vim.api.nvim_create_autocmd({ "BufReadPre" }, {
                 vim.b.largefile_opened = true
                 vim.b.old_eventignore = vim.o.eventignore
                 vim.o.eventignore = "FileType"
+                vim.treesitter.stop(0)
+                vim.bo.syntax = "OFF"
                 vim.bo.swapfile = false
                 vim.bo.bufhidden = "unload"
                 vim.bo.buftype = "nowrite"
