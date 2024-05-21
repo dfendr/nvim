@@ -6,7 +6,7 @@ local M = {
 
 M.config = function()
     require("oil").setup()
-    vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+    vim.keymap.set("n", "_", require("oil").open, { desc = "Open parent directory" })
 end
 
 return M
