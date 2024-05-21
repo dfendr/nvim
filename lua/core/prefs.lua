@@ -6,6 +6,7 @@ local M = {
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
         transparent = false,
+        show_icons = true;
         border_style = "rounded",
         cmp = {
             completion_border = "rounded",

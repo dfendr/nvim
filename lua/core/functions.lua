@@ -7,18 +7,20 @@ local function close_all_buffers_except_current()
     local buffers = vim.api.nvim_list_bufs()
 
     for _, buf_num in ipairs(buffers) do
-        if vim.api.nvim_buf_is_loaded(buf_num) and
-           vim.api.nvim_buf_is_valid(buf_num) and
-           buf_num ~= current_buf_num then
+        if
+            vim.api.nvim_buf_is_loaded(buf_num)
+            and vim.api.nvim_buf_is_valid(buf_num)
+            and buf_num ~= current_buf_num
+        then
             local buftype = vim.bo[buf_num].buftype
-            if buftype ~= 'terminal' then
-                vim.api.nvim_buf_delete(buf_num, {force = false})
+            if buftype ~= "terminal" then
+                vim.api.nvim_buf_delete(buf_num, { force = false })
             end
         end
     end
 end
 
-vim.api.nvim_create_user_command('Bonly', close_all_buffers_except_current, {})
+vim.api.nvim_create_user_command("Bonly", close_all_buffers_except_current, {})
 
 M.load_override = function(default_table, plugin_name)
     local user_table = M.load_config().plugins.override[plugin_name] or {}
@@ -116,12 +118,11 @@ function M.format_buffer()
         vim.cmd("lua require('conform').format({ lsp_fallback = true, async = false, timeout_ms = 500 })")
     else
         -- conform is not available, use LSP formatting
-        vim.lsp.buf.format({async = false})
+        vim.lsp.buf.format({ async = false })
     end
 end
 
 vim.api.nvim_create_user_command("FormatBuffer", M.format_buffer, {})
-
 
 function M.convert_to_unix()
     -- First, remove ^M (carriage return characters)
@@ -233,7 +234,7 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
     -- Check if cmd is a function and attach as a callback
     if type(cmd) == "function" then
         options.callback = cmd
-        cmd = ''
+        cmd = ""
     end
 
     vim.api.nvim_set_keymap(mode, key, cmd, options)
@@ -258,7 +259,7 @@ end
 
 function M.toggle_inlay_hints()
     local bufnr = vim.api.nvim_get_current_buf()
-    vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
 end
 
 function M.toggle_treesitter_local()
