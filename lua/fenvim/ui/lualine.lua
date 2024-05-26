@@ -85,7 +85,7 @@ function M.config()
     }
     -- List servers
 
-    local  lsp_servers= {
+    local lsp_servers = {
         "fancy_lsp_servers",
         cond = function()
             -- local ft = vim.opt_local.filetype:get()
@@ -200,7 +200,6 @@ function M.config()
         end,
     }
 
-
     ---------------------------------------------------------------------------
     ---------------------------------------------------------[[ Mixed Indent ]]
     local function mixed_indent()
@@ -264,7 +263,7 @@ function M.config()
             if contains(ui_filetypes, buf_ft) then
                 return ""
             end
-            local shiftwidth= vim.api.nvim_get_option_value('shiftwidth', {buf = 0})
+            local shiftwidth = vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
             if shiftwidth == nil or shiftwidth == 4 then
                 return ""
             end
@@ -297,7 +296,7 @@ function M.config()
     local wordcount = {
         "words",
         cond = function()
-            local ft = vim.opt_local.filetype:get()
+            local ft = vim.bo.filetype
             local count = {
                 latex = true,
                 tex = true,
@@ -307,11 +306,16 @@ function M.config()
                 vimwiki = true,
                 neorg = true,
             }
-            return hide_in_width(60)() and count[ft] ~= nil --and hide_in_width(60))
+            return hide_in_width(60)() and count[ft] ~= nil
         end,
         fmt = function()
-            local words = vim.fn.wordcount()["words"]
-            return "Words: " .. words
+            -- if in visual select mode, show selected words
+            if vim.fn.mode() == "v" or vim.fn.mode() == "V" or vim.fn.mode() == "\22" then
+                return "Selected: " .. (vim.fn.wordcount().visual_words or 0) .. " words"
+            else
+                -- otherwise show wordcount in buffer
+                return "Words: " .. vim.fn.wordcount().words .. " words"
+            end
         end,
     }
 
@@ -340,7 +344,8 @@ function M.config()
             lualine_c = { diagnostics },
             lualine_x = {
 
-                lsp_servers, filename, --[[ filetype, ]]
+                lsp_servers,
+                filename, --[[ filetype, ]]
                 encoding,
                 fileformat,
             },
