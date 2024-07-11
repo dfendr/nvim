@@ -49,6 +49,7 @@ function M.config()
             "marksman",
             "omnisharp",
             "rust_analyzer",
+            "phpactor",
             "yamlls",
         },
         automatic_installation = true,
