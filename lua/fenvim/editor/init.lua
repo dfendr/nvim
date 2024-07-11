@@ -165,9 +165,46 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
-        config = true,
-        ft = { "typescript", "html", "tsx", "vue", "svelte", "php", "rescript" },
+        config = function()
+            require("nvim-ts-autotag").setup({
+                opts = {
+                    enable_close = true, -- Auto close tags
+                    enable_rename = true, -- Auto rename pairs of tags
+                    enable_close_on_slash = true, -- Auto close on trailing </
+                },
+            })
+        end,
+        ft = { "typescript", "html", "typescriptreact", "vue", "svelte", "php", "rescript" },
     },
+
+    {
+        "HiPhish/rainbow-delimiters.nvim",
+        event = "BufReadPost",
+        config = function()
+            local rainbow_delimiters = require("rainbow-delimiters")
+            vim.g.rainbow_delimiters = {
+                strategy = {
+                    [""] = rainbow_delimiters.strategy["global"],
+                    vim = rainbow_delimiters.strategy["local"],
+                },
+                query = {
+                    [""] = "rainbow-delimiters",
+                    -- lua = "rainbow-blocks",
+                },
+                highlight = {
+                    "TSRainbowMagenta",
+                    "TSRainbowGray",
+                    "TSRainbowCyan",
+                    "TSRainbowYellow",
+                    "TSRainbowOrange",
+                    "TSRainbowPink",
+                    "TSRainbowGreen",
+                },
+            }
+        end,
+    },
+
+    { "yorickpeterse/nvim-tree-pairs", event = "BufReadPost", config = true },
     {
         -- Hex editor
         "RaafatTurki/hex.nvim",
@@ -250,8 +287,7 @@ return {
                         deleteSnippet = "<C-x>",
                         duplicateSnippet = "<C-d>",
                         openInFile = "<C-o>",
-                        insertNextToken = "<C-t>", -- insert & normal mode
-                        jumpBetweenBodyAndPrefix = "<Tab>", -- insert & normal mode
+                        insertNextPlaceholder = "<C-t>", -- insert & normal mode
                     },
                 },
                 telescope = {

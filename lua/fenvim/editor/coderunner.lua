@@ -19,11 +19,12 @@ function M.config()
             lisp = "clisp $file",
             lua = "luajit $file",
             perl = "cd '$dir' && perl $file",
+            php = "cd '$dir' && php $file",
             python = "cd '$dir' && python3 '$file'",
             r = "cd '$dir' && Rscript $file",
             rust = "cd '$dir' && cargo run",
             sh = "cd '$dir' && bash $file",
-            typescript = "deno run %",
+            typescript = "cd '$dir' && bun run '$file'",
         },
         float = {
             border = require("core.prefs").ui.border_style,

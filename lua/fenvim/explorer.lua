@@ -137,8 +137,8 @@ function M.config()
             enable = false,
         },
         filters = {
-            -- custom = { ".git" },
-            -- exclude = { ".gitignore" },
+            custom = { ".git" },
+            exclude = { ".gitignore" },
         },
         update_cwd = true,
         renderer = {
