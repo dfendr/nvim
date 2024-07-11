@@ -73,6 +73,7 @@ function M.config()
             v = { "j", "k" },
         },
     }
+
     local xmappings = {
 
         f = { name = "Find", t = { "<cmd>Telescope grep_string<cr>", "Find Word" } },
@@ -122,12 +123,12 @@ function M.config()
         f = {
             name = "Find",
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-            B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+            B = { "<cmd>Telescope git_branches<cr>", "Branch" },
             C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
             c = { "<cmd>Telescope commands<cr>", "Commands" },
             d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Cur. Buffer Diagnostics" },
             e = { "<cmd>Telescope file_browser<cr>", "File Browser" },
-            f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find files" },
+            f = { '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>', "Find Files" },
             H = { "<cmd>Telescope helpgrep<cr>", "Grep Help" },
             h = { "<cmd>Telescope help_tags<cr>", "Help" },
             g = { "<cmd>Telescope highlights<cr>", "Highlight Groups" },
@@ -152,10 +153,12 @@ function M.config()
             D = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
             w = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
         },
+
+        F = { "<cmd>Telescope smart_open<cr>", "Smart Search" },
         g = {
             name = "Git",
             b = { "<cmd>Gitsigns toggle_current_line_blame<CR>", "Toggle Git Blame" },
-            B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+            B = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
             c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
             d = { "<cmd>DiffviewOpen<cr>", "Diff" },
             D = { "<cmd>DiffviewClose<cr>", "CloseDiff" },

@@ -4,10 +4,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         local conform = require("conform")
-        local map = require("core.functions").map
 
         conform.formatters.stylua = { prepend_args = { "--indent-type", "Spaces" } }
-        conform.formatters.prettier = { prepend_args = { "--tab-width", "2" } }
+        -- conform.formatters.prettier = { prepend_args = { "--tab-width", "2" } }
         conform.formatters.black = { prepend_args = { "--line-length", "79" } }
         conform.formatters["clang-format"] = {
             prepend_args = {

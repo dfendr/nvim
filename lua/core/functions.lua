@@ -32,8 +32,7 @@ function M.get_snippet_path()
     local config_path = vim.loop.fs_realpath(vim.fn.stdpath("config"))
     local snippet_relative_path = { "snippets" }
     local path_separator = package.config:sub(1, 1) -- Gets the path separator based on the OS
-    local snippet_path = table.concat(vim.tbl_flatten({ config_path, snippet_relative_path }), path_separator)
-
+    local snippet_path = table.concat(vim.iter({config_path, snippet_relative_path}):flatten():totable(), path_separator)
     return snippet_path
 end
 

@@ -1,14 +1,27 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    --commit = "f2778bd", // Dart bug not present here :\
     dependencies = {
-        { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPost" },
-        { "yorickpeterse/nvim-tree-pairs", event = "BufReadPost", config = true },
 
         {
             "nvim-treesitter/nvim-treesitter-context",
             enabled = require("core.prefs").ui.context,
+            config = function()
+                require("treesitter-context").setup({
+                    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+                    max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
+                    min_window_height = 20, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+                    line_numbers = true,
+                    multiline_threshold = 20, -- Maximum number of lines to show for a single context
+                    trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+                    mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+                    -- Separator between context and content. Should be a single character string, like '-'.
+                    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+                    separator = nil,
+                    zindex = 20, -- The Z-index of the context window
+                    on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+                })
+            end,
         },
     },
     -- lazy = true,
@@ -16,12 +29,7 @@ local M = {
 }
 
 function M.config()
-    local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-    if not status_ok then
-        return
-    end
-
-    configs.setup({
+    require("nvim-treesitter.configs").setup({
         ensure_installed = {
             "bash",
             "comment",
@@ -41,45 +49,19 @@ function M.config()
         },
         sync_install = true,
         auto_install = true,
-        ignore_install = {}, -- List of parsers to ignore installing
+        ignore_install = {},
         highlight = {
-            enable = true, -- false will disable the whole extension
+            enable = true,
             disable = function(_, bufnr) -- Disable in files with more than 5K
                 return vim.api.nvim_buf_line_count(bufnr) > 5000
             end,
             additional_vim_regex_highlighting = false,
         },
 
-        indent = { enable = true, disable = { "c", "yaml", "python", "dart", "markdown", "markdown_inline" } },
+        indent = {
+            enable = true,
+            disable = { "c", "php", "yaml", "python", "dart", "markdown", "markdown_inline" },
+        },
     })
-
-    -- setup  TS comment context plugin
-    -- require("ts_context_commentstring").setup({
-    --     languages = {
-    --         cpp = "// %s",
-    --     },
-    -- })
-
-    -- Setup Rainbow delimiters
-    local rainbow_delimiters = require("rainbow-delimiters")
-    vim.g.rainbow_delimiters = {
-        strategy = {
-            [""] = rainbow_delimiters.strategy["global"],
-            vim = rainbow_delimiters.strategy["local"],
-        },
-        query = {
-            [""] = "rainbow-delimiters",
-            -- lua = "rainbow-blocks",
-        },
-        highlight = {
-            "TSRainbowMagenta",
-            "TSRainbowGray",
-            "TSRainbowCyan",
-            "TSRainbowYellow",
-            "TSRainbowOrange",
-            "TSRainbowPink",
-            "TSRainbowGreen",
-        },
-    }
 end
 return M
