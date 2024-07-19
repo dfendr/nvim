@@ -1,19 +1,10 @@
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
-    local opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "<localleader>",
-        buffer = 0, -- Local Buffer
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
-    }
 
-    local mappings = {
-        name = "HTML",
-        p = { ":BrowserPreview<CR>", "BrowserSync Preview On" },
-        P = { ":BrowserStop<CR>", "BrowserSync Preview Off" },
-    }
+    which_key.add({
+    { "<localleader>", buffer = 0, group = "Markdown", nowait = true, remap = false },
+    { "<localleader>P", ":BrowserPreview<CR>", buffer = 0, desc = "BrowserSync Preview On", nowait = true, remap = false },
+    { "<localleader>P", ":BrowserStop<CR>", buffer = 0, desc = "BrowserSync Preview Off", nowait = true, remap = false },
+    })
 
-    which_key.register(mappings, opts)
 end

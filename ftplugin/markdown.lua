@@ -49,26 +49,15 @@ end
 
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
-    local opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "<localleader>",
-        buffer = 0, -- Local Buffer
-        silent = true,
-        noremap = true,
-        nowait = true,
-    }
-
-    local mappings = {
-        name = "Markdown",
-        l = { "<cmd>lua ConvertToLatex()<cr>", "Convert Buffer to Latex" },
-        d = { "<cmd>lua ConvertToWordDoc()<cr>", "Convert Buffer to Word Doc" },
-        i = { "<cmd>GuessIndent<cr>", "Guess Indent" },
-        p = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview On/Off" },
-        P = { "<cmd>PasteImage<cr>", "Paste Image" },
-        s = { "<cmd>lua _SLIDES_TOGGLE()<cr>", "Preview Slides" },
-    }
-
-    which_key.register(mappings, opts)
+    which_key.add({
+    { "<localleader>", buffer = 0, group = "Markdown", nowait = true, remap = false },
+    { "<localleader>P", "<cmd>PasteImage<cr>", buffer = 0, desc = "Paste Image", nowait = true, remap = false },
+    { "<localleader>d", "<cmd>lua ConvertToWordDoc()<cr>", buffer = 0, desc = "Convert Buffer to Word Doc", nowait = true, remap = false },
+    { "<localleader>i", "<cmd>GuessIndent<cr>", buffer = 0, desc = "Guess Indent", nowait = true, remap = false },
+    { "<localleader>l", "<cmd>lua ConvertToLatex()<cr>", buffer = 0, desc = "Convert Buffer to Latex", nowait = true, remap = false },
+    { "<localleader>p", "<cmd>MarkdownPreviewToggle<cr>", buffer = 0, desc = "Markdown Preview On/Off", nowait = true, remap = false },
+    { "<localleader>s", "<cmd>lua _SLIDES_TOGGLE()<cr>", buffer = 0, desc = "Preview Slides", nowait = true, remap = false },
+    })
 end
 
 local opts = { noremap = true, silent = true }
