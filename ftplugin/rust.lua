@@ -4,35 +4,21 @@ if not status_ok then
     return
 end
 
-
 -- NOTE: Temporarily disabling CMP to learn rust better.
 -- require('cmp').setup.buffer { enabled = false }
 
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
-    local opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "<localleader>",
-        buffer = 0, -- Local Buffer
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
-    }
-
-    local mappings = {
-        name = "Rust",
-        r = { "<cmd>RustLsp runnables<Cr>", "Runnables" },
-        t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
-        m = { "<cmd>RustLsp expandMacro<Cr>", "Expand Macro" },
-        c = { "<cmd>RustLsp openCargo<Cr>", "Open Cargo" },
-        p = { "<cmd>RustLsp parentModule<Cr>", "Parent Module" },
-        d = { "<cmd>RustLsp debuggables<Cr>", "Debuggables" },
-        v = { "<cmd>RustLsp viewCrateGraph<Cr>", "View Crate Graph" },
-        R = { "<cmd>RustLsp reloadWorkspace<Cr>", "Reload Workspace" },
-        o = { "<cmd>RustLsp openExternalDocs<Cr>", "Open External Docs" },
-    }
-
-    local map = require("core.functions").map
-
-    which_key.register(mappings, opts)
+    which_key.add({
+        { "<localleader>", buffer = 0, group = "Rust", nowait = true, remap = false },
+        { "<localleader>R", "<cmd>RustLsp reloadWorkspace<Cr>", buffer = 0, desc = "Reload Workspace", nowait = true, remap = false, },
+        { "<localleader>c", "<cmd>RustLsp openCargo<Cr>", buffer = 0, desc = "Open Cargo", nowait = true, remap = false, },
+        { "<localleader>d", "<cmd>RustLsp debuggables<Cr>", buffer = 0, desc = "Debuggables", nowait = true, remap = false, },
+        { "<localleader>m", "<cmd>RustLsp expandMacro<Cr>", buffer = 0, desc = "Expand Macro", nowait = true, remap = false, },
+        { "<localleader>o", "<cmd>RustLsp openExternalDocs<Cr>", buffer = 0, desc = "Open External Docs", nowait = true, remap = false, },
+        { "<localleader>p", "<cmd>RustLsp parentModule<Cr>", buffer = 0, desc = "Parent Module", nowait = true, remap = false, },
+        { "<localleader>r", "<cmd>RustLsp runnables<Cr>", buffer = 0, desc = "Runnables", nowait = true, remap = false, },
+        { "<localleader>t", "<cmd>lua _CARGO_TEST()<cr>", buffer = 0, desc = "Cargo Test", nowait = true, remap = false, },
+        { "<localleader>v", "<cmd>RustLsp viewCrateGraph<Cr>", buffer = 0, desc = "View Crate Graph", nowait = true, remap = false, },
+    })
 end

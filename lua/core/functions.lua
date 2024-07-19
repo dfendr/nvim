@@ -32,7 +32,8 @@ function M.get_snippet_path()
     local config_path = vim.loop.fs_realpath(vim.fn.stdpath("config"))
     local snippet_relative_path = { "snippets" }
     local path_separator = package.config:sub(1, 1) -- Gets the path separator based on the OS
-    local snippet_path = table.concat(vim.iter({config_path, snippet_relative_path}):flatten():totable(), path_separator)
+    local snippet_path =
+        table.concat(vim.iter({ config_path, snippet_relative_path }):flatten():totable(), path_separator)
     return snippet_path
 end
 
@@ -240,7 +241,7 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
 
     -- Check if whichkey is available and a description is provided
     if pcall(require, "which-key") and type(desc) == "string" then
-        local whichkey = require("which-key")
+        local wk = require("which-key")
         local wk_opts = {
             mode = mode, -- NORMAL, VISUAL, INSERT, etc.
             prefix = "",
@@ -252,7 +253,8 @@ function M.map(mode, key, cmd, opts, desc, bufnr)
         local mappings = {
             [key] = { cmd, desc },
         }
-        whichkey.register(mappings, wk_opts)
+        wk.add({ key, cmd, desc = desc }, { mode = mode })
+        -- wk.register(mappings, wk_opts)
     end
 end
 

@@ -5,31 +5,22 @@ vim.opt_local.spell = true
 vim.opt_local.conceallevel = 2
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
-    local opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "<localleader>",
-        buffer = 0, -- Local Buffer
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
-    }
 
-    local mappings = {
-        name = "VimTeX",
-        p = { "<cmd>VimtexCompile<cr>", "Compile and Preview" },
-        i = { "<cmd>VimtexInfo<cr>", "VimTeX Info" },
-        t = { "<cmd>VimtexTocToggle<cr>", "Toggle ToC" },
-        v = { "<cmd>VimtexView<cr>", "View PDF" },
-        r = { "<cmd>VimtexReload<cr>", "Reload" },
-        s = { "<cmd>VimtexStop<cr>", "Stop Compilation" },
-        e = { "<cmd>VimtexErrors<cr>", "Show Errors" },
-        l = { "<cmd>VimtexClean<cr>", "Clean Auxiliary Files" },
-        P = { "<cmd>PasteImage<cr>", "Paste Image" },
-    }
+    which_key.add(
+  {
+    { "<localleader>", buffer = 0, group = "VimTeX", nowait = true, remap = false },
+    { "<localleader>P", "<cmd>PasteImage<cr>", buffer = 0, desc = "Paste Image", nowait = true, remap = false },
+    { "<localleader>e", "<cmd>VimtexErrors<cr>", buffer = 0, desc = "Show Errors", nowait = true, remap = false },
+    { "<localleader>i", "<cmd>VimtexInfo<cr>", buffer = 0, desc = "VimTeX Info", nowait = true, remap = false },
+    { "<localleader>l", "<cmd>VimtexClean<cr>", buffer = 0, desc = "Clean Auxiliary Files", nowait = true, remap = false },
+    { "<localleader>p", "<cmd>VimtexCompile<cr>", buffer = 0, desc = "Compile and Preview", nowait = true, remap = false },
+    { "<localleader>r", "<cmd>VimtexReload<cr>", buffer = 0, desc = "Reload", nowait = true, remap = false },
+    { "<localleader>s", "<cmd>VimtexStop<cr>", buffer = 0, desc = "Stop Compilation", nowait = true, remap = false },
+    { "<localleader>t", "<cmd>VimtexTocToggle<cr>", buffer = 0, desc = "Toggle ToC", nowait = true, remap = false },
+    { "<localleader>v", "<cmd>VimtexView<cr>", buffer = 0, desc = "View PDF", nowait = true, remap = false },
+  }
+    )
 
-    which_key.register(mappings, opts)
-
-    local opts = { noremap = true, silent = true }
     local map = require("core.functions").map
 
     map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts)
