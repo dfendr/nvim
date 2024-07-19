@@ -10,22 +10,12 @@ end
 
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
-    local opts = {
-        mode = "n", -- NORMAL mode
-        prefix = "<localleader>",
-        buffer = 0, -- Local Buffer
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = true, -- use `nowait` when creating keymaps
-    }
+    which_key.add({
+    { "<localleader>", buffer = 0, group = "Dart", nowait = true, remap = false },
+    { "<localleader>r", "<cmd>FlutterRun<Cr>", buffer = 0, desc = "Run", nowait = true, remap = false },
+    { "<localleader>e", "<cmd>FlutterEmulators<Cr>", buffer = 0, desc = "Emulator List", nowait = true, remap = false },
+    { "<localleader>d", "<cmd>FlutterDevTools<Cr>", buffer = 0, desc = "Start Dev Tools Server", nowait = true, remap = false },
+    { "<localleader>f", "<cmd>Telescope flutter commands<cr>", buffer = 0, desc = "Flutter Commands", nowait = true, remap = false },
+    })
 
-    local mappings = {
-        name = "Dart",
-        r = { "<cmd>FlutterRun<Cr>", "Run" },
-        e = { "<cmd>FlutterEmulators<Cr>", "Emulator List" },
-        d = { "<cmd>FlutterDevTools<Cr>", "Start Dev Tools Server" },
-        f = { "<cmd>Telescope flutter commands<cr>", "Flutter Commands" },
-    }
-
-    which_key.register(mappings, opts)
 end
