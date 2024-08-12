@@ -2,6 +2,7 @@ local M = { "folke/which-key.nvim", event = "VeryLazy" }
 function M.config()
     local which_key = require("which-key")
     local setup = {
+        icons = {mappings = false},
         plugins = {
             marks = true, -- shows a list of your marks on ' and `
             registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -27,7 +28,6 @@ function M.config()
     border = require("core.prefs").ui.which_key.border_style,
        },
 
-    -- icons = false,
     -- win = {
     --     no_overlap = true,
     --     }
