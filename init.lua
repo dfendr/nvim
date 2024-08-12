@@ -8,7 +8,6 @@ require("core")
 
 ----------------------------------------------[[  Load Plugins  ]]
 
-
 require("lazy").setup("fenvim", {
     checker = { enabled = false },
     diff = { cmd = "diffview.nvim" },
@@ -19,4 +18,3 @@ require("lazy").setup("fenvim", {
 if vim.g.neovide then
     require("fenvim.ui.neovide")
 end
-
