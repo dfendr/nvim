@@ -109,7 +109,6 @@ function M.config()
 
         { "<leader>T", group = "Treesitter", nowait = true, remap = false },
         { "<leader>TT", "<cmd>lua require('core.functions').toggle_treesitter_global()<CR>", desc = "Toggle TS Highlighting", nowait = true, remap = false, },
-        { "<leader>Tc", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer", nowait = true, remap = false },
         { "<leader>Tg", "<cmd>so $VIMRUNTIME/syntax/hitest.vim<cr>", desc = "View Highlight Groups", nowait = true, remap = false, },
         { "<leader>Th", "<cmd>Inspect<cr>", desc = "Inspect Highlight Groups", nowait = true, remap = false },
         { "<leader>Tp", "<cmd>TSPlaygroundToggle<cr>", desc = "Playground", nowait = true, remap = false },

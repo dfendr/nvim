@@ -41,10 +41,12 @@ return {
             allow_caps_additions = {
                 { "after", "before" },
                 { "back", "forward" },
+                { "north", "east", "south", "west" },
                 { "enter", "exit" },
                 { "entering", "exiting" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "high", "low" },
+                { "before", "after" },
                 {
                     "alpha",
                     "beta",
