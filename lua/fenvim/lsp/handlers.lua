@@ -152,7 +152,7 @@ M.on_attach = function(client, bufnr)
     end
 
     -- must be in on attach(?)
-    if client.name == "tsserver" or client.name == "clangd" then
+    if client.name == "ts_ls" or client.name == "clangd" then
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end
