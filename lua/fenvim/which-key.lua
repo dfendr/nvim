@@ -170,7 +170,7 @@ function M.config()
         { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", nowait = true, remap = false },
         { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects", nowait = true, remap = false },
         { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", nowait = true, remap = false },
-        { "<leader>fs", "<cmd>SearchSession<cr>", desc = "Find Session", nowait = true, remap = false },
+        { "<leader>fs", "<cmd>Telescope session-lens search_session<cr>", desc = "Find Session", nowait = true, remap = false },
         { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", nowait = true, remap = false },
         { "<leader>fv", "<cmd>Telescope vim_options<cr>", desc = "Vim Options", nowait = true, remap = false },
         { "<leader>fw", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols", nowait = true, remap = false, },
