@@ -46,6 +46,8 @@ return {
                 { "entering", "exiting" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "high", "low" },
+                { "relative", "absolute" },
+                { "continuous", "discrete" },
                 { "before", "after" },
                 {
                     "alpha",
