@@ -15,7 +15,7 @@ function M.setup_keymaps()
     -- Do not yank with x
     map("n", "x", '"_x', opts, "Yankless Character Delete")
 
-    -- Select all
+    -- Yank all
     map("n", "yA", ":0,$y<cr>", opts, "Select All")
 
     -- New Tab/Easy Splits
