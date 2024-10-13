@@ -1,7 +1,7 @@
 local cmdline = true
 local M = {
-    "hrsh7th/nvim-cmp",
-    commit = "7e348da",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp", -- Otherwise highlighting gets messed upommit = "7e348da",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
 
@@ -111,7 +111,7 @@ function M.config()
         formatting = {
             fields = { "abbr", "kind", "menu" },
             format = function(entry, vim_item)
-                if (vim_item.kind == nil or vim_item.kind == "") then
+                if vim_item.kind == nil or vim_item.kind == "" then
                     vim_item.kind = "Default"
                 end
                 vim_item.menu_hl_group = "CmpItemKind" .. vim_item.kind
@@ -122,6 +122,7 @@ function M.config()
             end,
         },
         sources = {
+            { name = "lazydev", group_index = 0 },
             { name = "nvim_lsp_signature_help" },
             {
                 name = "dotenv",
