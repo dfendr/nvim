@@ -6,6 +6,8 @@ end
 
 -- NOTE: Temporarily disabling CMP to learn rust better.
 -- require('cmp').setup.buffer { enabled = false }
+-- NOTE: Temporarily disabling server snippets as they're broken  (2024-10-12)
+ vim.g.rustaceanvim.server.capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
