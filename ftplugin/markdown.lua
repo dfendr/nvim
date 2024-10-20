@@ -55,7 +55,7 @@ if status_ok then
     { "<localleader>d", "<cmd>lua ConvertToWordDoc()<cr>", buffer = 0, desc = "Convert Buffer to Word Doc", nowait = true, remap = false },
     { "<localleader>i", "<cmd>GuessIndent<cr>", buffer = 0, desc = "Guess Indent", nowait = true, remap = false },
     { "<localleader>l", "<cmd>lua ConvertToLatex()<cr>", buffer = 0, desc = "Convert Buffer to Latex", nowait = true, remap = false },
-    { "<localleader>p", "<cmd>MarkdownPreviewToggle<cr>", buffer = 0, desc = "Markdown Preview On/Off", nowait = true, remap = false },
+    { "<localleader>p", "<cmd>PeekOpen<cr>", buffer = 0, desc = "Markdown Preview On/Off", nowait = true, remap = false },
     { "<localleader>s", "<cmd>lua _SLIDES_TOGGLE()<cr>", buffer = 0, desc = "Preview Slides", nowait = true, remap = false },
     })
 end
