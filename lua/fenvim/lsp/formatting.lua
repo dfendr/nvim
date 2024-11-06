@@ -15,6 +15,7 @@ return {
                 "{BasedOnStyle: Chromium, IndentWidth: 4, ColumnLimit: 80, AlignTrailingComments: true, PointerAlignment: Right, BraceWrapping: {AfterFunction: false}}",
             },
         }
+
         conform.formatters["sql-formatter"] = {
             command = "sql-formatter",
             args = {
