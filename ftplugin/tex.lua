@@ -23,5 +23,5 @@ if status_ok then
 
     local map = require("core.functions").map
 
-    map("i", "<m-p>", "<cmd>PasteImage<Cr>", opts)
+    map("i", "<m-p>", "<cmd>PasteImage<Cr>")
 end
