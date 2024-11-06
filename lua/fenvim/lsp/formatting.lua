@@ -44,6 +44,7 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
+                proto = { "buf" },
                 json = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
