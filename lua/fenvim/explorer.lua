@@ -6,16 +6,16 @@ return {
         "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
         {
-            's1n7ax/nvim-window-picker',
-            version = '2.*',
+            "s1n7ax/nvim-window-picker",
+            version = "2.*",
             config = function()
                 require("window-picker").setup({
                     filter_rules = {
                         include_current_win = false,
                         autoselect_one = true,
                         bo = {
-                            filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-                            buftype = { 'terminal', "quickfix" },
+                            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+                            buftype = { "terminal", "quickfix" },
                         },
                     },
                 })
@@ -24,11 +24,6 @@ return {
     },
     cmd = "Neotree",
     config = function()
-        vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-        vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-        vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-        vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
         require("neo-tree").setup({
             close_if_last_window = true,
             enable_git_status = true,
@@ -56,7 +51,6 @@ return {
                 position = "left",
                 width = 30,
                 mappings = {
-                    ["<space>"] = "toggle_node",
                     ["<cr>"] = "open",
                     ["o"] = "open",
                     ["h"] = "navigate_up",
@@ -78,7 +72,7 @@ return {
             filesystem = {
                 follow_current_file = { enabled = true },
                 filtered_items = {
-                    hide_dotfiles = true,
+                    hide_dotfiles = false,
                     hide_gitignored = true,
                 },
                 hijack_netrw_behavior = "open_default",
@@ -94,8 +88,7 @@ return {
             },
         })
 
-        -- optional keymap to toggle neo-tree
-        vim.keymap.set("n", "\\", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+        -- keymap to toggle neo-tree
+        -- vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { noremap = true, silent = true })
     end,
 }
-
