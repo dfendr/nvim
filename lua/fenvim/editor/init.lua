@@ -40,6 +40,7 @@ return {
             -- User defined loops ()
             allow_caps_additions = {
                 { "after", "before" },
+                { "I", "II", "III", "IV","V", "VI","VII","VII", "VIII", "IX", "X" },
                 { "back", "forward" },
                 { "north", "east", "south", "west" },
                 { "enter", "exit" },
@@ -317,5 +318,23 @@ return {
                 jsonFormatter = "none", -- "yq"|"jq"|"none"
             })
         end,
+    },
+    {
+        "linux-cultist/venv-selector.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "mfussenegger/nvim-dap",
+            "mfussenegger/nvim-dap-python", --optional
+            { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+        },
+        lazy = true,
+        ft = "py",
+        branch = "regexp", -- This is the regexp branch, use this for the new version
+        config = function()
+            require("venv-selector").setup()
+        end,
+        keys = {
+            { ",v", "<cmd>VenvSelect<cr>" },
+        },
     },
 }
