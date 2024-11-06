@@ -1,7 +1,6 @@
 local M = {}
 function M.config()
     require("code_runner").setup({
-        -- put here the commands by filetype
         mode = "float",
         filetype = {
             awk = "awk -f $file",
