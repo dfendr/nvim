@@ -63,8 +63,8 @@ return {
             local map = require("core.functions").map
 
             -- Set key mappings for scissors plugin using custom map function
-            map("x", "<leader>s", "<cmd>TrozoUploadSelection<CR>", {}, "Upload Code Selection")
-            map("x", "<leader>S", "<cmd>TrozoUploadFile<CR>", {}, "Upload Code File")
+            map("x", "<leader>ac", "<cmd>TrozoUploadSelection<CR>", {}, "Upload Code Selection")
+            map("x", "<leader>aC", "<cmd>TrozoUploadFile<CR>", {}, "Upload Code File")
         end,
     },
     {
