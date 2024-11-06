@@ -111,6 +111,7 @@ vim.g.rustaceanvim = {
                 lens = { enable = true },
                 cargo = {
                     allFeatures = true,
+                    loadOutDirsFromCheck = true,
                 },
                 completion = {
                     postfix = {
