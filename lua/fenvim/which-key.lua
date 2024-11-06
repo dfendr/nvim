@@ -145,7 +145,7 @@ function M.config()
         { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Repl", nowait = true, remap = false },
         { "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", desc = "UI", nowait = true, remap = false },
         { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", desc = "Exit", nowait = true, remap = false },
-        { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", nowait = true, remap = false },
+        { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer", nowait = true, remap = false },
 
         { "<leader>f", group = "Find", nowait = true, remap = false },
         { "<leader>fB", "<cmd>Telescope git_branches<cr>", desc = "Branch", nowait = true, remap = false },
@@ -228,6 +228,7 @@ function M.config()
         { "<leader>oc", "<cmd>lua vim.g.cmp_active=false<cr>", desc = "Completion off", nowait = true, remap = false },
         { "<leader>od", "<cmd>lua require('core.functions').convert_to_dos()<CR>", desc = "Convert to DOS Formatting", nowait = true, remap = false, },
         { "<leader>oh", "<cmd>HexToggle<cr>", desc = "Toggle Hex Editor", nowait = true, remap = false },
+        { "<leader>og", "<cmd>GuessIndent<cr>", desc = "Guess Indentation", nowait = true, remap = false },
         { "<leader>ok", "<cmd>Screenkey<cr>", desc = "Toggle Show Keypresses", nowait = true, remap = false },
         { "<leader>ol", '<cmd>lua require("core.functions").toggle_option("cursorline")<cr>', desc = "Cursorline", nowait = true, remap = false, },
         { "<leader>oo", '<cmd>lua require("core.functions").open_explorer()<cr>exit<cr>', desc = "Open in File Explorer", nowait = true, remap = false, },
