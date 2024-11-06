@@ -5,7 +5,6 @@ M.tools = {
     "clang-format",
     "codelldb",
     "debugpy",
-    "eslint_d",
     "flake8",
     "prettier",
     "selene",
@@ -54,7 +53,7 @@ function M.config()
         },
         automatic_installation = true,
     })
-    M.check();
+    M.check()
 
     require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler
@@ -80,6 +79,18 @@ function M.config()
                 { on_attach = { client = { server_capabilities = { documentFormattingProvider = false } } } }
             local tsserver_opts_ext = vim.tbl_deep_extend("force", extra_opts, opts)
             require("lspconfig").vtsls.setup(tsserver_opts_ext)
+        end,
+
+        ["biome"] = function()
+            local biome_opts = {
+                on_attach = opts.on_attach,
+                capabilities = vim.tbl_deep_extend("force", opts.capabilities, {
+                    textDocument = {
+                        documentSymbol = nil, -- disable document symbols specifically for biome
+                    },
+                }),
+            }
+            require("lspconfig").biome.setup(biome_opts)
         end,
 
         ["clangd"] = function()
