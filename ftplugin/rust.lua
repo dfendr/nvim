@@ -4,9 +4,6 @@ if not status_ok then
     return
 end
 
--- NOTE: Temporarily disabling CMP to learn rust better.
--- require('cmp').setup.buffer { enabled = false }
-
 local status_ok, which_key = pcall(require, "which-key")
 if status_ok then
     which_key.add({
