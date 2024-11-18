@@ -2,11 +2,8 @@ local M = {}
 
 local settings = require("core.prefs")
 
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
     if settings.lsp.show_diagnostic_signs then
@@ -142,6 +139,7 @@ end
 M.on_attach = function(client, bufnr)
     require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
     require("fenvim.lsp.utils").setup_codelens_refresh(client, bufnr)
+
     -- Don't use semantic tokens
     -- client.server_capabilities.semanticTokensProvider = nil
 
@@ -149,12 +147,6 @@ M.on_attach = function(client, bufnr)
 
     if client.supports_method("textDocument/inlayHint") then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-
-    -- must be in on attach(?)
-    if client.name == "ts_ls" or client.name == "clangd" then
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
     end
 end
 

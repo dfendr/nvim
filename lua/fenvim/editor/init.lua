@@ -40,7 +40,7 @@ return {
             -- User defined loops ()
             allow_caps_additions = {
                 { "after", "before" },
-                { "I", "II", "III", "IV","V", "VI","VII","VII", "VIII", "IX", "X" },
+                { "I", "II", "III", "IV", "V", "VI", "VII", "VII", "VIII", "IX", "X" },
                 { "back", "forward" },
                 { "north", "east", "south", "west" },
                 { "enter", "exit" },
