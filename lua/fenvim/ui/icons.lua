@@ -18,7 +18,7 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
             Field = "",
             File = "",
             Folder = "",
-            Function = "󰊕",
+            Function = "󰡱",
             Interface = "",
             Key = "",
             Keyword = "",

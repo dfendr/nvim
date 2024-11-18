@@ -86,7 +86,7 @@ function M.config()
     -- List servers
 
     local lsp_servers = {
-        "fancy_lsp_servers",
+        "lsp_icon",
         cond = function()
             -- local ft = vim.opt_local.filetype:get()
             -- local count = {
@@ -96,7 +96,6 @@ function M.config()
             --     txt = true,
             --     markdown = true,
             --     vimwiki = true,
-            --     neorg = true,
             -- }
             -- return hide_in_width(80)() and count[ft] ~= nil --and hide_in_width(60))
             return hide_in_width(100)()

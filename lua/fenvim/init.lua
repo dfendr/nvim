@@ -75,15 +75,6 @@ return {
                 "kristijanhusak/vim-dadbod-ui",
                 config = function()
                     vim.g.db_ui_force_echo_notifications = 1
-                    local status_ok, cmp = pcall(require, "cmp")
-                    if status_ok then
-                        vim.api.nvim_create_autocmd("FileType", {
-                            pattern = { "sql", "mysql", "plsql" },
-                            callback = function()
-                                cmp.setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
-                            end,
-                        })
-                    end
                 end,
             },
         },
