@@ -423,8 +423,6 @@ function M.config()
         },
 
         { "<leader>o", group = "Options", nowait = true, remap = false },
-        -- { "<leader>oC", "<cmd>lua vim.g.cmp_active=true<cr>", desc = "Completion on", nowait = true, remap = false },
-        -- { "<leader>oc", "<cmd>lua vim.g.cmp_active=false<cr>", desc = "Completion off", nowait = true, remap = false },
         {
             "<leader>od",
             "<cmd>lua require('core.functions').convert_to_dos()<CR>",
