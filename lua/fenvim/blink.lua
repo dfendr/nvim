@@ -1,6 +1,7 @@
 local M = {
     "saghen/blink.cmp",
     lazy = false,
+    version = "v0.*",
     dependencies = {
         "L3MON4D3/LuaSnip", -- for snippets
         "rafamadriz/friendly-snippets", -- pre-configured snippets
