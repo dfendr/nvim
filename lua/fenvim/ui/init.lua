@@ -39,6 +39,8 @@ return {
     {
         -- dashboard
         "goolord/alpha-nvim",
+        lazy = false,
+        priority = 100,
         config = function()
             require("fenvim.ui.alpha").config()
         end,
@@ -58,19 +60,6 @@ return {
         enabled = true,
     },
 
-    {
-        -- noicer ui
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        -- enabled = not vim.g.neovide,
-        enabled = false,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("fenvim.ui.noice").config()
-        end,
-    },
     {
         -- auto resizing windows
         "anuvyklack/windows.nvim",

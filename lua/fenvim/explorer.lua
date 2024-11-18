@@ -23,7 +23,65 @@ return {
         },
     },
     cmd = "Neotree",
+
+    opts = function(_, opts)
+        local function on_move(data)
+            local ok, Snacks = pcall(require, "snacks")
+            if not Snacks then
+                print('Warning: "snacks.nvim" plugin is not installed or loaded.')
+                return
+            end
+            Snacks.rename.on_rename_file(data.source, data.destination)
+        end
+        local events = require("neo-tree.events")
+        opts.event_handlers = opts.event_handlers or {}
+        vim.list_extend(opts.event_handlers, {
+            { event = events.FILE_MOVED, handler = on_move },
+            { event = events.FILE_RENAMED, handler = on_move },
+        })
+    end,
+
     config = function()
+        -- Check if snacks.nvim is installed and loaded
+
+        local inputs = require("neo-tree.ui.inputs")
+        -- Trash the target
+        local function trash(state)
+            local node = state.tree:get_node()
+            if node.type == "message" then
+                return
+            end
+            local _, name = require("neo-tree.utils").split_path(node.path)
+            local msg = string.format("Are you sure you want to trash '%s'?", name)
+            inputs.confirm(msg, function(confirmed)
+                if not confirmed then
+                    return
+                end
+                vim.api.nvim_command("silent !trash -F " .. node.path)
+                require("neo-tree.sources.manager").refresh(state)
+            end)
+        end
+
+        -- Trash the selections (visual mode)
+        local function trash_visual(state, selected_nodes)
+            local paths_to_trash = {}
+            for _, node in ipairs(selected_nodes) do
+                if node.type ~= "message" then
+                    table.insert(paths_to_trash, node.path)
+                end
+            end
+            local msg = "Are you sure you want to trash " .. #paths_to_trash .. " items?"
+            inputs.confirm(msg, function(confirmed)
+                if not confirmed then
+                    return
+                end
+                for _, path in ipairs(paths_to_trash) do
+                    vim.api.nvim_command("silent !trash -F " .. path)
+                end
+                require("neo-tree.sources.manager").refresh(state)
+            end)
+        end
+
         require("neo-tree").setup({
             close_if_last_window = true,
             enable_git_status = true,
@@ -79,17 +137,21 @@ return {
                 position = "left",
                 width = 30,
                 mappings = {
+                    -- disable any commands by setting them to nil
                     ["<cr>"] = "open",
-                    ["o"] = "open",
-                    ["h"] = "navigate_up",
-                    ["l"] = "focus_preview",
-                    ["s"] = "open_vsplit",
+                    -- disable fuzzy finder
+                    ["/"] = "noop",
+                    ["s"] = "system_open",
+                    ["d"] = vim.fn.has("mac") == 1 and "trash" or "delete",
+                    ["u"] = "navigate_up",
+                    ["l"] = "open",
+                    ["v"] = "open_vsplit",
+                    ["h"] = "open_split",
                     ["t"] = "open_tabnew",
                     ["x"] = "cut_to_clipboard",
                     ["y"] = "copy_to_clipboard",
                     ["p"] = "paste_from_clipboard",
                     ["a"] = "add",
-                    ["d"] = "delete",
                     ["r"] = "rename",
                     ["R"] = "refresh",
                     ["C"] = "close_node",
@@ -105,6 +167,29 @@ return {
                 },
                 hijack_netrw_behavior = "open_default",
                 use_libuv_file_watcher = true,
+            },
+            commands = {
+                trash = trash,
+                trash_visual = trash_visual,
+                system_open = function(state)
+                    local node = state.tree:get_node()
+                    local path = node:get_id()
+                    if vim.fn.has("mac") == 1 then
+                        vim.fn.jobstart({ "open", path }, { detach = true })
+                    elseif vim.fn.has("unix") == 1 then
+                        vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+                    elseif vim.fn.has("win32") == 1 then
+                        -- Windows: Without removing the file from the path, it opens in code.exe instead of explorer.exe
+                        local p
+                        local lastSlashIndex = path:match("^.+()\\[^\\]*$") -- Match the last slash and everything before it
+                        if lastSlashIndex then
+                            p = path:sub(1, lastSlashIndex - 1) -- Extract substring before the last slash
+                        else
+                            p = path -- If no slash found, return original path
+                        end
+                        vim.cmd("silent !start explorer " .. p)
+                    end
+                end,
             },
             buffers = {
                 follow_current_file = { enabled = true },
