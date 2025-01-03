@@ -8,9 +8,10 @@ local M = {
         transparent = false,
         show_icons = true;
         border_style = "rounded",
-        cmp = {
+        blink_cmp = {
             completion_border = "rounded",
             documentation_border = "rounded",
+            signature_border = "rounded",
         },
         which_key = { border_style = "rounded" },
         fidget = { border_style = "none" },
