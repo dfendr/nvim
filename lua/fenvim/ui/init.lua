@@ -40,6 +40,7 @@ return {
         -- dashboard
         "goolord/alpha-nvim",
         lazy = false,
+        enabled = true,
         priority = 100,
         config = function()
             require("fenvim.ui.alpha").config()

@@ -348,7 +348,6 @@ function M.config()
         { "<leader>lF", "<cmd>LspToggleAutoFormat<cr>", desc = "Toggle Autoformat", nowait = true, remap = false },
         { "<leader>lH", "<cmd>IlluminateToggle<cr>", desc = "Toggle Doc HL", nowait = true, remap = false },
         { "<leader>lI", "<cmd>Mason<cr>", desc = "LSP Installer Info", nowait = true, remap = false },
-        { "<leader>lR", "<cmd>TroubleToggle lsp_references<cr>", desc = "References", nowait = true, remap = false },
         {
             "<leader>lS",
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
