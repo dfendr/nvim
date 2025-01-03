@@ -31,7 +31,8 @@ function M.setup_keymaps()
     map("n", "<C-w> c", ":bdelete!<CR>", opts, "Delete Buffer")
 
     -- Explorer/Tree
-    map("n", "<Leader>e", ":lua require'nvim-tree'.toggle()<CR>", opts, "Toggle Explorer")
+    map("n", "<Leader>e", "<cmd>Neotree toggle<cr>", opts, "Toggle Explorer")
+
 
     -- Resize with arrows
     map("n", "<M-Up>", ":resize +2<CR>", opts, "Increase Horizontal Size")
