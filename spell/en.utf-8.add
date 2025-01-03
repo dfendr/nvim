@@ -986,3 +986,6 @@ api
 utoipa
 OpenAPI
 structs
+AppShareLog
+AppShareCampaigns
+WINL

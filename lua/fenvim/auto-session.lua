@@ -12,7 +12,6 @@ function M.config()
     local telescope = require("telescope")
 
     local opts = {
-
         auto_restore = false,
         auto_restore_last_session = false,
         auto_save = true,
@@ -21,15 +20,6 @@ function M.config()
         log_level = "error",
         root_dir = "/Users/fen/.local/share/nvim/sessions/",
         suppressed_dirs = { "$HOME" },
-
-        auto_save_enabled = true,
-        auto_restore_enabled = false,
-        auto_session_suppress_dirs = {
-            os.getenv("HOME"),
-        },
-        auto_session_use_git_branch = nil,
-        -- the configs below are lua only
-        bypass_session_save_file_types = { "alpha" },
     }
 
     vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
