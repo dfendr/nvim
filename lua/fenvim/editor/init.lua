@@ -220,8 +220,6 @@ return {
             }
         end,
     },
-
-    { "yorickpeterse/nvim-tree-pairs", event = "BufReadPost", config = true },
     {
         -- Hex editor
         "RaafatTurki/hex.nvim",
