@@ -10,6 +10,8 @@ return {
             version = "2.*",
             config = function()
                 require("window-picker").setup({
+                    hint = 'floating-big-letter',
+                    selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                     filter_rules = {
                         include_current_win = false,
                         autoselect_one = true,
@@ -138,7 +140,7 @@ return {
                 width = 30,
                 mappings = {
                     -- disable any commands by setting them to nil
-                    ["<cr>"] = "open",
+                    ["<cr>"] = "open_with_window_picker",
                     -- disable fuzzy finder
                     ["/"] = "noop",
                     ["s"] = "system_open",
