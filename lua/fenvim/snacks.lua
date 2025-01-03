@@ -69,9 +69,9 @@ return {
             desc = "Lazygit Log (cwd)",
         },
         {
-            "<leader>cR",
+            "<leader>lR",
             function()
-                Snacks.rename()
+                Snacks.rename.rename_file()
             end,
             desc = "Rename File",
         },
