@@ -3,6 +3,8 @@ local M = {
     lazy = false, -- lazy loading handled internally
     version = "v0.*",
     dependencies = {
+        "moyiz/blink-emoji.nvim",
+        "Kaiser-Yang/blink-cmp-dictionary",
         "L3MON4D3/LuaSnip", -- for snippets
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets", -- friendly snippets
@@ -27,7 +29,10 @@ local M = {
                         return false
                     end
                 end
-                return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+                return vim.bo.buftype ~= "prompt"
+                    and vim.b.completion ~= false
+                    -- Disable in LSP rename prompts
+                    and not vim.list_contains({ "DressingInput" }, vim.bo.filetype)
             end,
             keymap = {
                 preset = "default", -- default keymap
@@ -38,11 +43,15 @@ local M = {
                 ["<CR>"] = { "accept", "fallback" },
                 ["<C-e>"] = { "hide", "fallback" },
             },
+
             snippets = {
+                preset = "luasnip",
+                -- This comes from the luasnip extra, if you don't add it, won't be able to
+                -- jump forward or backward in luasnip snippets
+                -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
                 expand = function(snippet)
                     require("luasnip").lsp_expand(snippet)
                 end,
-
                 active = function(filter)
                     if filter and filter.direction then
                         return require("luasnip").jumpable(filter.direction)
@@ -68,7 +77,7 @@ local M = {
                     draw = {
                         treesitter = { "lsp" },
                         columns = {
-                            { "label", "label_description", gap = 1 },
+                            { "label", "label_description", gap = 2 },
                             { "kind_icon", "kind", gap = 1 },
                         },
                     },
@@ -78,21 +87,67 @@ local M = {
                 window = { border = prefs.signature_border },
             },
             sources = {
-                default = { "lsp", "luasnip", "path", "snippets", "buffer", "dadbod" },
-                cmdline = {},
+                default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+                -- command line completion, thanks to dpetka2001 in reddit
+                -- https://www.reddit.com/r/neovim/comments/1hjjf21/comment/m37fe4d/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+                cmdline = function()
+                    local type = vim.fn.getcmdtype()
+                    if type == "/" or type == "?" then
+                        return { "buffer" }
+                    end
+                    if type == ":" then
+                        return { "cmdline" }
+                    end
+                    return {}
+                end,
                 providers = {
-                    luasnip = {
-                        name = "luasnip",
-                        module = "blink.compat.source",
-                        score_offset = -3,
-                        opts = {
-                            use_show_condition = false,
-                            show_autosnippets = true,
-                        },
-                    },
                     dadbod = {
                         name = "Dadbod",
                         module = "vim_dadbod_completion.blink",
+                    },
+
+                    -- https://github.com/moyiz/blink-emoji.nvim
+                    emoji = {
+                        module = "blink-emoji",
+                        name = "Emoji",
+                        score_offset = 15, -- the higher the number, the higher the priority
+                        opts = { insert = true }, -- Insert emoji (default) or complete its name
+                    },
+                    -- https://github.com/Kaiser-Yang/blink-cmp-dictionary
+                    -- In macOS to get started with a dictionary:
+                    -- cp /usr/share/dict/words ~/github/dotfiles-latest/dictionaries/words.txt
+                    --
+                    -- NOTE: For the word definitions make sure "wn" is installed
+                    -- brew install wordnet
+                    dictionary = {
+                        module = "blink-cmp-dictionary",
+                        name = "Dict",
+                        score_offset = 20, -- the higher the number, the higher the priority
+                        -- https://github.com/Kaiser-Yang/blink-cmp-dictionary/issues/2
+                        enabled = true,
+                        max_items = 8,
+                        min_keyword_length = 3,
+                        opts = {
+                            -- -- The dictionary by default now uses fzf, make sure to have it
+                            -- -- installed
+                            -- -- https://github.com/Kaiser-Yang/blink-cmp-dictionary/issues/2
+                            --
+                            -- Do not specify a file, just the path, and in the path you need to
+                            -- have your .txt files
+                            dictionary_directories = { vim.fn.expand("~/github/dotfiles-latest/dictionaries") },
+                            -- --  NOTE: To disable the definitions uncomment this section below
+                            -- separate_output = function(output)
+                            --   local items = {}
+                            --   for line in output:gmatch("[^\r\n]+") do
+                            --     table.insert(items, {
+                            --       label = line,
+                            --       insert_text = line,
+                            --       documentation = nil,
+                            --     })
+                            --   end
+                            --   return items
+                            -- end,
+                        },
                     },
                 },
             },

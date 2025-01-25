@@ -10,6 +10,11 @@ return {
         version = "*",
     },
     {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        ft = { "md", "tex" },
+    },
+    {
         -- Git Diff viewer
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
