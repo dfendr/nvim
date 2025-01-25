@@ -10,14 +10,14 @@ return {
             version = "2.*",
             config = function()
                 require("window-picker").setup({
-                    hint = 'floating-big-letter',
-                    selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                    hint = "floating-big-letter",
+                    selection_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
                     filter_rules = {
                         include_current_win = false,
                         autoselect_one = true,
                         bo = {
-                            filetype = { "neo-tree", "neo-tree-popup", "notify" },
-                            buftype = { "terminal", "quickfix" },
+                            filetype = { "fidget", "neo-tree", "neo-tree-popup", "notify" },
+                            buftype = { "fidget", "terminal", "quickfix" },
                         },
                     },
                 })
