@@ -1,15 +1,15 @@
-local status_ok, rusttools = pcall(require, "flutter-tools")
-if not status_ok then
+local flutter_ok, rusttools = pcall(require, "flutter-tools")
+if not flutter_ok then
     return
 end
 
-local status_ok, telescope = pcall(require, "telescope")
-if status_ok then
+local telescope_ok, telescope = pcall(require, "telescope")
+if telescope_ok then
     telescope.load_extension("flutter")
 end
 
-local status_ok, which_key = pcall(require, "which-key")
-if status_ok then
+local whichkey_ok, which_key = pcall(require, "which-key")
+if whichkey_ok then
     which_key.add({
     { "<localleader>", buffer = 0, group = "Dart", nowait = true, remap = false },
     { "<localleader>r", "<cmd>FlutterRun<Cr>", buffer = 0, desc = "Run", nowait = true, remap = false },
