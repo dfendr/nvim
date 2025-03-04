@@ -45,6 +45,8 @@ return {
                 { "north", "east", "south", "west" },
                 { "enter", "exit" },
                 { "entering", "exiting" },
+                { "upload", "download" },
+                { "input", "output" },
                 { "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" },
                 { "high", "low" },
                 { "relative", "absolute" },

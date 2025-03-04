@@ -102,7 +102,7 @@ git clone https://github.com/dfendr/nvim.git
 
 ### Dependencies
 
-- [Neovim](https://github.com/neovim/neovim) nightly
+- [Neovim](https://github.com/neovim/neovim) Stable
 - [NPM](https://nodejs.org/en/download/) (>= 16.0) -- for LSP
 - a [Nerd Font](https://www.nerdfonts.com/) **_(optional)_**
 
