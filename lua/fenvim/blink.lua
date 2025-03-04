@@ -1,7 +1,8 @@
 local M = {
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
-    version = "v0.*",
+    version = "*",
+    enabled = true,
     dependencies = {
         "moyiz/blink-emoji.nvim",
         "Kaiser-Yang/blink-cmp-dictionary",
@@ -73,6 +74,9 @@ local M = {
                     range = "prefix",
                 },
                 menu = {
+                    auto_show = function(ctx)
+                        return ctx.mode ~= "cmdline" or not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+                    end,
                     border = prefs.completion_border,
                     draw = {
                         treesitter = { "lsp" },
@@ -86,21 +90,21 @@ local M = {
             signature = {
                 window = { border = prefs.signature_border },
             },
+            cmdline = {
+            },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "dadbod" },
-                -- command line completion, thanks to dpetka2001 in reddit
-                -- https://www.reddit.com/r/neovim/comments/1hjjf21/comment/m37fe4d/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-                cmdline = function()
-                    local type = vim.fn.getcmdtype()
-                    if type == "/" or type == "?" then
-                        return { "buffer" }
-                    end
-                    if type == ":" then
-                        return { "cmdline" }
-                    end
-                    return {}
-                end,
+                default = { "lsp", "path", "snippets", "buffer" },
+                per_filetype = {
+                    sql = {
+                        sql = { "snippets", "dadbod", "buffer" },
+                    },
+                },
                 providers = {
+                    snippets = {
+                        name = "snippets",
+                        -- score_offset = 25
+                    },
+
                     dadbod = {
                         name = "Dadbod",
                         module = "vim_dadbod_completion.blink",
