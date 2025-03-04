@@ -1,6 +1,5 @@
 local M = {
     autocommands = {
-        convert_to_unix_formatting_on_save = false,
     },
     lsp = { show_diagnostic_signs = false },
     -- Possible Borders: [double, none, rounded, shadow, single, solid].

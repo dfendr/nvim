@@ -22,12 +22,7 @@ end
 
 vim.api.nvim_create_user_command("Bonly", close_all_buffers_except_current, {})
 
-M.load_override = function(default_table, plugin_name)
-    local user_table = M.load_config().plugins.override[plugin_name] or {}
-    user_table = type(user_table) == "table" and user_table or user_table()
-    return merge_tb("force", default_table, user_table) or {}
-end
-
+-- Used to retrieve $CONFIG/snippets path for scissors.nvim
 function M.get_snippet_path()
     local config_path = vim.loop.fs_realpath(vim.fn.stdpath("config"))
     local snippet_relative_path = { "snippets" }
@@ -35,36 +30,6 @@ function M.get_snippet_path()
     local snippet_path =
         table.concat(vim.iter({ config_path, snippet_relative_path }):flatten():totable(), path_separator)
     return snippet_path
-end
-
-function M.sniprun_enable()
-    vim.cmd([[
-    %SnipRun
-
-    augroup _sniprun
-     autocmd!
-     autocmd TextChanged * call Test()
-     autocmd TextChangedI * call TestI()
-    augroup end
-  ]])
-    vim.notify("Enabled SnipRun")
-end
-
-function M.disable_sniprun()
-    M.remove_augroup("_sniprun")
-    vim.cmd([[
-    SnipClose
-    SnipTerminate
-    ]])
-    vim.notify("Disabled SnipRun")
-end
-
-function M.toggle_sniprun()
-    if vim.fn.exists("#_sniprun#TextChanged") == 0 then
-        M.sniprun_enable()
-    else
-        M.disable_sniprun()
-    end
 end
 
 function M.remove_augroup(name)
@@ -98,14 +63,8 @@ function M.toggle_tabline()
     vim.notify("showtabline" .. " set to " .. tostring(value))
 end
 
-local diagnostics_active = true
 function M.toggle_diagnostics()
-    diagnostics_active = not diagnostics_active
-    if diagnostics_active then
-        vim.diagnostic.disable()
-    else
-        vim.diagnostic.enable()
-    end
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end
 
 function M.isempty(s)

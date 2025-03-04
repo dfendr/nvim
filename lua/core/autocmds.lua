@@ -8,36 +8,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- -- Relative number toggle, only in Normal mode
--- vim.api.nvim_create_augroup("RelativeNumberToggle", { clear = true })
---
--- vim.api.nvim_create_autocmd("InsertEnter", {
---     group = "RelativeNumberToggle",
---     callback = function()
---         -- Check if the current window is a floating window
---         local winid = vim.api.nvim_get_current_win()
---         local config = vim.api.nvim_win_get_config(winid)
---         if config.zindex ~= nil then
---             -- If it's a floating window, do nothing
---             return
---         end
---
---         -- otherwise check if its a specific filetype
---         if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
---             vim.o.relativenumber = false
---         end
---     end,
--- })
-
--- vim.api.nvim_create_autocmd("InsertLeave", {
---     group = "RelativeNumberToggle",
---     callback = function()
---         if not vim.tbl_contains({ "help", "alpha", "qf" }, vim.bo.filetype) then
---             vim.o.relativenumber = true
---         end
---     end,
--- })
-
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPre", {
     pattern = "*",
@@ -83,18 +53,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
-if require("core.prefs").autocommands.convert_to_unix_formatting_on_save then
-    -- Automatically convert to unix formatting on save
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        pattern = "*",
-        callback = function(event)
-            local cursor_position = vim.api.nvim_win_get_cursor(0)
-            vim.api.nvim_command("%s/\\r//ge") -- replace the \s with \r to remove ^M
-            vim.api.nvim_win_set_cursor(0, cursor_position)
-        end,
-    })
-end
-
 -- These two stop vim from adding comment strings when
 -- pressing enter on comment strings in Insert mode.
 vim.cmd("autocmd BufEnter * set formatoptions-=cro")
@@ -120,16 +78,6 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     end,
 })
 
--- create directories when needed, when saving a file
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("better_backup", { clear = true }),
-    callback = function(event)
-        local file = vim.loop.fs_realpath(event.match) or event.match
-        local backup = vim.fn.fnamemodify(file, ":p:~:h")
-        backup = backup:gsub("[/\\]", "%%")
-        vim.go.backupext = backup
-    end,
-})
 
 -- Fix conceallevel for json & help files
 vim.api.nvim_create_autocmd({ "FileType" }, {
