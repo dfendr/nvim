@@ -52,6 +52,7 @@ return {
                 { "relative", "absolute" },
                 { "continuous", "discrete" },
                 { "before", "after" },
+                { "pass", "fail" },
                 {
                     "alpha",
                     "beta",
@@ -88,6 +89,7 @@ return {
                 { "starts", "stops" },
                 { "tac", "tac", "toe" },
                 { "up", "down" },
+                { "activated", "deactivated" },
             },
         },
     },

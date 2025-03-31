@@ -3,7 +3,7 @@ local M = {
     event = "BufReadPost",
     dependencies = {
         "jbyuki/one-small-step-for-vimkind",
-        {"rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio"},
+        { "rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio" },
         "theHamsta/nvim-dap-virtual-text",
         "williamboman/mason.nvim",
         {
@@ -114,10 +114,13 @@ function M.config()
 
     local icons = require("fenvim.ui.icons")
 
-    vim.fn.sign_define(
-        "DapBreakpoint",
-        { text = icons.ui.Bug, texthl = "DiagnosticSignError", linehl = "", numhl = "" }
-    )
+    vim.diagnostic.config({
+        signs = {
+            text = {
+                DapBreakpoint = icons.ui.Bug,
+            },
+        },
+    })
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open({})
