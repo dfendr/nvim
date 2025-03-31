@@ -8,23 +8,33 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.setup = function()
     if settings.lsp.show_diagnostic_signs then
         local icons = require("fenvim.ui.icons")
-        local signs = {
-            { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-            { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-            { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-            { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-        }
-        for _, sign in ipairs(signs) do
-            vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-        end
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+                    [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+                    [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+                    [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+                },
+            },
+        })
     else
-        vim.fn.sign_define(
-            "DiagnosticSignError",
-            { texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticError" }
-        )
-        vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticWarn" })
-        vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticHint" })
-        vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "", numhl = "DiagnosticInfo" })
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.HINT] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                },
+            },
+            numhl = {
+                [vim.diagnostic.severity.ERROR] = "DiagnosticError",
+                [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+                [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+                [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+            },
+        })
     end
 
     local config = {
@@ -145,7 +155,7 @@ M.on_attach = function(client, bufnr)
 
     lsp_keymaps(bufnr)
 
-    if client.supports_method("textDocument/inlayHint") then
+    if client:supports_method("textDocument/inlayHint") then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
 end
