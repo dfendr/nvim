@@ -7,7 +7,7 @@ return {
 
         conform.formatters.stylua = { prepend_args = { "--indent-type", "Spaces" } }
         -- conform.formatters.prettier = { prepend_args = { "--tab-width", "2" } }
-        conform.formatters.black = { prepend_args = { "--line-length", "79" } }
+        conform.formatters.black = { prepend_args = { "--line-length", "79", "--fast" } }
 
         conform.formatters["clang-format"] = {
             prepend_args = {
