@@ -53,23 +53,11 @@ M.setup = function()
             source = "if_many", -- Or "always"
             header = "",
             prefix = "",
-            width = 40,
+            -- width = 40,
         },
     }
 
     vim.diagnostic.config(config)
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = require("core.prefs").ui.border_style,
-        --     -- width = 60,
-        --     -- height = 30,
-    })
-    --
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = require("core.prefs").ui.border_style,
-        -- width = 60,
-        -- height = 30,
-    })
 end
 
 local function lsp_keymaps(bufnr)
@@ -97,7 +85,15 @@ local function lsp_keymaps(bufnr)
 
     -- Non-Telescope LSP mappings
     map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts, "Go To Declaration", bufnr)
-    map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, "Hover Documentation", bufnr)
+    map(
+        "n",
+        "gh",
+        -- TODO: Find an alternative to this
+        "<cmd>lua vim.lsp.buf.hover({border = require('core.prefs').ui.border_style})<CR>",
+        opts,
+        "Hover Documentation",
+        bufnr
+    )
     map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Show Line Diagnostics", bufnr)
     map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Show Signature Help", bufnr)
     map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
