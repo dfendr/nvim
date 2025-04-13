@@ -18,7 +18,7 @@ function M.config()
         bypass_save_filetypes = { "alpha" },
         enabled = false,
         log_level = "error",
-        root_dir = "/Users/fen/.local/share/nvim/sessions/",
+        root_dir = "~/.local/share/nvim/sessions/",
         suppressed_dirs = { "$HOME" },
     }
 
