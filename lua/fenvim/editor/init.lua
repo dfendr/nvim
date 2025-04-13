@@ -309,17 +309,26 @@ return {
                         insertNextPlaceholder = "<C-t>", -- insert & normal mode
                     },
                 },
-                telescope = {
-                    -- By default, the query only searches snippet prefixes. Set this to
-                    -- `true` to also search the body of the snippets.
-                    alsoSearchSnippetBody = false,
+                snippetSelection = {
+                    telescope = {
+                        -- By default, the query only searches snippet prefixes. Set this to
+                        -- `true` to also search the body of the snippets.
+                        alsoSearchSnippetBody = false,
+                    },
+                    -- `none` writes as a minified json file using `vim.encode.json`.
+                    -- `yq`/`jq` ensure formatted & sorted json files, which is relevant when
+                    -- you version control your snippets.
+                    jsonFormatter = "none", -- "yq"|"jq"|"none"
                 },
-                -- `none` writes as a minified json file using `vim.encode.json`.
-                -- `yq`/`jq` ensure formatted & sorted json files, which is relevant when
-                -- you version control your snippets.
-                jsonFormatter = "none", -- "yq"|"jq"|"none"
             })
         end,
+    },
+    {
+        "stevearc/quicker.nvim",
+        event = "FileType qf",
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {},
     },
     {
         "linux-cultist/venv-selector.nvim",
