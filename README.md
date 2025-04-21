@@ -15,19 +15,19 @@
 - Created for Neovim 0.10
 - Linux/macOS.
 
-## Features 🌲
+## Features
 
-- 🧩 Modular Format
-- 💤 Automatic plugin installation (and lazy loading!) via `lazy.vim`
-- 🌅 Daytime/Nighttime changes (statusbar icons and dashboard) 🌔
-- 🤏 Size aware, dynamically changes UI elements when resized.
-- 📄 Per filetype shortcuts accessed with `<leader> L`
-- 🌐 Automatic LSP integrations via `Mason`, with modular format for adding LSP
-  options per server.
-- 🏃 Quick-run files with `<leader>rr` using `Coderunner.nvim`
-- 🐛 Quick DAP setup with `mason-nvim-dap.nvim`, meaning easy debugging!
-- ☁️ Database Explorer via dadbod-vim!
-- 🤔 No need to remember _all_ keybinds, `<leader>` pops up a helpful keybind
+- Modular Format
+- Automatic plugin installation (and lazy loading!) via `lazy.vim`
+- Daytime/Nighttime changes (statusbar icons and dashboard) 🌔
+- Size aware, dynamically changes UI elements when resized.
+- Per filetype shortcuts accessed with `<leader> L`
+- Automatic LSP integrations via `Mason`, with modular format for adding LSP
+  tions per server.
+- Quick-run files with `<leader>rr` using `Coderunner.nvim`
+- Quick DAP setup with `mason-nvim-dap.nvim`, meaning easy debugging!
+- Database Explorer via dadbod-vim!
+- No need to remember _all_ keybinds, `<leader>` pops up a helpful keybind
   guide, provided by `which-key.nvim`
 
 ### Already Supported Language (e.g. Languages I use with Fenvim)
@@ -53,7 +53,7 @@
 | ✅  | Supported |
 | 🌀  | Linting   |
 
-## 🌟 Showcase
+##  Showcase
 
 <details>
 <summary>Dashboard</summary>

@@ -997,3 +997,9 @@ Microcontrollers
 QFP
 QFN
 SMT
+archivable
+UserResults
+PrimaryTestID
+ICP
+LiDAR
+TestStatusUpdater
