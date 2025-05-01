@@ -359,4 +359,19 @@ function M.create_gradient(start, finish, steps)
     return gradient
 end
 
+
+function M.update_fenvim()
+  local cmd = "cd ~/.config/nvim && git pull"
+  vim.fn.jobstart(cmd, {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    on_stdout = function(_, data)
+      if data then vim.notify(table.concat(data, "\n"), vim.log.levels.INFO, { title = "fenvim update" }) end
+    end,
+    on_stderr = function(_, data)
+      if data then vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, { title = "fenvim update error" }) end
+    end,
+  })
+end
+
 return M
