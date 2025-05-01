@@ -5,7 +5,11 @@ return {
         lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            require("fenvim.colorscheme.fenbox").config()
+            if vim.env.SSH_CONNECTION or vim.env.SSH_CLIENT then
+                vim.cmd("colorscheme retrobox")
+            else
+                require("fenvim.colorscheme.fenbox").config()
+            end
         end,
     },
     { "Shatur/neovim-ayu" },
