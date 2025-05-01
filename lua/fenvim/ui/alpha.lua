@@ -212,7 +212,12 @@ function M.config()
                 button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
                 -- button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                 button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
-                button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
+                button("u", icons.ui.CloudDownload .. " Update Packages", ":Lazy update<CR>"),
+                button(
+                    "U",
+                    icons.ui.CloudDownload .. " Update fenvim",
+                    ":lua require('core.functions').update_fenvim()<CR>"
+                ),
                 button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
             },
             opts = {
