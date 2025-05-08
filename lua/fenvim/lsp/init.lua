@@ -39,9 +39,9 @@ return {
         event = "BufReadPre",
     },
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         dependencies = {
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason-lspconfig.nvim",
         },
         event = "VeryLazy",
         config = function()
