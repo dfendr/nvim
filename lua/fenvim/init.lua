@@ -13,7 +13,7 @@ return {
         "mcauley-penney/visual-whitespace.nvim",
         config = true,
         opts = {
-            highlight = { fg = "#928374", bg = "#504945"},
+            highlight = { fg = "#928374", bg = "#504945" },
             space_char = "·",
             tab_char = "→",
             nl_char = "↲",
@@ -106,5 +106,9 @@ return {
         cmd = "Screenkey",
         config = true,
         opts = { win_opts = { border = require("core.prefs").ui.border_style } },
+    },
+    {
+        "dundalek/bloat.nvim",
+        cmd = "Bloat",
     },
 }
