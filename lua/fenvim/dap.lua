@@ -5,10 +5,10 @@ local M = {
         "jbyuki/one-small-step-for-vimkind",
         { "rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio" },
         "theHamsta/nvim-dap-virtual-text",
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         {
             "jay-babu/mason-nvim-dap.nvim",
-            dependencies = "williamboman/mason.nvim",
+            dependencies = "mason-org/mason.nvim",
             config = function()
                 require("mason-nvim-dap").setup({
                     ensure_installed = {
