@@ -90,8 +90,7 @@ local M = {
             signature = {
                 window = { border = prefs.signature_border },
             },
-            cmdline = {
-            },
+            cmdline = {},
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
                 per_filetype = {
