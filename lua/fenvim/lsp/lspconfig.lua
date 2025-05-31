@@ -21,7 +21,7 @@ function M.config()
     capabilities = blink_cmp.get_lsp_capabilities(capabilities)
 
     -- configure servers with enhanced capabilities
-    local servers = { "ts_ls", "clangd", "pyright" } -- add or modify server list
+    local servers = { "ts_ls", "pyright" } -- add or modify server list
     for _, server in ipairs(servers) do
         lspconfig[server].setup({
             capabilities = capabilities,
