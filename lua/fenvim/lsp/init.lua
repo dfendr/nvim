@@ -29,7 +29,7 @@ return {
         },
 
         config = function()
-            require("fenvim.lsp.lspconfig").config()
+            require("fenvim.lsp.lspconfig").init_lsp()
         end,
     },
     -- },

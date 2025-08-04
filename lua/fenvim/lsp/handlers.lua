@@ -58,6 +58,7 @@ M.setup = function()
     }
 
     vim.diagnostic.config(config)
+
 end
 
 local function lsp_keymaps(bufnr)
