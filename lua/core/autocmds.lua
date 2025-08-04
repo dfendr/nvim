@@ -53,10 +53,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
--- These two stop vim from adding comment strings when
+-- stop auto-add comment strings when
 -- pressing enter on comment strings in Insert mode.
-vim.cmd("autocmd BufEnter * set formatoptions-=cro")
-vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end,
+})
 
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
@@ -68,6 +71,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
         end
     end,
 })
+
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     callback = function()
         local cl = vim.wo.cursorline
@@ -77,7 +81,6 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
         end
     end,
 })
-
 
 -- Fix conceallevel for json & help files
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -90,7 +93,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- Big File Mode
 local group = vim.api.nvim_create_augroup("LargeFileAutocmds", {})
-
 vim.api.nvim_create_autocmd({ "BufReadPre" }, {
     group = group,
     callback = function(ev)

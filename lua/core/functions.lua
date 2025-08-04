@@ -175,46 +175,9 @@ function M.code_action()
     end
 end
 
--- Keybind function shortcut
 function M.map(mode, key, cmd, opts, desc, bufnr)
-    local options = {}
-    if type(desc) == "table" then
-        opts = vim.tbl_extend("force", opts, desc)
-    else
-        if type(desc) == "string" then
-            options.desc = desc
-        end
-    end
-
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-
-    -- Check if cmd is a function and attach as a callback
-    if type(cmd) == "function" then
-        options.callback = cmd
-        cmd = ""
-    end
-
-    vim.api.nvim_set_keymap(mode, key, cmd, options)
-
-    -- Check if whichkey is available and a description is provided
-    if pcall(require, "which-key") and type(desc) == "string" then
-        local wk = require("which-key")
-        local wk_opts = {
-            mode = mode, -- NORMAL, VISUAL, INSERT, etc.
-            prefix = "",
-            buffer = bufnr, -- nil == Global
-            silent = true,
-            noremap = true,
-            nowait = true,
-        }
-        local mappings = {
-            [key] = { cmd, desc },
-        }
-        wk.add({ key, cmd, desc = desc }, { mode = mode })
-        -- wk.register(mappings, wk_opts)
-    end
+    local options = vim.tbl_extend("force", opts or {}, { desc = desc, buffer = bufnr })
+    vim.keymap.set(mode, key, cmd, options)
 end
 
 function M.toggle_inlay_hints()

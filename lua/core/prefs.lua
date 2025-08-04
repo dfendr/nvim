@@ -1,11 +1,10 @@
 local M = {
-    autocommands = {
-    },
+    autocommands = {},
     lsp = { show_diagnostic_signs = false },
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
         transparent = false,
-        show_icons = true;
+        show_icons = true,
         border_style = "rounded",
         blink_cmp = {
             completion_border = "rounded",
