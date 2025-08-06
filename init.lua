@@ -1,7 +1,6 @@
 ----------------------------------------------[[ Bootstrap Lazy ]]
 
-
-require("utils/lazy_bootstrap") -- bootstraps folke/lazy
+require("utils/lazy_bootstrap")
 
 ----------------------------------------------[[  User Settings ]]
 
