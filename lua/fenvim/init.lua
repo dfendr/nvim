@@ -1,6 +1,9 @@
+local F = require("core.functions")
+
 return {
+    F.require_child_module("snacks"),
     {
-        -- Document Generator
+        -- Comment Doc Generator
         "danymat/neogen",
         event = "VeryLazy",
         config = function()
@@ -8,22 +11,6 @@ return {
         end,
         dependencies = "nvim-treesitter/nvim-treesitter",
         version = "*",
-    },
-    {
-        "mcauley-penney/visual-whitespace.nvim",
-        config = true,
-        opts = {
-            highlight = { fg = "#928374", bg = "#504945" },
-            space_char = "·",
-            tab_char = "→",
-            nl_char = "↲",
-            cr_char = "←",
-            enabled = true,
-            excluded = {
-                filetypes = {},
-                buftypes = {},
-            },
-        },
     },
     {
         "HakonHarnes/img-clip.nvim",
