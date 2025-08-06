@@ -35,18 +35,6 @@ function M.config()
     -- require Rule function
     npairs.add_rules({
 
-        -- Rule('**', '**', 'markdown')
-        --      :with_pair(cond.before_regex_check('%S', 1))
-        --      :with_pair(cond.after_regex_check('%S', 1))
-        --      :with_move(cond.none())
-        --      :with_del(cond.none()),
-        --
-        -- Rule('_', '_', 'markdown')
-        --     :with_pair(cond.before_regex_check('%S', 1))
-        --     :with_pair(cond.after_regex_check('%S', 1))
-        --     :with_move(cond.none())
-        --     :with_del(cond.none()),
-
         -- Arrow key for js (item)=> -> (item)=> { } --
         Rule("%(.*%)%s*%=>$", " {  }", { "typescript", "typescriptreact", "javascript" })
             :use_regex(true)

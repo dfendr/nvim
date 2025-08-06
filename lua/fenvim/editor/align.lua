@@ -5,7 +5,6 @@ function M.config()
     if not present then
         return
     end
-    -- No need to copy this inside `setup()`. Will be used automatically.
     align.setup({
         -- Module mappings. Use `''` (empty string) to disable one.
         mappings = {
