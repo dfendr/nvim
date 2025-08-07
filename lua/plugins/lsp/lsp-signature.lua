@@ -5,7 +5,7 @@ function M.config()
         return
     end
 
-    local icons = require("fenvim.ui.icons")
+    local icons = require("plugins.ui.icons")
 
     local cfg = {
         debug = false, -- set to true to enable debug logging

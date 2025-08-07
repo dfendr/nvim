@@ -7,7 +7,7 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 M.setup = function()
     if settings.lsp.show_diagnostic_signs then
-        local icons = require("fenvim.ui.icons")
+        local icons = require("plugins.ui.icons")
         vim.diagnostic.config({
             signs = {
                 text = {
@@ -144,8 +144,8 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    require("fenvim.lsp.utils").setup_document_symbols(client, bufnr)
-    require("fenvim.lsp.utils").setup_codelens_refresh(client, bufnr)
+    require("plugins.lsp.utils").setup_document_symbols(client, bufnr)
+    require("plugins.lsp.utils").setup_codelens_refresh(client, bufnr)
 
     -- Don't use semantic tokens
     -- client.server_capabilities.semanticTokensProvider = nil
@@ -180,7 +180,7 @@ function M.toggle_format_on_save()
     end
 end
 
-vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("fenvim.lsp.handlers").toggle_format_on_save()' ]])
+vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("plugins.lsp.handlers").toggle_format_on_save()' ]])
 
 function M.remove_augroup(name)
     if vim.fn.exists("#" .. name) == 1 then

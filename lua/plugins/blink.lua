@@ -12,7 +12,7 @@ local M = {
         { "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
     },
     opts = function()
-        local kind_icons = require("fenvim.ui.icons").kind
+        local kind_icons = require("plugins.ui.icons").kind
         local prefs = require("core.prefs").ui.blink_cmp
 
         return {

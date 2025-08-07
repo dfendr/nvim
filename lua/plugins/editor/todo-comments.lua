@@ -24,7 +24,7 @@ function M.config()
     -- INFO:
     -- This is a strange one
 
-    local icons = require("fenvim.ui.icons")
+    local icons = require("plugins.ui.icons")
     local error_red = "#F44747"
     local warning_orange = "#ff8800"
     local info_yellow = "#FFCC66"

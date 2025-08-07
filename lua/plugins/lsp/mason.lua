@@ -25,8 +25,8 @@ end
 
 function M.config()
     local opts = {
-        on_attach = require("fenvim.lsp.handlers").on_attach,
-        capabilities = require("fenvim.lsp.handlers").capabilities,
+        on_attach = require("plugins.lsp.handlers").on_attach,
+        capabilities = require("plugins.lsp.handlers").capabilities,
     }
 
     require("mason").setup({

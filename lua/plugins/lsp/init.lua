@@ -29,7 +29,7 @@ return {
         },
 
         config = function()
-            require("fenvim.lsp.lspconfig").init_lsp()
+            require("plugins.lsp.lspconfig").init_lsp()
         end,
     },
     -- },
@@ -45,14 +45,14 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            require("fenvim.lsp.mason").config()
+            require("plugins.lsp.mason").config()
         end,
     },
     {
         "stevearc/conform.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("fenvim.lsp.formatting").config()
+            require("plugins.lsp.formatting").config()
         end,
     },
 
@@ -60,7 +60,7 @@ return {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("fenvim.lsp.linting").config()
+            require("plugins.lsp.linting").config()
         end,
     },
     {
@@ -86,8 +86,8 @@ return {
             if status_ok then
                 telescope.load_extension("flutter")
             end
-            local on_attach = require("fenvim.lsp.handlers").on_attach
-            local capabilities = require("fenvim.lsp.handlers").capabilities
+            local on_attach = require("plugins.lsp.handlers").on_attach
+            local capabilities = require("plugins.lsp.handlers").capabilities
 
             require("flutter-tools").setup({
                 lsp = {

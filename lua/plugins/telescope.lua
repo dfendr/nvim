@@ -24,7 +24,7 @@ function M.config()
     end
 
     local actions = require("telescope.actions")
-    local icons = require("fenvim.ui.icons")
+    local icons = require("plugins.ui.icons")
 
     telescope.setup({
         defaults = {
