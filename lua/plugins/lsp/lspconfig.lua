@@ -105,7 +105,7 @@ function M.init_lsp()
         end)
     end
 
-    require("fenvim.lsp.handlers").setup()
+    require("plugins.lsp.handlers").setup()
 end
 
 

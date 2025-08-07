@@ -12,7 +12,7 @@ function M.config()
         use_diagnostic_signs = prefs.lsp.show_diagnostic_signs
     end
 
-    local icons = require("fenvim.ui.icons")
+    local icons = require("plugins.ui.icons")
 
     trouble.setup({
         position = "bottom", -- position of the list can be: bottom, top, left, right

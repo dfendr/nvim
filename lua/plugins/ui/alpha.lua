@@ -38,7 +38,7 @@ return {
         local marginTopPercent = 0.05
         local headerPadding = fn.max({ 2, fn.floor(fn.winheight(0) * marginTopPercent) })
 
-        local icons = require("fenvim.ui.icons")
+        local icons = require("plugins.ui.icons")
         local daylight = require("core.functions").daylight()
         local header_hl_group = "@label"
         if daylight then
@@ -211,8 +211,8 @@ return {
                     button("u", icons.ui.CloudDownload .. " Update Packages", ":Lazy update<CR>"),
                     button(
                         "U",
-                        icons.ui.CloudDownload .. " Update fenvim",
-                        ":lua require('core.functions').update_fenvim()<CR>"
+                        icons.ui.CloudDownload .. " Update Fenvim",
+                        ":lua require('core.functions').update_plugins()<CR>"
                     ),
                     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
                 },

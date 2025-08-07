@@ -9,7 +9,7 @@ return {
         "windwp/nvim-autopairs",
         event = "BufReadPost",
         config = function()
-            require("fenvim.editor.autopairs").config()
+            require("plugins.editor.autopairs").config()
         end,
     },
     { "folke/neoconf.nvim" },
@@ -25,7 +25,7 @@ return {
         branch = "stable",
         event = "BufReadPost",
         config = function()
-            require("fenvim.editor.align").config()
+            require("plugins.editor.align").config()
         end,
     },
     {
@@ -99,7 +99,7 @@ return {
         main = "ibl",
         event = "BufReadPost",
         config = function()
-            require("fenvim.editor.indent-blankline").config()
+            require("plugins.editor.indent-blankline").config()
         end,
     },
     {
@@ -117,7 +117,7 @@ return {
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            require("fenvim.editor.toggleterm").config()
+            require("plugins.editor.toggleterm").config()
         end,
     },
     {
@@ -125,7 +125,7 @@ return {
         event = "VeryLazy",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            require("fenvim.editor.coderunner").config()
+            require("plugins.editor.coderunner").config()
         end,
     },
     {
@@ -149,14 +149,14 @@ return {
             },
         },
         config = function()
-            require("fenvim.editor.todo-comments").config()
+            require("plugins.editor.todo-comments").config()
         end,
     },
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
         config = function()
-            require("fenvim.editor.trouble").config()
+            require("plugins.editor.trouble").config()
         end,
     },
     {
@@ -273,7 +273,7 @@ return {
         "kevinhwang91/nvim-ufo",
         dependencies = "kevinhwang91/promise-async",
         config = function()
-            require("fenvim.editor.ufo").config()
+            require("plugins.editor.ufo").config()
         end,
     },
     {
