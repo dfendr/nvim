@@ -112,7 +112,7 @@ function M.config()
         },
     })
 
-    local icons = require("fenvim.ui.icons")
+    local icons = require("plugins.ui.icons")
 
     vim.diagnostic.config({
         signs = {

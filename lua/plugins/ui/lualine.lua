@@ -20,7 +20,7 @@ return {
         end
 
         local function diff_source()
-            local gitsigns = require("fenvim.ui.icons").git
+            local gitsigns = require("plugins.ui.icons").git
             if gitsigns then
                 return {
                     added = gitsigns.Add,

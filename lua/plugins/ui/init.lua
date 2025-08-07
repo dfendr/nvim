@@ -9,5 +9,4 @@ return {
     F.require_child_module("lualine"),
     F.require_child_module("scrollbar"),
     F.require_child_module("windows"),
-
 }

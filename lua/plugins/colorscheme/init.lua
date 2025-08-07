@@ -8,7 +8,7 @@ return {
             if vim.env.SSH_CONNECTION or vim.env.SSH_CLIENT then
                 vim.cmd("colorscheme retrobox")
             else
-                require("fenvim.colorscheme.fenbox").config()
+                require("plugins.colorscheme.fenbox").config()
             end
         end,
     },
@@ -17,7 +17,7 @@ return {
     {
         "xiyaowong/transparent.nvim",
         enabled = require("core.prefs").ui.transparent,
-        config = require("fenvim.colorscheme.transparency").config(),
+        config = require("plugins.colorscheme.transparency").config(),
     },
     {
         "f-person/auto-dark-mode.nvim",
