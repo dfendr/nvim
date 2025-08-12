@@ -1,7 +1,6 @@
 local F = require("core.functions")
 
 return {
-    F.require_child_module("snacks"),
     {
         -- Comment Doc Generator
         "danymat/neogen",
@@ -68,7 +67,7 @@ return {
         opts = { clipboard = true, browser = true },
         cmd = { "TrozoUploadSelection", "TrozoUploadFile" },
         keys = function()
-            local map = require("core.functions").map
+            local map = F.map
 
             -- Set key mappings for scissors plugin using custom map function
             map("x", "<leader>ac", "<cmd>TrozoUploadSelection<CR>", {}, "Upload Code Selection")
