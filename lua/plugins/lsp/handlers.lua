@@ -37,11 +37,11 @@ M.setup = function()
         })
     end
 
-    local config = {
+    vim.diagnostic.config({
         -- disable virtual text
         on_attach_callback = nil,
         on_init_callback = nil,
-        virtual_lines = false,
+        virtual_lines = true,
         virtual_text = false,
         update_in_insert = false,
         underline = true,
@@ -55,10 +55,7 @@ M.setup = function()
             prefix = "",
             -- width = 40,
         },
-    }
-
-    vim.diagnostic.config(config)
-
+    })
 end
 
 local function lsp_keymaps(bufnr)

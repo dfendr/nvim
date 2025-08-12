@@ -1,8 +1,3 @@
-local using_neovide = false
-if vim.g.neovide then
-    using_neovide = true
-end
-
 return {
     {
         -- Auto bracket pairs

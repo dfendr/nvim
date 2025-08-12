@@ -1,13 +1,14 @@
 return {
     "folke/snacks.nvim",
     priority = 1000,
+    enabled = false,
     lazy = false,
     -- @type snacks.Config
     opts = {
         bigfile = { enabled = true },
-        dashboard = { enabled = true },
-        explorer = { enabled = true },
-        indent = { enabled = true },
+        dashboard = { enabled = false },
+        explorer = { enabled = false },
+        indent = { enabled = false },
         image = {
             -- define these here, so that we don't need to load the image module
             formats = {
@@ -29,8 +30,8 @@ return {
             },
         },
         input = { enabled = true },
-        picker = { enabled = true },
-        notifier = { enabled = true },
+        picker = { enabled = false },
+        notifier = { enabled = false },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = true },
