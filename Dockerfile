@@ -59,7 +59,7 @@ USER ${USERNAME}
 # Add Starship initialization to .zshrc
 RUN echo 'eval "$(starship init zsh)"' >> /home/${USERNAME}/.zshrc
 
-# Clone Fenvim configuration and install lazy +
+# Clone plugins configuration and install lazy +
 RUN git clone --depth 1 https://github.com/dfendr/nvim /home/${USERNAME}/.config/nvim && \
     git clone --depth 1 --filter=blob:none --branch=stable https://github.com/folke/lazy.nvim.git /home/${USERNAME}/.local/share/nvim && \
     nvim --headless -c "let &runtimepath.=','.string(\"/home/$( whoami )/.local/share/nvim\") | quit"
@@ -68,5 +68,5 @@ RUN git clone --depth 1 https://github.com/dfendr/nvim /home/${USERNAME}/.config
 ENV TERM xterm-256color
 
 
-# Set the entrypoint to pull updates from the Fenvim repository and start Neovim
+# Set the entrypoint to pull updates from the plugins repository and start Neovim
 ENTRYPOINT ["zsh", "-c", "git -C /home/${USERNAME}/.config/nvim pull && exec nvim \"$@\"", "--"]

@@ -24,7 +24,7 @@ return {
             notification = {
                 window = {
                     normal_hl = "Comment",
-                    winblend = 0,
+                    winblend = 6,
                     border = border_style,
                     zindex = 45,
                     max_width = 0,
@@ -41,4 +41,3 @@ return {
         })
     end,
 }
-
