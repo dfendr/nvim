@@ -1,7 +1,7 @@
 local M = {
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
-    version = "1.0",
+    version = "1.*",
     enabled = true,
     dependencies = {
         "moyiz/blink-emoji.nvim",
