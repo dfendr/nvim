@@ -1,10 +1,17 @@
 local M = {}
 
-local tbl = require("utils.table")
+-- minimal helper to avoid external utils dependency
+local function find_first(list, predicate)
+    if not list or not predicate then return nil end
+    for _, v in pairs(list) do
+        if predicate(v) then return v end
+    end
+    return nil
+end
 
 function M.is_client_active(name)
     local clients = vim.lsp.get_clients()
-    return tbl.find_first(clients, function(client)
+    return find_first(clients, function(client)
         return client.name == name
     end)
 end
