@@ -21,17 +21,7 @@ return {
         },
         { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     },
-    {
-        "neovim/nvim-lspconfig",
-        event = "BufReadPre",
-        dependencies = {
-            "akinsho/flutter-tools.nvim",
-        },
-
-        config = function()
-            require("plugins.lsp.lspconfig").init_lsp()
-        end,
-    },
+    -- Neovim 0.11+ built-in LSP (no nvim-lspconfig)
     -- },
     {
         url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -46,6 +36,8 @@ return {
         event = "VeryLazy",
         config = function()
             require("plugins.lsp.mason").config()
+            -- Start built-in LSP servers via vim.lsp.start
+            require("plugins.lsp.builtin").setup()
         end,
     },
     {
