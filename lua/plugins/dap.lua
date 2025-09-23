@@ -176,6 +176,7 @@ function M.config()
 
     dap.configurations.c = {
         {
+            name = "c_debugger",
             type = "codelldb",
             request = "launch",
             program = function()
