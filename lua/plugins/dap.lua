@@ -17,8 +17,6 @@ local M = {
                         "codelldb",
                         "javascript",
                         "cppdbg",
-                        "node2",
-                        "chrome",
                         "firefox",
                         "bash",
                         "coreclr",

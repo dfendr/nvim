@@ -378,7 +378,13 @@ function M.config()
             nowait = true,
             remap = false,
         },
-        { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info", nowait = true, remap = false },
+        {
+            "<leader>li",
+            '<cmd>lua require("core.functions").show_lsp_info()<cr>',
+            desc = "Info",
+            nowait = true,
+            remap = false,
+        },
         { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", nowait = true, remap = false },
         { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Outline", nowait = true, remap = false },
         {
