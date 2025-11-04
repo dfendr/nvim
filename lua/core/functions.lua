@@ -185,6 +185,62 @@ function M.toggle_inlay_hints()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
 end
 
+function M.show_lsp_info()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+
+    if not clients or vim.tbl_isempty(clients) then
+        vim.notify("No LSP clients attached to this buffer", vim.log.levels.INFO, { title = "LSP Info" })
+        return
+    end
+
+    local lines = { "# Active LSP clients", "" }
+    local capability_labels = {
+        completionProvider = "completion",
+        hoverProvider = "hover",
+        definitionProvider = "definitions",
+        referencesProvider = "references",
+        renameProvider = "rename",
+        codeActionProvider = "code actions",
+        documentFormattingProvider = "formatting",
+        documentSymbolProvider = "doc symbols",
+        signatureHelpProvider = "signature help",
+    }
+
+    for _, client in ipairs(clients) do
+        table.insert(lines, string.format("• %s (id %d)", client.name, client.id))
+
+        local root_dir = client.config and client.config.root_dir
+        if root_dir and root_dir ~= "" then
+            table.insert(lines, "  root: " .. root_dir)
+        end
+
+        local folders = {}
+        if client.workspace_folders then
+            for _, folder in ipairs(client.workspace_folders) do
+                table.insert(folders, folder.name or vim.uri_to_fname(folder.uri))
+            end
+        end
+        if #folders > 0 then
+            table.insert(lines, "  workspace: " .. table.concat(folders, ", "))
+        end
+
+        local capabilities = {}
+        for key, label in pairs(capability_labels) do
+            if client.server_capabilities and client.server_capabilities[key] then
+                table.insert(capabilities, label)
+            end
+        end
+        if #capabilities > 0 then
+            table.insert(lines, "  capabilities: " .. table.concat(capabilities, ", "))
+        end
+
+        table.insert(lines, "")
+    end
+
+    vim.lsp.util.open_floating_preview(lines, "markdown", { border = "rounded" })
+end
+
 function M.toggle_treesitter_local()
     local current_buf = vim.api.nvim_get_current_buf()
 
