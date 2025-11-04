@@ -100,7 +100,17 @@ function M.setup()
           local existing = vim.lsp.get_clients({ bufnr = args.buf, name = name })
           if existing and #existing > 0 then return end
 
-          local root_dir = cfg.root_dir or find_root(args.buf, cfg.root_markers)
+          local fname = vim.api.nvim_buf_get_name(args.buf)
+          local dir = vim.fs.dirname(fname)
+          local marker = nil
+          if cfg.root_markers then
+            marker = vim.fs.find(cfg.root_markers, { path = dir, upward = true })[1]
+          end
+          if cfg.root_markers_required and not marker then
+            return
+          end
+
+          local root_dir = cfg.root_dir or (marker and vim.fs.dirname(marker) or find_root(args.buf, cfg.root_markers))
           local final = vim.tbl_deep_extend("force", {}, cfg, {
             name = name,
             root_dir = root_dir,
@@ -120,4 +130,3 @@ function M.setup()
 end
 
 return M
-
