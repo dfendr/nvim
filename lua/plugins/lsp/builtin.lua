@@ -34,6 +34,24 @@ function M.setup()
       filetypes = { "python" },
       root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
     },
+    gopls = (function()
+      local base = {
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git" },
+        settings = {
+          gopls = {
+            analyses = { unusedparams = true, shadow = true },
+            gofumpt = true,
+          },
+        },
+      }
+      local custom = safe_require("plugins.lsp.settings.gopls")
+      if custom then
+        return vim.tbl_deep_extend("force", base, custom)
+      end
+      return base
+    end)(),
     ts_ls = {
       -- typescript-language-server
       cmd = { "typescript-language-server", "--stdio" },
@@ -88,6 +106,30 @@ function M.setup()
       filetypes = { "html", "css" },
     },
     emmet_ls = safe_require("plugins.lsp.settings.emmet_ls") or nil,
+    omnisharp = (function()
+      local function resolve_root(fname)
+        local dir = vim.fs.dirname(fname)
+        local project = vim.fs.find(function(name, _)
+          return name:match("%.sln$") or name:match("%.csproj$")
+        end, { path = dir, upward = true })[1]
+        if project then
+          return vim.fs.dirname(project)
+        end
+        local git = vim.fs.find({ ".git" }, { path = dir, upward = true })[1]
+        return git and vim.fs.dirname(git) or dir
+      end
+
+      local base = {
+        filetypes = { "cs", "vb", "razor" },
+        root_dir = resolve_root,
+      }
+      local custom = safe_require("plugins.lsp.settings.omnisharp")
+      if custom then
+        return vim.tbl_deep_extend("force", base, custom)
+      end
+      base.cmd = { "omnisharp" }
+      return base
+    end)(),
   }
 
   -- Autostart per filetype
@@ -110,7 +152,12 @@ function M.setup()
             return
           end
 
-          local root_dir = cfg.root_dir or (marker and vim.fs.dirname(marker) or find_root(args.buf, cfg.root_markers))
+          local root_dir
+          if type(cfg.root_dir) == "function" then
+            root_dir = cfg.root_dir(fname)
+          else
+            root_dir = cfg.root_dir or (marker and vim.fs.dirname(marker) or find_root(args.buf, cfg.root_markers))
+          end
           local final = vim.tbl_deep_extend("force", {}, cfg, {
             name = name,
             root_dir = root_dir,

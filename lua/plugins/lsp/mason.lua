@@ -41,6 +41,7 @@ function M.config()
         ensure_installed = {
             "bashls",
             "clangd",
+            "gopls",
             "html",
             "jsonls",
             "lua_ls",

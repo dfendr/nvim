@@ -1,76 +1,66 @@
 -- Rust Tools Settings
 -- automatically set inlay hints (type hints)
 
--- local path = "~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb"
--- Dynamically updated by Mason.nvim now
-local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/"
-local codelldb_path = extension_path .. "codelldb"
-local liblldb_path = extension_path .. "extension/lldb/lib/liblldb.dylib"
+local function get_codelldb_paths()
+    local mason_root = vim.fn.expand("$MASON")
+    if mason_root == "$MASON" or mason_root == "" then
+        mason_root = vim.fn.stdpath("data") .. "/mason"
+    end
+    local extension_path = mason_root .. "/packages/codelldb/extension/"
+    local sysname = (vim.uv or vim.loop).os_uname().sysname
+    local codelldb_path = extension_path .. "adapter/codelldb"
+    local liblldb_path = extension_path .. "lldb/lib/liblldb"
 
+    if sysname:find("Windows") then
+        codelldb_path = extension_path .. "adapter\\codelldb.exe"
+        liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
+    else
+        liblldb_path = liblldb_path .. (sysname == "Darwin" and ".dylib" or ".so")
+    end
+
+    return codelldb_path, liblldb_path
+end
+
+local function build_codelldb_adapter(codelldb_path, liblldb_path)
+    return {
+        type = "server",
+        port = "${port}",
+        host = "127.0.0.1",
+        executable = {
+            command = codelldb_path,
+            args = { "--liblldb", liblldb_path, "--port", "${port}" },
+        },
+    }
+end
+
+local codelldb_path, liblldb_path = get_codelldb_paths()
+local adapter = false
+
+if vim.fn.filereadable(codelldb_path) == 1 and vim.fn.filereadable(liblldb_path) == 1 then
+    adapter = build_codelldb_adapter(codelldb_path, liblldb_path)
+end
+
+-- rustaceanvim reads this on startup; keep it as a table (not function) for compatibility.
 vim.g.rustaceanvim = {
-    tools = { -- rust-tools options
-        -- callback to execute once rust-analyzer is done initializing the workspace
-        -- runnables = { use_telescope = true },
-
-        -- how to execute terminal commands
-
-
-        executor = require("rustaceanvim/executors").toggleterm,
+    tools = {
+        executor = "toggleterm",
         single_file_support = true,
-
-        -- automatically call rustreloadworkspace when writing to a cargo.toml file.
         reload_workspace_from_cargo_toml = true,
-
-        -- these apply to the default rustsetinlayhints command
         inlay_hints = {
-            -- default: true
             auto = true,
-
-            -- Only show inlay hints for the current line
             only_current_line = true,
-
-            -- Event which triggers a refresh of the inlay hints.
-            -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
-            -- not that this may cause higher CPU usage.
-            -- This option is only respected when only_current_line and
-            -- autoSetHints both are true.
             only_current_line_autocmd = "CursorHold",
-
-            -- whether to show parameter hints with the inlay hints or not
-            -- default: true
             show_parameter_hints = true,
-
             locationLinks = false,
-
-            -- prefix for parameter hints
-            -- default: "<-"
             parameter_hints_prefix = "<- ",
-
-            -- prefix for all the other hints (type, chaining)
-            -- default: "=>"
             other_hints_prefix = "=> ",
-
-            -- whether to align to the lenght of the longest line in the file
             max_len_align = false,
-
-            -- padding from the left if max_len_align is true
             max_len_align_padding = 1,
-
-            -- whether to align to the extreme right or not
             right_align = false,
-
-            -- padding from the right if right_align is true
             right_align_padding = 7,
-
-            -- The color of the hints
             highlight = "Comment",
         },
-
-        -- options same as lsp hover / vim.lsp.util.open_floating_preview()
         hover_actions = {
-
-            -- the border that is used for the hover window
-            -- see vim.api.nvim_open_win()
             border = {
                 { "╭", "FloatBorder" },
                 { "─", "FloatBorder" },
@@ -81,28 +71,12 @@ vim.g.rustaceanvim = {
                 { "╰", "FloatBorder" },
                 { "│", "FloatBorder" },
             },
-
-            -- whether the hover action window gets automatically focused
-            -- default: false
             auto_focus = false,
         },
     },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-
     server = {
-        -- standalone file support
-        -- setting it to false may improve startup time
-
-        -- Should go under capabilities
-        -- signatureHelpProvider = {
-        --     triggerCharacters = { "(", ",", "<" },
-        -- },
-
-        on_attach = require("fenvim.lsp.handlers").on_attach,
-        capabilities = require("fenvim.lsp.handlers").capabilities,
+        on_attach = require("plugins.lsp.handlers").on_attach,
+        capabilities = require("plugins.lsp.handlers").capabilities,
         standalone = true,
         settings = {
             ["rust-analyzer"] = {
@@ -114,11 +88,9 @@ vim.g.rustaceanvim = {
                     loadOutDirsFromCheck = true,
                 },
                 completion = {
-                    postfix = {
-                        enable = false,
-                    },
+                    postfix = { enable = false },
                 },
-                checkOnSave = {
+                check = {
                     command = "clippy",
                     extraArgs = {
                         "--",
@@ -134,8 +106,8 @@ vim.g.rustaceanvim = {
                 },
             },
         },
-    }, -- rust-analyer options
+    },
+    dap = {
+        adapter = adapter,
+    },
 }
-
-
--- require("rust-tools").setup(opts)
