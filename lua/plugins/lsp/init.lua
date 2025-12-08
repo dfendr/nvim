@@ -57,8 +57,11 @@ return {
     },
     {
         "mrcjkb/rustaceanvim",
-        version = "^4",
-        ft = { "rust" },
+        version = "^6",
+        lazy = false, -- plugin provides its own ftplugin/lazy loading
+        init = function()
+            require("plugins.lsp.settings.rust")
+        end,
     },
 
     {
