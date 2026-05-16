@@ -15,7 +15,7 @@ function M.setup_keymaps()
 
     -- Tabs
     map("n", "<m-t>", ":tabnew %<cr>", opts, "New Tab")
-    map("n", "te", ":tabedit<CR>", opts, "New Tab-Edit")
+    map("n", "<leader>te", ":tabedit<CR>", opts, "New Tab-Edit")
     map("n", "<leader><tab>", ":tabnext<cr>", opts, "Next Tab")
     map("n", "<leader><s-tab>", ":tabprev<cr>", opts, "Prev Tab")
 
