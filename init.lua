@@ -13,6 +13,7 @@ require("lazy").setup("plugins", {
     diff = { cmd = "diffview.nvim" },
     ui = { border = require("core.prefs").ui.border_style },
     change_detection = { enabled = false },
+    rocks = { enabled = false },
 })
 
 if vim.g.neovide then

@@ -22,7 +22,7 @@ function M.config()
         suppressed_dirs = { "$HOME" },
     }
 
-    vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+    vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
     auto_session.setup(opts)
 end
