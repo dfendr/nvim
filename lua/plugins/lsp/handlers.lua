@@ -6,27 +6,14 @@ M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 M.setup = function()
-    if settings.lsp.show_diagnostic_signs then
-        local icons = require("plugins.ui.icons")
-        vim.diagnostic.config({
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-                    [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
-                    [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-                    [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
-                },
-            },
-        })
-    else
-        vim.diagnostic.config({
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.ERROR] = "",
-                    [vim.diagnostic.severity.WARN] = "",
-                    [vim.diagnostic.severity.HINT] = "",
-                    [vim.diagnostic.severity.INFO] = "",
-                },
+    -- Prefer coloring the line number instead of showing letters in the sign column.
+    vim.diagnostic.config({
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = "",
+                [vim.diagnostic.severity.WARN] = "",
+                [vim.diagnostic.severity.HINT] = "",
+                [vim.diagnostic.severity.INFO] = "",
             },
             numhl = {
                 [vim.diagnostic.severity.ERROR] = "DiagnosticError",
@@ -34,8 +21,8 @@ M.setup = function()
                 [vim.diagnostic.severity.HINT] = "DiagnosticHint",
                 [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
             },
-        })
-    end
+        },
+    })
 
     vim.diagnostic.config({
         -- disable virtual text

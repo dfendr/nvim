@@ -239,8 +239,6 @@ function M.config()
             end,
         },
     }
-
-    require("dap.ext.vscode").load_launchjs(nil, { coreclr = { "cs" } })
 end
 
 return M
