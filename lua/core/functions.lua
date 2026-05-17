@@ -22,7 +22,7 @@ vim.api.nvim_create_user_command("Bonly", close_all_buffers_except_current, {})
 
 -- Used to retrieve $CONFIG/snippets path for scissors.nvim
 function M.get_snippet_path()
-    local config_path = vim.loop.fs_realpath(vim.fn.stdpath("config"))
+    local config_path = vim.uv.fs_realpath(vim.fn.stdpath("config"))
     local snippet_relative_path = { "snippets" }
     local path_separator = package.config:sub(1, 1) -- Gets the path separator based on the OS
     local snippet_path =
@@ -247,8 +247,8 @@ function M.open_todo()
     local todo_path = home_dir .. "/todo.md"
 
     -- Create file if doesn't exist
-    if vim.loop.fs_stat(todo_path) == nil then
-        vim.loop.fs_open(todo_path, "w", 438)
+    if vim.uv.fs_stat(todo_path) == nil then
+        vim.uv.fs_open(todo_path, "w", 438)
     end
 
     -- open file in Neovim

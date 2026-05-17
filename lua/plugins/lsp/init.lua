@@ -41,13 +41,6 @@ return {
     },
 
     {
-        "mfussenegger/nvim-lint",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("plugins.lsp.linting").config()
-        end,
-    },
-    {
         "mrcjkb/rustaceanvim",
         version = "^6",
         lazy = false, -- plugin provides its own ftplugin/lazy loading
