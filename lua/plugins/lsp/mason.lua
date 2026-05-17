@@ -33,20 +33,7 @@ function M.config()
     })
 
     require("mason-lspconfig").setup({
-        ensure_installed = {
-            "bashls",
-            "clangd",
-            "gopls",
-            "html",
-            "jsonls",
-            "lua_ls",
-            "pyright",
-            "marksman",
-            "omnisharp",
-            "rust_analyzer",
-            "phpactor",
-            "yamlls",
-        },
+        ensure_installed = require("plugins.lsp.builtin").server_names(),
         automatic_installation = true,
     })
     M.check()
