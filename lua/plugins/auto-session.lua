@@ -18,6 +18,10 @@ function M.config()
     local auto_session = require("auto-session")
     local telescope = require("telescope")
 
+    if vim.g.whichkeyAddGroup then
+        vim.g.whichkeyAddGroup("<leader>s", "Session")
+    end
+
     local opts = {
         auto_restore = false,
         auto_restore_last_session = false,

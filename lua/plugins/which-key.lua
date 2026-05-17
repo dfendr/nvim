@@ -119,7 +119,6 @@ function M.config()
         { "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next", nowait = true, remap = false },
         { "<leader>c", "<cmd>b#<bar>bd#<CR>", desc = "Close Buffer", nowait = true, remap = false },
 
-        { "<leader>d", group = "Debug", nowait = true, remap = false },
         { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer", nowait = true, remap = false },
 
         { "<leader>f", group = "Find", nowait = true, remap = false },
@@ -391,9 +390,6 @@ function M.config()
             remap = false,
         },
 
-        { "<leader>r", group = "Quickrun", nowait = true, remap = false },
-        { "<leader>s", group = "Session", nowait = true, remap = false },
-        { "<leader>t", group = "Terminal", nowait = true, remap = false },
         { "<leader>v", "<cmd>vsplit<cr>", desc = "vsplit", nowait = true, remap = false },
         { "<leader>w", "<cmd>w<CR>", desc = "Write", nowait = true, remap = false },
     }
