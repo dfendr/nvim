@@ -105,6 +105,20 @@ return {
     },
     {
         "akinsho/toggleterm.nvim",
+        keys = {
+            { "<leader>t1", ":1ToggleTerm<cr>", desc = "1" },
+            { "<leader>t2", ":2ToggleTerm<cr>", desc = "2" },
+            { "<leader>t3", ":3ToggleTerm<cr>", desc = "3" },
+            { "<leader>t4", ":4ToggleTerm<cr>", desc = "4" },
+            { "<leader>tb", "<cmd>lua _BTOP_TOGGLE()<cr>", desc = "Btop" },
+            { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+            { "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Node" },
+            { "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Python" },
+            { "<leader>ts", "<cmd>lua _SPT_TOGGLE()<cr>", desc = "Spotify-TUI" },
+            { "<leader>tt", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+            { "<leader>tu", "<cmd>lua _NCDU_TOGGLE()<cr>", desc = "NCDU" },
+            { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+        },
         config = function()
             require("plugins.editor.toggleterm").config()
         end,
@@ -113,6 +127,11 @@ return {
         "CRAG666/code_runner.nvim",
         event = "VeryLazy",
         dependencies = "nvim-lua/plenary.nvim",
+        keys = {
+            { "<leader>rf", '<cmd>RunCode "float" float<cr>', desc = "Run (Floating Window)" },
+            { "<leader>rr", "<cmd>RunCode<cr>", desc = "Run File" },
+            { "<leader>rt", '<cmd>RunCode "toggleterm"<cr>', desc = "Run (Terminal)" },
+        },
         config = function()
             require("plugins.editor.coderunner").config()
         end,

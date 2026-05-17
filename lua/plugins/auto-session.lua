@@ -5,6 +5,13 @@ local M = {
     dependencies = {
         { "nvim-telescope/telescope.nvim", branch = "0.1.x" },
     },
+    keys = {
+        { "<leader>sd", "<cmd>Autosession delete<cr>", desc = "Delete Session" },
+        { "<leader>sf", "<cmd>SessionSearch<cr>", desc = "Find Session" },
+        { "<leader>sl", "<cmd>SessionRestore<cr>", desc = "Load Last" },
+        { "<leader>sr", "<cmd>Autosession search<cr>", desc = "Load Last Dir" },
+        { "<leader>ss", "<cmd>SessionSave<cr>", desc = "Save" },
+    },
 }
 
 function M.config()
