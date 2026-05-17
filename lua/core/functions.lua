@@ -254,15 +254,4 @@ function M.open_todo()
     -- open file in Neovim
     vim.cmd("edit " .. todo_path)
 end
-function M.require_child_module(rel)
-    local caller = debug.getinfo(2, "S").source
-    local module = caller:match("lua/(.+)/init%.lua$")
-        or caller:match("lua/(.+)%.lua$")
-    if not module then
-        error("require_relative: could not determine caller module for " .. tostring(rel))
-    end
-    module = module:gsub("/", ".")
-    return require(module .. "." .. rel)
-end
-
 return M
