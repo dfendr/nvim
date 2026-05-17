@@ -1,10 +1,7 @@
-local M = {
-    autocommands = {},
-    lsp = { show_diagnostic_signs = false },
+return {
     -- Possible Borders: [double, none, rounded, shadow, single, solid].
     ui = {
         transparent = false,
-        show_icons = true,
         border_style = "rounded",
         blink_cmp = {
             completion_border = "rounded",
@@ -14,10 +11,7 @@ local M = {
         which_key = { border_style = "rounded" },
         fidget = { border_style = "none" },
 
-        breadcrumbs = false,
         context = true, -- "Sticky scroll"
         winbar_title = false,
     },
 }
-
-return M
