@@ -9,12 +9,6 @@ return {
     },
     { "folke/neoconf.nvim" },
     {
-        "folke/ts-comments.nvim",
-        opts = {},
-        event = "VeryLazy",
-        enabled = vim.fn.has("nvim-0.10.0") == 1,
-    },
-    {
         -- Text alignment
         "echasnovski/mini.align",
         branch = "stable",
@@ -227,55 +221,9 @@ return {
         enabled = true,
     },
     {
-        -- Improved Undo
-        "kevinhwang91/nvim-fundo",
-        dependencies = "kevinhwang91/promise-async",
-        config = function()
-            require("fundo").install()
-            vim.o.undofile = true
-            require("fundo").setup()
-        end,
-    },
-    {
-        "simrat39/symbols-outline.nvim",
-        config = true,
-        opts = { relative_width = true, width = 10 },
-        cmd = "SymbolsOutline",
-    },
-    {
-        -- Big files over 2mb activate BigFile mode, disabling some plugins.
-        "LunarVim/bigfile.nvim",
-        enabled = true,
-        config = function()
-            -- default config
-            require("bigfile").setup({
-                filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
-                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-                features = { -- features to disable
-                    "indent_blankline",
-                    "illuminate",
-                    "lsp",
-                    "treesitter",
-                    "syntax",
-                    "matchparen",
-                    "vimopts",
-                    "filetype",
-                },
-            })
-        end,
-    },
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = "kevinhwang91/promise-async",
-        config = function()
-            require("plugins.editor.ufo").config()
-        end,
-    },
-    {
-        "chrishrb/gx.nvim",
-        event = { "BufEnter" },
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = true, -- default settings
+        "hedyhli/outline.nvim",
+        cmd = { "Outline", "OutlineOpen" },
+        opts = {},
     },
     {
         "chrisgrieser/nvim-scissors",

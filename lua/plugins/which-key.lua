@@ -386,7 +386,7 @@ function M.config()
             remap = false,
         },
         { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", nowait = true, remap = false },
-        { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Outline", nowait = true, remap = false },
+        { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline", nowait = true, remap = false },
         {
             "<leader>lq",
             "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
@@ -404,8 +404,14 @@ function M.config()
         { "<leader>lt", "<cmd>TroubleToggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
         {
             "<leader>lv",
-            "<cmd>lua require('lsp_lines').toggle()<cr>",
-            desc = "Virtual Text",
+            function()
+                local cfg = vim.diagnostic.config()
+                vim.diagnostic.config({
+                    virtual_lines = not cfg.virtual_lines,
+                    virtual_text = cfg.virtual_lines and true or false,
+                })
+            end,
+            desc = "Toggle Virtual Lines",
             nowait = true,
             remap = false,
         },
