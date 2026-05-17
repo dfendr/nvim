@@ -143,7 +143,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        cmd = "TroubleToggle",
+        cmd = "Trouble",
         config = function()
             require("plugins.editor.trouble").config()
         end,

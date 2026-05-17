@@ -52,12 +52,6 @@ function M.setup()
       end
       return base
     end)(),
-    ts_ls = {
-      -- typescript-language-server
-      cmd = { "typescript-language-server", "--stdio" },
-      filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-      root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
-    },
     vtsls = {
       cmd = { "vtsls", "--stdio" },
       filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },

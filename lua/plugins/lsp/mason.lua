@@ -24,11 +24,6 @@ function M.check()
 end
 
 function M.config()
-    local opts = {
-        on_attach = require("plugins.lsp.handlers").on_attach,
-        capabilities = require("plugins.lsp.handlers").capabilities,
-    }
-
     require("mason").setup({
         ui = {
             border = require("core.prefs").ui.border_style,
