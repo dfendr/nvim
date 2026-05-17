@@ -25,9 +25,6 @@ M.setup = function()
     })
 
     vim.diagnostic.config({
-        -- disable virtual text
-        on_attach_callback = nil,
-        on_init_callback = nil,
         virtual_lines = true,
         virtual_text = false,
         update_in_insert = false,
@@ -37,10 +34,9 @@ M.setup = function()
             focusable = false,
             style = "minimal",
             border = require("core.prefs").ui.border_style,
-            source = "if_many", -- Or "always"
+            source = "if_many",
             header = "",
             prefix = "",
-            -- width = 40,
         },
     })
 end
@@ -82,12 +78,12 @@ local function lsp_keymaps(bufnr)
     map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Show Line Diagnostics", bufnr)
     map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Show Signature Help", bufnr)
     map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
-    map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts, "Previous Diagnostic", bufnr)
-    map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts, "Next Diagnostic", bufnr)
+    map("n", "[d", "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>", opts, "Previous Diagnostic", bufnr)
+    map("n", "]d", "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>", opts, "Next Diagnostic", bufnr)
     map(
         "n",
         "]e",
-        "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>",
+        "<cmd>lua vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })<CR>",
         opts,
         "Next Error",
         bufnr
@@ -95,7 +91,7 @@ local function lsp_keymaps(bufnr)
     map(
         "n",
         "[e",
-        "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
+        "<cmd>lua vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })<CR>",
         opts,
         "Previous Error",
         bufnr
