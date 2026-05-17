@@ -56,6 +56,10 @@ function M.config()
         return
     end
 
+    if vim.g.whichkeyAddGroup then
+        vim.g.whichkeyAddGroup("<leader>d", "Debug")
+    end
+
     dap.set_log_level("TRACE")
 
     local dap_ui_status_ok, dapui = pcall(require, "dapui")
