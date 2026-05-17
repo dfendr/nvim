@@ -53,7 +53,6 @@ function M.config()
         { "<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard", nowait = true, remap = false },
         { "<leader>C", "<cmd>bdelete!<CR>", desc = "Close Buffer&Split", nowait = true, remap = false },
         { "<leader>D", "<cmd>DBUIToggle<cr>", desc = "Database Mode", nowait = true, remap = false },
-        { "<leader>F", "<cmd>Telescope smart_open<cr>", desc = "Smart Search", nowait = true, remap = false },
         {
             "<leader>Q",
             '<cmd>lua require("core.functions").smart_exit()<CR>',
@@ -77,7 +76,7 @@ function M.config()
         { "<leader>SS7", ":normal a⁷<Esc>", desc = "Insert superscript 7", nowait = true, remap = false },
         { "<leader>SS8", ":normal a⁸<Esc>", desc = "Insert superscript 8", nowait = true, remap = false },
         { "<leader>SS9", ":normal a⁹<Esc>", desc = "Insert superscript 9", nowait = true, remap = false },
-        { "<leader>Sc", ":normal a●<Esc>", desc = "Insert °", nowait = true, remap = false },
+        { "<leader>Sc", ":normal a●<Esc>", desc = "Insert ●", nowait = true, remap = false },
         { "<leader>Sd", ":normal a°<Esc>", desc = "Insert °", nowait = true, remap = false },
         { "<leader>Sf", "<cmd>IconPickerNormal<cr>", desc = "Find", nowait = true, remap = false },
 
@@ -112,7 +111,6 @@ function M.config()
         { "<leader>Sla", ":normal a∧<Esc>", desc = "Insert ∧", nowait = true, remap = false },
         { "<leader>Sle", ":normal a∈<Esc>", desc = "Insert ∈", nowait = true, remap = false },
         { "<leader>Sln", ":normal a¬<Esc>", desc = "Insert ¬", nowait = true, remap = false },
-        { "<leader>Sls", ":normal a<Esc>", desc = "Insert Σ", nowait = true, remap = false },
         { "<leader>Sp", ":normal aπ<Esc>", desc = "Insert π", nowait = true, remap = false },
 
         { "<leader>Ss", group = "Subscripts", nowait = true, remap = false },
@@ -145,8 +143,6 @@ function M.config()
             remap = false,
         },
         { "<leader>Th", "<cmd>Inspect<cr>", desc = "Inspect Highlight Groups", nowait = true, remap = false },
-        { "<leader>Tp", "<cmd>TSPlaygroundToggle<cr>", desc = "Playground", nowait = true, remap = false },
-        { "<leader>Tr", "<cmd>TSToggle rainbow<cr>", desc = "Rainbow", nowait = true, remap = false },
         {
             "<leader>Tt",
             "<cmd>lua require('core.functions').toggle_treesitter_local()<CR>",
@@ -257,15 +253,7 @@ function M.config()
         { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps", nowait = true, remap = false },
         { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", nowait = true, remap = false },
         { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", nowait = true, remap = false },
-        { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects", nowait = true, remap = false },
         { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", nowait = true, remap = false },
-        {
-            "<leader>fs",
-            "<cmd>Telescope session-lens search_session<cr>",
-            desc = "Find Session",
-            nowait = true,
-            remap = false,
-        },
         { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", nowait = true, remap = false },
         { "<leader>fv", "<cmd>Telescope vim_options<cr>", desc = "Vim Options", nowait = true, remap = false },
         {
@@ -401,7 +389,7 @@ function M.config()
             nowait = true,
             remap = false,
         },
-        { "<leader>lt", "<cmd>TroubleToggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
+        { "<leader>lt", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
         {
             "<leader>lv",
             function()
@@ -491,13 +479,12 @@ function M.config()
             nowait = true,
             remap = false,
         },
-        { "<leader>rq", '<cmd>RunCode "toggle"quickfiwx<cr>', desc = "Run (Quickfix)", nowait = true, remap = false },
         { "<leader>rr", "<cmd>RunCode<cr>", desc = "Run File", nowait = true, remap = false },
         { "<leader>rt", '<cmd>RunCode "toggleterm"<cr>', desc = "Run (Terminal)", nowait = true, remap = false },
 
         { "<leader>s", group = "Session", nowait = true, remap = false },
         { "<leader>sd", "<cmd>Autosession delete<cr>", desc = "Delete Session", nowait = true, remap = false },
-        { "<leader>sf", "<cmd>SearchSession<cr>", desc = "Find Session", nowait = true, remap = false },
+        { "<leader>sf", "<cmd>SessionSearch<cr>", desc = "Find Session", nowait = true, remap = false },
         { "<leader>sl", "<cmd>SessionRestore<cr>", desc = "Load Last", nowait = true, remap = false },
         { "<leader>sr", "<cmd>Autosession search<cr>", desc = "Load Last Dir", nowait = true, remap = false },
         { "<leader>ss", "<cmd>SessionSave<cr>", desc = "Save", nowait = true, remap = false },
