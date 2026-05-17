@@ -1,7 +1,5 @@
 local M = {}
 
-local merge_tb = vim.tbl_deep_extend
-
 local function close_all_buffers_except_current()
     local current_buf_num = vim.api.nvim_get_current_buf()
     local buffers = vim.api.nvim_list_bufs()
@@ -36,31 +34,6 @@ function M.remove_augroup(name)
     if vim.fn.exists("#" .. name) == 1 then
         vim.cmd("au! " .. name)
     end
-end
-
--- get length of current word
-function M.get_word_length()
-    local word = vim.fn.expand("<cword>")
-    return #word
-end
-
-function M.toggle_option(option)
-    local value = not vim.api.nvim_get_option_value(option, {})
-    vim.opt[option] = value
-    vim.notify(option .. " set to " .. tostring(value))
-end
-
-function M.toggle_tabline()
-    local value = vim.api.nvim_get_option_value("showtabline", {})
-    if value == 2 then
-        value = 0
-    else
-        value = 2
-    end
-
-    vim.opt.showtabline = value
-
-    vim.notify("showtabline" .. " set to " .. tostring(value))
 end
 
 function M.toggle_diagnostics()
@@ -153,10 +126,6 @@ function M.smart_exit()
         vim.cmd("qa!")
     end
 end
-function M.wrap_in_quotes(string)
-    return '"' .. string .. '"'
-end
-
 function M.open_explorer()
     local current_file_dir = vim.fn.expand("%:p:h")
     if vim.fn.has("mac") == 1 then
@@ -265,83 +234,12 @@ function M.toggle_treesitter_global()
     end
 end
 
-function M.adjust_color(color, amount)
-    color = vim.trim(color)
-    color = color:gsub("#", "")
-    local first = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(1, 2), 16) + amount)))):sub(-2)
-    local second = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(3, 4), 16) + amount)))):sub(-2)
-    local third = ("0" .. string.format("%x", (math.min(255, tonumber(color:sub(5, -1), 16) + amount)))):sub(-2)
-    return "#" .. first .. second .. third
-end
-
---- Picks a random element of a table
----@param table table
----@return any Random-element
--- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
-function M.random_element(table)
-    math.randomseed(os.clock())
-    local index = math.random() * #table
-    return table[math.floor(index) + 1]
-end
-
---- Darkens a color by a certain value
----@param color string
----@param amount number
----@return string color
--- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
-function M.darken_color(color, amount)
-    return M.adjust_color(color, -amount)
-end
-
---- Lightens a color by a certain value
----@param color string
----@param amount number
----@return string color
--- https://github.com/max397574/omega-nvim/blob/master/lua/omega/utils/init.lua
-function M.lighten_color(color, amount)
-    return M.adjust_color(color, amount)
-end
-
 function M.daylight()
     if tonumber(os.date("%H")) < 17 and 9 <= tonumber(os.date("%H")) then
         return true
     else
         return false
     end
-end
-
--- http://www.indigorose.com/forums/threads/10192-Convert-Hexadecimal-to-Decimal
-function M.Dec2Hex(nValue)
-    if type(nValue) == "string" then
-        nValue = tonumber(nValue)
-    end
-    local nHexVal = string.format("%X", nValue) -- %X returns uppercase hex, %x gives lowercase letters
-    local sHexVal = nHexVal .. ""
-    if nValue < 16 then
-        return "0" .. tostring(sHexVal)
-    else
-        return sHexVal
-    end
-end
-
---- source https://stackoverflow.com/questions/35189592/lua-color-fading-function
-function M.fade_RGB(colour1, colour2, percentage)
-    local r1, g1, b1 = string.match(colour1, "#(%x%x)(%x%x)(%x%x)")
-    local r2, g2, b2 = string.match(colour2, "#(%x%x)(%x%x)(%x%x)")
-    local r3 = tonumber(r1, 16) * (100 - percentage) / 100.0 + tonumber(r2, 16) * percentage / 100.0
-    local g3 = tonumber(g1, 16) * (100 - percentage) / 100.0 + tonumber(g2, 16) * percentage / 100.0
-    local b3 = tonumber(b1, 16) * (100 - percentage) / 100.0 + tonumber(b2, 16) * percentage / 100.0
-    return "#" .. M.Dec2Hex(r3) .. M.Dec2Hex(g3) .. M.Dec2Hex(b3)
-end
-
-function M.is_lsp_client_running(client_name)
-    local clients = vim.lsp.get_clients()
-    for _, client in ipairs(clients) do
-        if client.name == client_name then
-            return true
-        end
-    end
-    return false
 end
 
 function M.open_todo()
@@ -356,43 +254,6 @@ function M.open_todo()
     -- open file in Neovim
     vim.cmd("edit " .. todo_path)
 end
--- create colour gradient from hex values
-function M.create_gradient(start, finish, steps)
-    local r1, g1, b1 =
-        tonumber("0x" .. start:sub(2, 3)), tonumber("0x" .. start:sub(4, 5)), tonumber("0x" .. start:sub(6, 7))
-    local r2, g2, b2 =
-        tonumber("0x" .. finish:sub(2, 3)), tonumber("0x" .. finish:sub(4, 5)), tonumber("0x" .. finish:sub(6, 7))
-
-    local r_step = (r2 - r1) / steps
-    local g_step = (g2 - g1) / steps
-    local b_step = (b2 - b1) / steps
-
-    local gradient = {}
-    for i = 1, steps do
-        local r = math.floor(r1 + r_step * i)
-        local g = math.floor(g1 + g_step * i)
-        local b = math.floor(b1 + b_step * i)
-        table.insert(gradient, string.format("#%02x%02x%02x", r, g, b))
-    end
-
-    return gradient
-end
-
-
-function M.update_fenvim()
-  local cmd = "cd ~/.config/nvim && git pull"
-  vim.fn.jobstart(cmd, {
-    stdout_buffered = true,
-    stderr_buffered = true,
-    on_stdout = function(_, data)
-      if data then vim.notify(table.concat(data, "\n"), vim.log.levels.INFO, { title = "fenvim update" }) end
-    end,
-    on_stderr = function(_, data)
-      if data then vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, { title = "fenvim update error" }) end
-    end,
-  })
-end
-
 function M.require_child_module(rel)
     local caller = debug.getinfo(2, "S").source
     local module = caller:match("lua/(.+)/init%.lua$")

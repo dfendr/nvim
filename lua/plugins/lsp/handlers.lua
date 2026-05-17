@@ -116,7 +116,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    require("plugins.lsp.utils").setup_document_symbols(client, bufnr)
     require("plugins.lsp.utils").setup_codelens_refresh(client, bufnr)
 
     -- Don't use semantic tokens
