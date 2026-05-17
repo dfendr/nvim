@@ -1,6 +1,17 @@
 local M = {
     "mfussenegger/nvim-dap",
     event = "BufReadPost",
+    keys = {
+        { "<leader>dO", function() require("dap").step_out() end, desc = "Out" },
+        { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Breakpoint" },
+        { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
+        { "<leader>di", function() require("dap").step_into() end, desc = "Into" },
+        { "<leader>dl", function() require("dap").run_last() end, desc = "Last" },
+        { "<leader>do", function() require("dap").step_over() end, desc = "Over" },
+        { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Repl" },
+        { "<leader>du", function() require("dapui").toggle() end, desc = "UI" },
+        { "<leader>dx", function() require("dap").terminate() end, desc = "Exit" },
+    },
     dependencies = {
         "jbyuki/one-small-step-for-vimkind",
         { "rcarriga/nvim-dap-ui", dependencies = "nvim-neotest/nvim-nio" },
