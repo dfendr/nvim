@@ -49,11 +49,10 @@ function M.config()
         --     no_overlap = true,
         --     }
     }
-    which_key.add({
+    local mappings = {
         { "<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard", nowait = true, remap = false },
         { "<leader>C", "<cmd>bdelete!<CR>", desc = "Close Buffer&Split", nowait = true, remap = false },
         { "<leader>D", "<cmd>DBUIToggle<cr>", desc = "Database Mode", nowait = true, remap = false },
-        { "<leader>F", "<cmd>Telescope smart_open<cr>", desc = "Smart Search", nowait = true, remap = false },
         {
             "<leader>Q",
             '<cmd>lua require("core.functions").smart_exit()<CR>',
@@ -62,72 +61,6 @@ function M.config()
             remap = false,
         },
         { "<leader>R", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", nowait = true, remap = false },
-        { "<leader>S", group = "Symbols", nowait = true, remap = false },
-
-        { "<leader>SS", group = "Superscripts", nowait = true, remap = false },
-        { "<leader>SS+", ":normal a⁺<Esc>", desc = "Insert superscript +", nowait = true, remap = false },
-        { "<leader>SS-", ":normal a⁻<Esc>", desc = "Insert superscript -", nowait = true, remap = false },
-        { "<leader>SS0", ":normal a⁰<Esc>", desc = "Insert superscript 0", nowait = true, remap = false },
-        { "<leader>SS1", ":normal a¹<Esc>", desc = "Insert superscript 1", nowait = true, remap = false },
-        { "<leader>SS2", ":normal a²<Esc>", desc = "Insert superscript 2", nowait = true, remap = false },
-        { "<leader>SS3", ":normal a³<Esc>", desc = "Insert superscript 3", nowait = true, remap = false },
-        { "<leader>SS4", ":normal a⁴<Esc>", desc = "Insert superscript 4", nowait = true, remap = false },
-        { "<leader>SS5", ":normal a⁵<Esc>", desc = "Insert superscript 5", nowait = true, remap = false },
-        { "<leader>SS6", ":normal a⁶<Esc>", desc = "Insert superscript 6", nowait = true, remap = false },
-        { "<leader>SS7", ":normal a⁷<Esc>", desc = "Insert superscript 7", nowait = true, remap = false },
-        { "<leader>SS8", ":normal a⁸<Esc>", desc = "Insert superscript 8", nowait = true, remap = false },
-        { "<leader>SS9", ":normal a⁹<Esc>", desc = "Insert superscript 9", nowait = true, remap = false },
-        { "<leader>Sc", ":normal a●<Esc>", desc = "Insert °", nowait = true, remap = false },
-        { "<leader>Sd", ":normal a°<Esc>", desc = "Insert °", nowait = true, remap = false },
-        { "<leader>Sf", "<cmd>IconPickerNormal<cr>", desc = "Find", nowait = true, remap = false },
-
-        { "<leader>Sg", group = "Greek Symbols", nowait = true, remap = false },
-        { "<leader>SgS", ":normal aΣ<Esc>", desc = "Insert Σ", nowait = true, remap = false },
-        { "<leader>Sga", ":normal aα<Esc>", desc = "Insert α", nowait = true, remap = false },
-        { "<leader>Sgb", ":normal aβ<Esc>", desc = "Insert β", nowait = true, remap = false },
-        { "<leader>Sgc", ":normal aχ<Esc>", desc = "Insert χ", nowait = true, remap = false },
-        { "<leader>Sgd", ":normal aδ<Esc>", desc = "Insert δ", nowait = true, remap = false },
-        { "<leader>Sge", ":normal aε<Esc>", desc = "Insert ε", nowait = true, remap = false },
-        { "<leader>Sgf", ":normal aφ<Esc>", desc = "Insert φ", nowait = true, remap = false },
-        { "<leader>Sgg", ":normal aγ<Esc>", desc = "Insert γ", nowait = true, remap = false },
-        { "<leader>Sgh", ":normal aη<Esc>", desc = "Insert η", nowait = true, remap = false },
-        { "<leader>Sgi", ":normal aι<Esc>", desc = "Insert ι", nowait = true, remap = false },
-        { "<leader>Sgk", ":normal aκ<Esc>", desc = "Insert κ", nowait = true, remap = false },
-        { "<leader>Sgl", ":normal aλ<Esc>", desc = "Insert λ", nowait = true, remap = false },
-        { "<leader>Sgm", ":normal aµ<Esc>", desc = "Insert µ", nowait = true, remap = false },
-        { "<leader>Sgn", ":normal aν<Esc>", desc = "Insert ν", nowait = true, remap = false },
-        { "<leader>Sgo", ":normal aο<Esc>", desc = "Insert ο", nowait = true, remap = false },
-        { "<leader>Sgp", ":normal aπ<Esc>", desc = "Insert π", nowait = true, remap = false },
-        { "<leader>Sgr", ":normal aρ<Esc>", desc = "Insert ρ", nowait = true, remap = false },
-        { "<leader>Sgs", ":normal aσ<Esc>", desc = "Insert σ", nowait = true, remap = false },
-        { "<leader>Sgt", ":normal aθ<Esc>", desc = "Insert θ", nowait = true, remap = false },
-        { "<leader>Sgu", ":normal aτ<Esc>", desc = "Insert τ", nowait = true, remap = false },
-        { "<leader>Sgv", ":normal aυ<Esc>", desc = "Insert υ", nowait = true, remap = false },
-        { "<leader>Sgw", ":normal aω<Esc>", desc = "Insert ω", nowait = true, remap = false },
-        { "<leader>Sgx", ":normal aξ<Esc>", desc = "Insert ξ", nowait = true, remap = false },
-        { "<leader>Sgy", ":normal aψ<Esc>", desc = "Insert ψ", nowait = true, remap = false },
-        { "<leader>Sgz", ":normal aζ<Esc>", desc = "Insert ζ", nowait = true, remap = false },
-
-        { "<leader>Sl", group = "Logical", nowait = true, remap = false },
-        { "<leader>Sla", ":normal a∧<Esc>", desc = "Insert ∧", nowait = true, remap = false },
-        { "<leader>Sle", ":normal a∈<Esc>", desc = "Insert ∈", nowait = true, remap = false },
-        { "<leader>Sln", ":normal a¬<Esc>", desc = "Insert ¬", nowait = true, remap = false },
-        { "<leader>Sls", ":normal a<Esc>", desc = "Insert Σ", nowait = true, remap = false },
-        { "<leader>Sp", ":normal aπ<Esc>", desc = "Insert π", nowait = true, remap = false },
-
-        { "<leader>Ss", group = "Subscripts", nowait = true, remap = false },
-        { "<leader>Ss+", ":normal a₊<Esc>", desc = "Insert subscript +", nowait = true, remap = false },
-        { "<leader>Ss-", ":normal a₋<Esc>", desc = "Insert subscript -", nowait = true, remap = false },
-        { "<leader>Ss0", ":normal a₀<Esc>", desc = "Insert subscript 0", nowait = true, remap = false },
-        { "<leader>Ss1", ":normal a₁<Esc>", desc = "Insert subscript 1", nowait = true, remap = false },
-        { "<leader>Ss2", ":normal a₂<Esc>", desc = "Insert subscript 2", nowait = true, remap = false },
-        { "<leader>Ss3", ":normal a₃<Esc>", desc = "Insert subscript 3", nowait = true, remap = false },
-        { "<leader>Ss4", ":normal a₄<Esc>", desc = "Insert subscript 4", nowait = true, remap = false },
-        { "<leader>Ss5", ":normal a₅<Esc>", desc = "Insert subscript 5", nowait = true, remap = false },
-        { "<leader>Ss6", ":normal a₆<Esc>", desc = "Insert subscript 6", nowait = true, remap = false },
-        { "<leader>Ss7", ":normal a₇<Esc>", desc = "Insert subscript 7", nowait = true, remap = false },
-        { "<leader>Ss8", ":normal a₈<Esc>", desc = "Insert subscript 8", nowait = true, remap = false },
-        { "<leader>Ss9", ":normal a₉<Esc>", desc = "Insert subscript 9", nowait = true, remap = false },
 
         { "<leader>T", group = "Treesitter", nowait = true, remap = false },
         {
@@ -145,8 +78,6 @@ function M.config()
             remap = false,
         },
         { "<leader>Th", "<cmd>Inspect<cr>", desc = "Inspect Highlight Groups", nowait = true, remap = false },
-        { "<leader>Tp", "<cmd>TSPlaygroundToggle<cr>", desc = "Playground", nowait = true, remap = false },
-        { "<leader>Tr", "<cmd>TSToggle rainbow<cr>", desc = "Rainbow", nowait = true, remap = false },
         {
             "<leader>Tt",
             "<cmd>lua require('core.functions').toggle_treesitter_local()<CR>",
@@ -188,22 +119,6 @@ function M.config()
         { "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next", nowait = true, remap = false },
         { "<leader>c", "<cmd>b#<bar>bd#<CR>", desc = "Close Buffer", nowait = true, remap = false },
 
-        { "<leader>d", group = "Debug", nowait = true, remap = false },
-        { "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", desc = "Out", nowait = true, remap = false },
-        {
-            "<leader>db",
-            "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
-            desc = "Breakpoint",
-            nowait = true,
-            remap = false,
-        },
-        { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue", nowait = true, remap = false },
-        { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", desc = "Into", nowait = true, remap = false },
-        { "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", desc = "Last", nowait = true, remap = false },
-        { "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", desc = "Over", nowait = true, remap = false },
-        { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Repl", nowait = true, remap = false },
-        { "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", desc = "UI", nowait = true, remap = false },
-        { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", desc = "Exit", nowait = true, remap = false },
         { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer", nowait = true, remap = false },
 
         { "<leader>f", group = "Find", nowait = true, remap = false },
@@ -257,15 +172,7 @@ function M.config()
         { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps", nowait = true, remap = false },
         { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search", nowait = true, remap = false },
         { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", nowait = true, remap = false },
-        { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects", nowait = true, remap = false },
         { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File", nowait = true, remap = false },
-        {
-            "<leader>fs",
-            "<cmd>Telescope session-lens search_session<cr>",
-            desc = "Find Session",
-            nowait = true,
-            remap = false,
-        },
         { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text", nowait = true, remap = false },
         { "<leader>fv", "<cmd>Telescope vim_options<cr>", desc = "Vim Options", nowait = true, remap = false },
         {
@@ -386,7 +293,7 @@ function M.config()
             remap = false,
         },
         { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", nowait = true, remap = false },
-        { "<leader>lo", "<cmd>SymbolsOutline<cr>", desc = "Outline", nowait = true, remap = false },
+        { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline", nowait = true, remap = false },
         {
             "<leader>lq",
             "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
@@ -401,11 +308,17 @@ function M.config()
             nowait = true,
             remap = false,
         },
-        { "<leader>lt", "<cmd>TroubleToggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
+        { "<leader>lt", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
         {
             "<leader>lv",
-            "<cmd>lua require('lsp_lines').toggle()<cr>",
-            desc = "Virtual Text",
+            function()
+                local cfg = vim.diagnostic.config()
+                vim.diagnostic.config({
+                    virtual_lines = not cfg.virtual_lines,
+                    virtual_text = cfg.virtual_lines and true or false,
+                })
+            end,
+            desc = "Toggle Virtual Lines",
             nowait = true,
             remap = false,
         },
@@ -477,53 +390,12 @@ function M.config()
             remap = false,
         },
 
-        { "<leader>r", group = "Quickrun", nowait = true, remap = false },
-        {
-            "<leader>rf",
-            '<cmd>RunCode "float" float<cr>',
-            desc = "Run (Floating Window)",
-            nowait = true,
-            remap = false,
-        },
-        { "<leader>rq", '<cmd>RunCode "toggle"quickfiwx<cr>', desc = "Run (Quickfix)", nowait = true, remap = false },
-        { "<leader>rr", "<cmd>RunCode<cr>", desc = "Run File", nowait = true, remap = false },
-        { "<leader>rt", '<cmd>RunCode "toggleterm"<cr>', desc = "Run (Terminal)", nowait = true, remap = false },
-
-        { "<leader>s", group = "Session", nowait = true, remap = false },
-        { "<leader>sd", "<cmd>Autosession delete<cr>", desc = "Delete Session", nowait = true, remap = false },
-        { "<leader>sf", "<cmd>SearchSession<cr>", desc = "Find Session", nowait = true, remap = false },
-        { "<leader>sl", "<cmd>SessionRestore<cr>", desc = "Load Last", nowait = true, remap = false },
-        { "<leader>sr", "<cmd>Autosession search<cr>", desc = "Load Last Dir", nowait = true, remap = false },
-        { "<leader>ss", "<cmd>SessionSave<cr>", desc = "Save", nowait = true, remap = false },
-
-        { "<leader>t", group = "Terminal", nowait = true, remap = false },
-        { "<leader>t1", ":1ToggleTerm<cr>", desc = "1", nowait = true, remap = false },
-        { "<leader>t2", ":2ToggleTerm<cr>", desc = "2", nowait = true, remap = false },
-        { "<leader>t3", ":3ToggleTerm<cr>", desc = "3", nowait = true, remap = false },
-        { "<leader>t4", ":4ToggleTerm<cr>", desc = "4", nowait = true, remap = false },
-        { "<leader>tb", "<cmd>lua _BTOP_TOGGLE()<cr>", desc = "Btop", nowait = true, remap = false },
-        { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float", nowait = true, remap = false },
-        { "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Node", nowait = true, remap = false },
-        { "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Python", nowait = true, remap = false },
-        { "<leader>ts", "<cmd>lua _SPT_TOGGLE()<cr>", desc = "Spotify-TUI", nowait = true, remap = false },
-        {
-            "<leader>tt",
-            "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-            desc = "Horizontal",
-            nowait = true,
-            remap = false,
-        },
-        { "<leader>tu", "<cmd>lua _NCDU_TOGGLE()<cr>", desc = "NCDU", nowait = true, remap = false },
-        {
-            "<leader>tv",
-            "<cmd>ToggleTerm size=80 direction=vertical<cr>",
-            desc = "Vertical",
-            nowait = true,
-            remap = false,
-        },
         { "<leader>v", "<cmd>vsplit<cr>", desc = "vsplit", nowait = true, remap = false },
         { "<leader>w", "<cmd>w<CR>", desc = "Write", nowait = true, remap = false },
-    })
+    }
+
+    vim.list_extend(mappings, require("plugins.keymaps.symbols"))
+    which_key.add(mappings)
 
     which_key.setup(setup)
 end

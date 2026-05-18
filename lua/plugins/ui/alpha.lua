@@ -205,7 +205,7 @@ return {
                     -- button("w", icons.misc.Word .. " Find Word  ", ":Telescope live_grep<CR>"),
                     -- button("f", icons.documents.Files .. " Find Files", ":Telescope find_files <CR>"),
                     -- button("r", icons.misc.Watch .. " Find Recent", ":Telescope oldfiles<CR>"),
-                    button("s", icons.ui.SignIn .. " Find Session", ":SearchSession<CR>"),
+                    button("s", icons.ui.SignIn .. " Find Session", ":SessionSearch<CR>"),
                     -- button("R", icons.misc.Repo .. " Search Repositories", ":cd ~/Repos<CR> :Telescope find_files <CR>"),
                     button("c", icons.ui.Gear .. " Configuration", ":e $MYVIMRC | :cd %:p:h <CR>"),
                     button("u", icons.ui.CloudDownload .. " Update Packages", ":Lazy update<CR>"),
