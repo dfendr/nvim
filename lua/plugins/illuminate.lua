@@ -4,6 +4,7 @@ return {
     config = function()
         require("illuminate").configure({
             delay = 100,
+            providers = { "lsp", "regex" },
             filetypes_denylist = {
                 "alpha",
                 "NvimTree",
