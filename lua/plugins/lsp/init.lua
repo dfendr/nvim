@@ -1,9 +1,7 @@
 return {
     {
         { "b0o/schemastore.nvim", ft = { "typescript", "javascript" } },
-        -- { "jose-elias-alvarez/typescript.nvim", ft = { "typescript", "javascript" } },
         { "mfussenegger/nvim-jdtls", ft = { "java" } },
-        { "ray-x/lsp_signature.nvim", enabled = false },
 
         {
             "folke/lazydev.nvim",
@@ -22,12 +20,6 @@ return {
         { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     },
     -- Neovim 0.11+ built-in LSP (no nvim-lspconfig)
-    -- },
-    {
-        url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = true,
-        event = "BufReadPre",
-    },
     {
         "mason-org/mason.nvim",
         dependencies = {
@@ -48,13 +40,6 @@ return {
         end,
     },
 
-    {
-        "mfussenegger/nvim-lint",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("plugins.lsp.linting").config()
-        end,
-    },
     {
         "mrcjkb/rustaceanvim",
         version = "^6",

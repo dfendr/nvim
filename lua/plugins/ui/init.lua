@@ -1,13 +1,11 @@
-local F = require("core.functions")
-
 return {
-    F.require_child_module("actions-preview"),
-    F.require_child_module("alpha"),
-    F.require_child_module("bufferline"),
-    F.require_child_module("fidget"),
-    F.require_child_module("headlines"),
-    F.require_child_module("lualine"),
-    F.require_child_module("scrollbar"),
-    F.require_child_module("windows"),
-    F.require_child_module("visual-whitespace"),
+    require("plugins.ui.actions-preview"),
+    require("plugins.ui.alpha"),
+    require("plugins.ui.bufferline"),
+    require("plugins.ui.fidget"),
+    require("plugins.ui.headlines"),
+    require("plugins.ui.lualine"),
+    require("plugins.ui.scrollbar"),
+    require("plugins.ui.windows"),
+    require("plugins.ui.visual-whitespace"),
 }

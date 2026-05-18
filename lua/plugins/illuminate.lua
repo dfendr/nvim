@@ -4,6 +4,7 @@ return {
     config = function()
         require("illuminate").configure({
             delay = 100,
+            providers = { "lsp", "regex" },
             filetypes_denylist = {
                 "alpha",
                 "NvimTree",
@@ -13,18 +14,6 @@ return {
             },
             under_cursor = true,
         })
-
-        local status_ok, map = pcall(function()
-            return require("core.functions").map
-        end)
-        if status_ok then
-            map("n", "]]", function()
-                require("illuminate").goto_next_reference(false)
-            end, { silent = true, noremap = true, nowait = true }, "Next Reference")
-            map("n", "[[", function()
-                require("illuminate").goto_prev_reference(false)
-            end, { silent = true, noremap = true, nowait = true }, "Prev Reference")
-        end
     end,
     keys = {
         {

@@ -6,6 +6,10 @@ function M.config()
         return
     end
 
+    if vim.g.whichkeyAddGroup then
+        vim.g.whichkeyAddGroup("<leader>t", "Terminal")
+    end
+
     toggleterm.setup({
         size = 20,
         open_mapping = [[<m-0>]],

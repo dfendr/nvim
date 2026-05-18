@@ -9,12 +9,6 @@ return {
     },
     { "folke/neoconf.nvim" },
     {
-        "folke/ts-comments.nvim",
-        opts = {},
-        event = "VeryLazy",
-        enabled = vim.fn.has("nvim-0.10.0") == 1,
-    },
-    {
         -- Text alignment
         "echasnovski/mini.align",
         branch = "stable",
@@ -111,6 +105,20 @@ return {
     },
     {
         "akinsho/toggleterm.nvim",
+        keys = {
+            { "<leader>t1", ":1ToggleTerm<cr>", desc = "1" },
+            { "<leader>t2", ":2ToggleTerm<cr>", desc = "2" },
+            { "<leader>t3", ":3ToggleTerm<cr>", desc = "3" },
+            { "<leader>t4", ":4ToggleTerm<cr>", desc = "4" },
+            { "<leader>tb", "<cmd>lua _BTOP_TOGGLE()<cr>", desc = "Btop" },
+            { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+            { "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Node" },
+            { "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Python" },
+            { "<leader>ts", "<cmd>lua _SPT_TOGGLE()<cr>", desc = "Spotify-TUI" },
+            { "<leader>tt", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+            { "<leader>tu", "<cmd>lua _NCDU_TOGGLE()<cr>", desc = "NCDU" },
+            { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+        },
         config = function()
             require("plugins.editor.toggleterm").config()
         end,
@@ -119,6 +127,11 @@ return {
         "CRAG666/code_runner.nvim",
         event = "VeryLazy",
         dependencies = "nvim-lua/plenary.nvim",
+        keys = {
+            { "<leader>rf", '<cmd>RunCode "float" float<cr>', desc = "Run (Floating Window)" },
+            { "<leader>rr", "<cmd>RunCode<cr>", desc = "Run File" },
+            { "<leader>rt", '<cmd>RunCode "toggleterm"<cr>', desc = "Run (Terminal)" },
+        },
         config = function()
             require("plugins.editor.coderunner").config()
         end,
@@ -149,7 +162,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        cmd = "TroubleToggle",
+        cmd = "Trouble",
         config = function()
             require("plugins.editor.trouble").config()
         end,
@@ -227,55 +240,9 @@ return {
         enabled = true,
     },
     {
-        -- Improved Undo
-        "kevinhwang91/nvim-fundo",
-        dependencies = "kevinhwang91/promise-async",
-        config = function()
-            require("fundo").install()
-            vim.o.undofile = true
-            require("fundo").setup()
-        end,
-    },
-    {
-        "simrat39/symbols-outline.nvim",
-        config = true,
-        opts = { relative_width = true, width = 10 },
-        cmd = "SymbolsOutline",
-    },
-    {
-        -- Big files over 2mb activate BigFile mode, disabling some plugins.
-        "LunarVim/bigfile.nvim",
-        enabled = true,
-        config = function()
-            -- default config
-            require("bigfile").setup({
-                filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
-                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-                features = { -- features to disable
-                    "indent_blankline",
-                    "illuminate",
-                    "lsp",
-                    "treesitter",
-                    "syntax",
-                    "matchparen",
-                    "vimopts",
-                    "filetype",
-                },
-            })
-        end,
-    },
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = "kevinhwang91/promise-async",
-        config = function()
-            require("plugins.editor.ufo").config()
-        end,
-    },
-    {
-        "chrishrb/gx.nvim",
-        event = { "BufEnter" },
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = true, -- default settings
+        "hedyhli/outline.nvim",
+        cmd = { "Outline", "OutlineOpen" },
+        opts = {},
     },
     {
         "chrisgrieser/nvim-scissors",

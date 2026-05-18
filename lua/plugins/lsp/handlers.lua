@@ -1,13 +1,17 @@
 local M = {}
 
-local settings = require("core.prefs")
-
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 M.setup = function()
-    -- Prefer coloring the line number instead of showing letters in the sign column.
+    local border = require("core.prefs").ui.border_style
+
     vim.diagnostic.config({
+        virtual_lines = true,
+        virtual_text = false,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
         signs = {
             text = {
                 [vim.diagnostic.severity.ERROR] = "",
@@ -22,37 +26,39 @@ M.setup = function()
                 [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
             },
         },
-    })
-
-    vim.diagnostic.config({
-        -- disable virtual text
-        on_attach_callback = nil,
-        on_init_callback = nil,
-        virtual_lines = true,
-        virtual_text = false,
-        update_in_insert = false,
-        underline = true,
-        severity_sort = true,
         float = {
             focusable = false,
             style = "minimal",
-            border = require("core.prefs").ui.border_style,
-            source = "if_many", -- Or "always"
+            border = border,
+            source = "if_many",
             header = "",
             prefix = "",
-            -- width = 40,
         },
     })
+
+    local map = require("core.functions").map
+    local opts = { noremap = true, silent = true }
+    map("n", "[d", "<cmd>lua vim.diagnostic.jump({ count = -1 })<CR>", opts, "Previous Diagnostic")
+    map("n", "]d", "<cmd>lua vim.diagnostic.jump({ count = 1 })<CR>", opts, "Next Diagnostic")
+    map(
+        "n",
+        "]e",
+        "<cmd>lua vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })<CR>",
+        opts,
+        "Next Error"
+    )
+    map(
+        "n",
+        "[e",
+        "<cmd>lua vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })<CR>",
+        opts,
+        "Previous Error"
+    )
 end
 
 local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
     local map = require("core.functions").map
-
-    -- Diagnostic display
-    vim.diagnostic.config({
-        float = { border = require("core.prefs").ui.border_style },
-    })
 
     -- Check if Telescope is available
     local status_telescope, _ = pcall(require, "telescope")
@@ -82,24 +88,6 @@ local function lsp_keymaps(bufnr)
     map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, "Show Line Diagnostics", bufnr)
     map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts, "Show Signature Help", bufnr)
     map("n", "<M-f>", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", opts, "Format Code", bufnr)
-    map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts, "Previous Diagnostic", bufnr)
-    map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts, "Next Diagnostic", bufnr)
-    map(
-        "n",
-        "]e",
-        "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity.ERROR})<CR>",
-        opts,
-        "Next Error",
-        bufnr
-    )
-    map(
-        "n",
-        "[e",
-        "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity.ERROR})<CR>",
-        opts,
-        "Previous Error",
-        bufnr
-    )
     map("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts, "Add Workspace Folder", bufnr)
     map(
         "n",
@@ -128,7 +116,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    require("plugins.lsp.utils").setup_document_symbols(client, bufnr)
     require("plugins.lsp.utils").setup_codelens_refresh(client, bufnr)
 
     -- Don't use semantic tokens

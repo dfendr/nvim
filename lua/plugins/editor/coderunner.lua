@@ -1,5 +1,9 @@
 local M = {}
 function M.config()
+    if vim.g.whichkeyAddGroup then
+        vim.g.whichkeyAddGroup("<leader>r", "Quickrun")
+    end
+
     require("code_runner").setup({
         mode = "float",
         filetype = {
