@@ -212,25 +212,24 @@ end
 
 function M.toggle_treesitter_local()
     local current_buf = vim.api.nvim_get_current_buf()
-
     if vim.treesitter.highlighter.active[current_buf] then
-        -- Disable Tree-sitter highlighting
-        vim.cmd("TSBufDisable highlight")
+        vim.treesitter.stop(current_buf)
     else
-        -- Enable Tree-sitter highlighting
-        vim.cmd("TSBufEnable highlight")
+        pcall(vim.treesitter.start, current_buf)
     end
 end
 
 function M.toggle_treesitter_global()
     local current_buf = vim.api.nvim_get_current_buf()
-
-    if vim.treesitter.highlighter.active[current_buf] then
-        -- Disable Tree-sitter highlighting
-        vim.cmd("TSDisable highlight")
-    else
-        -- Enable Tree-sitter highlighting
-        vim.cmd("TSEnable highlight")
+    local enable = not vim.treesitter.highlighter.active[current_buf]
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(buf) then
+            if enable then
+                pcall(vim.treesitter.start, buf)
+            elseif vim.treesitter.highlighter.active[buf] then
+                vim.treesitter.stop(buf)
+            end
+        end
     end
 end
 
