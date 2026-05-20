@@ -1,67 +1,81 @@
+local ensure_installed = {
+    "bash",
+    "comment",
+    "c",
+    "c_sharp",
+    "css",
+    "html",
+    "javascript",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "rust",
+    "sql",
+    "typescript",
+    "vim",
+}
+
+local indent_disabled = {
+    c = true,
+    php = true,
+    yaml = true,
+    python = true,
+    dart = true,
+    markdown = true,
+    markdown_inline = true,
+}
+
 local M = {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
+    event = "BufReadPre",
     dependencies = {
-
         {
             "nvim-treesitter/nvim-treesitter-context",
             enabled = require("core.prefs").ui.context,
             config = function()
                 require("treesitter-context").setup({
-                    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-                    max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
-                    min_window_height = 20, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+                    enable = true,
+                    max_lines = 2,
+                    min_window_height = 20,
                     line_numbers = true,
-                    multiline_threshold = 20, -- Maximum number of lines to show for a single context
-                    trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-                    mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
-                    -- Separator between context and content. Should be a single character string, like '-'.
-                    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+                    multiline_threshold = 20,
+                    trim_scope = "outer",
+                    mode = "cursor",
                     separator = nil,
-                    zindex = 20, -- The Z-index of the context window
-                    on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+                    zindex = 20,
+                    on_attach = nil,
                 })
             end,
         },
     },
-    -- lazy = true,
-    event = "BufReadPre",
 }
 
 function M.config()
-    require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-            "bash",
-            "comment",
-            "c",
-            "c_sharp",
-            "css",
-            "html",
-            "javascript",
-            "lua",
-            "markdown",
-            "markdown_inline",
-            "python",
-            "rust",
-            "sql",
-            "typescript",
-            "vim",
-        },
-        sync_install = false,
-        auto_install = true,
-        ignore_install = {},
-        highlight = {
-            enable = true,
-            disable = function(_, bufnr) -- Disable in files with more than 5K
-                return vim.api.nvim_buf_line_count(bufnr) > 5000
-            end,
-            additional_vim_regex_highlighting = false,
-        },
+    local ts = require("nvim-treesitter")
+    ts.install(ensure_installed)
 
-        indent = {
-            enable = true,
-            disable = { "c", "php", "yaml", "python", "dart", "markdown", "markdown_inline" },
-        },
+    vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter_attach", { clear = true }),
+        callback = function(ev)
+            local buf = ev.buf
+            if vim.api.nvim_buf_line_count(buf) > 5000 then
+                return
+            end
+            local ft = vim.bo[buf].filetype
+            local lang = vim.treesitter.language.get_lang(ft) or ft
+            if not pcall(vim.treesitter.language.add, lang) then
+                pcall(ts.install, lang)
+                return
+            end
+            pcall(vim.treesitter.start, buf, lang)
+            if not indent_disabled[ft] then
+                vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end
+        end,
     })
 end
+
 return M
