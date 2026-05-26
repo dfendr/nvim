@@ -19,11 +19,14 @@ return {
         },
         { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     },
-    -- Neovim 0.11+ built-in LSP (no nvim-lspconfig)
+    -- Neovim 0.11+ built-in LSP. nvim-lspconfig is loaded as a config registry
+    -- only (provides `lsp/<name>.lua` defaults on the runtimepath); we never
+    -- call `require("lspconfig")`.
     {
         "mason-org/mason.nvim",
         dependencies = {
             "mason-org/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
         },
         event = "VeryLazy",
         config = function()

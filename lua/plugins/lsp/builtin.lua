@@ -18,19 +18,35 @@ local function resolve_omnisharp_root(fname)
     return git and vim.fs.dirname(git) or dir
 end
 
-local function build_servers()
-    local schemastore = safe_require("schemastore")
+-- Servers installed via Mason. Adding a name auto-installs (mason-lspconfig
+-- `ensure_installed`) and auto-enables (mason-lspconfig `automatic_enable`).
+-- Defaults come from nvim-lspconfig's `lsp/<name>.lua` on the runtimepath.
+M.mason_servers = {
+    "bashls",
+    "clangd",
+    "emmet_ls",
+    "gopls",
+    "jsonls",
+    "lua_ls",
+    "omnisharp",
+    "pyright",
+    "tailwindcss",
+    "vtsls",
+    "yamlls",
+}
 
+-- Servers installed outside Mason (system packages, Qt-bundled binaries, etc.).
+-- Same default-config resolution as above; just enabled manually below.
+M.system_servers = {
+    "qmlls",
+}
+
+-- Per-server overrides merged on top of nvim-lspconfig's registry defaults.
+-- Only list keys you actually want to override.
+local function server_overrides()
+    local schemastore = safe_require("schemastore")
     return {
-        pyright = {
-            cmd = { "pyright-langserver", "--stdio" },
-            filetypes = { "python" },
-            root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
-        },
         gopls = vim.tbl_deep_extend("force", {
-            cmd = { "gopls" },
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
-            root_markers = { "go.work", "go.mod", ".git" },
             settings = {
                 gopls = {
                     analyses = { unusedparams = true, shadow = true },
@@ -38,19 +54,7 @@ local function build_servers()
                 },
             },
         }, safe_require("plugins.lsp.settings.gopls") or {}),
-        vtsls = {
-            cmd = { "vtsls", "--stdio" },
-            filetypes = {
-                "javascript", "javascriptreact", "javascript.jsx",
-                "typescript", "typescriptreact", "typescript.tsx",
-            },
-            root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
-        },
-        bashls = {
-            cmd = { "bash-language-server", "start" },
-            filetypes = { "sh", "zsh" },
-            root_markers = { ".git" },
-        },
+        bashls = { filetypes = { "sh", "zsh" } },
         clangd = {
             cmd = {
                 "clangd",
@@ -61,19 +65,12 @@ local function build_servers()
                 "--header-insertion=iwyu",
             },
             filetypes = { "c", "cpp", "arduino" },
-            root_markers = { "compile_commands.json", ".git" },
             capabilities = { offsetEncoding = "utf-8" },
         },
-        jsonls = {
-            cmd = { "vscode-json-language-server", "--stdio" },
-            filetypes = { "json", "jsonc" },
-            root_markers = { ".git" },
-            settings = schemastore and { json = { schemas = schemastore.json.schemas() } } or nil,
-        },
+        jsonls = schemastore
+            and { settings = { json = { schemas = schemastore.json.schemas() } } }
+            or nil,
         lua_ls = {
-            cmd = { "lua-language-server" },
-            filetypes = { "lua" },
-            root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
             settings = {
                 Lua = {
                     telemetry = { enable = false },
@@ -82,23 +79,20 @@ local function build_servers()
                 },
             },
         },
-        yamlls = {
-            cmd = { "yaml-language-server", "--stdio" },
-            filetypes = { "yaml", "yml" },
-            root_markers = { ".git" },
-            settings = { yaml = { schemaStore = { enable = true } } },
-        },
-        tailwindcss = safe_require("plugins.lsp.settings.tailwindcss") or {
-            cmd = { "tailwindcss-language-server", "--stdio" },
-            filetypes = { "html", "css" },
-        },
+        yamlls = { settings = { yaml = { schemaStore = { enable = true } } } },
+        tailwindcss = safe_require("plugins.lsp.settings.tailwindcss"),
         emmet_ls = safe_require("plugins.lsp.settings.emmet_ls"),
         omnisharp = vim.tbl_deep_extend("force", {
-            cmd = { "omnisharp" },
-            filetypes = { "cs", "vb", "razor" },
             root_dir = resolve_omnisharp_root,
         }, safe_require("plugins.lsp.settings.omnisharp") or {}),
     }
+end
+
+local function all_servers()
+    local all = {}
+    vim.list_extend(all, M.mason_servers)
+    vim.list_extend(all, M.system_servers)
+    return all
 end
 
 function M.setup()
@@ -116,25 +110,15 @@ function M.setup()
         on_attach = handlers.on_attach,
     })
 
-    local servers = build_servers()
-    local names = {}
-    for name, cfg in pairs(servers) do
+    for name, cfg in pairs(server_overrides()) do
         if cfg then
             vim.lsp.config(name, cfg)
-            table.insert(names, name)
         end
     end
-    vim.lsp.enable(names)
-end
 
-function M.server_names()
-    local names = {}
-    for name, cfg in pairs(build_servers()) do
-        if cfg then
-            table.insert(names, name)
-        end
-    end
-    return names
+    -- mason-lspconfig `automatic_enable` covers Mason-installed servers; this
+    -- also enables system_servers and is idempotent for the Mason list.
+    vim.lsp.enable(all_servers())
 end
 
 return M
