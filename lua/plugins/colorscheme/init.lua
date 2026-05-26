@@ -1,7 +1,7 @@
 return {
     {
         "dfendr/fenbox",
-        -- dir = "~/Repos/Personal/fenbox/",
+        dir = "~/repos/personal/fenbox/",
         lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()

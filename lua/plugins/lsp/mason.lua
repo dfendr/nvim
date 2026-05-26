@@ -33,8 +33,10 @@ function M.config()
     })
 
     require("mason-lspconfig").setup({
-        ensure_installed = require("plugins.lsp.builtin").server_names(),
-        automatic_installation = true,
+        ensure_installed = require("plugins.lsp.builtin").mason_servers,
+        -- automatic_enable defaults to true in v2 → installed servers are
+        -- enabled via vim.lsp.enable() automatically, using nvim-lspconfig's
+        -- registry for defaults plus our per-server overrides.
     })
     M.check()
 end
