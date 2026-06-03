@@ -6,18 +6,6 @@ local function safe_require(mod)
     return nil
 end
 
-local function resolve_omnisharp_root(fname)
-    local dir = vim.fs.dirname(fname)
-    local project = vim.fs.find(function(name, _)
-        return name:match("%.sln$") or name:match("%.csproj$")
-    end, { path = dir, upward = true })[1]
-    if project then
-        return vim.fs.dirname(project)
-    end
-    local git = vim.fs.find({ ".git" }, { path = dir, upward = true })[1]
-    return git and vim.fs.dirname(git) or dir
-end
-
 -- Servers installed via Mason. Adding a name auto-installs (mason-lspconfig
 -- `ensure_installed`) and auto-enables (mason-lspconfig `automatic_enable`).
 -- Defaults come from nvim-lspconfig's `lsp/<name>.lua` on the runtimepath.
@@ -82,9 +70,6 @@ local function server_overrides()
         yamlls = { settings = { yaml = { schemaStore = { enable = true } } } },
         tailwindcss = safe_require("plugins.lsp.settings.tailwindcss"),
         emmet_ls = safe_require("plugins.lsp.settings.emmet_ls"),
-        omnisharp = vim.tbl_deep_extend("force", {
-            root_dir = resolve_omnisharp_root,
-        }, safe_require("plugins.lsp.settings.omnisharp") or {}),
     }
 end
 

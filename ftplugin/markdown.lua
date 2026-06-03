@@ -2,7 +2,12 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.textwidth = 79
 vim.opt_local.spell = true
-vim.opt_local.conceallevel = 0
+-- Keep real markdown files unconcealed, but don't clobber LSP hover floats:
+-- Neovim sets conceallevel=2 on the markdown float, then this ftplugin runs.
+-- A floating window has a non-empty `relative`; only force 0 for normal windows.
+if vim.api.nvim_win_get_config(0).relative == "" then
+    vim.opt_local.conceallevel = 0
+end
 
 ------------------------------------------------------ [[ConvertToLatexPDF]]
 -- pandox required
