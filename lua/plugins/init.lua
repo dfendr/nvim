@@ -86,6 +86,13 @@ return {
             },
         },
         cmd = { "DBUI", "DBUIToggle" },
+        init = function()
+            -- Connections live outside this public repo (age-encrypted via chezmoi).
+            local ok, dbs = pcall(dofile, vim.fn.expand("~/.config/nvim-private/dbs.lua"))
+            if ok and type(dbs) == "table" then
+                vim.g.dbs = dbs
+            end
+        end,
     },
     {
         "NStefan002/screenkey.nvim",
