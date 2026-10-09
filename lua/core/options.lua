@@ -2,7 +2,8 @@ local options = {
     autoread = true, -- automatically update files if updated elsewhere.
     autochdir = false, -- automatically change nvim path to current buffer
     backup = false, -- creates a backup file
-    clipboard = { "unnamedplus", "unnamed" }, -- allows neovim to access the system clipboard
+    -- allows neovim to access the system clipboard; skipped on headless/tty boxes with no provider
+    clipboard = (vim.fn.has("mac") == 1 or vim.env.WAYLAND_DISPLAY or vim.env.DISPLAY or vim.env.TMUX) and { "unnamedplus", "unnamed" } or "",
     cmdheight = 1, -- more space in the neovim command line for displaying messages
     colorcolumn = "80", -- Column @ 80 for cleanliness reminder.
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp

@@ -1,7 +1,8 @@
 return {
     {
         "dfendr/fenbox",
-        dir = "~/repos/personal/fenbox/",
+        -- Use the local checkout when present (macOS dev box); otherwise lazy fetches from GitHub.
+        dir = vim.uv.fs_stat(vim.fn.expand("~/repos/personal/fenbox/")) and vim.fn.expand("~/repos/personal/fenbox/") or nil,
         lazy = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()

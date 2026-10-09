@@ -29,6 +29,22 @@ M.system_servers = {
     "qmlls",
 }
 
+-- Mason ships no linux-arm64 clangd, and gopls needs a Go toolchain to build.
+-- Use a system clangd (dnf install clang-tools-extra) there, and only ask
+-- Mason for gopls when `go` exists.
+local arm_linux = vim.uv.os_uname().sysname == "Linux" and vim.uv.os_uname().machine:match("^a") ~= nil
+local function drop(list, name)
+    for i, v in ipairs(list) do
+        if v == name then table.remove(list, i) return true end
+    end
+end
+if arm_linux and drop(M.mason_servers, "clangd") then
+    table.insert(M.system_servers, "clangd")
+end
+if vim.fn.executable("go") == 0 then
+    drop(M.mason_servers, "gopls")
+end
+
 -- Per-server overrides merged on top of nvim-lspconfig's registry defaults.
 -- Only list keys you actually want to override.
 local function server_overrides()

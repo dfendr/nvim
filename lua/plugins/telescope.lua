@@ -258,7 +258,7 @@ function M.config()
 
     telescope.load_extension("media_files")
     telescope.load_extension("file_browser")
-    telescope.load_extension("fzf")
+    pcall(telescope.load_extension, "fzf") -- needs a built libfzf.so (make + gcc); optional
     telescope.load_extension("lazy")
     telescope.load_extension("helpgrep")
 end
