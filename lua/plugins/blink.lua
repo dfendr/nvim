@@ -94,6 +94,8 @@ local M = {
             cmdline = {
                 keymap = { preset = "inherit" },
                 completion = {
+                    -- don't preselect/insert the first match, so <CR> runs what was typed (`:q` != `:qall`)
+                    list = { selection = { preselect = false, auto_insert = false } },
                     menu = {
                         auto_show = function()
                             return vim.fn.getcmdtype() == ":"
