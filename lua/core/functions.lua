@@ -145,7 +145,7 @@ function M.code_action()
 end
 
 function M.map(mode, key, cmd, opts, desc, bufnr)
-    local options = vim.tbl_extend("force", opts or {}, { desc = desc, buffer = bufnr })
+    local options = vim.tbl_extend("force", opts or {}, { desc = desc, buf = bufnr })
     vim.keymap.set(mode, key, cmd, options)
 end
 
