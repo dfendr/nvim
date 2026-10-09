@@ -310,7 +310,7 @@ function M.config()
         { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline", nowait = true, remap = false },
         {
             "<leader>lq",
-            "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>",
+            "<cmd>lua vim.diagnostic.setqflist()<cr>",
             desc = "Quickfix",
             nowait = true,
             remap = false,

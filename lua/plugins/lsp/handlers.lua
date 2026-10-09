@@ -116,7 +116,9 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    require("plugins.lsp.utils").setup_codelens_refresh(client, bufnr)
+    if client:supports_method("textDocument/codeLens") then
+        vim.lsp.codelens.enable(true, { bufnr = bufnr })
+    end
 
     -- Don't use semantic tokens
     -- client.server_capabilities.semanticTokensProvider = nil

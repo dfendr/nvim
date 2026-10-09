@@ -7,7 +7,7 @@ local function get_codelldb_paths()
         mason_root = vim.fn.stdpath("data") .. "/mason"
     end
     local extension_path = mason_root .. "/packages/codelldb/extension/"
-    local sysname = (vim.uv or vim.loop).os_uname().sysname
+    local sysname = vim.uv.os_uname().sysname
     local codelldb_path = extension_path .. "adapter/codelldb"
     local liblldb_path = extension_path .. "lldb/lib/liblldb"
 
