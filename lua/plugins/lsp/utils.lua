@@ -7,6 +7,11 @@ function M.setup_codelens_refresh(client, bufnr)
     if not status_ok or not codelens_supported then
         return
     end
+    -- 0.12+: enable() keeps lenses refreshed itself; refresh() is deprecated
+    if vim.fn.has("nvim-0.12") == 1 then
+        vim.lsp.codelens.enable(true, { bufnr = bufnr })
+        return
+    end
     local group = "lsp_code_lens_refresh"
     local cl_events = { "BufEnter", "InsertLeave" }
     local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {

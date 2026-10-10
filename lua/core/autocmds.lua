@@ -47,6 +47,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = "*",
     callback = function(event)
+        if not vim.bo[event.buf].modifiable then
+            return
+        end
         local cursor_position = vim.api.nvim_win_get_cursor(0)
         vim.api.nvim_command("%s/\\s\\+$//e")
         vim.api.nvim_win_set_cursor(0, cursor_position)

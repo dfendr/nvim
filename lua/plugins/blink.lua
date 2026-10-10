@@ -72,6 +72,9 @@ local M = {
                 keyword = {
                     range = "prefix",
                 },
+                -- nothing selected until <Tab>/<C-n>, so <CR> at end of a word inserts a
+                -- newline instead of accepting whatever happens to be first in the menu
+                list = { selection = { preselect = false } },
                 menu = {
                     auto_show = function(ctx)
                         return ctx.mode ~= "cmdline" or not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
@@ -92,6 +95,8 @@ local M = {
             },
 
             cmdline = {
+                -- too laggy over ssh; fall back to nvim's built-in <Tab> wildmenu there
+                enabled = not (vim.env.SSH_CONNECTION or vim.env.SSH_TTY),
                 keymap = { preset = "inherit" },
                 completion = {
                     -- don't preselect/insert the first match, so <CR> runs what was typed (`:q` != `:qall`)
