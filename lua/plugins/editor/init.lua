@@ -301,7 +301,7 @@ return {
             { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
         },
         lazy = true,
-        ft = "py",
+        ft = "python",
         config = function()
             require("venv-selector").setup()
         end,
