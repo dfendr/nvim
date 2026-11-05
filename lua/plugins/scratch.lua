@@ -1,7 +1,7 @@
 local M = {
     "LintaoAmons/scratch.nvim",
     cmd = "Scratch",
-    tag = "v0.3.1",
+    version = "^1",
 }
 
 function M.config()
