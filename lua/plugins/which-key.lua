@@ -325,14 +325,8 @@ function M.config()
         { "<leader>lt", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics", nowait = true, remap = false },
         {
             "<leader>lv",
-            function()
-                local cfg = vim.diagnostic.config()
-                vim.diagnostic.config({
-                    virtual_lines = not cfg.virtual_lines,
-                    virtual_text = cfg.virtual_lines and true or false,
-                })
-            end,
-            desc = "Toggle Virtual Lines",
+            '<cmd>lua require("core.functions").cycle_diag_text()<cr>',
+            desc = "Cycle Diagnostic Text",
             nowait = true,
             remap = false,
         },

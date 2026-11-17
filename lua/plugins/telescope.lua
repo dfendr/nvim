@@ -26,8 +26,37 @@ function M.config()
     local actions = require("telescope.actions")
     local icons = require("plugins.ui.icons")
 
+    -- Telescope's "use the original window" sentinel
+    local ORIGINAL_WINDOW = 0
+    local TREE_FILETYPES = { ["neo-tree"] = true }
+
+    local function is_file_window(win)
+        local buf = vim.api.nvim_win_get_buf(win)
+        local is_float = vim.api.nvim_win_get_config(win).relative ~= ""
+
+        return not is_float and vim.bo[buf].buftype == "" and not TREE_FILETYPES[vim.bo[buf].filetype]
+    end
+
+    -- Open picks beside the tree, not in it.
+    -- neo-tree's redirect closes windows sharing the buffer.
+    local function pick_file_window()
+        local current_buf = vim.api.nvim_get_current_buf()
+        if not TREE_FILETYPES[vim.bo[current_buf].filetype] then
+            return ORIGINAL_WINDOW
+        end
+
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+            if is_file_window(win) then
+                return win
+            end
+        end
+
+        return ORIGINAL_WINDOW
+    end
+
     telescope.setup({
         defaults = {
+            get_selection_window = pick_file_window,
 
             prompt_prefix = icons.ui.Telescope .. " ",
             selection_caret = " ",

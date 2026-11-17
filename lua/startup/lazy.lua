@@ -17,4 +17,9 @@ require("lazy").setup("plugins", {
     ui = { border = require("core.prefs").ui.border_style },
     change_detection = { enabled = false },
     rocks = { enabled = false },
+
+    -- Keep system site dir (ghostty syntax)
+    performance = {
+        rtp = { paths = { "/usr/share/nvim/site" } },
+    },
 })

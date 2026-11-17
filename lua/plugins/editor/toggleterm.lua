@@ -182,12 +182,12 @@ function M.config()
     end
 
     function _CARGO_RUN()
-        local cargo_run = Terminal:new({ cmd = "cargo run", hidden = true })
+        local cargo_run = Terminal:new({ cmd = "cargo run", hidden = true, close_on_exit = false })
         cargo_run:toggle()
     end
 
     function _CARGO_TEST()
-        local cargo_test = Terminal:new({ cmd = "cargo test", hidden = true })
+        local cargo_test = Terminal:new({ cmd = "cargo test", hidden = true, close_on_exit = false })
         cargo_test:toggle()
     end
 

@@ -40,14 +40,34 @@ function M.toggle_diagnostics()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end
 
+-- Cycle: lines -> inline -> underline only
+function M.cycle_diag_text()
+    local cfg = vim.diagnostic.config()
+
+    if cfg.virtual_lines then
+        vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+        return
+    end
+
+    if cfg.virtual_text then
+        vim.diagnostic.config({ virtual_lines = false, virtual_text = false })
+        return
+    end
+
+    vim.diagnostic.config({ virtual_lines = true, virtual_text = false })
+end
+
 function M.isempty(s)
     return s == nil or s == ""
 end
 
+-- Prettier on 130 KB markdown takes ~1.2 s
+local FORMAT_TIMEOUT_MS = 5000
+
 function M.format_buffer()
     if pcall(require, "conform") then
         -- conform is available, use it for formatting
-        vim.cmd("lua require('conform').format({ lsp_fallback = true, async = false, timeout_ms = 500 })")
+        require("conform").format({ lsp_fallback = true, async = false, timeout_ms = FORMAT_TIMEOUT_MS })
     else
         -- conform is not available, use LSP formatting
         vim.lsp.buf.format({ async = false })

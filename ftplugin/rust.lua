@@ -15,7 +15,7 @@ if status_ok then
         { "<localleader>o", "<cmd>RustLsp openExternalDocs<Cr>", buffer = 0, desc = "Open External Docs", nowait = true, remap = false, },
         { "<localleader>p", "<cmd>RustLsp parentModule<Cr>", buffer = 0, desc = "Parent Module", nowait = true, remap = false, },
         { "<localleader>r", "<cmd>RustLsp runnables<Cr>", buffer = 0, desc = "Runnables", nowait = true, remap = false, },
-        { "<localleader>t", "<cmd>lua _CARGO_TEST()<cr>", buffer = 0, desc = "Cargo Test", nowait = true, remap = false, },
+        { "<localleader>t", "<cmd>lua require('lazy').load({ plugins = { 'toggleterm.nvim' } }); _CARGO_TEST()<cr>", buffer = 0, desc = "Cargo Test", nowait = true, remap = false, },
         { "<localleader>v", "<cmd>RustLsp viewCrateGraph<Cr>", buffer = 0, desc = "View Crate Graph", nowait = true, remap = false, },
     })
 end

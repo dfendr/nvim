@@ -173,15 +173,12 @@ return {
         event = "BufReadPost",
     },
     {
-        "toppair/peek.nvim",
-        build = "deno task --quiet build:fast",
-        config = function()
-            require("peek").setup()
-            vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-            vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+        "iamcco/markdown-preview.nvim",
+        cmd = "MarkdownPreviewToggle",
+        ft = { "markdown" },
+        build = function()
+            vim.fn["mkdp#util#install"]()
         end,
-        cmd = "PeekOpen",
-        enabled = true,
     },
     {
         "windwp/nvim-ts-autotag",
