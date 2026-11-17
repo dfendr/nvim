@@ -20,7 +20,8 @@ return {
     },
     {
         "f-person/auto-dark-mode.nvim",
-        enabled = false,
+        -- Follow portal light/dark; remote boxes keep retrobox.
+        cond = not (vim.env.SSH_CONNECTION or vim.env.SSH_CLIENT),
         opts = {
             update_interval = 1000,
             set_dark_mode = function()

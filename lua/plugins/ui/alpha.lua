@@ -193,8 +193,16 @@ return {
             },
         }
 
+        local version = vim.version()
+        local caption = {
+            type = "text",
+            val = ("  v%d.%d.%d"):format(version.major, version.minor, version.patch),
+            opts = { position = "center", hl = "Comment" },
+        }
+
         local options = {
             header = dynamic_header_responsive,
+            caption = caption,
             buttons = {
                 type = "group",
                 val = {
@@ -234,6 +242,7 @@ return {
             layout = {
                 options.headerPaddingTop,
                 options.header,
+                options.caption,
                 options.headerPaddingBottom,
                 options.buttons,
                 options.footer,

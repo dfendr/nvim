@@ -46,13 +46,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Removing trailing whitesspace on save.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = "*",
-    callback = function(event)
-        if not vim.bo[event.buf].modifiable then
+    callback = function()
+        -- `:%s` throws E21 on a nomodifiable buffer (e.g. `:w! file` from a
+        -- health/help buffer), so skip those instead of erroring the write.
+        if not vim.bo.modifiable then
             return
         end
-        local cursor_position = vim.api.nvim_win_get_cursor(0)
-        vim.api.nvim_command("%s/\\s\\+$//e")
-        vim.api.nvim_win_set_cursor(0, cursor_position)
+        local view = vim.fn.winsaveview()
+        vim.api.nvim_command("keeppatterns %s/\\s\\+$//e")
+        vim.fn.winrestview(view)
     end,
 })
 
