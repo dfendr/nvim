@@ -39,7 +39,7 @@ return {
                 always_show_bufferline = false,
                 sort_by = "insert_at_end",
             },
-            highlights = {},
+            highlights = require("fenbox.integrations.bufferline").highlights,
         })
     end,
 }
